@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/16/2016 16:13:52 PAGE 1   
+C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/16/2016 16:54:06 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE DEVICECONTROLLER
@@ -62,7 +62,7 @@ line level    source
   53   2          case '3':
   54   2            IO_vSetPin(LCR_CHANNEL_3);
   55   2            sendUART("#a#3#\r\n");
-C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/16/2016 16:13:52 PAGE 2   
+C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/16/2016 16:54:06 PAGE 2   
 
   56   2            break;
   57   2          default:
@@ -72,39 +72,49 @@ line level    source
   61   1      }
   62          
   63          bool isAllHVRelayOK() {
-  64   1        return IO_ubReadPin(HV_READY_3);
-  65   1      }
-  66          
-  67          void sendHVRelayStatus() {
-  68   1        if (isAllHVRelayOK()) {
-  69   2          sendUART("HV_OK\r\n");
-  70   2        } else {
-  71   2          sendUART("HV_NG\r\n");    
-  72   2        }
-  73   1      }
-  74          
-  75          void setChargeMode(char modeCode) {
-  76   1        if (modeCode == '1') {
-  77   2          if (!isAllHVRelayOK()) {
-  78   3            IO_vResetPin(HV_CHANNEL);     
-  79   3            IO_vResetPin(CHARGE_CHANNEL);
-  80   3            IO_vResetPin(DISCHARGE_CHANNEL);
-  81   3            sendUART("HV_NG\r\n");
-  82   3            return;
-  83   3          }
-  84   2          IO_vResetPin(DISCHARGE_CHANNEL);
-  85   2          IO_vSetPin(HV_CHANNEL);
-  86   2          IO_vSetPin(CHARGE_CHANNEL);
-  87   2          sendUART("#c#1#\r\n");
-  88   2        } else if (modeCode == '0') {
-  89   2          IO_vResetPin(CHARGE_CHANNEL);
-  90   2          IO_vResetPin(HV_CHANNEL);
-  91   2          IO_vSetPin(DISCHARGE_CHANNEL);
-  92   2          sendUART("#c#0#\r\n");
-  93   2        } else {
-  94   2          sendUART("Unknown Charge Mode\r\n");    
-  95   2        }
-  96   1      }
+  64   1        #ifdef STARTER_KIT_EMU
+  65   1          return IO_ubReadPin(HV_READY_1);
+  66   1        #else
+                  return 
+                    IO_ubReadPin(HV_READY_1) &&
+                    IO_ubReadPin(HV_READY_2) &&
+                    IO_ubReadPin(HV_READY_3) &&
+                    IO_ubReadPin(HV_FAULT_1) &&
+                    IO_ubReadPin(HV_FAULT_2) &&
+                    IO_ubReadPin(HV_FAULT_3);
+                #endif
+  75   1      }
+  76          
+  77          void sendHVRelayStatus() {
+  78   1        if (isAllHVRelayOK()) {
+  79   2          sendUART("HV_OK\r\n");
+  80   2        } else {
+  81   2          sendUART("HV_NG\r\n");    
+  82   2        }
+  83   1      }
+  84          
+  85          void setChargeMode(char modeCode) {
+  86   1        if (modeCode == '1') {
+  87   2          if (!isAllHVRelayOK()) {
+  88   3            IO_vResetPin(HV_CHANNEL);     
+  89   3            IO_vResetPin(CHARGE_CHANNEL);
+  90   3            IO_vResetPin(DISCHARGE_CHANNEL);
+  91   3            sendUART("HV_NG\r\n");
+  92   3            return;
+  93   3          }
+  94   2          IO_vResetPin(DISCHARGE_CHANNEL);
+  95   2          IO_vSetPin(HV_CHANNEL);
+  96   2          IO_vSetPin(CHARGE_CHANNEL);
+  97   2          sendUART("#c#1#\r\n");
+  98   2        } else if (modeCode == '0') {
+  99   2          IO_vResetPin(CHARGE_CHANNEL);
+ 100   2          IO_vResetPin(HV_CHANNEL);
+ 101   2          IO_vSetPin(DISCHARGE_CHANNEL);
+ 102   2          sendUART("#c#0#\r\n");
+ 103   2        } else {
+ 104   2          sendUART("Unknown Charge Mode\r\n");    
+ 105   2        }
+ 106   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
@@ -116,6 +126,8 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
+
+C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/16/2016 16:54:06 PAGE 3   
 
 
 C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

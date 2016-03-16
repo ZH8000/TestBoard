@@ -1,25 +1,49 @@
 #ifndef __PIN_DEFINE_H__
 #define __PIN_DEFINE_H__
 
-#define LCR_CHANNEL_1							P3_0
-#define LCR_CHANNEL_2							P3_2
-#define LCR_CHANNEL_3							P3_4
+	#define STARTER_KIT_EMU
+	
+	#ifdef STARTER_KIT_EMU
+		#define LCR_CHANNEL_1							P3_0
+		#define LCR_CHANNEL_2							P3_2
+		#define LCR_CHANNEL_3							P3_4
 
-#define LC_CHANNEL_1							P3_1
-#define LC_CHANNEL_2							P3_3
-#define LC_CHANNEL_3							P3_5
+		#define LC_CHANNEL_1							P3_1
+		#define LC_CHANNEL_2							P3_3
+		#define LC_CHANNEL_3							P3_5
 
-#define HV_READY_1								P4_0
-#define HV_READY_2								P4_2
-#define HV_READY_3								P4_4
+		#define HV_READY_1								P4_0
+		#define HV_READY_2								P4_2
+		#define HV_READY_3								P4_4
 
-#define HV_FAULT_1								P4_1
-#define HV_FAULT_2								P4_3
-#define HV_FAULT_3								P4_5
+		#define HV_FAULT_1								P4_1
+		#define HV_FAULT_2								P4_3
+		#define HV_FAULT_3								P4_5
 
-#define	HV_CHANNEL								P3_6
-#define CHARGE_CHANNEL						P3_7
-#define DISCHARGE_CHANNEL					P4_3
+		#define	HV_CHANNEL								P3_6
+		#define CHARGE_CHANNEL						P3_7
+		#define DISCHARGE_CHANNEL					P1_2
+	#else
+		#define LCR_CHANNEL_1							P1_0
+		#define LCR_CHANNEL_2							P1_2
+		#define LCR_CHANNEL_3							P1_4
+
+		#define LC_CHANNEL_1							P1_1
+		#define LC_CHANNEL_2							P1_3
+		#define LC_CHANNEL_3							P1_5
+
+		#define HV_READY_1								P4_0
+		#define HV_READY_2								P4_2
+		#define HV_READY_3								P4_4
+
+		#define HV_FAULT_1								P4_1
+		#define HV_FAULT_2								P4_3
+		#define HV_FAULT_3								P4_5
+
+		#define	HV_CHANNEL								P3_7
+		#define CHARGE_CHANNEL						P3_4
+		#define DISCHARGE_CHANNEL					P4_6
+	#endif
 
 #define SET_LCR_CHANNEL_1  				LCR_CHANNEL_1 = 1
 #define SET_LCR_CHANNEL_2 				LCR_CHANNEL_2 = 1

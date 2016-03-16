@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:13:51 PAGE     1
+A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:54:06 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.02c
@@ -65,7 +65,7 @@ LOC  OBJ            LINE     SOURCE
                       55     ; <10=> N=30
                       56     ; <11=> N=32 (5 MHz XTAL)
                       57     ; <12=> N=40
-A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:13:51 PAGE     2
+A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:54:06 PAGE     2
 
                       58     ; <13=> N=42
                       59     ; <14=> N=45
@@ -133,7 +133,7 @@ LOC  OBJ            LINE     SOURCE
                      121     
                      122     ;6 MHz 
                      123     ;NDIV_XC87x_PLL_CON    EQU       0x18
-A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:13:51 PAGE     3
+A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:54:06 PAGE     3
 
                      124     ;NDIV_XC87x_PLL_CON1   EQU       0x20
                      125     ;NR_XC87x              EQU       0x01
@@ -201,7 +201,7 @@ LOC  OBJ            LINE     SOURCE
   0000               187     IBPSTACK        EQU     0       ; set to 1 if small reentrant is used.
                      188     ; <o> top of stack <0x0-0xFF> 
                      189     ; <i> set top of stack to highest location+1 
-A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:13:51 PAGE     4
+A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:54:06 PAGE     4
 
   0100               190     IBPSTACKTOP     EQU     0xFF +1     ; default 0FFH+1  
                      191     ; </e>
@@ -269,7 +269,7 @@ LOC  OBJ            LINE     SOURCE
                              + XC874_CHIP_16FF + XC874_CHIP_13FF) > 1)
                                    __ERROR__  "Please select only one chip!"
                              ELSEIF ((XC82x_CHIP + XC866_CHIP + XC864_CHIP + XC88x_CHIP + XC878_CHIP_16FF + XC878_CHIP_1
-A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:13:51 PAGE     5
+A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:54:06 PAGE     5
 
                              3FF + XC874_CHIP_16FF + XC874_CHIP_13FF) == 0)
                                    __ERROR__  "Please select a chip!"
@@ -337,7 +337,7 @@ LOC  OBJ            LINE     SOURCE
 0000                 316     STARTUP1:
                      317     
                      318     IF (XTAL <> 0)       
-A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:13:51 PAGE     6
+A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:54:06 PAGE     6
 
                                                  ; switch to external XTAL
                                      IF(XC878_CHIP_16FF <> 0 || XC878_CHIP_13FF <> 0 || XC874_CHIP_16FF <> 0 || XC874_CH
@@ -405,7 +405,7 @@ LOC  OBJ            LINE     SOURCE
                                              DJNZ    R1,$
                                              DJNZ    R0,DelayXTAL
                                              
-A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:13:51 PAGE     7
+A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:54:06 PAGE     7
 
                                              ; redetection of osc
                              OSCR_NOTSET:
@@ -473,7 +473,7 @@ LOC  OBJ            LINE     SOURCE
 0006 90F000          439                     MOV     DPTR,#XDATASTART
 0009 7F00            440                     MOV     R7,#LOW (XDATALEN)
                      441       IF (LOW (XDATALEN)) <> 0
-A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:13:51 PAGE     8
+A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:54:06 PAGE     8
 
                                              MOV     R6,#(HIGH (XDATALEN)) +1
                                ELSE
@@ -539,7 +539,7 @@ LOC  OBJ            LINE     SOURCE
                              ENDIF
                      504     
                      505                     END
-A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:13:51 PAGE     9
+A51 MACRO ASSEMBLER  START_XC                                                             03/16/2016 16:54:06 PAGE     9
 
 SYMBOL TABLE LISTING
 ------ ----- -------

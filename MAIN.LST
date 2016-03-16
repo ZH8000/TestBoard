@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   MAIN                                                                  03/16/2016 16:13:51 PAGE 1   
+C51 COMPILER V9.54   MAIN                                                                  03/16/2016 16:54:06 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   53   1        IP1           =  0x00;         // load Interrupt Priority 1 Register
   54   1        IPH1          =  0x00;         // load Interrupt Priority 1 High Register
   55   1      
-C51 COMPILER V9.54   MAIN                                                                  03/16/2016 16:13:51 PAGE 2   
+C51 COMPILER V9.54   MAIN                                                                  03/16/2016 16:54:06 PAGE 2   
 
   56   1      
   57   1        //// Interrupt structure 2 mode 0 is selected.

@@ -61,7 +61,17 @@ void enableLCRChannel(char channelCode) {
 }
 
 bool isAllHVRelayOK() {
-	return IO_ubReadPin(HV_READY_3);
+	#ifdef STARTER_KIT_EMU
+		return IO_ubReadPin(HV_READY_1);
+	#else
+		return 
+			IO_ubReadPin(HV_READY_1) &&
+			IO_ubReadPin(HV_READY_2) &&
+			IO_ubReadPin(HV_READY_3) &&
+			IO_ubReadPin(HV_FAULT_1) &&
+			IO_ubReadPin(HV_FAULT_2) &&
+			IO_ubReadPin(HV_FAULT_3);
+	#endif
 }
 
 void sendHVRelayStatus() {

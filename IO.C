@@ -16,85 +16,12 @@
 //
 //****************************************************************************
 
-// USER CODE BEGIN (IO_General,1)
-
-// USER CODE END
-
-
-
 //****************************************************************************
 // @Project Includes
 //****************************************************************************
 
 #include "MAIN.H"
-
-// USER CODE BEGIN (IO_General,2)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Macros
-//****************************************************************************
-
-// USER CODE BEGIN (IO_General,3)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Defines
-//****************************************************************************
-
-// USER CODE BEGIN (IO_General,4)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Typedefs
-//****************************************************************************
-
-// USER CODE BEGIN (IO_General,5)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Imported Global Variables
-//****************************************************************************
-
-// USER CODE BEGIN (IO_General,6)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Global Variables
-//****************************************************************************
-
-// USER CODE BEGIN (IO_General,7)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @External Prototypes
-//****************************************************************************
-
-// USER CODE BEGIN (IO_General,8)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Prototypes Of Local Functions
-//****************************************************************************
-
-// USER CODE BEGIN (IO_General,9)
-
-// USER CODE END
-
+#include "PinDefine.h"
 
 //****************************************************************************
 // @Function      void IO_vInit(void) 
@@ -121,19 +48,116 @@
 
 void IO_vInit(void)
 {
-  P1_DIR        		= 0x01;         // load direction register
-  P1_DATA       		= 0x01;         // load data output register
-	P3_DIR			  		= 0xFF;
-	P3_DATA						= 0x00;
-	IO_vSetInput(P4, 0x10);
-	IO_vSetOutput(P4, 0x08);
+	#ifdef STARTER_KIT_EMU
+		P1_DIR        		= 0x04; 
+		P1_DATA       		= 0x00;
+		P3_DIR			  		= 0xFF;
+		P3_DATA						= 0x00;
+	#else
+
+		///  -----------------------------------------------------------------------
+		///  Configuration of Port P0:
+		///  -----------------------------------------------------------------------
+		///  - no pin of port P0 is used
+
+
+		///  -----------------------------------------------------------------------
+		///  Configuration of Port P1:
+		///  -----------------------------------------------------------------------
+		///  P1.0:
+		///  - is used as general purpose output
+		///  - push/pull output is selected
+		///  - the pin status is low level
+		///  - pull-up device is assigned
+		///  P1.1:
+		///  - is used as general purpose output
+		///  - push/pull output is selected
+		///  - the pin status is low level
+		///  - pull-up device is assigned
+		///  P1.2:
+		///  - is used as general purpose output
+		///  - push/pull output is selected
+		///  - the pin status is low level
+		///  - pull-up device is assigned
+		///  P1.3:
+		///  - is used as general purpose output
+		///  - push/pull output is selected
+		///  - the pin status is low level
+		///  - pull-up device is assigned
+		///  P1.4:
+		///  - is used as general purpose output
+		///  - push/pull output is selected
+		///  - the pin status is low level
+		///  - pull-up device is assigned
+		///  P1.5:
+		///  - is used as general purpose output
+		///  - push/pull output is selected
+		///  - the pin status is low level
+		///  - pull-up device is assigned
+
+
+		P1_DIR        =  0x3F;         // load direction register
+
+		///  -----------------------------------------------------------------------
+		///  Configuration of Port P2:
+		///  -----------------------------------------------------------------------
+		///  - no pin of port P2 is used
+
+
+		///  -----------------------------------------------------------------------
+		///  Configuration of Port P3:
+		///  -----------------------------------------------------------------------
+		///  P3.4:
+		///  - is used as general purpose output
+		///  - push/pull output is selected
+		///  - the pin status is low level
+		///  - pull device is disabled (tristate) 
+		///  P3.5:
+		///  - is used as general purpose output
+		///  - push/pull output is selected
+		///  - the pin status is low level
+		///  - pull device is disabled (tristate) 
+		///  P3.6:
+		///  - is used as general purpose output
+		///  - push/pull output is selected
+		///  - the pin status is low level
+		///  - pull device is disabled (tristate) 
+		///  P3.7:
+		///  - is used as general purpose output
+		///  - push/pull output is selected
+		///  - the pin status is low level
+		///  - pull device is disabled (tristate) 
+
+
+		P3_DIR        =  0xF0;         // load direction register
+
+		///  -----------------------------------------------------------------------
+		///  Configuration of Port P4:
+		///  -----------------------------------------------------------------------
+		///  P4.0:
+		///  - is used as general input
+		///  - pull device is disabled (tristate) 
+		///  P4.1:
+		///  - is used as general input
+		///  - pull device is disabled (tristate) 
+		///  P4.2:
+		///  - is used as general input
+		///  - pull-up device is assigned
+		///  P4.3:
+		///  - is used as general input
+		///  - pull device is disabled (tristate) 
+		///  P4.4:
+		///  - is used as general input
+		///  - pull device is disabled (tristate) 
+		///  P4.5:
+		///  - is used as general input
+		///  - pull device is disabled (tristate) 
+
+
+		///  -----------------------------------------------------------------------
+		///  Configuration of Port P5:
+		///  -----------------------------------------------------------------------
+		///  - no pin of port P5 is used
+	#endif
 
 } //  End of function IO_vInit
-
-
-
-
-// USER CODE BEGIN (IO_General,10)
-
-// USER CODE END
-
