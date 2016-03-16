@@ -1,0 +1,290 @@
+C51 COMPILER V9.54   UART                                                                  03/16/2016 10:27:33 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE UART
+OBJECT MODULE PLACED IN UART.OBJ
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE UART.C OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          //****************************************************************************
+   2          // @Module        UART (Serial Interface)
+   3          // @Filename      UART.C
+   4          // @Project       TestBoard.dav
+   5          //----------------------------------------------------------------------------
+   6          // @Controller    Infineon XC888CLM-8FF
+   7          //
+   8          // @Compiler      Keil
+   9          //
+  10          // @Codegenerator 1.7
+  11          //
+  12          // @Description:  This file contains functions that use the UART module.
+  13          //
+  14          //----------------------------------------------------------------------------
+  15          // @Date          2016/3/15 16:17:36
+  16          //
+  17          //****************************************************************************
+  18          
+  19          // USER CODE BEGIN (UART_General,1)
+  20          
+  21          // USER CODE END
+  22          
+  23          
+  24          
+  25          //****************************************************************************
+  26          // @Project Includes
+  27          //****************************************************************************
+  28          
+  29          #include "MAIN.H"
+  30          
+  31          // USER CODE BEGIN (UART_General,2)
+  32          
+  33          // USER CODE END
+  34          
+  35          
+  36          //****************************************************************************
+  37          // @Macros
+  38          //****************************************************************************
+  39          
+  40          // USER CODE BEGIN (UART_General,3)
+  41          
+  42          // USER CODE END
+  43          
+  44          
+  45          //****************************************************************************
+  46          // @Defines
+  47          //****************************************************************************
+  48          
+  49          // USER CODE BEGIN (UART_General,4)
+  50          
+  51          // USER CODE END
+  52          
+  53          
+  54          //****************************************************************************
+  55          // @Typedefs
+C51 COMPILER V9.54   UART                                                                  03/16/2016 10:27:33 PAGE 2   
+
+  56          //****************************************************************************
+  57          
+  58          // USER CODE BEGIN (UART_General,5)
+  59          
+  60          // USER CODE END
+  61          
+  62          
+  63          //****************************************************************************
+  64          // @Imported Global Variables
+  65          //****************************************************************************
+  66          
+  67          // USER CODE BEGIN (UART_General,6)
+  68          
+  69          // USER CODE END
+  70          
+  71          
+  72          //****************************************************************************
+  73          // @Global Variables
+  74          //****************************************************************************
+  75          
+  76          // USER CODE BEGIN (UART_General,7)
+  77          
+  78          // USER CODE END
+  79          
+  80          
+  81          //****************************************************************************
+  82          // @External Prototypes
+  83          //****************************************************************************
+  84          
+  85          // USER CODE BEGIN (UART_General,8)
+  86          
+  87          // USER CODE END
+  88          
+  89          
+  90          //****************************************************************************
+  91          // @Prototypes Of Local Functions
+  92          //****************************************************************************
+  93          
+  94          // USER CODE BEGIN (UART_General,9)
+  95          
+  96          // USER CODE END
+  97          
+  98          
+  99          //****************************************************************************
+ 100          // @Function      void UART_vInit(void) 
+ 101          //
+ 102          //----------------------------------------------------------------------------
+ 103          // @Description   This is the initialization function of the UART function 
+ 104          //                library. It is assumed that the SFRs used by this library 
+ 105          //                are in their reset state. 
+ 106          //                
+ 107          //                The following SFR fields will be initialized:
+ 108          //                - register SCON
+ 109          //                - bits SMOD and ES
+ 110          //
+ 111          //----------------------------------------------------------------------------
+ 112          // @Returnvalue   None
+ 113          //
+ 114          //----------------------------------------------------------------------------
+ 115          // @Parameters    None
+ 116          //
+ 117          //----------------------------------------------------------------------------
+C51 COMPILER V9.54   UART                                                                  03/16/2016 10:27:33 PAGE 3   
+
+ 118          // @Date          2016/3/15
+ 119          //
+ 120          //****************************************************************************
+ 121          
+ 122          // USER CODE BEGIN (UART_Init,1)
+ 123          
+ 124          // USER CODE END
+ 125          
+ 126          void UART_vInit(void)
+ 127          {
+ 128   1        // USER CODE BEGIN (UART_Init,2)
+ 129   1      
+ 130   1        // USER CODE END
+ 131   1      
+ 132   1        ///  -----------------------------------------------------------------------
+ 133   1        ///  UART settings
+ 134   1        ///  -----------------------------------------------------------------------
+ 135   1        ///  Pin TXD_1 (P0.2) is selected for transmission
+ 136   1        ///  Pin RXD_1 (P0.1) is selected for reception
+ 137   1        ///  Receiver enabled
+ 138   1        ///  Mode 1: 8-bit data, 1 start bit, 1 stop bit, variable baud rate
+ 139   1        ///  Receiver interrupt flag RI will only be activated if a valid stop bit 
+ 140   1        ///  was received
+ 141   1        ///  BRG is selected for baudrate generation
+ 142   1      
+ 143   1        SFR_PAGE(_pp2, noSST);         // switch to page 2 without saving
+ 144   1        P0_ALTSEL0   &= ~(ubyte)0x04;  // configure alternate function register 0
+ 145   1        P0_ALTSEL1   |=  (ubyte)0x04;  // configure alternate function register 1
+ 146   1        SFR_PAGE(_pp0, noSST);         // switch to page 0 without saving
+ 147   1        P0_DIR       |=  (ubyte)0x04;  // set output direction
+ 148   1      
+ 149   1      
+ 150   1        MODPISEL     |=  (ubyte)0x01;  // configure peripheral input select register
+ 151   1        BCON          =  0x00;         // reset baudrate timer/reload register
+ 152   1        SCON          =  0x70;         // load serial channel control register
+ 153   1      
+ 154   1        ///  -----------------------------------------------------------------------
+ 155   1        ///  Baudrate generator settings
+ 156   1        ///  -----------------------------------------------------------------------
+ 157   1        ///  input clock = fPCLK
+ 158   1        ///  Fractional divider is enabled
+ 159   1        ///  baudrate = 9.6004 kbaud
+ 160   1      
+ 161   1        FDSTEP        =  0xD5;         // load fractional divider reload register
+ 162   1        BG            =  0x81;         // load baudrate timer/reload register
+ 163   1        FDCON        |=  0x01;         // load Fractional Divider control register
+ 164   1        BCON         |=  0x01;         // load baud rate control register
+ 165   1      
+ 166   1      
+ 167   1        // USER CODE BEGIN (UART_Init,3)
+ 168   1      
+ 169   1        // USER CODE END
+ 170   1      
+ 171   1        ///  UART interrupt enabled
+ 172   1        ES = 1;
+ 173   1      
+ 174   1      } //  End of function UART_vInit
+ 175          
+ 176          
+ 177          //****************************************************************************
+ 178          // @Function      void UART_viIsr(void) 
+ 179          //
+C51 COMPILER V9.54   UART                                                                  03/16/2016 10:27:33 PAGE 4   
+
+ 180          //----------------------------------------------------------------------------
+ 181          // @Description   This is the service routine for the UART interrupt. It is 
+ 182          //                called after each transmission (flag TI set) or reception 
+ 183          //                (flag RI set) of a data unit.
+ 184          //                Please note that you have to add application specific code 
+ 185          //                to this function.
+ 186          //
+ 187          //----------------------------------------------------------------------------
+ 188          // @Returnvalue   None
+ 189          //
+ 190          //----------------------------------------------------------------------------
+ 191          // @Parameters    None
+ 192          //
+ 193          //----------------------------------------------------------------------------
+ 194          // @Date          2016/3/15
+ 195          //
+ 196          //****************************************************************************
+ 197          
+ 198          //   You have two choices for interrupt type select in Project Settings Page 
+ 199          //   under Global Settings Section.
+ 200          //   If you select CHOICE 1 then ISR will be generated with push and pop.
+ 201          //   If you select CHOICE 2 then ISR will be generated without push and pop.
+ 202          //   Default choice is CHOICE 2.
+ 203          //   Current selection is CHOICE 2 
+ 204          
+ 205          // USER CODE BEGIN (UART_Isr,1)
+ 206          
+ 207          // USER CODE END
+ 208          
+ 209          void sendUART(char * message) {
+ 210   1        char * current = message;
+ 211   1        while (*current != '\0') {
+ 212   2          SBUF = *current;
+ 213   2          while (TI == 0);
+ 214   2          TI = 0;   
+ 215   2          current++;
+ 216   2        }
+ 217   1      }
+ 218          void UART_viIsr(void) interrupt UARTINT
+ 219          {
+ 220   1      
+ 221   1          // USER CODE BEGIN (UART_Isr,2)
+ 222   1      
+ 223   1          // USER CODE END
+ 224   1        SFR_PAGE(_su0, SST0);          // switch to page 0
+ 225   1        if (TI)
+ 226   1        {
+ 227   2          // USER CODE BEGIN (UART_Isr,3)
+ 228   2      
+ 229   2             TI = 0;
+ 230   2      
+ 231   2          // USER CODE END
+ 232   2        }
+ 233   1        if (RI)
+ 234   1        {
+ 235   2          // USER CODE BEGIN (UART_Isr,4)
+ 236   2             char receive = SBUF;
+ 237   2             if (receive == '1') {
+ 238   3               P1_DATA = 1;
+ 239   3             } else {
+ 240   3               P1_DATA = 0;
+ 241   3             }
+C51 COMPILER V9.54   UART                                                                  03/16/2016 10:27:33 PAGE 5   
+
+ 242   2             RI = 0;
+ 243   2             sendUART("ABC\r\n");
+ 244   2             //SBUF = receive;
+ 245   2      
+ 246   2          // USER CODE END
+ 247   2        }
+ 248   1      
+ 249   1          // USER CODE BEGIN (UART_Isr,5)
+ 250   1      
+ 251   1          // USER CODE END
+ 252   1        SFR_PAGE(_su0, RST0);          // restore the old page
+ 253   1      } //  End of function UART_viIsr
+ 254          
+ 255          
+ 256          // USER CODE BEGIN (UART_General,10)
+ 257          
+ 258          // USER CODE END
+ 259          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    137    ----
+   CONSTANT SIZE    =      6    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

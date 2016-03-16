@@ -1,0 +1,6 @@
+"START_XC.obj",
+"MAIN.obj",
+"IO.obj",
+"UART.obj" 
+TO "TestBoard" 
+RAMSIZE(256) 
