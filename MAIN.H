@@ -25,13 +25,6 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
-//****************************************************************************
-// @Project Includes
-//****************************************************************************
-
-// USER CODE BEGIN (MAIN_Header,2)
-
-// USER CODE END
 
 
 //****************************************************************************
@@ -42,19 +35,6 @@
 #define MAIN_vUnlockProtecReg() PASSWD = 0x9B 
 #define MAIN_vlockProtecReg()   PASSWD = 0xAB
 
-
-// USER CODE BEGIN (MAIN_Header,3)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Defines
-//****************************************************************************
-
-// USER CODE BEGIN (MAIN_Header,4)
-
-// USER CODE END
 
 #define bool  bit
 #define ulong unsigned long

@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   MAIN                                                                  03/16/2016 12:24:08 PAGE 1   
+C51 COMPILER V9.54   MAIN                                                                  03/16/2016 16:13:51 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
@@ -25,255 +25,66 @@ line level    source
   16          //
   17          //****************************************************************************
   18          
-  19          // USER CODE BEGIN (MAIN_General,1)
-  20          
-  21          // USER CODE END
+  19          #include "MAIN.H"
+  20          #include <stdio.h>
+  21          #include <string.h>
   22          
-  23          
-  24          
-  25          //****************************************************************************
-  26          // @Project Includes
-  27          //****************************************************************************
-  28          
-  29          #include "MAIN.H"
-  30          #include <stdio.h>
-  31          #include <string.h>
-  32          extern void sendUART(char * message);
-  33          
-  34          // USER CODE BEGIN (MAIN_General,2)
-  35          
-  36          // USER CODE END
-  37          
-  38          
-  39          //****************************************************************************
-  40          // @Macros
-  41          //****************************************************************************
-  42          
-  43          // USER CODE BEGIN (MAIN_General,3)
-  44          
-  45          // USER CODE END
-  46          
-  47          
-  48          //****************************************************************************
-  49          // @Defines
-  50          //****************************************************************************
-  51          
-  52          // USER CODE BEGIN (MAIN_General,4)
-  53          
-  54          // USER CODE END
-  55          
-C51 COMPILER V9.54   MAIN                                                                  03/16/2016 12:24:08 PAGE 2   
+  23          void MAIN_vInit(void)
+  24          {
+  25   1        ///  -----------------------------------------------------------------------
+  26   1        ///  Configuration of the System Clock:
+  27   1        ///  -----------------------------------------------------------------------
+  28   1        ///  - On Chip Osc is Selected
+  29   1        ///  - PLL Mode, NDIV =  20
+  30   1        ///  - input frequency is 9.6 MHz
+  31   1      
+  32   1        //   FCLK runs at 2 times the frequency of PCLK.
+  33   1        SFR_PAGE(_su1, noSST);         // switch to page1
+  34   1        CMCON         =  0x10;         // load Clock Control Register
+  35   1        SFR_PAGE(_su0, noSST);         // switch to page0
+  36   1      
+  37   1      
+  38   1        ///  *********************************************************************************
+  39   1        ///  Note : All peripheral related IO configurations are done in the 
+  40   1        ///  respective peripheral modules (alternate functions selection)
+  41   1        ///  *********************************************************************************
+  42   1      
+  43   1        ///  Initialization of module 'GPIO'
+  44   1        IO_vInit();
+  45   1      
+  46   1        ///  Initialization of module 'UART (Serial Interface)'
+  47   1        UART_vInit();
+  48   1      
+  49   1        //   Interrupt Priority
+  50   1      
+  51   1        IP            =  0x00;         // load Interrupt Priority Register
+  52   1        IPH           =  0x00;         // load Interrupt Priority High Register
+  53   1        IP1           =  0x00;         // load Interrupt Priority 1 Register
+  54   1        IPH1          =  0x00;         // load Interrupt Priority 1 High Register
+  55   1      
+C51 COMPILER V9.54   MAIN                                                                  03/16/2016 16:13:51 PAGE 2   
 
-  56          
-  57          //****************************************************************************
-  58          // @Typedefs
-  59          //****************************************************************************
-  60          
-  61          // USER CODE BEGIN (MAIN_General,5)
-  62          
-  63          // USER CODE END
-  64          
-  65          
-  66          //****************************************************************************
-  67          // @Imported Global Variables
-  68          //****************************************************************************
-  69          
-  70          // USER CODE BEGIN (MAIN_General,6)
-  71          
-  72          // USER CODE END
-  73          
-  74          
-  75          //****************************************************************************
-  76          // @Global Variables
-  77          //****************************************************************************
-  78          
-  79          // USER CODE BEGIN (MAIN_General,7)
-  80          
-  81          // USER CODE END
-  82          
-  83          
-  84          //****************************************************************************
-  85          // @External Prototypes
-  86          //****************************************************************************
-  87          
-  88          
-  89          // USER CODE BEGIN (MAIN_General,8)
-  90          
-  91          // USER CODE END
-  92          
-  93          
-  94          //****************************************************************************
-  95          // @Prototypes Of Local Functions
-  96          //****************************************************************************
-  97          
-  98          // USER CODE BEGIN (MAIN_General,9)
-  99          
- 100          // USER CODE END
- 101          
- 102          
- 103          //****************************************************************************
- 104          // @Function      void MAIN_vInit(void) 
- 105          //
- 106          //----------------------------------------------------------------------------
- 107          // @Description   This function initializes the microcontroller. It is 
- 108          //                assumed that the SFRs are in their reset state.
- 109          //
- 110          //----------------------------------------------------------------------------
- 111          // @Returnvalue   None
- 112          //
- 113          //----------------------------------------------------------------------------
- 114          // @Parameters    None
- 115          //
- 116          //----------------------------------------------------------------------------
- 117          // @Date          2016/3/15
-C51 COMPILER V9.54   MAIN                                                                  03/16/2016 12:24:08 PAGE 3   
-
- 118          //
- 119          //****************************************************************************
- 120          
- 121          // USER CODE BEGIN (MAIN_Init,1)
- 122          
- 123          // USER CODE END
- 124          
- 125          void MAIN_vInit(void)
- 126          {
- 127   1        // USER CODE BEGIN (MAIN_Init,2)
- 128   1      
- 129   1        // USER CODE END
- 130   1      
- 131   1        ///  -----------------------------------------------------------------------
- 132   1        ///  Configuration of the System Clock:
- 133   1        ///  -----------------------------------------------------------------------
- 134   1        ///  - On Chip Osc is Selected
- 135   1        ///  - PLL Mode, NDIV =  20
- 136   1        ///  - input frequency is 9.6 MHz
- 137   1      
- 138   1      
- 139   1      
- 140   1        //   FCLK runs at 2 times the frequency of PCLK.
- 141   1        SFR_PAGE(_su1, noSST);         // switch to page1
- 142   1      
- 143   1        CMCON         =  0x10;         // load Clock Control Register
- 144   1      
- 145   1        SFR_PAGE(_su0, noSST);         // switch to page0
- 146   1      
- 147   1      
- 148   1        ///  *********************************************************************************
- 149   1        ///  Note : All peripheral related IO configurations are done in the 
- 150   1        ///  respective peripheral modules (alternate functions selection)
- 151   1        ///  *********************************************************************************
- 152   1      
- 153   1        ///  Initialization of module 'GPIO'
- 154   1        IO_vInit();
- 155   1      
- 156   1        ///  Initialization of module 'UART (Serial Interface)'
- 157   1        UART_vInit();
- 158   1      
- 159   1      
- 160   1        //   Interrupt Priority
- 161   1      
- 162   1        IP            =  0x00;         // load Interrupt Priority Register
- 163   1        IPH           =  0x00;         // load Interrupt Priority High Register
- 164   1        IP1           =  0x00;         // load Interrupt Priority 1 Register
- 165   1        IPH1          =  0x00;         // load Interrupt Priority 1 High Register
- 166   1      
- 167   1      
- 168   1        // USER CODE BEGIN (MAIN_Init,3)
- 169   1      
- 170   1        // USER CODE END
- 171   1      
- 172   1        //// Interrupt structure 2 mode 0 is selected.
- 173   1      
- 174   1        //// Interrupt service routine choice 2 is selected.
- 175   1      
- 176   1        //   globally enable interrupts
- 177   1        EA            =  1;           
- 178   1      
- 179   1      } //  End of function MAIN_vInit
-C51 COMPILER V9.54   MAIN                                                                  03/16/2016 12:24:08 PAGE 4   
-
- 180          
- 181          
- 182          //****************************************************************************
- 183          // @Function      void main(void) 
- 184          //
- 185          //----------------------------------------------------------------------------
- 186          // @Description   This is the main function.
- 187          //
- 188          //----------------------------------------------------------------------------
- 189          // @Returnvalue   None
- 190          //
- 191          //----------------------------------------------------------------------------
- 192          // @Parameters    None
- 193          //
- 194          //----------------------------------------------------------------------------
- 195          // @Date          2016/3/15
- 196          //
- 197          //****************************************************************************
- 198          
- 199          // USER CODE BEGIN (MAIN_Main,1)
- 200          
- 201          // USER CODE END
- 202          void delay(int second) {
- 203   1        int i, j, k;
- 204   1        for (i = 0; i < second; i++) {
- 205   2          for (j = 0; j < 25; j++) {
- 206   3            for (k = 0; k < 30000; k++) {
- 207   4            }
- 208   3          }
- 209   2        }
- 210   1        
- 211   1      }
- 212          void main(void)
- 213          {
- 214   1        // USER CODE BEGIN (MAIN_Main,2)
- 215   1      
- 216   1        // USER CODE END
- 217   1        int i = 0;
- 218   1        int j = 0;
- 219   1        //char message[100];
- 220   1      
- 221   1        MAIN_vInit();
- 222   1      
- 223   1        // USER CODE BEGIN (MAIN_Main,3)
- 224   1      
- 225   1        // USER CODE END
- 226   1        while(1)
- 227   1        {
- 228   2          /*
- 229   2          IO_vTogglePin(P3_7);
- 230   2          i++;
- 231   2          delay(1);
- 232   2          */
- 233   2          if (IO_ubReadPin(P4_4)) {
- 234   3            IO_vSetPin(P3_7);
- 235   3          } else {
- 236   3            IO_vResetPin(P3_7);
- 237   3            
- 238   3          }
- 239   2        // USER CODE BEGIN (MAIN_Main,4)
- 240   2      
- 241   2        // USER CODE END
-C51 COMPILER V9.54   MAIN                                                                  03/16/2016 12:24:08 PAGE 5   
-
- 242   2      
- 243   2        }
- 244   1      
- 245   1      } //  End of function main
- 246          
- 247          
- 248          // USER CODE BEGIN (MAIN_General,10)
- 249          
- 250          // USER CODE END
- 251          
+  56   1      
+  57   1        //// Interrupt structure 2 mode 0 is selected.
+  58   1        //// Interrupt service routine choice 2 is selected.
+  59   1        //   globally enable interrupts
+  60   1        EA            =  1;           
+  61   1      
+  62   1      } 
+  63          
+  64          void main(void)
+  65          {
+  66   1        MAIN_vInit();
+  67   1        while(1) {}
+  68   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    102    ----
+   CODE SIZE        =     32    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----       4
+   DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

@@ -22,6 +22,8 @@
 //****************************************************************************
 
 #include "MAIN.H"
+#include "PinDefine.h"
+#include "DeviceController.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -50,9 +52,6 @@
 //
 //****************************************************************************
 
-// USER CODE BEGIN (UART_Init,1)
-
-// USER CODE END
 
 void UART_vInit(void)
 {
@@ -124,6 +123,8 @@ void UART_vInit(void)
 //   Default choice is CHOICE 2.
 //   Current selection is CHOICE 2 
 
+static char receiveBuffer[20] = {0};
+static int bufferCount = 0;
 
 void sendUART(char * message) {
 	char * current = message;
@@ -132,68 +133,6 @@ void sendUART(char * message) {
 		while (TI == 0);
 		TI = 0;		
 		current++;
-	}
-}
-
-
-char receiveBuffer[20] = {0};
-int bufferCount = 0;
-
-void enableLCChannel(char channelCode) {
-	// Switch off all LCR channel first.
-	IO_vResetPin(P3_1);
-	IO_vResetPin(P3_3);
-	IO_vResetPin(P3_5);
-	
-	// Enable coressponding LCR channel GPIO
-	switch(channelCode) {
-		case '0':
-			sendUART("#b#0#\r\n");
-			break;
-		case '1':
-			IO_vSetPin(P3_1);
-			sendUART("#b#1#\r\n");
-			break;
-		case '2':
-			IO_vSetPin(P3_3);
-			sendUART("#b#2#\r\n");		
-			break;
-		case '3':
-			IO_vSetPin(P3_5);
-			sendUART("#b#3#\r\n");
-			break;
-		default:
-			sendUART("Unknown LC Channel.\r\n");			
-			break;
-	}
-}
-
-void enableLCRChannel(char channelCode) {
-	// Switch off all LCR channel first.
-	IO_vResetPin(P3_0);
-	IO_vResetPin(P3_2);
-	IO_vResetPin(P3_4);
-	
-	// Enable coressponding LCR channel GPIO
-	switch(channelCode) {
-		case '0':
-			sendUART("#a#0#\r\n");
-			break;
-		case '1':
-			IO_vSetPin(P3_0);
-			sendUART("#a#1#\r\n");
-			break;
-		case '2':
-			IO_vSetPin(P3_2);
-			sendUART("#a#2#\r\n");		
-			break;
-		case '3':
-			IO_vSetPin(P3_4);
-			sendUART("#a#3#\r\n");
-			break;
-		default:
-			sendUART("Unknown LCR Channel.\r\n");			
-			break;
 	}
 }
 
@@ -210,6 +149,12 @@ void processCommand(char * command) {
 				break;
 			case 'b':
 				enableLCChannel(command[3]);
+				break;
+			case 'c':
+				setChargeMode(command[3]);
+				break;
+			case 'd':
+				sendHVRelayStatus();
 				break;
 			default:
 				sendUART("Unknown Command\r\n");

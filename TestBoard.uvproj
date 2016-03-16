@@ -342,6 +342,11 @@
               <FileType>1</FileType>
               <FilePath>.\UART.C</FilePath>
             </File>
+            <File>
+              <FileName>DeviceController.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\DeviceController.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
