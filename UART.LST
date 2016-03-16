@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   UART                                                                  03/16/2016 10:27:33 PAGE 1   
+C51 COMPILER V9.54   UART                                                                  03/16/2016 12:24:09 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE UART
@@ -25,263 +25,248 @@ line level    source
   16          //
   17          //****************************************************************************
   18          
-  19          // USER CODE BEGIN (UART_General,1)
-  20          
-  21          // USER CODE END
-  22          
+  19          
+  20          //****************************************************************************
+  21          // @Project Includes
+  22          //****************************************************************************
   23          
-  24          
-  25          //****************************************************************************
-  26          // @Project Includes
-  27          //****************************************************************************
+  24          #include "MAIN.H"
+  25          #include <string.h>
+  26          #include <stdio.h>
+  27          
   28          
-  29          #include "MAIN.H"
-  30          
-  31          // USER CODE BEGIN (UART_General,2)
-  32          
-  33          // USER CODE END
-  34          
-  35          
-  36          //****************************************************************************
-  37          // @Macros
-  38          //****************************************************************************
-  39          
-  40          // USER CODE BEGIN (UART_General,3)
-  41          
-  42          // USER CODE END
-  43          
-  44          
-  45          //****************************************************************************
-  46          // @Defines
-  47          //****************************************************************************
-  48          
-  49          // USER CODE BEGIN (UART_General,4)
-  50          
-  51          // USER CODE END
+  29          
+  30          //****************************************************************************
+  31          // @Function      void UART_vInit(void) 
+  32          //
+  33          //----------------------------------------------------------------------------
+  34          // @Description   This is the initialization function of the UART function 
+  35          //                library. It is assumed that the SFRs used by this library 
+  36          //                are in their reset state. 
+  37          //                
+  38          //                The following SFR fields will be initialized:
+  39          //                - register SCON
+  40          //                - bits SMOD and ES
+  41          //
+  42          //----------------------------------------------------------------------------
+  43          // @Returnvalue   None
+  44          //
+  45          //----------------------------------------------------------------------------
+  46          // @Parameters    None
+  47          //
+  48          //----------------------------------------------------------------------------
+  49          // @Date          2016/3/15
+  50          //
+  51          //****************************************************************************
   52          
-  53          
-  54          //****************************************************************************
-  55          // @Typedefs
-C51 COMPILER V9.54   UART                                                                  03/16/2016 10:27:33 PAGE 2   
+  53          // USER CODE BEGIN (UART_Init,1)
+  54          
+  55          // USER CODE END
+C51 COMPILER V9.54   UART                                                                  03/16/2016 12:24:09 PAGE 2   
 
-  56          //****************************************************************************
-  57          
-  58          // USER CODE BEGIN (UART_General,5)
-  59          
-  60          // USER CODE END
-  61          
-  62          
-  63          //****************************************************************************
-  64          // @Imported Global Variables
-  65          //****************************************************************************
-  66          
-  67          // USER CODE BEGIN (UART_General,6)
-  68          
-  69          // USER CODE END
-  70          
-  71          
-  72          //****************************************************************************
-  73          // @Global Variables
-  74          //****************************************************************************
-  75          
-  76          // USER CODE BEGIN (UART_General,7)
-  77          
-  78          // USER CODE END
-  79          
-  80          
-  81          //****************************************************************************
-  82          // @External Prototypes
-  83          //****************************************************************************
-  84          
-  85          // USER CODE BEGIN (UART_General,8)
-  86          
-  87          // USER CODE END
-  88          
-  89          
-  90          //****************************************************************************
-  91          // @Prototypes Of Local Functions
-  92          //****************************************************************************
-  93          
-  94          // USER CODE BEGIN (UART_General,9)
-  95          
-  96          // USER CODE END
+  56          
+  57          void UART_vInit(void)
+  58          {
+  59   1        ///  -----------------------------------------------------------------------
+  60   1        ///  UART settings
+  61   1        ///  -----------------------------------------------------------------------
+  62   1        ///  Pin TXD_1 (P0.2) is selected for transmission
+  63   1        ///  Pin RXD_1 (P0.1) is selected for reception
+  64   1        ///  Receiver enabled
+  65   1        ///  Mode 1: 8-bit data, 1 start bit, 1 stop bit, variable baud rate
+  66   1        ///  Receiver interrupt flag RI will only be activated if a valid stop bit 
+  67   1        ///  was received
+  68   1        ///  BRG is selected for baudrate generation
+  69   1      
+  70   1        SFR_PAGE(_pp2, noSST);         // switch to page 2 without saving
+  71   1        P0_ALTSEL0   &= ~(ubyte)0x04;  // configure alternate function register 0
+  72   1        P0_ALTSEL1   |=  (ubyte)0x04;  // configure alternate function register 1
+  73   1        SFR_PAGE(_pp0, noSST);         // switch to page 0 without saving
+  74   1        P0_DIR       |=  (ubyte)0x04;  // set output direction
+  75   1      
+  76   1      
+  77   1        MODPISEL     |=  (ubyte)0x01;  // configure peripheral input select register
+  78   1        BCON          =  0x00;         // reset baudrate timer/reload register
+  79   1        SCON          =  0x70;         // load serial channel control register
+  80   1      
+  81   1        ///  -----------------------------------------------------------------------
+  82   1        ///  Baudrate generator settings
+  83   1        ///  -----------------------------------------------------------------------
+  84   1        ///  input clock = fPCLK
+  85   1        ///  Fractional divider is enabled
+  86   1        ///  baudrate = 9.6004 kbaud
+  87   1      
+  88   1        FDSTEP        =  0xD5;         // load fractional divider reload register
+  89   1        BG            =  0x81;         // load baudrate timer/reload register
+  90   1        FDCON        |=  0x01;         // load Fractional Divider control register
+  91   1        BCON         |=  0x01;         // load baud rate control register
+  92   1      
+  93   1        ///  UART interrupt enabled
+  94   1        ES = 1;
+  95   1      
+  96   1      } //  End of function UART_vInit
   97          
   98          
   99          //****************************************************************************
- 100          // @Function      void UART_vInit(void) 
+ 100          // @Function      void UART_viIsr(void) 
  101          //
  102          //----------------------------------------------------------------------------
- 103          // @Description   This is the initialization function of the UART function 
- 104          //                library. It is assumed that the SFRs used by this library 
- 105          //                are in their reset state. 
- 106          //                
- 107          //                The following SFR fields will be initialized:
- 108          //                - register SCON
- 109          //                - bits SMOD and ES
- 110          //
- 111          //----------------------------------------------------------------------------
- 112          // @Returnvalue   None
- 113          //
- 114          //----------------------------------------------------------------------------
- 115          // @Parameters    None
- 116          //
- 117          //----------------------------------------------------------------------------
-C51 COMPILER V9.54   UART                                                                  03/16/2016 10:27:33 PAGE 3   
+ 103          // @Description   This is the service routine for the UART interrupt. It is 
+ 104          //                called after each transmission (flag TI set) or reception 
+ 105          //                (flag RI set) of a data unit.
+ 106          //                Please note that you have to add application specific code 
+ 107          //                to this function.
+ 108          //
+ 109          //----------------------------------------------------------------------------
+ 110          // @Returnvalue   None
+ 111          //
+ 112          //----------------------------------------------------------------------------
+ 113          // @Parameters    None
+ 114          //
+ 115          //----------------------------------------------------------------------------
+ 116          // @Date          2016/3/15
+ 117          //
+C51 COMPILER V9.54   UART                                                                  03/16/2016 12:24:09 PAGE 3   
 
- 118          // @Date          2016/3/15
- 119          //
- 120          //****************************************************************************
- 121          
- 122          // USER CODE BEGIN (UART_Init,1)
- 123          
- 124          // USER CODE END
- 125          
- 126          void UART_vInit(void)
- 127          {
- 128   1        // USER CODE BEGIN (UART_Init,2)
- 129   1      
- 130   1        // USER CODE END
- 131   1      
- 132   1        ///  -----------------------------------------------------------------------
- 133   1        ///  UART settings
- 134   1        ///  -----------------------------------------------------------------------
- 135   1        ///  Pin TXD_1 (P0.2) is selected for transmission
- 136   1        ///  Pin RXD_1 (P0.1) is selected for reception
- 137   1        ///  Receiver enabled
- 138   1        ///  Mode 1: 8-bit data, 1 start bit, 1 stop bit, variable baud rate
- 139   1        ///  Receiver interrupt flag RI will only be activated if a valid stop bit 
- 140   1        ///  was received
- 141   1        ///  BRG is selected for baudrate generation
- 142   1      
- 143   1        SFR_PAGE(_pp2, noSST);         // switch to page 2 without saving
- 144   1        P0_ALTSEL0   &= ~(ubyte)0x04;  // configure alternate function register 0
- 145   1        P0_ALTSEL1   |=  (ubyte)0x04;  // configure alternate function register 1
- 146   1        SFR_PAGE(_pp0, noSST);         // switch to page 0 without saving
- 147   1        P0_DIR       |=  (ubyte)0x04;  // set output direction
- 148   1      
- 149   1      
- 150   1        MODPISEL     |=  (ubyte)0x01;  // configure peripheral input select register
- 151   1        BCON          =  0x00;         // reset baudrate timer/reload register
- 152   1        SCON          =  0x70;         // load serial channel control register
- 153   1      
- 154   1        ///  -----------------------------------------------------------------------
- 155   1        ///  Baudrate generator settings
- 156   1        ///  -----------------------------------------------------------------------
- 157   1        ///  input clock = fPCLK
- 158   1        ///  Fractional divider is enabled
- 159   1        ///  baudrate = 9.6004 kbaud
- 160   1      
- 161   1        FDSTEP        =  0xD5;         // load fractional divider reload register
- 162   1        BG            =  0x81;         // load baudrate timer/reload register
- 163   1        FDCON        |=  0x01;         // load Fractional Divider control register
- 164   1        BCON         |=  0x01;         // load baud rate control register
- 165   1      
- 166   1      
- 167   1        // USER CODE BEGIN (UART_Init,3)
- 168   1      
- 169   1        // USER CODE END
- 170   1      
- 171   1        ///  UART interrupt enabled
- 172   1        ES = 1;
- 173   1      
- 174   1      } //  End of function UART_vInit
- 175          
- 176          
- 177          //****************************************************************************
- 178          // @Function      void UART_viIsr(void) 
- 179          //
-C51 COMPILER V9.54   UART                                                                  03/16/2016 10:27:33 PAGE 4   
+ 118          //****************************************************************************
+ 119          
+ 120          //   You have two choices for interrupt type select in Project Settings Page 
+ 121          //   under Global Settings Section.
+ 122          //   If you select CHOICE 1 then ISR will be generated with push and pop.
+ 123          //   If you select CHOICE 2 then ISR will be generated without push and pop.
+ 124          //   Default choice is CHOICE 2.
+ 125          //   Current selection is CHOICE 2 
+ 126          
+ 127          
+ 128          void sendUART(char * message) {
+ 129   1        char * current = message;
+ 130   1        while (*current != '\0') {
+ 131   2          SBUF = *current;
+ 132   2          while (TI == 0);
+ 133   2          TI = 0;   
+ 134   2          current++;
+ 135   2        }
+ 136   1      }
+ 137          
+ 138          
+ 139          char receiveBuffer[20] = {0};
+ 140          int bufferCount = 0;
+ 141          
+ 142          void enableLCChannel(char channelCode) {
+ 143   1        // Switch off all LCR channel first.
+ 144   1        IO_vResetPin(P3_1);
+ 145   1        IO_vResetPin(P3_3);
+ 146   1        IO_vResetPin(P3_5);
+ 147   1        
+ 148   1        // Enable coressponding LCR channel GPIO
+ 149   1        switch(channelCode) {
+ 150   2          case '0':
+ 151   2            sendUART("#b#0#\r\n");
+ 152   2            break;
+ 153   2          case '1':
+ 154   2            IO_vSetPin(P3_1);
+ 155   2            sendUART("#b#1#\r\n");
+ 156   2            break;
+ 157   2          case '2':
+ 158   2            IO_vSetPin(P3_3);
+ 159   2            sendUART("#b#2#\r\n");    
+ 160   2            break;
+ 161   2          case '3':
+ 162   2            IO_vSetPin(P3_5);
+ 163   2            sendUART("#b#3#\r\n");
+ 164   2            break;
+ 165   2          default:
+ 166   2            sendUART("Unknown LC Channel.\r\n");      
+ 167   2            break;
+ 168   2        }
+ 169   1      }
+ 170          
+ 171          void enableLCRChannel(char channelCode) {
+ 172   1        // Switch off all LCR channel first.
+ 173   1        IO_vResetPin(P3_0);
+ 174   1        IO_vResetPin(P3_2);
+ 175   1        IO_vResetPin(P3_4);
+ 176   1        
+ 177   1        // Enable coressponding LCR channel GPIO
+ 178   1        switch(channelCode) {
+ 179   2          case '0':
+C51 COMPILER V9.54   UART                                                                  03/16/2016 12:24:09 PAGE 4   
 
- 180          //----------------------------------------------------------------------------
- 181          // @Description   This is the service routine for the UART interrupt. It is 
- 182          //                called after each transmission (flag TI set) or reception 
- 183          //                (flag RI set) of a data unit.
- 184          //                Please note that you have to add application specific code 
- 185          //                to this function.
- 186          //
- 187          //----------------------------------------------------------------------------
- 188          // @Returnvalue   None
- 189          //
- 190          //----------------------------------------------------------------------------
- 191          // @Parameters    None
- 192          //
- 193          //----------------------------------------------------------------------------
- 194          // @Date          2016/3/15
- 195          //
- 196          //****************************************************************************
- 197          
- 198          //   You have two choices for interrupt type select in Project Settings Page 
- 199          //   under Global Settings Section.
- 200          //   If you select CHOICE 1 then ISR will be generated with push and pop.
- 201          //   If you select CHOICE 2 then ISR will be generated without push and pop.
- 202          //   Default choice is CHOICE 2.
- 203          //   Current selection is CHOICE 2 
- 204          
- 205          // USER CODE BEGIN (UART_Isr,1)
- 206          
- 207          // USER CODE END
- 208          
- 209          void sendUART(char * message) {
- 210   1        char * current = message;
- 211   1        while (*current != '\0') {
- 212   2          SBUF = *current;
- 213   2          while (TI == 0);
- 214   2          TI = 0;   
- 215   2          current++;
- 216   2        }
- 217   1      }
- 218          void UART_viIsr(void) interrupt UARTINT
- 219          {
- 220   1      
- 221   1          // USER CODE BEGIN (UART_Isr,2)
- 222   1      
- 223   1          // USER CODE END
- 224   1        SFR_PAGE(_su0, SST0);          // switch to page 0
- 225   1        if (TI)
- 226   1        {
- 227   2          // USER CODE BEGIN (UART_Isr,3)
- 228   2      
- 229   2             TI = 0;
- 230   2      
- 231   2          // USER CODE END
- 232   2        }
- 233   1        if (RI)
- 234   1        {
- 235   2          // USER CODE BEGIN (UART_Isr,4)
- 236   2             char receive = SBUF;
- 237   2             if (receive == '1') {
- 238   3               P1_DATA = 1;
- 239   3             } else {
- 240   3               P1_DATA = 0;
- 241   3             }
-C51 COMPILER V9.54   UART                                                                  03/16/2016 10:27:33 PAGE 5   
+ 180   2            sendUART("#a#0#\r\n");
+ 181   2            break;
+ 182   2          case '1':
+ 183   2            IO_vSetPin(P3_0);
+ 184   2            sendUART("#a#1#\r\n");
+ 185   2            break;
+ 186   2          case '2':
+ 187   2            IO_vSetPin(P3_2);
+ 188   2            sendUART("#a#2#\r\n");    
+ 189   2            break;
+ 190   2          case '3':
+ 191   2            IO_vSetPin(P3_4);
+ 192   2            sendUART("#a#3#\r\n");
+ 193   2            break;
+ 194   2          default:
+ 195   2            sendUART("Unknown LCR Channel.\r\n");     
+ 196   2            break;
+ 197   2        }
+ 198   1      }
+ 199          
+ 200          void processCommand(char * command) {
+ 201   1        int commandSize = strlen(command);
+ 202   1        char respondMessage[20] = {0};
+ 203   1        memset(respondMessage, 0, 20);
+ 204   1        if (commandSize != 5 || command[0] != '$' || command[4] != '$') {
+ 205   2          sendUART("Unknown Command\r\n");
+ 206   2        } else {
+ 207   2          switch(command[1]) {
+ 208   3            case 'a':
+ 209   3              enableLCRChannel(command[3]);
+ 210   3              break;
+ 211   3            case 'b':
+ 212   3              enableLCChannel(command[3]);
+ 213   3              break;
+ 214   3            default:
+ 215   3              sendUART("Unknown Command\r\n");
+ 216   3          }
+ 217   2        }
+ 218   1      }
+ 219          
+ 220          void UART_viIsr(void) interrupt UARTINT
+ 221          {
+ 222   1        // switch to page 0
+ 223   1        SFR_PAGE(_su0, SST0);
+ 224   1        if (TI)
+ 225   1        {
+ 226   2          TI = 0;
+ 227   2        }
+ 228   1        if (RI)
+ 229   1        {
+ 230   2          char receiveByte = SBUF;
+ 231   2          if (receiveByte == '\r' || receiveByte == '\n' || bufferCount >= 18) {
+ 232   3            processCommand(receiveBuffer);
+ 233   3            memset(receiveBuffer, 0, 20);     
+ 234   3            bufferCount = 0;
+ 235   3          } else {
+ 236   3            receiveBuffer[bufferCount] = receiveByte;
+ 237   3            bufferCount++;
+ 238   3          }
+ 239   2          RI = 0;
+ 240   2        }
+ 241   1      
+C51 COMPILER V9.54   UART                                                                  03/16/2016 12:24:09 PAGE 5   
 
- 242   2             RI = 0;
- 243   2             sendUART("ABC\r\n");
- 244   2             //SBUF = receive;
- 245   2      
- 246   2          // USER CODE END
- 247   2        }
- 248   1      
- 249   1          // USER CODE BEGIN (UART_Isr,5)
- 250   1      
- 251   1          // USER CODE END
- 252   1        SFR_PAGE(_su0, RST0);          // restore the old page
- 253   1      } //  End of function UART_viIsr
- 254          
- 255          
- 256          // USER CODE BEGIN (UART_General,10)
- 257          
- 258          // USER CODE END
- 259          
+ 242   1        // restore the old page
+ 243   1        SFR_PAGE(_su0, RST0);
+ 244   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    137    ----
-   CONSTANT SIZE    =      6    ----
+   CODE SIZE        =    479    ----
+   CONSTANT SIZE    =    147    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----       1
+   DATA SIZE        =     22      26
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

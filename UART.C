@@ -16,84 +16,15 @@
 //
 //****************************************************************************
 
-// USER CODE BEGIN (UART_General,1)
-
-// USER CODE END
-
-
 
 //****************************************************************************
 // @Project Includes
 //****************************************************************************
 
 #include "MAIN.H"
+#include <string.h>
+#include <stdio.h>
 
-// USER CODE BEGIN (UART_General,2)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Macros
-//****************************************************************************
-
-// USER CODE BEGIN (UART_General,3)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Defines
-//****************************************************************************
-
-// USER CODE BEGIN (UART_General,4)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Typedefs
-//****************************************************************************
-
-// USER CODE BEGIN (UART_General,5)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Imported Global Variables
-//****************************************************************************
-
-// USER CODE BEGIN (UART_General,6)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Global Variables
-//****************************************************************************
-
-// USER CODE BEGIN (UART_General,7)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @External Prototypes
-//****************************************************************************
-
-// USER CODE BEGIN (UART_General,8)
-
-// USER CODE END
-
-
-//****************************************************************************
-// @Prototypes Of Local Functions
-//****************************************************************************
-
-// USER CODE BEGIN (UART_General,9)
-
-// USER CODE END
 
 
 //****************************************************************************
@@ -125,10 +56,6 @@
 
 void UART_vInit(void)
 {
-  // USER CODE BEGIN (UART_Init,2)
-
-  // USER CODE END
-
   ///  -----------------------------------------------------------------------
   ///  UART settings
   ///  -----------------------------------------------------------------------
@@ -162,11 +89,6 @@ void UART_vInit(void)
   BG            =  0x81;         // load baudrate timer/reload register
   FDCON        |=  0x01;         // load Fractional Divider control register
   BCON         |=  0x01;         // load baud rate control register
-
-
-  // USER CODE BEGIN (UART_Init,3)
-
-  // USER CODE END
 
   ///  UART interrupt enabled
   ES = 1;
@@ -202,9 +124,6 @@ void UART_vInit(void)
 //   Default choice is CHOICE 2.
 //   Current selection is CHOICE 2 
 
-// USER CODE BEGIN (UART_Isr,1)
-
-// USER CODE END
 
 void sendUART(char * message) {
 	char * current = message;
@@ -215,45 +134,111 @@ void sendUART(char * message) {
 		current++;
 	}
 }
+
+
+char receiveBuffer[20] = {0};
+int bufferCount = 0;
+
+void enableLCChannel(char channelCode) {
+	// Switch off all LCR channel first.
+	IO_vResetPin(P3_1);
+	IO_vResetPin(P3_3);
+	IO_vResetPin(P3_5);
+	
+	// Enable coressponding LCR channel GPIO
+	switch(channelCode) {
+		case '0':
+			sendUART("#b#0#\r\n");
+			break;
+		case '1':
+			IO_vSetPin(P3_1);
+			sendUART("#b#1#\r\n");
+			break;
+		case '2':
+			IO_vSetPin(P3_3);
+			sendUART("#b#2#\r\n");		
+			break;
+		case '3':
+			IO_vSetPin(P3_5);
+			sendUART("#b#3#\r\n");
+			break;
+		default:
+			sendUART("Unknown LC Channel.\r\n");			
+			break;
+	}
+}
+
+void enableLCRChannel(char channelCode) {
+	// Switch off all LCR channel first.
+	IO_vResetPin(P3_0);
+	IO_vResetPin(P3_2);
+	IO_vResetPin(P3_4);
+	
+	// Enable coressponding LCR channel GPIO
+	switch(channelCode) {
+		case '0':
+			sendUART("#a#0#\r\n");
+			break;
+		case '1':
+			IO_vSetPin(P3_0);
+			sendUART("#a#1#\r\n");
+			break;
+		case '2':
+			IO_vSetPin(P3_2);
+			sendUART("#a#2#\r\n");		
+			break;
+		case '3':
+			IO_vSetPin(P3_4);
+			sendUART("#a#3#\r\n");
+			break;
+		default:
+			sendUART("Unknown LCR Channel.\r\n");			
+			break;
+	}
+}
+
+void processCommand(char * command) {
+	int commandSize = strlen(command);
+	char respondMessage[20] = {0};
+	memset(respondMessage, 0, 20);
+	if (commandSize != 5 || command[0] != '$' || command[4] != '$') {
+		sendUART("Unknown Command\r\n");
+	} else {
+		switch(command[1]) {
+			case 'a':
+				enableLCRChannel(command[3]);
+				break;
+			case 'b':
+				enableLCChannel(command[3]);
+				break;
+			default:
+				sendUART("Unknown Command\r\n");
+		}
+	}
+}
+
 void UART_viIsr(void) interrupt UARTINT
 {
-
-    // USER CODE BEGIN (UART_Isr,2)
-
-    // USER CODE END
-  SFR_PAGE(_su0, SST0);          // switch to page 0
+	// switch to page 0
+  SFR_PAGE(_su0, SST0);
   if (TI)
   {
-    // USER CODE BEGIN (UART_Isr,3)
-
-       TI = 0;
-
-    // USER CODE END
+		TI = 0;
   }
   if (RI)
   {
-    // USER CODE BEGIN (UART_Isr,4)
-			 char receive = SBUF;
-			 if (receive == '1') {
-				 P1_DATA = 1;
-			 } else {
-				 P1_DATA = 0;
-			 }
-       RI = 0;
-			 sendUART("ABC\r\n");
-			 //SBUF = receive;
-
-    // USER CODE END
+		char receiveByte = SBUF;
+		if (receiveByte == '\r' || receiveByte == '\n' || bufferCount >= 18) {
+			processCommand(receiveBuffer);
+			memset(receiveBuffer, 0, 20);			
+			bufferCount = 0;
+		} else {
+			receiveBuffer[bufferCount] = receiveByte;
+			bufferCount++;
+		}
+    RI = 0;
   }
 
-    // USER CODE BEGIN (UART_Isr,5)
-
-    // USER CODE END
-  SFR_PAGE(_su0, RST0);          // restore the old page
-} //  End of function UART_viIsr
-
-
-// USER CODE BEGIN (UART_General,10)
-
-// USER CODE END
-
+	// restore the old page
+  SFR_PAGE(_su0, RST0);
+}

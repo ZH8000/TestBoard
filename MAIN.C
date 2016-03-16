@@ -211,7 +211,6 @@ void delay(int second) {
 }
 void main(void)
 {
-	char buff[50];
   // USER CODE BEGIN (MAIN_Main,2)
 
   // USER CODE END
@@ -226,12 +225,17 @@ void main(void)
   // USER CODE END
   while(1)
   {
+		/*
 		IO_vTogglePin(P3_7);
-		memset(buff, 0, 50);
-		sprintf(buff, "Hello World: %d\r\n", i);
-		sendUART(buff);	
 		i++;
 		delay(1);
+		*/
+		if (IO_ubReadPin(P4_4)) {
+			IO_vSetPin(P3_7);
+		} else {
+			IO_vResetPin(P3_7);
+			
+		}
   // USER CODE BEGIN (MAIN_Main,4)
 
   // USER CODE END
