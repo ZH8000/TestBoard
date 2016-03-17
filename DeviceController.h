@@ -8,5 +8,5 @@ void enableLCRChannel(char channelCode);
 bool isAllHVRelayOK();
 void sendHVRelayStatus();
 void setChargeMode(char modeCode);
-
+void setHVMonitorMode(char modeCode);
 #endif

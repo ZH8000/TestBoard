@@ -156,6 +156,10 @@ void processCommand(char * command) {
 			case 'd':
 				sendHVRelayStatus();
 				break;
+			case 'e':
+				setHVMonitorMode(command[3]);
+				break;
+			
 			default:
 				sendUART("Unknown Command\r\n");
 		}

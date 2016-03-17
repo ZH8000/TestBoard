@@ -17,8 +17,10 @@
 //****************************************************************************
 
 #include "MAIN.H"
+#include "DeviceController.h"
 #include <stdio.h>
 #include <string.h>
+bool shouldMonitorHVStatus = 0;
 
 void MAIN_vInit(void)
 {
@@ -60,9 +62,24 @@ void MAIN_vInit(void)
   EA            =  1;           
 
 } 
-
+void delay(int second) {
+  int i, j, k;
+  for (i = 0; i < second; i++) {
+    for (j = 0; j < 25; j++) {
+      for (k = 0; k < 30000; k++) {
+      }
+    }
+  }
+}
 void main(void)
 {
   MAIN_vInit();
-  while(1) {}
+  while(1) {
+		
+		if (shouldMonitorHVStatus && !isAllHVRelayOK()) {
+			sendUART("HV_NG\r\n");
+		}
+			
+		delay(1);
+	}
 }

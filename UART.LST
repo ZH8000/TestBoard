@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   UART                                                                  03/16/2016 16:54:06 PAGE 1   
+C51 COMPILER V9.54   UART                                                                  03/17/2016 08:51:45 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE UART
@@ -62,7 +62,7 @@ line level    source
   53          //****************************************************************************
   54          
   55          
-C51 COMPILER V9.54   UART                                                                  03/16/2016 16:54:06 PAGE 2   
+C51 COMPILER V9.54   UART                                                                  03/17/2016 08:51:45 PAGE 2   
 
   56          void UART_vInit(void)
   57          {
@@ -126,7 +126,7 @@ line level    source
  115          // @Date          2016/3/15
  116          //
  117          //****************************************************************************
-C51 COMPILER V9.54   UART                                                                  03/16/2016 16:54:06 PAGE 3   
+C51 COMPILER V9.54   UART                                                                  03/17/2016 08:51:45 PAGE 3   
 
  118          
  119          //   You have two choices for interrupt type select in Project Settings Page 
@@ -169,43 +169,47 @@ line level    source
  156   3            case 'd':
  157   3              sendHVRelayStatus();
  158   3              break;
- 159   3            default:
- 160   3              sendUART("Unknown Command\r\n");
- 161   3          }
- 162   2        }
- 163   1      }
- 164          
- 165          void UART_viIsr(void) interrupt UARTINT
- 166          {
- 167   1        // switch to page 0
- 168   1        SFR_PAGE(_su0, SST0);
- 169   1        if (TI)
- 170   1        {
- 171   2          TI = 0;
- 172   2        }
- 173   1        if (RI)
+ 159   3            case 'e':
+ 160   3              setHVMonitorMode(command[3]);
+ 161   3              break;
+ 162   3            
+ 163   3            default:
+ 164   3              sendUART("Unknown Command\r\n");
+ 165   3          }
+ 166   2        }
+ 167   1      }
+ 168          
+ 169          void UART_viIsr(void) interrupt UARTINT
+ 170          {
+ 171   1        // switch to page 0
+ 172   1        SFR_PAGE(_su0, SST0);
+ 173   1        if (TI)
  174   1        {
- 175   2          char receiveByte = SBUF;
- 176   2          if (receiveByte == '\r' || receiveByte == '\n' || bufferCount >= 18) {
- 177   3            processCommand(receiveBuffer);
- 178   3            memset(receiveBuffer, 0, 20);     
- 179   3            bufferCount = 0;
-C51 COMPILER V9.54   UART                                                                  03/16/2016 16:54:06 PAGE 4   
+ 175   2          TI = 0;
+ 176   2        }
+ 177   1        if (RI)
+ 178   1        {
+ 179   2          char receiveByte = SBUF;
+C51 COMPILER V9.54   UART                                                                  03/17/2016 08:51:45 PAGE 4   
 
- 180   3          } else {
- 181   3            receiveBuffer[bufferCount] = receiveByte;
- 182   3            bufferCount++;
- 183   3          }
- 184   2          RI = 0;
- 185   2        }
- 186   1      
- 187   1        // restore the old page
- 188   1        SFR_PAGE(_su0, RST0);
- 189   1      }
+ 180   2          if (receiveByte == '\r' || receiveByte == '\n' || bufferCount >= 18) {
+ 181   3            processCommand(receiveBuffer);
+ 182   3            memset(receiveBuffer, 0, 20);     
+ 183   3            bufferCount = 0;
+ 184   3          } else {
+ 185   3            receiveBuffer[bufferCount] = receiveByte;
+ 186   3            bufferCount++;
+ 187   3          }
+ 188   2          RI = 0;
+ 189   2        }
+ 190   1      
+ 191   1        // restore the old page
+ 192   1        SFR_PAGE(_su0, RST0);
+ 193   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    367    ----
+   CODE SIZE        =    386    ----
    CONSTANT SIZE    =     38    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

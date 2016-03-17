@@ -2,6 +2,8 @@
 #include "PinDefine.h"
 #include "UART.h"
 
+extern bool shouldMonitorHVStatus;
+
 void enableLCChannel(char channelCode) {
 	// Switch off all LCR channel first.
 	IO_vResetPin(LC_CHANNEL_1);
@@ -103,4 +105,17 @@ void setChargeMode(char modeCode) {
 	} else {
 		sendUART("Unknown Charge Mode\r\n");		
 	}
+}
+
+void setHVMonitorMode(char modeCode) {
+	if (modeCode == '1') {
+		shouldMonitorHVStatus = 1;
+		sendUART("#e#1#\r\n");
+	} else if (modeCode == '0') {
+		shouldMonitorHVStatus = 0;
+		sendUART("#e#0#\r\n");
+	} else {
+		sendUART("Unknown HV Monitor Code\r\n");
+	}
+	
 }

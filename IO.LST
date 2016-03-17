@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   IO                                                                    03/16/2016 16:54:06 PAGE 1   
+C51 COMPILER V9.54   IO                                                                    03/17/2016 08:51:45 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE IO
@@ -62,7 +62,7 @@ line level    source
   53   1          P1_DATA           = 0x00;
   54   1          P3_DIR            = 0xFF;
   55   1          P3_DATA           = 0x00;
-C51 COMPILER V9.54   IO                                                                    03/16/2016 16:54:06 PAGE 2   
+C51 COMPILER V9.54   IO                                                                    03/17/2016 08:51:45 PAGE 2   
 
   56   1        #else
               
@@ -126,7 +126,7 @@ line level    source
                   ///  P3.5:
                   ///  - is used as general purpose output
                   ///  - push/pull output is selected
-C51 COMPILER V9.54   IO                                                                    03/16/2016 16:54:06 PAGE 3   
+C51 COMPILER V9.54   IO                                                                    03/17/2016 08:51:45 PAGE 3   
 
                   ///  - the pin status is low level
                   ///  - pull device is disabled (tristate) 

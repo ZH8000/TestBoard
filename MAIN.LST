@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   MAIN                                                                  03/16/2016 16:54:06 PAGE 1   
+C51 COMPILER V9.54   MAIN                                                                  03/17/2016 08:51:45 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
@@ -26,67 +26,84 @@ line level    source
   17          //****************************************************************************
   18          
   19          #include "MAIN.H"
-  20          #include <stdio.h>
-  21          #include <string.h>
-  22          
-  23          void MAIN_vInit(void)
-  24          {
-  25   1        ///  -----------------------------------------------------------------------
-  26   1        ///  Configuration of the System Clock:
+  20          #include "DeviceController.h"
+  21          #include <stdio.h>
+  22          #include <string.h>
+  23          bool shouldMonitorHVStatus = 0;
+  24          
+  25          void MAIN_vInit(void)
+  26          {
   27   1        ///  -----------------------------------------------------------------------
-  28   1        ///  - On Chip Osc is Selected
-  29   1        ///  - PLL Mode, NDIV =  20
-  30   1        ///  - input frequency is 9.6 MHz
-  31   1      
-  32   1        //   FCLK runs at 2 times the frequency of PCLK.
-  33   1        SFR_PAGE(_su1, noSST);         // switch to page1
-  34   1        CMCON         =  0x10;         // load Clock Control Register
-  35   1        SFR_PAGE(_su0, noSST);         // switch to page0
-  36   1      
-  37   1      
-  38   1        ///  *********************************************************************************
-  39   1        ///  Note : All peripheral related IO configurations are done in the 
-  40   1        ///  respective peripheral modules (alternate functions selection)
-  41   1        ///  *********************************************************************************
-  42   1      
-  43   1        ///  Initialization of module 'GPIO'
-  44   1        IO_vInit();
-  45   1      
-  46   1        ///  Initialization of module 'UART (Serial Interface)'
-  47   1        UART_vInit();
-  48   1      
-  49   1        //   Interrupt Priority
+  28   1        ///  Configuration of the System Clock:
+  29   1        ///  -----------------------------------------------------------------------
+  30   1        ///  - On Chip Osc is Selected
+  31   1        ///  - PLL Mode, NDIV =  20
+  32   1        ///  - input frequency is 9.6 MHz
+  33   1      
+  34   1        //   FCLK runs at 2 times the frequency of PCLK.
+  35   1        SFR_PAGE(_su1, noSST);         // switch to page1
+  36   1        CMCON         =  0x10;         // load Clock Control Register
+  37   1        SFR_PAGE(_su0, noSST);         // switch to page0
+  38   1      
+  39   1      
+  40   1        ///  *********************************************************************************
+  41   1        ///  Note : All peripheral related IO configurations are done in the 
+  42   1        ///  respective peripheral modules (alternate functions selection)
+  43   1        ///  *********************************************************************************
+  44   1      
+  45   1        ///  Initialization of module 'GPIO'
+  46   1        IO_vInit();
+  47   1      
+  48   1        ///  Initialization of module 'UART (Serial Interface)'
+  49   1        UART_vInit();
   50   1      
-  51   1        IP            =  0x00;         // load Interrupt Priority Register
-  52   1        IPH           =  0x00;         // load Interrupt Priority High Register
-  53   1        IP1           =  0x00;         // load Interrupt Priority 1 Register
-  54   1        IPH1          =  0x00;         // load Interrupt Priority 1 High Register
-  55   1      
-C51 COMPILER V9.54   MAIN                                                                  03/16/2016 16:54:06 PAGE 2   
+  51   1        //   Interrupt Priority
+  52   1      
+  53   1        IP            =  0x00;         // load Interrupt Priority Register
+  54   1        IPH           =  0x00;         // load Interrupt Priority High Register
+  55   1        IP1           =  0x00;         // load Interrupt Priority 1 Register
+C51 COMPILER V9.54   MAIN                                                                  03/17/2016 08:51:45 PAGE 2   
 
-  56   1      
-  57   1        //// Interrupt structure 2 mode 0 is selected.
-  58   1        //// Interrupt service routine choice 2 is selected.
-  59   1        //   globally enable interrupts
-  60   1        EA            =  1;           
-  61   1      
-  62   1      } 
-  63          
-  64          void main(void)
-  65          {
-  66   1        MAIN_vInit();
-  67   1        while(1) {}
-  68   1      }
+  56   1        IPH1          =  0x00;         // load Interrupt Priority 1 High Register
+  57   1      
+  58   1      
+  59   1        //// Interrupt structure 2 mode 0 is selected.
+  60   1        //// Interrupt service routine choice 2 is selected.
+  61   1        //   globally enable interrupts
+  62   1        EA            =  1;           
+  63   1      
+  64   1      } 
+  65          void delay(int second) {
+  66   1        int i, j, k;
+  67   1        for (i = 0; i < second; i++) {
+  68   2          for (j = 0; j < 25; j++) {
+  69   3            for (k = 0; k < 30000; k++) {
+  70   4            }
+  71   3          }
+  72   2        }
+  73   1      }
+  74          void main(void)
+  75          {
+  76   1        MAIN_vInit();
+  77   1        while(1) {
+  78   2          
+  79   2          if (shouldMonitorHVStatus && !isAllHVRelayOK()) {
+  80   3            sendUART("HV_NG\r\n");
+  81   3          }
+  82   2            
+  83   2          delay(1);
+  84   2        }
+  85   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     32    ----
-   CONSTANT SIZE    =   ----    ----
+   CODE SIZE        =    108    ----
+   CONSTANT SIZE    =      8    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
-   BIT SIZE         =   ----    ----
+   BIT SIZE         =      1    ----
 END OF MODULE INFORMATION.
 
 
