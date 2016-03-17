@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>LX51 Static Call Analysis</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type="text/css">
+<!--
+p            { font-family: Verdana; font-size: 8pt; margin-top: 2; margin-bottom: 2 }
+.LI2         { margin-top: 2; margin-bottom: 2 }
+.Release     { background-color: #CCCCCC; font-weight: bold; padding: 6 }
+.ToolT       { font-size: 8pt; color: #808080 }
+.TinyT       { font-size: 8pt; text-align: Center }
+ul           { font-family: Verdana; font-size: 8pt; list-style-type: square;  margin-top: 2; margin-bottom: 2 }
+ol           { font-family: Verdana; font-size: 8pt }
+h1           { font-family: Verdana; font-size: 14pt; color: #000080; font-weight: bold; text-align: Center; margin-right: 3 }
+h2           { font-family: Verdana; font-size: 8pt; color: #000080; font-weight: bold; margin-top: 12; margin-bottom: 3; background-color: #CCCCCC; padding: 6 }
+h3           { font-family: Verdana; font-size: 8pt; font-weight: bold; margin-top: 12; margin-bottom: 3; background-color: #CCCCCC; padding: 6 }
+pre          { font-family: Courier New; font-size: 8pt; background-color: #CCFFCC; margin-left: 24; margin-right: 24 }
+li           { margin-top: 3; margin-bottom: 0 }
+-->
+</style>
+</head>
+<body>
+<h1>Static Call Analysis for<br>TestBoard (?C_STARTUP)</h1>
+
+<p class="TinyT">
+Created from: <b>LX51 LINKER/LOCATER V4.66.41.0</b><br>
+Creation time: <b>03/17/2016  16:16:15</b><p>
+
+<hr>
+
+
+<h2><a name="S6"></a>?PR?MAIN?MAIN (C:000418H - C:000430H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=4 Bytes (<a href="#S4">?PR?MAIN_VINIT?MAIN</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S5">?PR?_DELAY?MAIN</a></li>
+<li><a href="#S12">?PR?_SENDUART?UART</a></li>
+<li><a href="#S23">?PR?ISALLHVRELAYOK?DEVICECONTROLLER</a></li>
+<li><a href="#S4">?PR?MAIN_VINIT?MAIN</a></li>
+</ul>
+
+<h2><a name="S15"></a>?PR?UART_VIISR?UART (C:000814H - C:0008A6H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=23 Bytes (<a href="#S13">?PR?_PROCESSCOMMAND?UART</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S50">?C?LIB_CODE</a></li>
+<li><a href="#S13">?PR?_PROCESSCOMMAND?UART</a></li>
+</ul>
+
+<h2><a name="S46"></a>?PR?_WRITEBUFFERTOFLASH?FLASHUTILS (C:0006D7H - C:000787H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=5 Bytes (<a href="#S42">?PR?_WRITETOFLASHPAGE?FLASHUTILS</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S50">?C?LIB_CODE</a></li>
+<li><a href="#S5">?PR?_DELAY?MAIN</a></li>
+<li><a href="#S35">?PR?_FLASH_ERASE?FLASHHANDLER</a></li>
+<li><a href="#S42">?PR?_WRITETOFLASHPAGE?FLASHUTILS</a></li>
+</ul>
+
+<h2><a name="S4"></a>?PR?MAIN_VINIT?MAIN (C:0003F3H - C:00040BH)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=2 Bytes (<a href="#S40">?PR?IO_VINIT?IO</a>) Top=2 Bytes (<a href="#S6">?PR?MAIN?MAIN</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S40">?PR?IO_VINIT?IO</a></li>
+<li><a href="#S11">?PR?UART_VINIT?UART</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S6">?PR?MAIN?MAIN</a></li>
+</ul>
+
+<h2><a name="S5"></a>?PR?_DELAY?MAIN (C:000563H - C:000596H)</h2>
+<p><br><b>Maximum Stack:</b> Top=2 Bytes (<a href="#S6">?PR?MAIN?MAIN</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S46">?PR?_WRITEBUFFERTOFLASH?FLASHUTILS</a></li>
+<li><a href="#S6">?PR?MAIN?MAIN</a></li>
+</ul>
+
+<h2><a name="S11"></a>?PR?UART_VINIT?UART (C:0007EEH - C:000813H)</h2>
+<p><br><b>Maximum Stack:</b> Top=4 Bytes (<a href="#S4">?PR?MAIN_VINIT?MAIN</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S4">?PR?MAIN_VINIT?MAIN</a></li>
+</ul>
+
+<h2><a name="S12"></a>?PR?_SENDUART?UART (C:000431H - C:000445H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=2 Bytes (<a href="#S50">?C?LIB_CODE</a>) Top=21 Bytes (<a href="#S20">?PR?SENDUUID?DEVICECONTROLLER</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S50">?C?LIB_CODE</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S21">?PR?_ENABLELCCHANNEL?DEVICECONTROLLER</a></li>
+<li><a href="#S22">?PR?_ENABLELCRCHANNEL?DEVICECONTROLLER</a></li>
+<li><a href="#S13">?PR?_PROCESSCOMMAND?UART</a></li>
+<li><a href="#S25">?PR?_SETCHARGEMODE?DEVICECONTROLLER</a></li>
+<li><a href="#S27">?PR?_SETHVMONITORMODE?DEVICECONTROLLER</a></li>
+<li><a href="#S6">?PR?MAIN?MAIN</a></li>
+<li><a href="#S24">?PR?SENDHVRELAYSTATUS?DEVICECONTROLLER</a></li>
+<li><a href="#S20">?PR?SENDUUID?DEVICECONTROLLER</a></li>
+</ul>
+
+<h2><a name="S13"></a>?PR?_PROCESSCOMMAND?UART (C:000467H - C:00050DH)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=6 Bytes (<a href="#S20">?PR?SENDUUID?DEVICECONTROLLER</a>) Top=17 Bytes (<a href="#S15">?PR?UART_VIISR?UART</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S50">?C?LIB_CODE</a></li>
+<li><a href="#S21">?PR?_ENABLELCCHANNEL?DEVICECONTROLLER</a></li>
+<li><a href="#S22">?PR?_ENABLELCRCHANNEL?DEVICECONTROLLER</a></li>
+<li><a href="#S12">?PR?_SENDUART?UART</a></li>
+<li><a href="#S25">?PR?_SETCHARGEMODE?DEVICECONTROLLER</a></li>
+<li><a href="#S27">?PR?_SETHVMONITORMODE?DEVICECONTROLLER</a></li>
+<li><a href="#S51">?PR?_STRLEN?STRLEN</a></li>
+<li><a href="#S24">?PR?SENDHVRELAYSTATUS?DEVICECONTROLLER</a></li>
+<li><a href="#S20">?PR?SENDUUID?DEVICECONTROLLER</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S15">?PR?UART_VIISR?UART</a></li>
+</ul>
+
+<h2><a name="S20"></a>?PR?SENDUUID?DEVICECONTROLLER (C:000446H - C:000466H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=4 Bytes (<a href="#S44">?PR?_READFLASHTOBUFFER?FLASHUTILS</a>) Top=19 Bytes (<a href="#S13">?PR?_PROCESSCOMMAND?UART</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S44">?PR?_READFLASHTOBUFFER?FLASHUTILS</a></li>
+<li><a href="#S12">?PR?_SENDUART?UART</a></li>
+<li><a href="#S41">?PR?GETFLASHDATAENDADDRESS?FLASHUTILS</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S13">?PR?_PROCESSCOMMAND?UART</a></li>
+</ul>
+
+<h2><a name="S21"></a>?PR?_ENABLELCCHANNEL?DEVICECONTROLLER (C:0005BFH - C:000601H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=2 Bytes (<a href="#S12">?PR?_SENDUART?UART</a>) Top=17 Bytes (<a href="#S13">?PR?_PROCESSCOMMAND?UART</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S12">?PR?_SENDUART?UART</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S13">?PR?_PROCESSCOMMAND?UART</a></li>
+</ul>
+
+<h2><a name="S22"></a>?PR?_ENABLELCRCHANNEL?DEVICECONTROLLER (C:000602H - C:000644H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=2 Bytes (<a href="#S12">?PR?_SENDUART?UART</a>) Top=17 Bytes (<a href="#S13">?PR?_PROCESSCOMMAND?UART</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S12">?PR?_SENDUART?UART</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S13">?PR?_PROCESSCOMMAND?UART</a></li>
+</ul>
+
+<h2><a name="S23"></a>?PR?ISALLHVRELAYOK?DEVICECONTROLLER (C:000020H - C:000022H)</h2>
+<p><br><b>Maximum Stack:</b> Top=19 Bytes (<a href="#S25">?PR?_SETCHARGEMODE?DEVICECONTROLLER</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S25">?PR?_SETCHARGEMODE?DEVICECONTROLLER</a></li>
+<li><a href="#S6">?PR?MAIN?MAIN</a></li>
+<li><a href="#S24">?PR?SENDHVRELAYSTATUS?DEVICECONTROLLER</a></li>
+</ul>
+
+<h2><a name="S24"></a>?PR?SENDHVRELAYSTATUS?DEVICECONTROLLER (C:00050EH - C:00051FH)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=2 Bytes (<a href="#S23">?PR?ISALLHVRELAYOK?DEVICECONTROLLER</a>) Top=17 Bytes (<a href="#S13">?PR?_PROCESSCOMMAND?UART</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S12">?PR?_SENDUART?UART</a></li>
+<li><a href="#S23">?PR?ISALLHVRELAYOK?DEVICECONTROLLER</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S13">?PR?_PROCESSCOMMAND?UART</a></li>
+</ul>
+
+<h2><a name="S25"></a>?PR?_SETCHARGEMODE?DEVICECONTROLLER (C:000520H - C:000562H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=2 Bytes (<a href="#S23">?PR?ISALLHVRELAYOK?DEVICECONTROLLER</a>) Top=17 Bytes (<a href="#S13">?PR?_PROCESSCOMMAND?UART</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S12">?PR?_SENDUART?UART</a></li>
+<li><a href="#S23">?PR?ISALLHVRELAYOK?DEVICECONTROLLER</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S13">?PR?_PROCESSCOMMAND?UART</a></li>
+</ul>
+
+<h2><a name="S27"></a>?PR?_SETHVMONITORMODE?DEVICECONTROLLER (C:000597H - C:0005BEH)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=2 Bytes (<a href="#S12">?PR?_SENDUART?UART</a>) Top=17 Bytes (<a href="#S13">?PR?_PROCESSCOMMAND?UART</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S12">?PR?_SENDUART?UART</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S13">?PR?_PROCESSCOMMAND?UART</a></li>
+</ul>
+
+<h2><a name="S32"></a>?PR?_FLASH_READY?FLASHHANDLER (C:0007D2H - C:0007D5H)</h2>
+<p><br><b>Maximum Stack:</b> Top=23 Bytes (<a href="#S44">?PR?_READFLASHTOBUFFER?FLASHUTILS</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S44">?PR?_READFLASHTOBUFFER?FLASHUTILS</a></li>
+</ul>
+
+<h2><a name="S33"></a>?PR?_FLASH_PROG?FLASHHANDLER (C:0007D6H - C:0007EDH)</h2>
+<p><br><b>Maximum Stack:</b> Top=4 Bytes (<a href="#S42">?PR?_WRITETOFLASHPAGE?FLASHUTILS</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S42">?PR?_WRITETOFLASHPAGE?FLASHUTILS</a></li>
+</ul>
+
+<h2><a name="S35"></a>?PR?_FLASH_ERASE?FLASHHANDLER (C:0008ACH - C:0008D9H)</h2>
+<p><br><b>Maximum Stack:</b> Top=2 Bytes (<a href="#S46">?PR?_WRITEBUFFERTOFLASH?FLASHUTILS</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S46">?PR?_WRITEBUFFERTOFLASH?FLASHUTILS</a></li>
+</ul>
+
+<h2><a name="S40"></a>?PR?IO_VINIT?IO (C:00040CH - C:000417H)</h2>
+<p><br><b>Maximum Stack:</b> Top=4 Bytes (<a href="#S4">?PR?MAIN_VINIT?MAIN</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S4">?PR?MAIN_VINIT?MAIN</a></li>
+</ul>
+
+<h2><a name="S41"></a>?PR?GETFLASHDATAENDADDRESS?FLASHUTILS (C:0008DAH - C:000903H)</h2>
+<p><br><b>Maximum Stack:</b> Top=21 Bytes (<a href="#S20">?PR?SENDUUID?DEVICECONTROLLER</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S20">?PR?SENDUUID?DEVICECONTROLLER</a></li>
+</ul>
+
+<h2><a name="S42"></a>?PR?_WRITETOFLASHPAGE?FLASHUTILS (C:000788H - C:0007D1H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=3 Bytes (<a href="#S33">?PR?_FLASH_PROG?FLASHHANDLER</a>) Top=2 Bytes (<a href="#S46">?PR?_WRITEBUFFERTOFLASH?FLASHUTILS</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S50">?C?LIB_CODE</a></li>
+<li><a href="#S33">?PR?_FLASH_PROG?FLASHHANDLER</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S46">?PR?_WRITEBUFFERTOFLASH?FLASHUTILS</a></li>
+</ul>
+
+<h2><a name="S44"></a>?PR?_READFLASHTOBUFFER?FLASHUTILS (C:000645H - C:0006D6H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=2 Bytes (<a href="#S50">?C?LIB_CODE</a>) Top=21 Bytes (<a href="#S20">?PR?SENDUUID?DEVICECONTROLLER</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S50">?C?LIB_CODE</a></li>
+<li><a href="#S32">?PR?_FLASH_READY?FLASHHANDLER</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S20">?PR?SENDUUID?DEVICECONTROLLER</a></li>
+</ul>
+
+<h2><a name="S50"></a>?C?LIB_CODE (C:000026H - C:000225H)</h2>
+<p><br><b>Maximum Stack:</b> Top=23 Bytes (<a href="#S44">?PR?_READFLASHTOBUFFER?FLASHUTILS</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S13">?PR?_PROCESSCOMMAND?UART</a></li>
+<li><a href="#S44">?PR?_READFLASHTOBUFFER?FLASHUTILS</a></li>
+<li><a href="#S12">?PR?_SENDUART?UART</a></li>
+<li><a href="#S46">?PR?_WRITEBUFFERTOFLASH?FLASHUTILS</a></li>
+<li><a href="#S42">?PR?_WRITETOFLASHPAGE?FLASHUTILS</a></li>
+<li><a href="#S15">?PR?UART_VIISR?UART</a></li>
+</ul>
+
+<h2><a name="S51"></a>?PR?_STRLEN?STRLEN (C:0003B6H - C:0003CAH)</h2>
+<p><br><b>Maximum Stack:</b> Top=19 Bytes (<a href="#S13">?PR?_PROCESSCOMMAND?UART</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S13">?PR?_PROCESSCOMMAND?UART</a></li>
+</ul>
+
+</body>
+</html>

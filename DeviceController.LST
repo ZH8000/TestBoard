@@ -1,0 +1,161 @@
+C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/17/2016 16:16:15 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE DEVICECONTROLLER
+OBJECT MODULE PLACED IN DeviceController.OBJ
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE DeviceController.c OBJECTADVANCED OPTIMIZE(8,SPEED) BROWSE NOINTPROMOTE 
+                    -DEFINE(STARTERKIT) DEBUG TABS(2)
+
+line level    source
+
+   1          #include "DeviceController.h"
+   2          #include "PinDefine.h"
+   3          #include "UART.h"
+   4          #include "FlashUtils.h"
+   5          
+   6          extern bool shouldMonitorHVStatus;
+   7          void sendUUID() {
+   8   1        char xdata uuidString[50];
+   9   1        unsigned char code * currentFlashDataEndAddress = getFlashDataEndAddress();
+  10   1        readFlashToBuffer(uuidString, 50, currentFlashDataEndAddress);
+  11   1        sendUART(uuidString);
+  12   1        sendUART("\r\n");
+  13   1      }
+  14          
+  15          void enableLCChannel(char channelCode) {
+  16   1        // Switch off all LCR channel first.
+  17   1        IO_vResetPin(LC_CHANNEL_1);
+  18   1        IO_vResetPin(LC_CHANNEL_2);
+  19   1        IO_vResetPin(LC_CHANNEL_3);
+  20   1        
+  21   1        // Enable coressponding LCR channel GPIO
+  22   1        switch(channelCode) {
+  23   2          case '0':
+  24   2            sendUART("#b#0#\r\n");
+  25   2            break;
+  26   2          case '1':
+  27   2            IO_vSetPin(LC_CHANNEL_1);
+  28   2            sendUART("#b#1#\r\n");
+  29   2            break;
+  30   2          case '2':
+  31   2            IO_vSetPin(LC_CHANNEL_2);
+  32   2            sendUART("#b#2#\r\n");    
+  33   2            break;
+  34   2          case '3':
+  35   2            IO_vSetPin(LC_CHANNEL_3);
+  36   2            sendUART("#b#3#\r\n");
+  37   2            break;
+  38   2          default:
+  39   2            sendUART("Unknown LC Channel.\r\n");      
+  40   2            break;
+  41   2        }
+  42   1      }
+  43          
+  44          void enableLCRChannel(char channelCode) {
+  45   1        // Switch off all LCR channel first.
+  46   1        IO_vResetPin(LCR_CHANNEL_1);
+  47   1        IO_vResetPin(LCR_CHANNEL_2);
+  48   1        IO_vResetPin(LCR_CHANNEL_3);
+  49   1        
+  50   1        // Enable coressponding LCR channel GPIO
+  51   1        switch(channelCode) {
+  52   2          case '0':
+  53   2            sendUART("#a#0#\r\n");
+  54   2            break;
+C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/17/2016 16:16:15 PAGE 2   
+
+  55   2          case '1':
+  56   2            IO_vSetPin(LCR_CHANNEL_1);
+  57   2            sendUART("#a#1#\r\n");
+  58   2            break;
+  59   2          case '2':
+  60   2            IO_vSetPin(LCR_CHANNEL_2);
+  61   2            sendUART("#a#2#\r\n");    
+  62   2            break;
+  63   2          case '3':
+  64   2            IO_vSetPin(LCR_CHANNEL_3);
+  65   2            sendUART("#a#3#\r\n");
+  66   2            break;
+  67   2          default:
+  68   2            sendUART("Unknown LCR Channel.\r\n");     
+  69   2            break;
+  70   2        }
+  71   1      }
+  72          
+  73          bool isAllHVRelayOK() {
+  74   1        #ifdef STARTER_KIT_EMU
+  75   1          return IO_ubReadPin(HV_READY_1);
+  76   1        #else
+                  return 
+                    IO_ubReadPin(HV_READY_1) &&
+                    IO_ubReadPin(HV_READY_2) &&
+                    IO_ubReadPin(HV_READY_3) &&
+                    IO_ubReadPin(HV_FAULT_1) &&
+                    IO_ubReadPin(HV_FAULT_2) &&
+                    IO_ubReadPin(HV_FAULT_3);
+                #endif
+  85   1      }
+  86          
+  87          void sendHVRelayStatus() {
+  88   1        if (isAllHVRelayOK()) {
+  89   2          sendUART("HV_OK\r\n");
+  90   2        } else {
+  91   2          sendUART("HV_NG\r\n");    
+  92   2        }
+  93   1      }
+  94          
+  95          void setChargeMode(char modeCode) {
+  96   1        if (modeCode == '1') {
+  97   2          if (!isAllHVRelayOK()) {
+  98   3            IO_vResetPin(HV_CHANNEL);     
+  99   3            IO_vResetPin(CHARGE_CHANNEL);
+ 100   3            IO_vResetPin(DISCHARGE_CHANNEL);
+ 101   3            sendUART("HV_NG\r\n");
+ 102   3            return;
+ 103   3          }
+ 104   2          IO_vResetPin(DISCHARGE_CHANNEL);
+ 105   2          IO_vSetPin(HV_CHANNEL);
+ 106   2          IO_vSetPin(CHARGE_CHANNEL);
+ 107   2          sendUART("#c#1#\r\n");
+ 108   2        } else if (modeCode == '0') {
+ 109   2          IO_vResetPin(CHARGE_CHANNEL);
+ 110   2          IO_vResetPin(HV_CHANNEL);
+ 111   2          IO_vSetPin(DISCHARGE_CHANNEL);
+ 112   2          sendUART("#c#0#\r\n");
+ 113   2        } else {
+ 114   2          sendUART("Unknown Charge Mode\r\n");    
+ 115   2        }
+ 116   1      }
+C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/17/2016 16:16:15 PAGE 3   
+
+ 117          
+ 118          void setHVMonitorMode(char modeCode) {
+ 119   1        if (modeCode == '1') {
+ 120   2          shouldMonitorHVStatus = 1;
+ 121   2          sendUART("#e#1#\r\n");
+ 122   2        } else if (modeCode == '0') {
+ 123   2          shouldMonitorHVStatus = 0;
+ 124   2          sendUART("#e#0#\r\n");
+ 125   2        } else {
+ 126   2          sendUART("Unknown HV Monitor Code\r\n");
+ 127   2        }
+ 128   1        
+ 129   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    372    ----
+   CONSTANT SIZE    =    208    ----
+   XDATA SIZE       =   ----      50
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
