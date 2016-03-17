@@ -1,7 +1,0 @@
-"START_XC.obj",
-"MAIN.obj",
-"IO.obj",
-"UART.obj",
-"DeviceController.obj" 
-TO "TestBoard" 
-RAMSIZE(256) 
