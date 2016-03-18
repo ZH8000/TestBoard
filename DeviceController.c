@@ -9,12 +9,16 @@ void sendUUID() {
 	char xdata uuidString[50];
 	unsigned char code * currentFlashDataEndAddress = getFlashDataEndAddress();
 	readFlashToBuffer(uuidString, 50, currentFlashDataEndAddress);
+	sendUART("#f#");
 	sendUART(uuidString);
-	sendUART("\r\n");
+	sendUART("#\r\n");
 }
 
 void enableLCChannel(char channelCode) {
-	// Switch off all LCR channel first.
+	// Switch off all LC / LCR channel first.
+	IO_vResetPin(LCR_CHANNEL_1);
+	IO_vResetPin(LCR_CHANNEL_2);
+	IO_vResetPin(LCR_CHANNEL_3);	
 	IO_vResetPin(LC_CHANNEL_1);
 	IO_vResetPin(LC_CHANNEL_2);
 	IO_vResetPin(LC_CHANNEL_3);
@@ -43,10 +47,13 @@ void enableLCChannel(char channelCode) {
 }
 
 void enableLCRChannel(char channelCode) {
-	// Switch off all LCR channel first.
+	// Switch off all LC / LCR channel first.
 	IO_vResetPin(LCR_CHANNEL_1);
 	IO_vResetPin(LCR_CHANNEL_2);
 	IO_vResetPin(LCR_CHANNEL_3);
+	IO_vResetPin(LC_CHANNEL_1);
+	IO_vResetPin(LC_CHANNEL_2);
+	IO_vResetPin(LC_CHANNEL_3);
 	
 	// Enable coressponding LCR channel GPIO
 	switch(channelCode) {

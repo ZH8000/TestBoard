@@ -1,7 +1,7 @@
 #ifndef __PIN_DEFINE_H__
 #define __PIN_DEFINE_H__
 
-	#define STARTER_KIT_EMU
+	//#define STARTER_KIT_EMU
 	
 	#ifdef STARTER_KIT_EMU
 		#define LCR_CHANNEL_1							P3_0
