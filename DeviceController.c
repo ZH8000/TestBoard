@@ -2,6 +2,7 @@
 #include "PinDefine.h"
 #include "UART.h"
 #include "FlashUtils.h"
+#include <string.h>
 
 extern bool shouldMonitorHVStatus;
 void sendUUID() {
@@ -130,6 +131,12 @@ void setHVMonitorMode(char modeCode) {
 
 void setUUID(char * command) {
 	unsigned char code * flashEndAddress = getFlashDataEndAddress();	
-	char xdata uuidString[37] = "CDEABC00-MNOP-41d4-a716-44665544EFGH";
+	char xdata uuidString[37] = {0};
+	strncpy(uuidString, command+3, 36);
+	sendUART("Setting UUID to ");
+	sendUART(uuidString);
+	sendUART("....\r\n");
+	sendUART("Please wait...");
 	writeBufferToFlash(uuidString, &flashEndAddress);
+	sendUART("DONE\r\n");
 }

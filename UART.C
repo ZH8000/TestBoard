@@ -174,7 +174,6 @@ void processCommand(char * command) {
 		}		
 	} else if (isSetUUIDCommand) {
 		setUUID(command);
-		sendUART("DONE\r\n");
 	} else {
 		sendUART("Unknown Command\r\n");
 	}
