@@ -28,6 +28,9 @@
 #include <stdio.h>
 #include "FlashUtils.h"
 
+#define MAX_COMMAND_LENGTH		100
+#define MAX_RESPONSE_LENGTH		200
+
 
 
 //****************************************************************************
@@ -124,7 +127,7 @@ void UART_vInit(void)
 //   Default choice is CHOICE 2.
 //   Current selection is CHOICE 2 
 
-static char receiveBuffer[20] = {0};
+static char xdata receiveBuffer[MAX_COMMAND_LENGTH] = {0};
 static int bufferCount = 0;
 
 void sendUART(char * message) {
@@ -138,13 +141,15 @@ void sendUART(char * message) {
 }
 
 void processCommand(char * command) {
+	
 	int commandSize = strlen(command);
-	char respondMessage[20] = {0};
-	memset(respondMessage, 0, 20);
+	char xdata respondMessage[MAX_RESPONSE_LENGTH] = {0};
+	bool isNormalCommand = commandSize == 5 && command[0] == '$' && command[2] == '$' && command[4] == '$';
+	bool isSetUUIDCommand = commandSize == 40 && command[0] == '$' && command[1] == 'f' && command[2] == '$' && command[39] == '$';
+	
+	memset(respondMessage, 0, MAX_RESPONSE_LENGTH);	
 
-	if (commandSize != 5 || command[0] != '$' || command[4] != '$') {
-		sendUART("Unknown Command\r\n");
-	} else {
+	if (isNormalCommand) {
 		switch(command[1]) {
 			case 'a':
 				enableLCRChannel(command[3]);
@@ -164,13 +169,14 @@ void processCommand(char * command) {
 			case 'f':
 				sendUUID();
 				break;
-			case 'g':
-				setUUID(command);
-				sendUART("DONE\r\n");
-				break;
 			default:
 				sendUART("Unknown Command\r\n");
-		}
+		}		
+	} else if (isSetUUIDCommand) {
+		setUUID(command);
+		sendUART("DONE\r\n");
+	} else {
+		sendUART("Unknown Command\r\n");
 	}
 }
 
@@ -185,9 +191,9 @@ void UART_viIsr(void) interrupt UARTINT
   if (RI)
   {
 		char receiveByte = SBUF;
-		if (receiveByte == '\r' || receiveByte == '\n' || bufferCount >= 18) {
+		if (receiveByte == '\r' || receiveByte == '\n' || bufferCount >= MAX_COMMAND_LENGTH-1) {
 			processCommand(receiveBuffer);
-			memset(receiveBuffer, 0, 20);			
+			memset(receiveBuffer, 0, MAX_COMMAND_LENGTH);			
 			bufferCount = 0;
 		} else {
 			receiveBuffer[bufferCount] = receiveByte;

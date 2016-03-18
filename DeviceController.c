@@ -130,6 +130,6 @@ void setHVMonitorMode(char modeCode) {
 
 void setUUID(char * command) {
 	unsigned char code * flashEndAddress = getFlashDataEndAddress();	
-	char xdata uuidString[37] = "QQFABC00-MNOP-41d4-a716-44665544ABCD";
+	char xdata uuidString[37] = "CDEABC00-MNOP-41d4-a716-44665544EFGH";
 	writeBufferToFlash(uuidString, &flashEndAddress);
 }
