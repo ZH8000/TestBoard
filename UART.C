@@ -139,7 +139,6 @@ void sendUART(char * message) {
 
 void processCommand(char * command) {
 	int commandSize = strlen(command);
-	unsigned char code * flashEndAddress = getFlashDataEndAddress();	
 	char respondMessage[20] = {0};
 	memset(respondMessage, 0, 20);
 
@@ -166,7 +165,7 @@ void processCommand(char * command) {
 				sendUUID();
 				break;
 			case 'g':
-				writeBufferToFlash("QQFe8400-e29b-41d4-a716-44665544ABCD", &flashEndAddress);
+				setUUID(command);
 				sendUART("DONE\r\n");
 				break;
 			default:

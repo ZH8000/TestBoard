@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   MAIN                                                                  03/18/2016 10:39:26 PAGE 1   
+C51 COMPILER V9.54   MAIN                                                                  03/18/2016 10:47:34 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   52   1      
   53   1        ///  Initialization of module 'UART (Serial Interface)'
   54   1        UART_vInit();
-C51 COMPILER V9.54   MAIN                                                                  03/18/2016 10:39:26 PAGE 2   
+C51 COMPILER V9.54   MAIN                                                                  03/18/2016 10:47:34 PAGE 2   
 
   55   1      
   56   1        //   Interrupt Priority

@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/18/2016 10:39:26 PAGE 1   
+C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/18/2016 10:47:35 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE DEVICECONTROLLER
@@ -62,7 +62,7 @@ line level    source
   52   2          case '0':
   53   2            sendUART("#a#0#\r\n");
   54   2            break;
-C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/18/2016 10:39:26 PAGE 2   
+C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/18/2016 10:47:35 PAGE 2   
 
   55   2          case '1':
   56   2            IO_vSetPin(LCR_CHANNEL_1);
@@ -126,7 +126,7 @@ line level    source
  114   2          sendUART("Unknown Charge Mode\r\n");    
  115   2        }
  116   1      }
-C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/18/2016 10:39:26 PAGE 3   
+C51 COMPILER V9.54   DEVICECONTROLLER                                                      03/18/2016 10:47:35 PAGE 3   
 
  117          
  118          void setHVMonitorMode(char modeCode) {
@@ -141,14 +141,21 @@ line level    source
  127   2        }
  128   1        
  129   1      }
+ 130          
+ 131          void setUUID(char * command) {
+ 132   1        unsigned char code * flashEndAddress = getFlashDataEndAddress();  
+ 133   1        char xdata uuidString[37] = "QQFABC00-MNOP-41d4-a716-44665544ABCD";
+ 134   1        writeBufferToFlash(uuidString, &flashEndAddress);
+ 135   1      }
+*** WARNING C280 IN LINE 131 OF DeviceController.c: 'command': unreferenced local variable
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    372    ----
-   CONSTANT SIZE    =    208    ----
-   XDATA SIZE       =   ----      50
+   CODE SIZE        =    422    ----
+   CONSTANT SIZE    =    245    ----
+   XDATA SIZE       =   ----      87
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----       2
+   DATA SIZE        =   ----       7
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----
@@ -158,4 +165,4 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
