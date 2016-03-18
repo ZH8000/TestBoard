@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.41.0                                                          03/17/2016  16:16:15  PAGE 1
+LX51 LINKER/LOCATER V4.66.41.0                                                          03/18/2016  10:39:27  PAGE 1
 
 
 LX51 LINKER/LOCATER V4.66.41.0, INVOKED BY:
@@ -53,9 +53,9 @@ ACTIVE MEMORY CLASSES OF MODULE:  TestBoard (?C_STARTUP)
 
 BASE        START       END         USED      MEMORY CLASS
 ==========================================================
-X:000000H   X:00F000H   X:00F5FFH   0000B6H   XDATA
+X:000000H   X:00F000H   X:00F5FFH   000096H   XDATA
 X:000000H   X:00F000H   X:00F5FFH             HDATA
-C:000000H   C:000000H   C:005FFFH   0008E4H   CODE
+C:000000H   C:000000H   C:005FFFH   000954H   CODE
             C:00A000H   C:00BFFFH               
 C:000000H   C:000000H   C:005FFFH   000020H   CONST
             C:00A000H   C:00BFFFH               
@@ -64,10 +64,10 @@ C:000000H   C:000000H   C:005FFFH             ECODE
 B00:0000H   C:000000H   C:005FFFH             HCONST
             C:00A000H   C:00BFFFH               
 I:000000H   I:000000H   I:0000FFH   000021H   IDATA
-I:000020H.0 I:000020H.0 I:00002FH.7 000000H.3 BIT
-I:000000H   I:000000H   I:00007FH   000062H   DATA
+I:000020H.0 I:000020H.0 I:00002FH.7 000000H.2 BIT
+I:000000H   I:000000H   I:00007FH   000052H   DATA
 
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 2
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 2
 
 
 
@@ -82,106 +82,101 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 000008H   00001DH   000016H   BYTE   UNIT     DATA           ?DT?UART
 00001EH.0 00001FH.7 000002H.0 ---    ---      **GAP**
 000020H.0 000020H.0 000000H.1 BIT    UNIT     BIT            ?BI?MAIN
-000020H.1 000020H.1 000000H.1 BIT    UNIT     BIT            ?BI?_FLASH_PROG?FLASHHANDLER
-000020H.2 000020H.2 000000H.1 BIT    UNIT     BIT            ?BI?_FLASH_ERASE?FLASHHANDLER
-000020H.3 000020H   000000H.5 ---    ---      **GAP**
-000021H   00002BH   00000BH   BYTE   UNIT     DATA           ?DT?_WRITEBUFFERTOFLASH?FLASHUTILS
-00002CH   000030H   000005H   BYTE   UNIT     DATA           ?DT?_WRITETOFLASHPAGE?FLASHUTILS
-000031H   000034H   000004H   BYTE   UNIT     DATA           ?DT?_FLASH_ERASE?FLASHHANDLER
-000035H   000035H   000001H   ---    ---      **GAP**
+000020H.1 000020H.1 000000H.1 BIT    UNIT     BIT            _BIT_GROUP_
+000020H.2 000035H   000015H.6 ---    ---      **GAP**
 000036H   00003DH   000008H   BYTE   OFFS..   DATA           ?DA?FLASHHANDLER?1
-00003EH   000065H   000028H   BYTE   UNIT     DATA           _DATA_GROUP_
-000066H   000066H   000001H   BYTE   UNIT     IDATA          ?STACK
-000067H   0000DFH   000079H   ---    ---      **GAP**
+00003EH   000069H   00002CH   BYTE   UNIT     DATA           _DATA_GROUP_
+00006AH   00006AH   000001H   BYTE   UNIT     IDATA          ?STACK
+00006BH   0000DFH   000075H   ---    ---      **GAP**
 0000E0H   0000FFH   000020H   BYTE   OFFS..   IDATA          ?ID?FLASHHANDLER?0
 
 * * * * * * * * * * *   C O D E   M E M O R Y   * * * * * * * * * * * * *
 000000H   000002H   000003H   ---    OFFS..   CODE           ?CO?START_XC?3
 000003H   00001FH   00001DH   BYTE   UNIT     CODE           ?C_INITSEG
 000020H   000022H   000003H   BYTE   UNIT     CODE           ?PR?ISALLHVRELAYOK?DEVICECONTROLLER
-000023H   000025H   000003H   BYTE   OFFS..   CODE           ?UART?00023
-000026H   000225H   000200H   BYTE   UNIT     CODE           ?C?LIB_CODE
-000226H   0002F5H   0000D0H   BYTE   UNIT     CODE           ?CO?DEVICECONTROLLER
-0002F6H   00038FH   00009AH   BYTE   UNIT     CODE           ?C_C51STARTUP
-000390H   0003B5H   000026H   BYTE   UNIT     CODE           ?CO?UART
-0003B6H   0003CAH   000015H   BYTE   UNIT     CODE           ?PR?_STRLEN?STRLEN
-0003CBH   0003D2H   000008H   BYTE   UNIT     CODE           ?CO?MAIN
-0003D3H   0003F2H   000020H   BYTE   UNIT     CONST          ?CO?FLASHUTILS
-0003F3H   00040BH   000019H   BYTE   UNIT     CODE           ?PR?MAIN_VINIT?MAIN
-00040CH   000417H   00000CH   BYTE   UNIT     CODE           ?PR?IO_VINIT?IO
-000418H   000430H   000019H   BYTE   UNIT     CODE           ?PR?MAIN?MAIN
-000431H   000445H   000015H   BYTE   UNIT     CODE           ?PR?_SENDUART?UART
-000446H   000466H   000021H   BYTE   UNIT     CODE           ?PR?SENDUUID?DEVICECONTROLLER
-000467H   00050DH   0000A7H   BYTE   UNIT     CODE           ?PR?_PROCESSCOMMAND?UART
-00050EH   00051FH   000012H   BYTE   UNIT     CODE           ?PR?SENDHVRELAYSTATUS?DEVICECONTROLLER
-000520H   000562H   000043H   BYTE   UNIT     CODE           ?PR?_SETCHARGEMODE?DEVICECONTROLLER
-000563H   000596H   000034H   BYTE   UNIT     CODE           ?PR?_DELAY?MAIN
-000597H   0005BEH   000028H   BYTE   UNIT     CODE           ?PR?_SETHVMONITORMODE?DEVICECONTROLLER
-0005BFH   000601H   000043H   BYTE   UNIT     CODE           ?PR?_ENABLELCCHANNEL?DEVICECONTROLLER
-000602H   000644H   000043H   BYTE   UNIT     CODE           ?PR?_ENABLELCRCHANNEL?DEVICECONTROLLER
-000645H   0006D6H   000092H   BYTE   UNIT     CODE           ?PR?_READFLASHTOBUFFER?FLASHUTILS
-0006D7H   000787H   0000B1H   BYTE   UNIT     CODE           ?PR?_WRITEBUFFERTOFLASH?FLASHUTILS
-000788H   0007D1H   00004AH   BYTE   UNIT     CODE           ?PR?_WRITETOFLASHPAGE?FLASHUTILS
-0007D2H   0007D5H   000004H   BYTE   UNIT     CODE           ?PR?_FLASH_READY?FLASHHANDLER
-0007D6H   0007EDH   000018H   BYTE   UNIT     CODE           ?PR?_FLASH_PROG?FLASHHANDLER
-0007EEH   000813H   000026H   BYTE   UNIT     CODE           ?PR?UART_VINIT?UART
-000814H   0008A6H   000093H   BYTE   UNIT     CODE           ?PR?UART_VIISR?UART
-0008A7H   0008ABH   000005H   BYTE   UNIT     CODE           ?PR?FLASH_ERASE_ABORT?FLASHHANDLER
-0008ACH   0008D9H   00002EH   BYTE   UNIT     CODE           ?PR?_FLASH_ERASE?FLASHHANDLER
-0008DAH   000903H   00002AH   BYTE   UNIT     CODE           ?PR?GETFLASHDATAENDADDRESS?FLASHUTILS
+000023H   000024H   000002H   BYTE   OFFS..   CODE           ?UART?00023
+000025H   000224H   000200H   BYTE   UNIT     CODE           ?C?LIB_CODE
+000225H   0002F4H   0000D0H   BYTE   UNIT     CODE           ?CO?DEVICECONTROLLER
+0002F5H   00038EH   00009AH   BYTE   UNIT     CODE           ?C_C51STARTUP
+00038FH   0003E0H   000052H   BYTE   UNIT     CODE           ?CO?UART
+0003E1H   0003F5H   000015H   BYTE   UNIT     CODE           ?PR?_STRLEN?STRLEN
+0003F6H   0003FDH   000008H   BYTE   UNIT     CODE           ?CO?MAIN
+0003FEH   00041DH   000020H   BYTE   UNIT     CONST          ?CO?FLASHUTILS
+00041EH   000436H   000019H   BYTE   UNIT     CODE           ?PR?MAIN_VINIT?MAIN
+000437H   000442H   00000CH   BYTE   UNIT     CODE           ?PR?IO_VINIT?IO
+000443H   00045BH   000019H   BYTE   UNIT     CODE           ?PR?MAIN?MAIN
+00045CH   000470H   000015H   BYTE   UNIT     CODE           ?PR?_SENDUART?UART
+000471H   000490H   000020H   BYTE   UNIT     CODE           ?PR?SENDUUID?DEVICECONTROLLER
+000491H   00056FH   0000DFH   BYTE   UNIT     CODE           ?PR?_PROCESSCOMMAND?UART
+000570H   000581H   000012H   BYTE   UNIT     CODE           ?PR?SENDHVRELAYSTATUS?DEVICECONTROLLER
+000582H   0005C4H   000043H   BYTE   UNIT     CODE           ?PR?_SETCHARGEMODE?DEVICECONTROLLER
+0005C5H   0005EEH   00002AH   BYTE   UNIT     CODE           ?PR?GETFLASHDATAENDADDRESS?FLASHUTILS
+0005EFH   000616H   000028H   BYTE   UNIT     CODE           ?PR?_SETHVMONITORMODE?DEVICECONTROLLER
+000617H   000659H   000043H   BYTE   UNIT     CODE           ?PR?_ENABLELCCHANNEL?DEVICECONTROLLER
+00065AH   00069CH   000043H   BYTE   UNIT     CODE           ?PR?_ENABLELCRCHANNEL?DEVICECONTROLLER
+00069DH   00072EH   000092H   BYTE   UNIT     CODE           ?PR?_READFLASHTOBUFFER?FLASHUTILS
+00072FH   000732H   000004H   BYTE   UNIT     CODE           ?PR?_FLASH_READY?FLASHHANDLER
+000733H   000758H   000026H   BYTE   UNIT     CODE           ?PR?UART_VINIT?UART
+000759H   00078CH   000034H   BYTE   UNIT     CODE           ?PR?_DELAY?MAIN
+00078DH   0007DBH   00004FH   BYTE   UNIT     CODE           ?PR?_WRITETOFLASHPAGE?FLASHUTILS
+0007DCH   0007F3H   000018H   BYTE   UNIT     CODE           ?PR?_FLASH_PROG?FLASHHANDLER
+0007F4H   000886H   000093H   BYTE   UNIT     CODE           ?PR?UART_VIISR?UART
+000887H   00088BH   000005H   BYTE   UNIT     CODE           ?PR?FLASH_ERASE_ABORT?FLASHHANDLER
+00088CH   0008B9H   00002EH   BYTE   UNIT     CODE           ?PR?_FLASH_ERASE?FLASHHANDLER
+0008BAH   000973H   0000BAH   BYTE   UNIT     CODE           ?PR?_WRITEBUFFERTOFLASH?FLASHUTILS
 
 * * * * * * * * * * *  X D A T A   M E M O R Y  * * * * * * * * * * * * *
 00F000H   00F063H   000064H   BYTE   UNIT     XDATA          ?XD?MAIN
 00F064H   00F095H   000032H   BYTE   UNIT     XDATA          _XDATA_GROUP_
-00F096H   00F0B5H   000020H   BYTE   UNIT     XDATA          ?XD?_WRITEBUFFERTOFLASH?FLASHUTILS
-
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 3
-
 
 
 
 OVERLAY MAP OF MODULE:   TestBoard (?C_STARTUP)
 
 
-FUNCTION/MODULE                         DATA_GROUP   XDATA_GROUP
---> CALLED FUNCTION/MODULE              START  STOP  START  STOP
-================================================================
-?C_C51STARTUP                           ----- -----  ----- -----
+FUNCTION/MODULE                          BIT_GROUP   DATA_GROUP   XDATA_GROUP
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 3
+
+
+--> CALLED FUNCTION/MODULE              START  STOP  START  STOP  START  STOP
+=============================================================================
+?C_C51STARTUP                           ----- -----  ----- -----  ----- -----
   +--> MAIN/MAIN
   +--> ?C_INITSEG
 
-MAIN/MAIN                               ----- -----  ----- -----
+MAIN/MAIN                               ----- -----  ----- -----  ----- -----
   +--> MAIN_VINIT/MAIN
   +--> ISALLHVRELAYOK/DEVICECONTROLLER
   +--> ?CO?MAIN
   +--> _SENDUART/UART
   +--> _DELAY/MAIN
 
-MAIN_VINIT/MAIN                         ----- -----  ----- -----
+MAIN_VINIT/MAIN                         ----- -----  ----- -----  ----- -----
   +--> IO_VINIT/IO
   +--> UART_VINIT/UART
 
-IO_VINIT/IO                             ----- -----  ----- -----
+IO_VINIT/IO                             ----- -----  ----- -----  ----- -----
 
-UART_VINIT/UART                         ----- -----  ----- -----
+UART_VINIT/UART                         ----- -----  ----- -----  ----- -----
 
-ISALLHVRELAYOK/DEVICECONTROLLER         ----- -----  ----- -----
+ISALLHVRELAYOK/DEVICECONTROLLER         ----- -----  ----- -----  ----- -----
 
-?CO?MAIN                                ----- -----  ----- -----
+?CO?MAIN                                ----- -----  ----- -----  ----- -----
 
-_SENDUART/UART                          ----- -----  ----- -----
+_SENDUART/UART                          ----- -----  ----- -----  ----- -----
 
-_DELAY/MAIN                             ----- -----  ----- -----
+_DELAY/MAIN                             ----- -----  ----- -----  ----- -----
 
-?C_INITSEG                              ----- -----  ----- -----
+?C_INITSEG                              ----- -----  ----- -----  ----- -----
 
 *** NEW ROOT **************************
 
-UART_VIISR/UART                         003EH 003EH  ----- -----
+UART_VIISR/UART                         ----- -----  003EH 003EH  ----- -----
   +--> _PROCESSCOMMAND/UART
 
-_PROCESSCOMMAND/UART                    003FH 0057H  ----- -----
+_PROCESSCOMMAND/UART                    ----- -----  003FH 0059H  ----- -----
   +--> _STRLEN/STRLEN
+  +--> GETFLASHDATAENDADDRESS/FLASHUTILS
   +--> ?CO?UART
   +--> _ENABLELCRCHANNEL/DEVICECONTROLLER
   +--> _ENABLELCCHANNEL/DEVICECONTROLLER
@@ -189,51 +184,68 @@ _PROCESSCOMMAND/UART                    003FH 0057H  ----- -----
   +--> SENDHVRELAYSTATUS/DEVICECONTROLLER
   +--> _SETHVMONITORMODE/DEVICECONTROLLER
   +--> SENDUUID/DEVICECONTROLLER
+  +--> _WRITEBUFFERTOFLASH/FLASHUTILS
   +--> _SENDUART/UART
 
-_STRLEN/STRLEN                          ----- -----  ----- -----
+_STRLEN/STRLEN                          ----- -----  ----- -----  ----- -----
 
-?CO?UART                                ----- -----  ----- -----
+GETFLASHDATAENDADDRESS/FLASHUTILS       ----- -----  ----- -----  ----- -----
 
-_ENABLELCRCHANNEL/DEVICECONTROLLER      ----- -----  ----- -----
+?CO?UART                                ----- -----  ----- -----  ----- -----
+
+_ENABLELCRCHANNEL/DEVICECONTROLLER      ----- -----  ----- -----  ----- -----
   +--> ?CO?DEVICECONTROLLER
   +--> _SENDUART/UART
 
-?CO?DEVICECONTROLLER                    ----- -----  ----- -----
+?CO?DEVICECONTROLLER                    ----- -----  ----- -----  ----- -----
 
-_ENABLELCCHANNEL/DEVICECONTROLLER       ----- -----  ----- -----
+_ENABLELCCHANNEL/DEVICECONTROLLER       ----- -----  ----- -----  ----- -----
   +--> ?CO?DEVICECONTROLLER
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 4
-
-
   +--> _SENDUART/UART
 
-_SETCHARGEMODE/DEVICECONTROLLER         0058H 0058H  ----- -----
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 4
+
+
+_SETCHARGEMODE/DEVICECONTROLLER         ----- -----  005AH 005AH  ----- -----
   +--> ISALLHVRELAYOK/DEVICECONTROLLER
   +--> ?CO?DEVICECONTROLLER
   +--> _SENDUART/UART
 
-SENDHVRELAYSTATUS/DEVICECONTROLLER      ----- -----  ----- -----
+SENDHVRELAYSTATUS/DEVICECONTROLLER      ----- -----  ----- -----  ----- -----
   +--> ISALLHVRELAYOK/DEVICECONTROLLER
   +--> ?CO?DEVICECONTROLLER
   +--> _SENDUART/UART
 
-_SETHVMONITORMODE/DEVICECONTROLLER      0058H 0058H  ----- -----
+_SETHVMONITORMODE/DEVICECONTROLLER      ----- -----  005AH 005AH  ----- -----
   +--> ?CO?DEVICECONTROLLER
   +--> _SENDUART/UART
 
-SENDUUID/DEVICECONTROLLER               ----- -----  F064H F095H
+SENDUUID/DEVICECONTROLLER               ----- -----  ----- -----  F064H F095H
   +--> GETFLASHDATAENDADDRESS/FLASHUTILS
   +--> _READFLASHTOBUFFER/FLASHUTILS
   +--> _SENDUART/UART
   +--> ?CO?DEVICECONTROLLER
 
-GETFLASHDATAENDADDRESS/FLASHUTILS       ----- -----  ----- -----
-
-_READFLASHTOBUFFER/FLASHUTILS           0058H 0065H  ----- -----
+_READFLASHTOBUFFER/FLASHUTILS           ----- -----  005AH 0067H  ----- -----
   +--> _FLASH_READY/FLASHHANDLER
 
-_FLASH_READY/FLASHHANDLER               ----- -----  ----- -----
+_FLASH_READY/FLASHHANDLER               ----- -----  ----- -----  ----- -----
+
+_WRITEBUFFERTOFLASH/FLASHUTILS          ----- -----  005AH 0064H  F064H F083H
+  +--> ?CO?FLASHUTILS
+  +--> _FLASH_ERASE/FLASHHANDLER
+  +--> _DELAY/MAIN
+  +--> _WRITETOFLASHPAGE/FLASHUTILS
+
+?CO?FLASHUTILS                          ----- -----  ----- -----  ----- -----
+
+_FLASH_ERASE/FLASHHANDLER               20H.1 20H.1  0065H 0068H  ----- -----
+
+_WRITETOFLASHPAGE/FLASHUTILS            ----- -----  0065H 0069H  ----- -----
+  +--> _FLASH_PROG/FLASHHANDLER
+  +--> _DELAY/MAIN
+
+_FLASH_PROG/FLASHHANDLER                20H.1 20H.1  ----- -----  ----- -----
 
 
 
@@ -242,38 +254,38 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 
       VALUE       CLASS    TYPE      PUBLIC SYMBOL NAME
       =================================================
-      00000021H   DATA     BYTE      ?_writeBufferToFlash?BYTE
-      01000135H   CODE     ---       ?C?CLDOPTR
-      0100011CH   CODE     ---       ?C?CLDPTR
+      0000005AH   DATA     BYTE      ?_writeBufferToFlash?BYTE
+      01000134H   CODE     ---       ?C?CLDOPTR
+      0100011BH   CODE     ---       ?C?CLDPTR
       00000000H   NUMBER   ---       ?C?CODESEG
-      010000F6H   CODE     ---       ?C?COPY
+      010000F5H   CODE     ---       ?C?COPY
       000000A2H   DATA     BYTE      ?C?DPSEL
-      0100018DH   CODE     ---       ?C?IILDPTR
-      01000210H   CODE     ---       ?C?IILDX
-      01000162H   CODE     ---       ?C?ILDPTR
-      010001C5H   CODE     ---       ?C?ISTPTR
-      010001E4H   CODE     ---       ?C?MEMSET
+      0100018CH   CODE     ---       ?C?IILDPTR
+      0100020FH   CODE     ---       ?C?IILDX
+      01000161H   CODE     ---       ?C?ILDPTR
+      010001C4H   CODE     ---       ?C?ISTPTR
+      010001E3H   CODE     ---       ?C?MEMSET
       00000000H   NUMBER   ---       ?C?XDATASEG
-      0100034BH   CODE     ---       ?C_START
+      0100034AH   CODE     ---       ?C_START
       01000000H   CODE     NEAR LAB  ?C_STARTUP
-      01000563H   CODE     ---       _delay
-      010005BFH   CODE     ---       _enableLCChannel
-      01000602H   CODE     ---       _enableLCRChannel
-      010008ACH   CODE     ---       _FLASH_Erase
-      010007D6H   CODE     ---       _FLASH_Prog
-      010007D2H   CODE     ---       _FLASH_Ready
-      01000467H   CODE     ---       _processCommand
-      01000645H   CODE     ---       _readFlashToBuffer
-      01000431H   CODE     ---       _sendUART
-      01000520H   CODE     ---       _setChargeMode
-      01000597H   CODE     ---       _setHVMonitorMode
-      010003B6H   CODE     ---       _STRLEN
-      010006D7H   CODE     ---       _writeBufferToFlash
-      01000788H   CODE     ---       _writeToFlashPage
+      01000759H   CODE     ---       _delay
+      01000617H   CODE     ---       _enableLCChannel
+      0100065AH   CODE     ---       _enableLCRChannel
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 5
+
+
+      0100088CH   CODE     ---       _FLASH_Erase
+      010007DCH   CODE     ---       _FLASH_Prog
+      0100072FH   CODE     ---       _FLASH_Ready
+      01000491H   CODE     ---       _processCommand
+      0100069DH   CODE     ---       _readFlashToBuffer
+      0100045CH   CODE     ---       _sendUART
+      01000582H   CODE     ---       _setChargeMode
+      010005EFH   CODE     ---       _setHVMonitorMode
+      010003E1H   CODE     ---       _STRLEN
+      010008BAH   CODE     ---       _writeBufferToFlash
+      0100078DH   CODE     ---       _writeToFlashPage
 *SFR* 000000D0H.6 DATA     BIT       AC
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 5
-
-
 *SFR* 000000E0H   DATA     BYTE      ACC
 *SFR* 000000CAH   DATA     BYTE      ADC_CHCTR0
 *SFR* 000000CBH   DATA     BYTE      ADC_CHCTR1
@@ -327,6 +339,9 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000CAH   DATA     WORD      ADC_RESRA0LH
 *SFR* 000000CDH   DATA     BYTE      ADC_RESRA1H
 *SFR* 000000CCH   DATA     BYTE      ADC_RESRA1L
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 6
+
+
 *SFR* 000000CCH   DATA     WORD      ADC_RESRA1LH
 *SFR* 000000CFH   DATA     BYTE      ADC_RESRA2H
 *SFR* 000000CEH   DATA     BYTE      ADC_RESRA2L
@@ -339,9 +354,6 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000BDH   DATA     BYTE      BCON
 *SFR* 000000BEH   DATA     BYTE      BG
 *SFR* 000000C0H.1 DATA     BIT       C_T2
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 6
-
-
 *SFR* 000000D8H   DATA     BYTE      CAN_ADCON
 *SFR* 000000DAH   DATA     BYTE      CAN_ADH
 *SFR* 000000D9H   DATA     BYTE      CAN_ADL
@@ -395,6 +407,9 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 0000009AH   DATA     BYTE      CCU6_MCMOUTL
 *SFR* 0000009FH   DATA     BYTE      CCU6_MCMOUTSH
 *SFR* 0000009EH   DATA     BYTE      CCU6_MCMOUTSL
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 7
+
+
 *SFR* 000000FDH   DATA     BYTE      CCU6_MODCTRH
 *SFR* 000000FCH   DATA     BYTE      CCU6_MODCTRL
 *SFR* 000000A3H   DATA     BYTE      CCU6_PAGE
@@ -407,9 +422,6 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000FBH   DATA     BYTE      CCU6_T12H
 *SFR* 000000FAH   DATA     BYTE      CCU6_T12L
 *SFR* 000000FAH   DATA     WORD      CCU6_T12LH
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 7
-
-
 *SFR* 0000009BH   DATA     BYTE      CCU6_T12MSELH
 *SFR* 0000009AH   DATA     BYTE      CCU6_T12MSELL
 *SFR* 0000009DH   DATA     BYTE      CCU6_T12PRH
@@ -463,6 +475,9 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000A8H   DATA     BIT       EX0
 *SFR* 000000A8H.2 DATA     BIT       EX1
 *SFR* 000000E8H.2 DATA     BIT       EX2
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 8
+
+
 *SFR* 000000C0H.3 DATA     BIT       EXEN2
 *SFR* 000000C0H.6 DATA     BIT       EXF2
 *SFR* 000000B7H   DATA     BYTE      EXICON0
@@ -475,11 +490,8 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000EAH   DATA     BYTE      FDSTEP
 *SFR* 000000BDH   DATA     BYTE      FEAH
 *SFR* 000000BCH   DATA     BYTE      FEAL
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 8
-
-
-      010008A7H   CODE     ---       FLASH_Erase_Abort
-      010008DAH   CODE     ---       getFlashDataEndAddress
+      01000887H   CODE     ---       FLASH_Erase_Abort
+      010005C5H   CODE     ---       getFlashDataEndAddress
 *SFR* 000000F7H   DATA     BYTE      HWBPDR
 *SFR* 000000F6H   DATA     BYTE      HWBPSR
 *SFR* 000000B3H   DATA     BYTE      ID
@@ -489,7 +501,7 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000E8H   DATA     BYTE      IEN1
 *SFR* 000000B0H.1 DATA     BIT       IERR
 *SFR* 000000A0H.3 DATA     BIT       INT_EN
-      0100040CH   CODE     ---       IO_vInit
+      01000437H   CODE     ---       IO_vInit
 *SFR* 000000B8H   DATA     BYTE      IP
 *SFR* 000000F8H   DATA     BYTE      IP1
 *SFR* 000000B9H   DATA     BYTE      IPH
@@ -507,8 +519,8 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000A0H.6 DATA     BIT       KEEPY
 *SFR* 000000A0H.7 DATA     BIT       KEEPZ
       00000036H   DATA     ---       MagicMemory
-      01000418H   CODE     ---       main
-      010003F3H   CODE     ---       MAIN_vInit
+      01000443H   CODE     ---       main
+      0100041EH   CODE     ---       MAIN_vInit
 *SFR* 000000B0H.2 DATA     BIT       MDU_BSY
 *SFR* 000000B2H   DATA     BYTE      MDU_MD0
 *SFR* 000000B3H   DATA     BYTE      MDU_MD1
@@ -531,6 +543,9 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000F5H   DATA     BYTE      MMDR
 *SFR* 000000F4H   DATA     BYTE      MMICR
 *SFR* 000000F2H   DATA     BYTE      MMSR
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 9
+
+
 *SFR* 000000EBH   DATA     BYTE      MMWR1
 *SFR* 000000ECH   DATA     BYTE      MMWR2
 *SFR* 000000B3H   DATA     BYTE      MODPISEL
@@ -543,9 +558,6 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000D0H.2 DATA     BIT       OV
 *SFR* 000000D0H   DATA     BIT       P
 *SFR* 00000080H   DATA     BIT       P0_0
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 9
-
-
 *SFR* 00000080H.1 DATA     BIT       P0_1
 *SFR* 00000080H.2 DATA     BIT       P0_2
 *SFR* 00000080H.3 DATA     BIT       P0_3
@@ -599,6 +611,9 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000B1H   DATA     BYTE      P3_ALTSEL1
 *SFR* 000000B0H   DATA     BYTE      P3_DATA
 *SFR* 000000B1H   DATA     BYTE      P3_DIR
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 10
+
+
 *SFR* 000000B0H   DATA     BYTE      P3_OD
 *SFR* 000000B1H   DATA     BYTE      P3_PUDEN
 *SFR* 000000B0H   DATA     BYTE      P3_PUDSEL
@@ -611,9 +626,6 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000C8H.6 DATA     BIT       P4_6
 *SFR* 000000C8H.7 DATA     BIT       P4_7
 *SFR* 000000C8H   DATA     BYTE      P4_ALTSEL0
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 10
-
-
 *SFR* 000000C9H   DATA     BYTE      P4_ALTSEL1
 *SFR* 000000C8H   DATA     BYTE      P4_DATA
 *SFR* 000000C9H   DATA     BYTE      P4_DIR
@@ -660,13 +672,16 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 00000099H   DATA     BYTE      SBUF
 *SFR* 00000098H   DATA     BYTE      SCON
 *SFR* 000000BFH   DATA     BYTE      SCU_PAGE
-      0100050EH   CODE     ---       sendHVRelayStatus
-      01000446H   CODE     ---       sendUUID
+      01000570H   CODE     ---       sendHVRelayStatus
+      01000471H   CODE     ---       sendUUID
       00000020H.0 BIT      BIT       shouldMonitorHVStatus
 *SFR* 00000098H.7 DATA     BIT       SM0
 *SFR* 000000C8H.7 DATA     BIT       SM0_1
 *SFR* 00000098H.6 DATA     BIT       SM1
 *SFR* 000000C8H.6 DATA     BIT       SM1_1
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 11
+
+
 *SFR* 00000098H.5 DATA     BIT       SM2
 *SFR* 000000C8H.5 DATA     BIT       SM2_1
 *SFR* 00000081H   DATA     BYTE      SP
@@ -679,9 +694,6 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000A9H   DATA     BYTE      SSC_PISEL
 *SFR* 000000ADH   DATA     BYTE      SSC_RBL
 *SFR* 000000ACH   DATA     BYTE      SSC_TBL
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 11
-
-
 *SFR* 0000008FH   DATA     BYTE      SYSCON0
 *SFR* 000000C3H   DATA     BYTE      T21_RC2H
 *SFR* 000000C2H   DATA     BYTE      T21_RC2L
@@ -722,8 +734,8 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
 *SFR* 000000CDH   DATA     BYTE      UART1_FDSTEP
 *SFR* 000000C9H   DATA     BYTE      UART1_SBUF
 *SFR* 000000C8H   DATA     BYTE      UART1_SCON
-      01000814H   CODE     ---       UART_viIsr
-      010007EEH   CODE     ---       UART_vInit
+      010007F4H   CODE     ---       UART_viIsr
+      01000733H   CODE     ---       UART_vInit
       0200F000H   XDATA    ---       UUID
 *SFR* 000000BBH   DATA     BYTE      WDTCON
 *SFR* 000000BFH   DATA     BYTE      WDTH
@@ -733,6 +745,9 @@ PUBLIC SYMBOLS OF MODULE:  TestBoard (?C_STARTUP)
       000000E0H   IDATA    ---       WLBuf
 *SFR* 000000B3H   DATA     BYTE      XADDRH
 
+
+
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 12
 
 
 SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
@@ -747,9 +762,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       00000083H   SFRSYM    DATA     BYTE      DPH
       00000082H   SFRSYM    DATA     BYTE      DPL
       000000B6H   SFRSYM    DATA     BYTE      OSC_CON
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 12
-
-
       000000BBH   SFRSYM    DATA     BYTE      PASSWD
       000000B7H   SFRSYM    DATA     BYTE      PLL_CON
       000000BFH   SFRSYM    DATA     BYTE      SCU_PAGE
@@ -758,7 +770,7 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       00000000H   SYMBOL    NUMBER   ---       IBPSTACK
       00000100H   SYMBOL    NUMBER   ---       IBPSTACKTOP
       00000080H   SYMBOL    NUMBER   ---       IDATALEN
-      010002F9H   SYMBOL    CODE     NEAR LAB  IDATALOOP
+      010002F8H   SYMBOL    CODE     NEAR LAB  IDATALOOP
       00000002H   SYMBOL    NUMBER   ---       NDIV_XC866
       00000009H   SYMBOL    NUMBER   ---       NDIV_XC88X
       00000000H   SYMBOL    NUMBER   ---       PBPSTACK
@@ -767,13 +779,13 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       0000F000H   SYMBOL    NUMBER   ---       PDATASTART
       000000F0H   SYMBOL    NUMBER   ---       PPAGE
       00000000H   SYMBOL    NUMBER   ---       PPAGEENABLE
-      010002F6H   SYMBOL    CODE     NEAR LAB  STARTUP1
+      010002F5H   SYMBOL    CODE     NEAR LAB  STARTUP1
       00000000H   SYMBOL    NUMBER   ---       XBPSTACK
       00010000H   SYMBOL    NUMBER   ---       XBPSTACKTOP
       00000000H   SYMBOL    NUMBER   ---       XC866_CHIP
       00000001H   SYMBOL    NUMBER   ---       XC88X_CHIP
       00000200H   SYMBOL    NUMBER   ---       XDATALEN
-      01000304H   SYMBOL    CODE     NEAR LAB  XDATALOOP
+      01000303H   SYMBOL    CODE     NEAR LAB  XDATALOOP
       0000F000H   SYMBOL    NUMBER   ---       XDATASTART
       00000000H   SYMBOL    NUMBER   ---       XTAL
 
@@ -781,29 +793,32 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       01000000H   LINE      CODE     ---       #201
       ---         BLOCKEND  ---      ---       LVL=0
 
-      010002F6H   BLOCK     CODE     NEAR LAB  LVL=0
-      010002F6H   LINE      CODE     ---       #244
-      010002F8H   LINE      CODE     ---       #245
-      010002F9H   LINE      CODE     ---       #246
-      010002FAH   LINE      CODE     ---       #247
-      010002FCH   LINE      CODE     ---       #251
-      010002FFH   LINE      CODE     ---       #252
-      01000301H   LINE      CODE     ---       #256
-      01000303H   LINE      CODE     ---       #258
-      01000304H   LINE      CODE     ---       #259
-      01000305H   LINE      CODE     ---       #260
-      01000306H   LINE      CODE     ---       #261
-      01000308H   LINE      CODE     ---       #262
-      0100030AH   LINE      CODE     ---       #298
-      0100030DH   LINE      CODE     ---       #300
+      010002F5H   BLOCK     CODE     NEAR LAB  LVL=0
+      010002F5H   LINE      CODE     ---       #244
+      010002F7H   LINE      CODE     ---       #245
+      010002F8H   LINE      CODE     ---       #246
+      010002F9H   LINE      CODE     ---       #247
+      010002FBH   LINE      CODE     ---       #251
+      010002FEH   LINE      CODE     ---       #252
+      01000300H   LINE      CODE     ---       #256
+      01000302H   LINE      CODE     ---       #258
+      01000303H   LINE      CODE     ---       #259
+      01000304H   LINE      CODE     ---       #260
+      01000305H   LINE      CODE     ---       #261
+      01000307H   LINE      CODE     ---       #262
+      01000309H   LINE      CODE     ---       #298
+      0100030CH   LINE      CODE     ---       #300
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       MAIN
       0200F000H   PUBLIC    XDATA    ---       UUID
       00000020H.0 PUBLIC    BIT      BIT       shouldMonitorHVStatus
-      01000418H   PUBLIC    CODE     ---       main
-      01000563H   PUBLIC    CODE     ---       _delay
-      010003F3H   PUBLIC    CODE     ---       MAIN_vInit
+      01000443H   PUBLIC    CODE     ---       main
+      01000759H   PUBLIC    CODE     ---       _delay
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 13
+
+
+      0100041EH   PUBLIC    CODE     ---       MAIN_vInit
       000000A0H.5 SFRSYM    DATA     BIT       KEEPX
       000000B0H   SFRSYM    DATA     BYTE      P3_DATA
       000000FAH   SFRSYM    DATA     BYTE      CCU6_CC60RL
@@ -815,9 +830,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000FCH   SFRSYM    DATA     BYTE      CCU6_CC61RL
       000000DCH   SFRSYM    DATA     BYTE      CAN_DATA1
       000000D3H   SFRSYM    DATA     BYTE      ADC_EVINPR
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 13
-
-
       000000A0H.7 SFRSYM    DATA     BIT       KEEPZ
       000000C9H   SFRSYM    DATA     BYTE      UART1_SBUF
       00000092H   SFRSYM    DATA     BYTE      P5_DATA
@@ -871,6 +883,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000CBH   SFRSYM    DATA     BYTE      ADC_CRPR1
       000000C8H   SFRSYM    DATA     BIT       P4_0
       000000B0H.1 SFRSYM    DATA     BIT       P3_1
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 14
+
+
       000000A0H.2 SFRSYM    DATA     BIT       P2_2
       00000090H.3 SFRSYM    DATA     BIT       P1_3
       00000080H.4 SFRSYM    DATA     BIT       P0_4
@@ -883,9 +898,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000BDH   SFRSYM    DATA     BYTE      FEAH
       000000D2H   SFRSYM    DATA     BYTE      ADC_QINR0
       000000D2H   SFRSYM    DATA     BYTE      ADC_QBUR0
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 14
-
-
       000000C8H.2 SFRSYM    DATA     BIT       P4_2
       000000B0H.3 SFRSYM    DATA     BIT       P3_3
       000000A0H.4 SFRSYM    DATA     BIT       P2_4
@@ -939,6 +951,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000FFH   SFRSYM    DATA     BYTE      CCU6_TRPCTRH
       0000009AH   SFRSYM    DATA     WORD      CCU6_CC63SRLH
       000000F8H.4 SFRSYM    DATA     BIT       PCCIP0
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 15
+
+
       000000FEH   SFRSYM    DATA     BYTE      CCU6_TRPCTRL
       000000CBH   SFRSYM    DATA     BYTE      ADC_RESRA0H
       000000F8H.5 SFRSYM    DATA     BIT       PCCIP1
@@ -951,9 +966,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       00000081H   SFRSYM    DATA     BYTE      SP
       0000009FH   SFRSYM    DATA     BYTE      CCU6_INPH
       000000BDH   SFRSYM    DATA     BYTE      BCON
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 15
-
-
       000000CFH   SFRSYM    DATA     BYTE      ADC_RESRA2H
       000000F8H.7 SFRSYM    DATA     BIT       PCCIP3
       000000ABH   SFRSYM    DATA     BYTE      SSC_CONH_P
@@ -1007,6 +1019,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000B4H   SFRSYM    DATA     BYTE      IRCON3
       000000FAH   SFRSYM    DATA     BYTE      CCU6_TCTR2L
       00000099H   SFRSYM    DATA     BYTE      SBUF
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 16
+
+
       000000BBH   SFRSYM    DATA     BYTE      PMCON2
       00000087H   SFRSYM    DATA     BYTE      PCON
       00000090H   SFRSYM    DATA     BYTE      P1_PUDSEL
@@ -1019,9 +1034,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000B0H.1 SFRSYM    DATA     BIT       IERR
       000000B0H   SFRSYM    DATA     BYTE      P3_PUDSEL
       0000009DH   SFRSYM    DATA     BYTE      CD_CORDYH
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 16
-
-
       000000DDH   SFRSYM    DATA     WORD      CAN_DATA23
       00000098H   SFRSYM    DATA     BYTE      SCON
       000000C8H   SFRSYM    DATA     BYTE      P4_PUDSEL
@@ -1075,6 +1087,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000FEH   SFRSYM    DATA     WORD      CCU6_CC62RLH
       000000A8H.1 SFRSYM    DATA     BIT       ET0
       000000A9H   SFRSYM    DATA     BYTE      SSC_PISEL
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 17
+
+
       000000F7H   SFRSYM    DATA     BYTE      HWBPDR
       000000CBH   SFRSYM    DATA     BYTE      ADC_GLOBSTR
       0000009AH   SFRSYM    DATA     WORD      CCU6_CC63RLH
@@ -1087,9 +1102,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000C0H.7 SFRSYM    DATA     BIT       TF2
       00000098H.2 SFRSYM    DATA     BIT       RB8
       0000008CH   SFRSYM    DATA     BYTE      TH0
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 17
-
-
       000000D9H   SFRSYM    DATA     WORD      CAN_ADLH
       00000088H   SFRSYM    DATA     BIT       IT0
       000000A8H   SFRSYM    DATA     BIT       EX0
@@ -1143,6 +1155,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000C0H.2 SFRSYM    DATA     BIT       TR2
       000000B8H   SFRSYM    DATA     BIT       PX0
       000000CBH   SFRSYM    DATA     BYTE      UART1_BG
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 18
+
+
       00000080H   SFRSYM    DATA     BYTE      P0_ALTSEL0
       000000F6H   SFRSYM    DATA     BYTE      HWBPSR
       000000B8H.2 SFRSYM    DATA     BIT       PX1
@@ -1155,9 +1170,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       0000009CH   SFRSYM    DATA     BYTE      CCU6_ISL
       000000CEH   SFRSYM    DATA     BYTE      ADC_VFCR
       000000C8H   SFRSYM    DATA     BYTE      P4_ALTSEL0
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 18
-
-
       000000B1H   SFRSYM    DATA     BYTE      P3_ALTSEL1
       00000083H   SFRSYM    DATA     BYTE      DPH
       000000C8H.2 SFRSYM    DATA     BIT       RB8_1
@@ -1211,6 +1223,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       0000009EH   SFRSYM    DATA     BYTE      CCU6_PISEL0L
       000000CEH   SFRSYM    DATA     WORD      ADC_RESRA2LH
       000000CDH   SFRSYM    DATA     BYTE      ADC_CHINPR
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 19
+
+
       000000D2H   SFRSYM    DATA     WORD      ADC_RESRA3LH
       000000BAH   SFRSYM    DATA     BYTE      CMCON
       000000CAH   SFRSYM    DATA     BYTE      UART1_BCON
@@ -1223,9 +1238,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000C2H   SFRSYM    DATA     WORD      T21_RC2LH
       00000090H   SFRSYM    DATA     BYTE      P1_OD
       000000D0H.5 SFRSYM    DATA     BIT       F0
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 19
-
-
       000000F8H.3 SFRSYM    DATA     BIT       PXM
       000000EBH   SFRSYM    DATA     BYTE      MMWR1
       000000EBH   SFRSYM    DATA     BYTE      FDRES
@@ -1252,59 +1264,59 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000A0H   SFRSYM    DATA     BYTE      P2_DATA
       0000009BH   SFRSYM    DATA     BYTE      CCU6_CC63RH
 
-      010003F3H   BLOCK     CODE     ---       LVL=0
-      010003F3H   LINE      ---      ---       #30
-      010003F3H   LINE      ---      ---       #31
-      010003F3H   LINE      ---      ---       #40
-      010003F6H   LINE      ---      ---       #41
-      010003F9H   LINE      ---      ---       #42
-      010003FCH   LINE      ---      ---       #51
-      010003FEH   LINE      ---      ---       #54
-      01000400H   LINE      ---      ---       #58
-      01000403H   LINE      ---      ---       #59
-      01000405H   LINE      ---      ---       #60
-      01000407H   LINE      ---      ---       #61
-      01000409H   LINE      ---      ---       #67
-      0100040BH   LINE      ---      ---       #69
+      0100041EH   BLOCK     CODE     ---       LVL=0
+      0100041EH   LINE      ---      ---       #30
+      0100041EH   LINE      ---      ---       #31
+      0100041EH   LINE      ---      ---       #40
+      01000421H   LINE      ---      ---       #41
+      01000424H   LINE      ---      ---       #42
+      01000427H   LINE      ---      ---       #51
+      01000429H   LINE      ---      ---       #54
+      0100042BH   LINE      ---      ---       #58
+      0100042EH   LINE      ---      ---       #59
+      01000430H   LINE      ---      ---       #60
+      01000432H   LINE      ---      ---       #61
+      01000434H   LINE      ---      ---       #67
+      01000436H   LINE      ---      ---       #69
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000563H   BLOCK     CODE     ---       LVL=0
-      01000563H   LINE      ---      ---       #70
+      01000759H   BLOCK     CODE     ---       LVL=0
+      01000759H   LINE      ---      ---       #70
       00000006H   SYMBOL    DATA     INT       second
-      01000563H   BLOCK     CODE     NEAR LAB  LVL=1
-      01000563H   LINE      ---      ---       #72
-      01000573H   LINE      ---      ---       #73
-      01000576H   LINE      ---      ---       #74
-      01000579H   LINE      ---      ---       #75
-      01000584H   LINE      ---      ---       #76
-      0100058FH   LINE      ---      ---       #77
-      01000596H   LINE      ---      ---       #78
+      01000759H   BLOCK     CODE     NEAR LAB  LVL=1
+      01000759H   LINE      ---      ---       #72
+      01000769H   LINE      ---      ---       #73
+      0100076CH   LINE      ---      ---       #74
+      0100076FH   LINE      ---      ---       #75
+      0100077AH   LINE      ---      ---       #76
+      01000785H   LINE      ---      ---       #77
+      0100078CH   LINE      ---      ---       #78
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 20
+
+
       00000004H   SYMBOL    DATA     INT       i
       00000002H   SYMBOL    DATA     INT       j
       00000082H   SYMBOL    DATA     INT       k
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
-      01000418H   BLOCK     CODE     ---       LVL=0
-      01000418H   LINE      ---      ---       #79
-      01000418H   LINE      ---      ---       #80
-      01000418H   LINE      ---      ---       #81
-      0100041AH   LINE      ---      ---       #83
-      0100041AH   LINE      ---      ---       #85
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 20
-
-
-      01000421H   LINE      ---      ---       #86
-      01000429H   LINE      ---      ---       #87
-      01000429H   LINE      ---      ---       #89
-      0100042FH   LINE      ---      ---       #90
+      01000443H   BLOCK     CODE     ---       LVL=0
+      01000443H   LINE      ---      ---       #79
+      01000443H   LINE      ---      ---       #80
+      01000443H   LINE      ---      ---       #81
+      01000445H   LINE      ---      ---       #83
+      01000445H   LINE      ---      ---       #85
+      0100044CH   LINE      ---      ---       #86
+      01000454H   LINE      ---      ---       #87
+      01000454H   LINE      ---      ---       #89
+      0100045AH   LINE      ---      ---       #90
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       UART
-      01000814H   PUBLIC    CODE     ---       UART_viIsr
-      01000467H   PUBLIC    CODE     ---       _processCommand
-      01000431H   PUBLIC    CODE     ---       _sendUART
-      010007EEH   PUBLIC    CODE     ---       UART_vInit
+      010007F4H   PUBLIC    CODE     ---       UART_viIsr
+      01000491H   PUBLIC    CODE     ---       _processCommand
+      0100045CH   PUBLIC    CODE     ---       _sendUART
+      01000733H   PUBLIC    CODE     ---       UART_vInit
       000000A0H.5 SFRSYM    DATA     BIT       KEEPX
       000000B0H   SFRSYM    DATA     BYTE      P3_DATA
       000000FAH   SFRSYM    DATA     BYTE      CCU6_CC60RL
@@ -1347,6 +1359,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000B7H   SFRSYM    DATA     BYTE      MDU_MD5
       000000E8H   SFRSYM    DATA     BYTE      IEN1
       000000A7H   SFRSYM    DATA     BYTE      CCU6_CMPMODIFH
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 21
+
+
       00000080H   SFRSYM    DATA     BIT       P0_0
       000000B1H   SFRSYM    DATA     BYTE      MDU_MDUCON
       000000CCH   SFRSYM    DATA     BYTE      ADC_CRMR1
@@ -1359,9 +1374,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       0000008FH   SFRSYM    DATA     BYTE      SYSCON0
       000000B7H   SFRSYM    DATA     BYTE      MODPISEL1
       000000A6H   SFRSYM    DATA     BYTE      CCU6_CMPMODIFL
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 21
-
-
       000000B0H   SFRSYM    DATA     BIT       P3_0
       000000A0H.1 SFRSYM    DATA     BIT       P2_1
       00000090H.2 SFRSYM    DATA     BIT       P1_2
@@ -1415,6 +1427,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000A0H.7 SFRSYM    DATA     BIT       P2_7
       000000F8H   SFRSYM    DATA     BIT       PADC
       000000E8H.7 SFRSYM    DATA     BIT       ECCIP3
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 22
+
+
       000000B4H   SFRSYM    DATA     BYTE      MDU_MR2
       000000B8H   SFRSYM    DATA     BYTE      IP
       000000BCH   SFRSYM    DATA     BYTE      FEAL
@@ -1427,9 +1442,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000FAH   SFRSYM    DATA     WORD      CCU6_CC60SRLH
       00000098H   SFRSYM    DATA     BIT       RI
       000000B6H   SFRSYM    DATA     BYTE      MDU_MR4
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 22
-
-
       0000009EH   SFRSYM    DATA     BYTE      CCU6_T13PRL
       000000FCH   SFRSYM    DATA     WORD      CCU6_CC61SRLH
       000000D0H.7 SFRSYM    DATA     BIT       CY
@@ -1483,6 +1495,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000C2H   SFRSYM    DATA     BYTE      T21_RC2L
       000000FBH   SFRSYM    DATA     BYTE      CCU6_TCTR2H
       000000CCH   SFRSYM    DATA     WORD      ADC_RESR1LH
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 23
+
+
       000000ACH   SFRSYM    DATA     BYTE      SSC_TBL
       000000B4H   SFRSYM    DATA     BYTE      IRCON0
       000000CFH   SFRSYM    DATA     BYTE      ADC_Q0R0
@@ -1495,9 +1510,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000A4H   SFRSYM    DATA     BYTE      CCU6_ISRL
       000000D2H   SFRSYM    DATA     WORD      ADC_RESR3LH
       000000E8H.1 SFRSYM    DATA     BIT       ESSC
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 23
-
-
       000000B4H   SFRSYM    DATA     BYTE      PMCON0
       000000B6H   SFRSYM    DATA     BYTE      IRCON2
       000000A4H   SFRSYM    DATA     BYTE      CCU6_ISSL
@@ -1551,6 +1563,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       00000091H   SFRSYM    DATA     BYTE      P1_DIR
       000000F0H   SFRSYM    DATA     BYTE      B
       000000CAH   SFRSYM    DATA     BYTE      ADC_RCR0
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 24
+
+
       000000A1H   SFRSYM    DATA     BYTE      P2_DIR
       000000CBH   SFRSYM    DATA     BYTE      ADC_RCR1
       000000C2H   SFRSYM    DATA     WORD      T2_RC2LH
@@ -1563,9 +1578,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000CEH   SFRSYM    DATA     BYTE      UART1_FDRES
       000000B2H   SFRSYM    DATA     BYTE      PORT_PAGE
       00000093H   SFRSYM    DATA     BYTE      P5_DIR
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 24
-
-
       000000BBH   SFRSYM    DATA     BYTE      NMICON
       000000FAH   SFRSYM    DATA     WORD      CCU6_CC60RLH
       000000D1H   SFRSYM    DATA     BYTE      ADC_PAGE
@@ -1619,6 +1631,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000CDH   SFRSYM    DATA     BYTE      ADC_CHCTR3
       000000A4H   SFRSYM    DATA     BYTE      CCU6_T12DTCL
       000000FCH   SFRSYM    DATA     BYTE      CCU6_CC61SRL
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 25
+
+
       000000CEH   SFRSYM    DATA     BYTE      ADC_CHCTR4
       000000B8H.1 SFRSYM    DATA     BIT       PT0
       000000BCH   SFRSYM    DATA     BYTE      WDTREL
@@ -1631,9 +1646,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000D2H   SFRSYM    DATA     BYTE      ADC_CHCTR6
       00000088H.4 SFRSYM    DATA     BIT       TR0
       000000D0H.4 SFRSYM    DATA     BIT       RS1
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 25
-
-
       000000B8H.5 SFRSYM    DATA     BIT       PT2
       000000A0H   SFRSYM    DATA     BIT       CD_BSY
       000000D3H   SFRSYM    DATA     BYTE      ADC_CHCTR7
@@ -1687,6 +1699,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000C8H.5 SFRSYM    DATA     BIT       SM2_1
       000000C0H.3 SFRSYM    DATA     BIT       EXEN2
       00000093H   SFRSYM    DATA     BYTE      P5_PUDEN
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 26
+
+
       000000CAH   SFRSYM    DATA     BYTE      ADC_RESR0L
       000000CCH   SFRSYM    DATA     BYTE      ADC_RESR1L
       00000098H.4 SFRSYM    DATA     BIT       REN
@@ -1699,9 +1714,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000E8H.3 SFRSYM    DATA     BIT       EXM
       000000C4H   SFRSYM    DATA     BYTE      T21_T2L
       000000BFH   SFRSYM    DATA     BYTE      SCU_PAGE
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 26
-
-
       0000009FH   SFRSYM    DATA     BYTE      CCU6_PISEL0H
       0000009EH   SFRSYM    DATA     BYTE      CCU6_MCMOUTSL
       000000E9H   SFRSYM    DATA     BYTE      FDCON
@@ -1750,120 +1762,127 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000A0H   SFRSYM    DATA     BYTE      P2_DATA
       0000009BH   SFRSYM    DATA     BYTE      CCU6_CC63RH
       00000008H   SYMBOL    DATA     INT       bufferCount
-      010003A2H   SYMBOL    CODE     ---       _?ix1000
+      010003CDH   SYMBOL    CODE     ---       _?ix1000
       0000000AH   SYMBOL    DATA     ---       receiveBuffer
 
-      010007EEH   BLOCK     CODE     ---       LVL=0
-      010007EEH   LINE      ---      ---       #56
-      010007EEH   LINE      ---      ---       #57
-      010007EEH   LINE      ---      ---       #69
-      010007F1H   LINE      ---      ---       #70
-      010007F4H   LINE      ---      ---       #71
-      010007F7H   LINE      ---      ---       #72
-      010007FAH   LINE      ---      ---       #73
-      010007FDH   LINE      ---      ---       #76
-      01000800H   LINE      ---      ---       #77
-      01000802H   LINE      ---      ---       #78
-      01000805H   LINE      ---      ---       #87
-      01000808H   LINE      ---      ---       #88
-      0100080BH   LINE      ---      ---       #89
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 27
+      01000733H   BLOCK     CODE     ---       LVL=0
+      01000733H   LINE      ---      ---       #57
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 27
 
 
-      0100080EH   LINE      ---      ---       #90
-      01000811H   LINE      ---      ---       #93
-      01000813H   LINE      ---      ---       #95
+      01000733H   LINE      ---      ---       #58
+      01000733H   LINE      ---      ---       #70
+      01000736H   LINE      ---      ---       #71
+      01000739H   LINE      ---      ---       #72
+      0100073CH   LINE      ---      ---       #73
+      0100073FH   LINE      ---      ---       #74
+      01000742H   LINE      ---      ---       #77
+      01000745H   LINE      ---      ---       #78
+      01000747H   LINE      ---      ---       #79
+      0100074AH   LINE      ---      ---       #88
+      0100074DH   LINE      ---      ---       #89
+      01000750H   LINE      ---      ---       #90
+      01000753H   LINE      ---      ---       #91
+      01000756H   LINE      ---      ---       #94
+      01000758H   LINE      ---      ---       #96
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000431H   BLOCK     CODE     ---       LVL=0
-      01000431H   LINE      ---      ---       #129
+      0100045CH   BLOCK     CODE     ---       LVL=0
+      0100045CH   LINE      ---      ---       #130
       00000001H   SYMBOL    DATA     ---       message
-      01000431H   BLOCK     CODE     NEAR LAB  LVL=1
-      01000431H   LINE      ---      ---       #130
-      01000431H   LINE      ---      ---       #131
-      01000435H   LINE      ---      ---       #132
-      01000437H   LINE      ---      ---       #133
-      0100043AH   LINE      ---      ---       #134
-      0100043CH   LINE      ---      ---       #135
-      01000443H   LINE      ---      ---       #136
-      01000445H   LINE      ---      ---       #137
+      0100045CH   BLOCK     CODE     NEAR LAB  LVL=1
+      0100045CH   LINE      ---      ---       #131
+      0100045CH   LINE      ---      ---       #132
+      01000460H   LINE      ---      ---       #133
+      01000462H   LINE      ---      ---       #134
+      01000465H   LINE      ---      ---       #135
+      01000467H   LINE      ---      ---       #136
+      0100046EH   LINE      ---      ---       #137
+      01000470H   LINE      ---      ---       #138
       00000001H   SYMBOL    DATA     ---       current
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
-      01000467H   BLOCK     CODE     ---       LVL=0
-      01000467H   LINE      ---      ---       #139
+      01000491H   BLOCK     CODE     ---       LVL=0
+      01000491H   LINE      ---      ---       #140
       0000003FH   SYMBOL    DATA     ---       command
-      0100046DH   BLOCK     CODE     NEAR LAB  LVL=1
-      0100046DH   LINE      ---      ---       #140
-      01000473H   LINE      ---      ---       #141
-      01000485H   LINE      ---      ---       #142
-      01000493H   LINE      ---      ---       #143
-      010004AFH   LINE      ---      ---       #144
-      010004AFH   LINE      ---      ---       #145
-      010004B1H   LINE      ---      ---       #146
-      010004D0H   LINE      ---      ---       #147
-      010004D0H   LINE      ---      ---       #148
-      010004D8H   LINE      ---      ---       #149
-      010004D8H   LINE      ---      ---       #150
-      010004D8H   LINE      ---      ---       #151
-      010004E6H   LINE      ---      ---       #152
-      010004E6H   LINE      ---      ---       #153
-      010004E6H   LINE      ---      ---       #154
-      010004F4H   LINE      ---      ---       #155
-      010004F4H   LINE      ---      ---       #156
-      010004F4H   LINE      ---      ---       #157
-      010004F6H   LINE      ---      ---       #158
-      010004F6H   LINE      ---      ---       #159
-      010004F6H   LINE      ---      ---       #160
-      01000504H   LINE      ---      ---       #161
-      01000504H   LINE      ---      ---       #162
-      01000504H   LINE      ---      ---       #163
-      01000506H   LINE      ---      ---       #164
-      01000506H   LINE      ---      ---       #165
+      01000497H   BLOCK     CODE     NEAR LAB  LVL=1
+      01000497H   LINE      ---      ---       #141
+      0100049DH   LINE      ---      ---       #142
+      010004A3H   LINE      ---      ---       #143
+      010004B5H   LINE      ---      ---       #144
+      010004C3H   LINE      ---      ---       #146
+      010004E1H   LINE      ---      ---       #147
+      010004E1H   LINE      ---      ---       #148
+      010004E3H   LINE      ---      ---       #149
+      01000518H   LINE      ---      ---       #150
+      01000518H   LINE      ---      ---       #151
+      01000520H   LINE      ---      ---       #152
+      01000520H   LINE      ---      ---       #153
+      01000520H   LINE      ---      ---       #154
+      0100052EH   LINE      ---      ---       #155
+      0100052EH   LINE      ---      ---       #156
+      0100052EH   LINE      ---      ---       #157
+      0100053CH   LINE      ---      ---       #158
+      0100053CH   LINE      ---      ---       #159
+      0100053CH   LINE      ---      ---       #160
+      0100053EH   LINE      ---      ---       #161
+      0100053EH   LINE      ---      ---       #162
+      0100053EH   LINE      ---      ---       #163
+      0100054CH   LINE      ---      ---       #164
+      0100054CH   LINE      ---      ---       #165
+      0100054CH   LINE      ---      ---       #166
+      0100054EH   LINE      ---      ---       #167
+      0100054EH   LINE      ---      ---       #168
+      0100054EH   LINE      ---      ---       #169
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 28
+
+
+      01000560H   LINE      ---      ---       #170
+      01000566H   LINE      ---      ---       #171
+      01000568H   LINE      ---      ---       #172
+      01000568H   LINE      ---      ---       #173
       00000042H   SYMBOL    DATA     INT       commandSize
-      00000044H   SYMBOL    DATA     ---       respondMessage
+      00000044H   SYMBOL    DATA     ---       flashEndAddress
+      00000046H   SYMBOL    DATA     ---       respondMessage
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
-      01000814H   BLOCK     CODE     ---       LVL=0
-      01000831H   LINE      ---      ---       #170
-      01000831H   LINE      ---      ---       #173
-      01000834H   LINE      ---      ---       #174
-      01000837H   LINE      ---      ---       #175
-      01000837H   LINE      ---      ---       #176
-      01000839H   LINE      ---      ---       #177
-      01000839H   LINE      ---      ---       #178
-      0100083CH   LINE      ---      ---       #179
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 28
-
-
-      0100083CH   BLOCK     CODE     NEAR LAB  LVL=1
-      0100083CH   LINE      ---      ---       #180
-      0100083FH   LINE      ---      ---       #181
-      01000858H   LINE      ---      ---       #182
-      01000861H   LINE      ---      ---       #183
-      01000870H   LINE      ---      ---       #184
-      01000876H   LINE      ---      ---       #185
-      01000878H   LINE      ---      ---       #186
-      0100087FH   LINE      ---      ---       #187
-      01000887H   LINE      ---      ---       #188
-      01000887H   LINE      ---      ---       #189
-      01000889H   LINE      ---      ---       #190
+      010007F4H   BLOCK     CODE     ---       LVL=0
+      01000811H   LINE      ---      ---       #178
+      01000811H   LINE      ---      ---       #181
+      01000814H   LINE      ---      ---       #182
+      01000817H   LINE      ---      ---       #183
+      01000817H   LINE      ---      ---       #184
+      01000819H   LINE      ---      ---       #185
+      01000819H   LINE      ---      ---       #186
+      0100081CH   LINE      ---      ---       #187
+      0100081CH   BLOCK     CODE     NEAR LAB  LVL=1
+      0100081CH   LINE      ---      ---       #188
+      0100081FH   LINE      ---      ---       #189
+      01000838H   LINE      ---      ---       #190
+      01000841H   LINE      ---      ---       #191
+      01000850H   LINE      ---      ---       #192
+      01000856H   LINE      ---      ---       #193
+      01000858H   LINE      ---      ---       #194
+      0100085FH   LINE      ---      ---       #195
+      01000867H   LINE      ---      ---       #196
+      01000867H   LINE      ---      ---       #197
+      01000869H   LINE      ---      ---       #198
       0000003EH   SYMBOL    DATA     CHAR      receiveByte
-      01000889H   LINE      ---      ---       #193
-      0100088CH   LINE      ---      ---       #194
-      0100088CH   LINE      CODE     ---       #194
+      01000869H   LINE      ---      ---       #201
+      0100086CH   LINE      ---      ---       #202
+      0100086CH   LINE      CODE     ---       #202
       ---         BLOCKEND  CODE     ---       LVL=0
 
       ---         MODULE    ---      ---       DEVICECONTROLLER
-      01000597H   PUBLIC    CODE     ---       _setHVMonitorMode
-      01000520H   PUBLIC    CODE     ---       _setChargeMode
-      0100050EH   PUBLIC    CODE     ---       sendHVRelayStatus
+      010005EFH   PUBLIC    CODE     ---       _setHVMonitorMode
+      01000582H   PUBLIC    CODE     ---       _setChargeMode
+      01000570H   PUBLIC    CODE     ---       sendHVRelayStatus
       01000020H   PUBLIC    CODE     ---       isAllHVRelayOK
-      01000602H   PUBLIC    CODE     ---       _enableLCRChannel
-      010005BFH   PUBLIC    CODE     ---       _enableLCChannel
-      01000446H   PUBLIC    CODE     ---       sendUUID
+      0100065AH   PUBLIC    CODE     ---       _enableLCRChannel
+      01000617H   PUBLIC    CODE     ---       _enableLCChannel
+      01000471H   PUBLIC    CODE     ---       sendUUID
       000000A0H.5 SFRSYM    DATA     BIT       KEEPX
       000000B0H   SFRSYM    DATA     BYTE      P3_DATA
       000000FAH   SFRSYM    DATA     BYTE      CCU6_CC60RL
@@ -1884,6 +1903,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000C4H   SFRSYM    DATA     WORD      T2_T2LH
       0000009AH   SFRSYM    DATA     BYTE      CCU6_CC63RL
       000000DEH   SFRSYM    DATA     BYTE      CAN_DATA3
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 29
+
+
       000000D2H   SFRSYM    DATA     BYTE      ADC_EVINSR
       000000D0H.6 SFRSYM    DATA     BIT       AC
       000000C8H   SFRSYM    DATA     BYTE      UART1_SCON
@@ -1903,9 +1925,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000A8H   SFRSYM    DATA     BYTE      IEN0
       000000B3H   SFRSYM    DATA     BYTE      ID
       000000E8H   SFRSYM    DATA     BIT       EADC
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 29
-
-
       000000B7H   SFRSYM    DATA     BYTE      MDU_MD5
       000000E8H   SFRSYM    DATA     BYTE      IEN1
       000000A7H   SFRSYM    DATA     BYTE      CCU6_CMPMODIFH
@@ -1952,6 +1971,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000E8H.4 SFRSYM    DATA     BIT       ECCIP0
       0000009DH   SFRSYM    DATA     BYTE      CCU6_T12PRH
       000000C8H.3 SFRSYM    DATA     BIT       P4_3
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 30
+
+
       000000B0H.4 SFRSYM    DATA     BIT       P3_4
       000000A0H.5 SFRSYM    DATA     BIT       P2_5
       00000090H.6 SFRSYM    DATA     BIT       P1_6
@@ -1971,9 +1993,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       0000009DH   SFRSYM    DATA     BYTE      CCU6_IENH
       000000C8H.5 SFRSYM    DATA     BIT       P4_5
       000000B0H.6 SFRSYM    DATA     BIT       P3_6
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 30
-
-
       000000A0H.7 SFRSYM    DATA     BIT       P2_7
       000000F8H   SFRSYM    DATA     BIT       PADC
       000000E8H.7 SFRSYM    DATA     BIT       ECCIP3
@@ -2020,6 +2039,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000CAH   SFRSYM    DATA     BYTE      ADC_RESRA0L
       0000009BH   SFRSYM    DATA     BYTE      CCU6_T12MSELH
       000000CCH   SFRSYM    DATA     BYTE      ADC_RESRA1L
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 31
+
+
       000000AAH   SFRSYM    DATA     BYTE      SSC_CONL_O
       000000AFH   SFRSYM    DATA     BYTE      SSC_BRH
       000000B6H   SFRSYM    DATA     BYTE      OSC_CON
@@ -2039,9 +2061,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000CFH   SFRSYM    DATA     BYTE      ADC_ETRCR
       000000CAH   SFRSYM    DATA     WORD      ADC_RESR0LH
       000000C8H   SFRSYM    DATA     BIT       RI_1
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 31
-
-
       000000C2H   SFRSYM    DATA     BYTE      T21_RC2L
       000000FBH   SFRSYM    DATA     BYTE      CCU6_TCTR2H
       000000CCH   SFRSYM    DATA     WORD      ADC_RESR1LH
@@ -2088,6 +2107,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000C5H   SFRSYM    DATA     BYTE      T2_T2H
       00000092H   SFRSYM    DATA     BYTE      P5_PUDSEL
       000000A6H   SFRSYM    DATA     BYTE      CCU6_PSLR
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 32
+
+
       000000B0H.2 SFRSYM    DATA     BIT       MDU_BSY
       0000009AH   SFRSYM    DATA     BYTE      CD_CORDXL
       0000009CH   SFRSYM    DATA     BYTE      CD_CORDYL
@@ -2107,9 +2129,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000FCH   SFRSYM    DATA     WORD      CCU6_T13LH
       00000086H   SFRSYM    DATA     BYTE      P0_DIR
       000000F2H   SFRSYM    DATA     BYTE      MMSR
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 32
-
-
       00000091H   SFRSYM    DATA     BYTE      P1_DIR
       000000F0H   SFRSYM    DATA     BYTE      B
       000000CAH   SFRSYM    DATA     BYTE      ADC_RCR0
@@ -2156,6 +2175,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       00000098H.3 SFRSYM    DATA     BIT       TB8
       000000A8H.2 SFRSYM    DATA     BIT       EX1
       000000C1H   SFRSYM    DATA     BYTE      T2_T2MOD
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 33
+
+
       000000C0H   SFRSYM    DATA     BYTE      T2_T2CON
       000000FBH   SFRSYM    DATA     BYTE      CCU6_CC60SRH
       000000D0H   SFRSYM    DATA     BIT       P
@@ -2175,9 +2197,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000CCH   SFRSYM    DATA     BYTE      ADC_CHCTR2
       00000098H.5 SFRSYM    DATA     BIT       SM2
       000000FAH   SFRSYM    DATA     BYTE      CCU6_CC60SRL
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 33
-
-
       000000CDH   SFRSYM    DATA     BYTE      ADC_CHCTR3
       000000A4H   SFRSYM    DATA     BYTE      CCU6_T12DTCL
       000000FCH   SFRSYM    DATA     BYTE      CCU6_CC61SRL
@@ -2224,6 +2243,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       00000086H   SFRSYM    DATA     BYTE      P0_PUDEN
       000000FEH   SFRSYM    DATA     BYTE      CCU6_CMPSTATL
       000000C8H.3 SFRSYM    DATA     BIT       TB8_1
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 34
+
+
       000000A0H.3 SFRSYM    DATA     BIT       INT_EN
       00000091H   SFRSYM    DATA     BYTE      P1_PUDEN
       000000CBH   SFRSYM    DATA     BYTE      ADC_RESR0H
@@ -2243,9 +2265,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000D3H   SFRSYM    DATA     BYTE      ADC_RESR3H
       000000CBH   SFRSYM    DATA     BYTE      ADC_CHINCR
       0000009EH   SFRSYM    DATA     WORD      CCU6_T13PRLH
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 34
-
-
       000000C8H.5 SFRSYM    DATA     BIT       SM2_1
       000000C0H.3 SFRSYM    DATA     BIT       EXEN2
       00000093H   SFRSYM    DATA     BYTE      P5_PUDEN
@@ -2292,6 +2311,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000C3H   SFRSYM    DATA     BYTE      T2_RC2H
       000000B0H   SFRSYM    DATA     BYTE      P3_OD
       000000ECH   SFRSYM    DATA     BYTE      MMWR2
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 35
+
+
       000000FAH   SFRSYM    DATA     BYTE      CCU6_T12L
       000000C8H   SFRSYM    DATA     BYTE      P4_OD
       000000FCH   SFRSYM    DATA     BYTE      CCU6_T13L
@@ -2309,133 +2331,133 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000A0H   SFRSYM    DATA     BYTE      P2_DATA
       0000009BH   SFRSYM    DATA     BYTE      CCU6_CC63RH
 
-      01000446H   BLOCK     CODE     ---       LVL=0
-      01000446H   LINE      ---      ---       #7
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 35
-
-
-      01000446H   BLOCK     CODE     NEAR LAB  LVL=1
-      01000446H   LINE      ---      ---       #9
-      0100044DH   LINE      ---      ---       #10
-      01000457H   LINE      ---      ---       #11
-      0100045FH   LINE      ---      ---       #12
+      01000471H   BLOCK     CODE     ---       LVL=0
+      01000471H   LINE      ---      ---       #7
+      01000471H   BLOCK     CODE     NEAR LAB  LVL=1
+      01000471H   LINE      ---      ---       #9
+      01000477H   LINE      ---      ---       #10
+      01000481H   LINE      ---      ---       #11
+      01000489H   LINE      ---      ---       #12
       0200F064H   SYMBOL    XDATA    ---       uuidString
       00000002H   SYMBOL    DATA     ---       currentFlashDataEndAddress
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
-      010005BFH   BLOCK     CODE     ---       LVL=0
-      010005BFH   LINE      ---      ---       #15
-      010005BFH   LINE      ---      ---       #17
-      010005C1H   LINE      ---      ---       #18
-      010005C3H   LINE      ---      ---       #19
-      010005C5H   LINE      ---      ---       #22
-      010005D4H   LINE      ---      ---       #23
-      010005D4H   LINE      ---      ---       #24
-      010005DAH   LINE      ---      ---       #25
-      010005DCH   LINE      ---      ---       #26
-      010005DCH   LINE      ---      ---       #27
-      010005DEH   LINE      ---      ---       #28
-      010005E4H   LINE      ---      ---       #29
-      010005E6H   LINE      ---      ---       #30
-      010005E6H   LINE      ---      ---       #31
-      010005E8H   LINE      ---      ---       #32
-      010005EEH   LINE      ---      ---       #33
-      010005F0H   LINE      ---      ---       #34
-      010005F0H   LINE      ---      ---       #35
-      010005F2H   LINE      ---      ---       #36
-      010005F8H   LINE      ---      ---       #37
-      010005FAH   LINE      ---      ---       #38
-      010005FAH   LINE      ---      ---       #39
+      01000617H   BLOCK     CODE     ---       LVL=0
+      01000617H   LINE      ---      ---       #15
+      01000617H   LINE      ---      ---       #17
+      01000619H   LINE      ---      ---       #18
+      0100061BH   LINE      ---      ---       #19
+      0100061DH   LINE      ---      ---       #22
+      0100062CH   LINE      ---      ---       #23
+      0100062CH   LINE      ---      ---       #24
+      01000632H   LINE      ---      ---       #25
+      01000634H   LINE      ---      ---       #26
+      01000634H   LINE      ---      ---       #27
+      01000636H   LINE      ---      ---       #28
+      0100063CH   LINE      ---      ---       #29
+      0100063EH   LINE      ---      ---       #30
+      0100063EH   LINE      ---      ---       #31
+      01000640H   LINE      ---      ---       #32
+      01000646H   LINE      ---      ---       #33
+      01000648H   LINE      ---      ---       #34
+      01000648H   LINE      ---      ---       #35
+      0100064AH   LINE      ---      ---       #36
+      01000650H   LINE      ---      ---       #37
+      01000652H   LINE      ---      ---       #38
+      01000652H   LINE      ---      ---       #39
       00000007H   SYMBOL    DATA     CHAR      channelCode
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000602H   BLOCK     CODE     ---       LVL=0
-      01000602H   LINE      ---      ---       #44
-      01000602H   LINE      ---      ---       #46
-      01000604H   LINE      ---      ---       #47
-      01000606H   LINE      ---      ---       #48
-      01000608H   LINE      ---      ---       #51
-      01000617H   LINE      ---      ---       #52
-      01000617H   LINE      ---      ---       #53
-      0100061DH   LINE      ---      ---       #54
-      0100061FH   LINE      ---      ---       #55
-      0100061FH   LINE      ---      ---       #56
-      01000621H   LINE      ---      ---       #57
-      01000627H   LINE      ---      ---       #58
-      01000629H   LINE      ---      ---       #59
-      01000629H   LINE      ---      ---       #60
-      0100062BH   LINE      ---      ---       #61
-      01000631H   LINE      ---      ---       #62
-      01000633H   LINE      ---      ---       #63
-      01000633H   LINE      ---      ---       #64
-      01000635H   LINE      ---      ---       #65
-      0100063BH   LINE      ---      ---       #66
-      0100063DH   LINE      ---      ---       #67
-      0100063DH   LINE      ---      ---       #68
+      0100065AH   BLOCK     CODE     ---       LVL=0
+      0100065AH   LINE      ---      ---       #44
+      0100065AH   LINE      ---      ---       #46
+      0100065CH   LINE      ---      ---       #47
+      0100065EH   LINE      ---      ---       #48
+      01000660H   LINE      ---      ---       #51
+      0100066FH   LINE      ---      ---       #52
+      0100066FH   LINE      ---      ---       #53
+      01000675H   LINE      ---      ---       #54
+      01000677H   LINE      ---      ---       #55
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 36
+
+
+      01000677H   LINE      ---      ---       #56
+      01000679H   LINE      ---      ---       #57
+      0100067FH   LINE      ---      ---       #58
+      01000681H   LINE      ---      ---       #59
+      01000681H   LINE      ---      ---       #60
+      01000683H   LINE      ---      ---       #61
+      01000689H   LINE      ---      ---       #62
+      0100068BH   LINE      ---      ---       #63
+      0100068BH   LINE      ---      ---       #64
+      0100068DH   LINE      ---      ---       #65
+      01000693H   LINE      ---      ---       #66
+      01000695H   LINE      ---      ---       #67
+      01000695H   LINE      ---      ---       #68
       00000007H   SYMBOL    DATA     CHAR      channelCode
       ---         BLOCKEND  ---      ---       LVL=0
 
       01000020H   BLOCK     CODE     ---       LVL=0
       01000020H   LINE      ---      ---       #73
       01000020H   LINE      ---      ---       #75
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 36
-
-
       01000022H   LINE      ---      ---       #85
       ---         BLOCKEND  ---      ---       LVL=0
 
-      0100050EH   BLOCK     CODE     ---       LVL=0
-      0100050EH   LINE      ---      ---       #87
-      0100050EH   LINE      ---      ---       #88
-      01000514H   LINE      ---      ---       #89
-      01000518H   LINE      ---      ---       #90
-      0100051AH   LINE      ---      ---       #91
+      01000570H   BLOCK     CODE     ---       LVL=0
+      01000570H   LINE      ---      ---       #87
+      01000570H   LINE      ---      ---       #88
+      01000576H   LINE      ---      ---       #89
+      0100057AH   LINE      ---      ---       #90
+      0100057CH   LINE      ---      ---       #91
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000520H   BLOCK     CODE     ---       LVL=0
-      01000520H   LINE      ---      ---       #95
-      01000522H   LINE      ---      ---       #96
-      01000528H   LINE      ---      ---       #97
-      0100052CH   LINE      ---      ---       #98
-      0100052EH   LINE      ---      ---       #99
-      01000530H   LINE      ---      ---       #100
-      01000532H   LINE      ---      ---       #101
-      0100053AH   LINE      ---      ---       #103
-      0100053AH   LINE      ---      ---       #104
-      0100053CH   LINE      ---      ---       #105
-      0100053EH   LINE      ---      ---       #106
-      01000540H   LINE      ---      ---       #107
-      01000546H   LINE      ---      ---       #108
-      0100054DH   LINE      ---      ---       #109
-      0100054FH   LINE      ---      ---       #110
-      01000551H   LINE      ---      ---       #111
-      01000553H   LINE      ---      ---       #112
-      01000559H   LINE      ---      ---       #113
-      0100055BH   LINE      ---      ---       #114
-      00000058H   SYMBOL    DATA     CHAR      modeCode
+      01000582H   BLOCK     CODE     ---       LVL=0
+      01000582H   LINE      ---      ---       #95
+      01000584H   LINE      ---      ---       #96
+      0100058AH   LINE      ---      ---       #97
+      0100058EH   LINE      ---      ---       #98
+      01000590H   LINE      ---      ---       #99
+      01000592H   LINE      ---      ---       #100
+      01000594H   LINE      ---      ---       #101
+      0100059CH   LINE      ---      ---       #103
+      0100059CH   LINE      ---      ---       #104
+      0100059EH   LINE      ---      ---       #105
+      010005A0H   LINE      ---      ---       #106
+      010005A2H   LINE      ---      ---       #107
+      010005A8H   LINE      ---      ---       #108
+      010005AFH   LINE      ---      ---       #109
+      010005B1H   LINE      ---      ---       #110
+      010005B3H   LINE      ---      ---       #111
+      010005B5H   LINE      ---      ---       #112
+      010005BBH   LINE      ---      ---       #113
+      010005BDH   LINE      ---      ---       #114
+      0000005AH   SYMBOL    DATA     CHAR      modeCode
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000597H   BLOCK     CODE     ---       LVL=0
-      01000597H   LINE      ---      ---       #118
-      01000599H   LINE      ---      ---       #119
-      0100059EH   LINE      ---      ---       #120
-      010005A0H   LINE      ---      ---       #121
-      010005A6H   LINE      ---      ---       #122
-      010005ADH   LINE      ---      ---       #123
-      010005AFH   LINE      ---      ---       #124
-      010005B5H   LINE      ---      ---       #125
-      010005B7H   LINE      ---      ---       #126
-      00000058H   SYMBOL    DATA     CHAR      modeCode
+      010005EFH   BLOCK     CODE     ---       LVL=0
+      010005EFH   LINE      ---      ---       #118
+      010005F1H   LINE      ---      ---       #119
+      010005F6H   LINE      ---      ---       #120
+      010005F8H   LINE      ---      ---       #121
+      010005FEH   LINE      ---      ---       #122
+      01000605H   LINE      ---      ---       #123
+      01000607H   LINE      ---      ---       #124
+      0100060DH   LINE      ---      ---       #125
+      0100060FH   LINE      ---      ---       #126
+      0000005AH   SYMBOL    DATA     CHAR      modeCode
       ---         BLOCKEND  ---      ---       LVL=0
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 37
+
+
 
       ---         MODULE    ---      ---       FLASHHANDLER
       00000036H   PUBLIC    DATA     ---       MagicMemory
       000000E0H   PUBLIC    IDATA    ---       WLBuf
-      010008ACH   PUBLIC    CODE     ---       _FLASH_Erase
-      010007D6H   PUBLIC    CODE     ---       _FLASH_Prog
-      010007D2H   PUBLIC    CODE     ---       _FLASH_Ready
-      010008A7H   PUBLIC    CODE     ---       FLASH_Erase_Abort
+      0100088CH   PUBLIC    CODE     ---       _FLASH_Erase
+      010007DCH   PUBLIC    CODE     ---       _FLASH_Prog
+      0100072FH   PUBLIC    CODE     ---       _FLASH_Ready
+      01000887H   PUBLIC    CODE     ---       FLASH_Erase_Abort
       000000A0H.5 SFRSYM    DATA     BIT       KEEPX
       000000B0H   SFRSYM    DATA     BYTE      P3_DATA
       000000FAH   SFRSYM    DATA     BYTE      CCU6_CC60RL
@@ -2447,9 +2469,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000FCH   SFRSYM    DATA     BYTE      CCU6_CC61RL
       000000DCH   SFRSYM    DATA     BYTE      CAN_DATA1
       000000D3H   SFRSYM    DATA     BYTE      ADC_EVINPR
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 37
-
-
       000000A0H.7 SFRSYM    DATA     BIT       KEEPZ
       000000C9H   SFRSYM    DATA     BYTE      UART1_SBUF
       00000092H   SFRSYM    DATA     BYTE      P5_DATA
@@ -2496,6 +2515,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000B0H   SFRSYM    DATA     BIT       P3_0
       000000A0H.1 SFRSYM    DATA     BIT       P2_1
       00000090H.2 SFRSYM    DATA     BIT       P1_2
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 38
+
+
       00000080H.3 SFRSYM    DATA     BIT       P0_3
       000000BAH   SFRSYM    DATA     BYTE      MODPISEL2
       000000F9H   SFRSYM    DATA     BYTE      IPH1
@@ -2515,9 +2537,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000BDH   SFRSYM    DATA     BYTE      FEAH
       000000D2H   SFRSYM    DATA     BYTE      ADC_QINR0
       000000D2H   SFRSYM    DATA     BYTE      ADC_QBUR0
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 38
-
-
       000000C8H.2 SFRSYM    DATA     BIT       P4_2
       000000B0H.3 SFRSYM    DATA     BIT       P3_3
       000000A0H.4 SFRSYM    DATA     BIT       P2_4
@@ -2564,6 +2583,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       0000009EH   SFRSYM    DATA     BYTE      CCU6_T13PRL
       000000FCH   SFRSYM    DATA     WORD      CCU6_CC61SRLH
       000000D0H.7 SFRSYM    DATA     BIT       CY
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 39
+
+
       000000B7H   SFRSYM    DATA     BYTE      MDU_MR5
       0000009CH   SFRSYM    DATA     BYTE      CCU6_IENL
       000000FEH   SFRSYM    DATA     WORD      CCU6_CC62SRLH
@@ -2583,9 +2605,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       00000081H   SFRSYM    DATA     BYTE      SP
       0000009FH   SFRSYM    DATA     BYTE      CCU6_INPH
       000000BDH   SFRSYM    DATA     BYTE      BCON
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 39
-
-
       000000CFH   SFRSYM    DATA     BYTE      ADC_RESRA2H
       000000F8H.7 SFRSYM    DATA     BIT       PCCIP3
       000000ABH   SFRSYM    DATA     BYTE      SSC_CONH_P
@@ -2632,6 +2651,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000B4H   SFRSYM    DATA     BYTE      PMCON0
       000000B6H   SFRSYM    DATA     BYTE      IRCON2
       000000A4H   SFRSYM    DATA     BYTE      CCU6_ISSL
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 40
+
+
       000000DBH   SFRSYM    DATA     WORD      CAN_DATA01
       000000B5H   SFRSYM    DATA     BYTE      PMCON1
       00000080H   SFRSYM    DATA     BYTE      P0_PUDSEL
@@ -2651,9 +2673,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000B0H.1 SFRSYM    DATA     BIT       IERR
       000000B0H   SFRSYM    DATA     BYTE      P3_PUDSEL
       0000009DH   SFRSYM    DATA     BYTE      CD_CORDYH
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 40
-
-
       000000DDH   SFRSYM    DATA     WORD      CAN_DATA23
       00000098H   SFRSYM    DATA     BYTE      SCON
       000000C8H   SFRSYM    DATA     BYTE      P4_PUDSEL
@@ -2700,6 +2719,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       00000093H   SFRSYM    DATA     BYTE      P5_DIR
       000000BBH   SFRSYM    DATA     BYTE      NMICON
       000000FAH   SFRSYM    DATA     WORD      CCU6_CC60RLH
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 41
+
+
       000000D1H   SFRSYM    DATA     BYTE      ADC_PAGE
       000000E0H   SFRSYM    DATA     BYTE      ACC
       000000FCH   SFRSYM    DATA     WORD      CCU6_CC61RLH
@@ -2719,9 +2741,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000A8H.5 SFRSYM    DATA     BIT       ET2
       000000C0H.7 SFRSYM    DATA     BIT       TF2
       00000098H.2 SFRSYM    DATA     BIT       RB8
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 41
-
-
       0000008CH   SFRSYM    DATA     BYTE      TH0
       000000D9H   SFRSYM    DATA     WORD      CAN_ADLH
       00000088H   SFRSYM    DATA     BIT       IT0
@@ -2768,6 +2787,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000D0H.4 SFRSYM    DATA     BIT       RS1
       000000B8H.5 SFRSYM    DATA     BIT       PT2
       000000A0H   SFRSYM    DATA     BIT       CD_BSY
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 42
+
+
       000000D3H   SFRSYM    DATA     BYTE      ADC_CHCTR7
       00000088H.6 SFRSYM    DATA     BIT       TR1
       000000A0H.2 SFRSYM    DATA     BIT       EOC
@@ -2787,9 +2809,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000B0H   SFRSYM    DATA     BYTE      P3_ALTSEL0
       0000009CH   SFRSYM    DATA     BYTE      CCU6_ISL
       000000CEH   SFRSYM    DATA     BYTE      ADC_VFCR
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 42
-
-
       000000C8H   SFRSYM    DATA     BYTE      P4_ALTSEL0
       000000B1H   SFRSYM    DATA     BYTE      P3_ALTSEL1
       00000083H   SFRSYM    DATA     BYTE      DPH
@@ -2836,6 +2855,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000BFH   SFRSYM    DATA     BYTE      SCU_PAGE
       0000009FH   SFRSYM    DATA     BYTE      CCU6_PISEL0H
       0000009EH   SFRSYM    DATA     BYTE      CCU6_MCMOUTSL
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 43
+
+
       000000E9H   SFRSYM    DATA     BYTE      FDCON
       000000B0H   SFRSYM    DATA     BYTE      MDU_MDUSTAT
       000000CAH   SFRSYM    DATA     WORD      ADC_RESRA0LH
@@ -2855,9 +2877,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000FDH   SFRSYM    DATA     BYTE      CCU6_T13H
       000000C2H   SFRSYM    DATA     WORD      T21_RC2LH
       00000090H   SFRSYM    DATA     BYTE      P1_OD
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 43
-
-
       000000D0H.5 SFRSYM    DATA     BIT       F0
       000000F8H.3 SFRSYM    DATA     BIT       PXM
       000000EBH   SFRSYM    DATA     BYTE      MMWR1
@@ -2885,73 +2904,73 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000A0H   SFRSYM    DATA     BYTE      P2_DATA
       0000009BH   SFRSYM    DATA     BYTE      CCU6_CC63RH
 
-      010008A7H   BLOCK     CODE     ---       LVL=0
-      010008A7H   LINE      ---      ---       #75
-      010008A7H   LINE      ---      ---       #76
-      010008A7H   LINE      ---      ---       #78
-      010008AAH   LINE      ---      ---       #85
-      010008ABH   LINE      ---      ---       #86
+      01000887H   BLOCK     CODE     ---       LVL=0
+      01000887H   LINE      ---      ---       #75
+      01000887H   LINE      ---      ---       #76
+      01000887H   LINE      ---      ---       #78
+      0100088AH   LINE      ---      ---       #85
+      0100088BH   LINE      ---      ---       #86
       ---         BLOCKEND  ---      ---       LVL=0
 
-      010007D2H   BLOCK     CODE     ---       LVL=0
-      010007D2H   LINE      ---      ---       #90
-      010007D2H   LINE      ---      ---       #91
-      010007D2H   LINE      ---      ---       #92
-      010007D3H   LINE      ---      ---       #94
+      0100072FH   BLOCK     CODE     ---       LVL=0
+      0100072FH   LINE      ---      ---       #90
+      0100072FH   LINE      ---      ---       #91
+      0100072FH   LINE      ---      ---       #92
+      01000730H   LINE      ---      ---       #94
       00000007H   SYMBOL    DATA     BYTE      BankNum
       ---         BLOCKEND  ---      ---       LVL=0
 
-      010007D6H   BLOCK     CODE     ---       LVL=0
-      010007D6H   LINE      ---      ---       #113
-      010007D6H   LINE      ---      ---       #114
+      010007DCH   BLOCK     CODE     ---       LVL=0
+      010007DCH   LINE      ---      ---       #113
+      010007DCH   LINE      ---      ---       #114
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 44
+
+
       00000006H   SYMBOL    DATA     ---       WLAddress
-      010007D6H   BLOCK     CODE     NEAR LAB  LVL=1
-      010007D6H   LINE      ---      ---       #126
-      010007DAH   LINE      ---      ---       #129
-      010007DEH   LINE      ---      ---       #131
-      010007E0H   LINE      ---      ---       #132
-      010007E3H   LINE      ---      ---       #136
-      010007E6H   LINE      ---      ---       #145
-      010007E8H   LINE      ---      ---       #146
-      010007EAH   LINE      ---      ---       #147
-      010007EDH   LINE      ---      ---       #152
+      010007DCH   BLOCK     CODE     NEAR LAB  LVL=1
+      010007DCH   LINE      ---      ---       #126
+      010007E0H   LINE      ---      ---       #129
+      010007E4H   LINE      ---      ---       #131
+      010007E6H   LINE      ---      ---       #132
+      010007E9H   LINE      ---      ---       #136
+      010007ECH   LINE      ---      ---       #145
+      010007EEH   LINE      ---      ---       #146
+      010007F0H   LINE      ---      ---       #147
+      010007F3H   LINE      ---      ---       #152
       00000020H.1 SYMBOL    BIT      BIT       success
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
-      010008ACH   BLOCK     CODE     ---       LVL=0
-      010008ACH   LINE      ---      ---       #161
-      010008ACH   LINE      ---      ---       #163
+      0100088CH   BLOCK     CODE     ---       LVL=0
+      0100088CH   LINE      ---      ---       #161
+      0100088CH   LINE      ---      ---       #163
       00000006H   SYMBOL    DATA     WORD      DFlash0Sector
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 44
-
-
       00000004H   SYMBOL    DATA     WORD      DFlash1Sector
-      010008ACH   BLOCK     CODE     NEAR LAB  LVL=1
-      010008ACH   LINE      ---      ---       #176
-      010008B0H   LINE      ---      ---       #178
-      010008B4H   LINE      ---      ---       #186
-      010008B8H   LINE      ---      ---       #187
-      010008BBH   LINE      ---      ---       #188
-      010008BFH   LINE      ---      ---       #189
-      010008C2H   LINE      ---      ---       #191
-      010008C6H   LINE      ---      ---       #192
-      010008C8H   LINE      ---      ---       #193
-      010008CAH   LINE      ---      ---       #196
-      010008CCH   LINE      ---      ---       #197
-      010008CFH   LINE      ---      ---       #201
-      010008D2H   LINE      ---      ---       #213
-      010008D4H   LINE      ---      ---       #214
-      010008D6H   LINE      ---      ---       #215
-      010008D9H   LINE      ---      ---       #217
-      00000020H.2 SYMBOL    BIT      BIT       success
-      00000031H   SYMBOL    DATA     ---       P1
-      00000033H   SYMBOL    DATA     ---       P2
+      0100088CH   BLOCK     CODE     NEAR LAB  LVL=1
+      0100088CH   LINE      ---      ---       #176
+      01000890H   LINE      ---      ---       #178
+      01000894H   LINE      ---      ---       #186
+      01000898H   LINE      ---      ---       #187
+      0100089BH   LINE      ---      ---       #188
+      0100089FH   LINE      ---      ---       #189
+      010008A2H   LINE      ---      ---       #191
+      010008A6H   LINE      ---      ---       #192
+      010008A8H   LINE      ---      ---       #193
+      010008AAH   LINE      ---      ---       #196
+      010008ACH   LINE      ---      ---       #197
+      010008AFH   LINE      ---      ---       #201
+      010008B2H   LINE      ---      ---       #213
+      010008B4H   LINE      ---      ---       #214
+      010008B6H   LINE      ---      ---       #215
+      010008B9H   LINE      ---      ---       #217
+      00000020H.1 SYMBOL    BIT      BIT       success
+      00000065H   SYMBOL    DATA     ---       P1
+      00000067H   SYMBOL    DATA     ---       P2
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
       ---         MODULE    ---      ---       IO
-      0100040CH   PUBLIC    CODE     ---       IO_vInit
+      01000437H   PUBLIC    CODE     ---       IO_vInit
       000000A0H.5 SFRSYM    DATA     BIT       KEEPX
       000000B0H   SFRSYM    DATA     BYTE      P3_DATA
       000000FAH   SFRSYM    DATA     BYTE      CCU6_CC60RL
@@ -2972,6 +2991,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000C4H   SFRSYM    DATA     WORD      T2_T2LH
       0000009AH   SFRSYM    DATA     BYTE      CCU6_CC63RL
       000000DEH   SFRSYM    DATA     BYTE      CAN_DATA3
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 45
+
+
       000000D2H   SFRSYM    DATA     BYTE      ADC_EVINSR
       000000D0H.6 SFRSYM    DATA     BIT       AC
       000000C8H   SFRSYM    DATA     BYTE      UART1_SCON
@@ -2991,9 +3013,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000A8H   SFRSYM    DATA     BYTE      IEN0
       000000B3H   SFRSYM    DATA     BYTE      ID
       000000E8H   SFRSYM    DATA     BIT       EADC
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 45
-
-
       000000B7H   SFRSYM    DATA     BYTE      MDU_MD5
       000000E8H   SFRSYM    DATA     BYTE      IEN1
       000000A7H   SFRSYM    DATA     BYTE      CCU6_CMPMODIFH
@@ -3040,6 +3059,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000E8H.4 SFRSYM    DATA     BIT       ECCIP0
       0000009DH   SFRSYM    DATA     BYTE      CCU6_T12PRH
       000000C8H.3 SFRSYM    DATA     BIT       P4_3
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 46
+
+
       000000B0H.4 SFRSYM    DATA     BIT       P3_4
       000000A0H.5 SFRSYM    DATA     BIT       P2_5
       00000090H.6 SFRSYM    DATA     BIT       P1_6
@@ -3059,9 +3081,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       0000009DH   SFRSYM    DATA     BYTE      CCU6_IENH
       000000C8H.5 SFRSYM    DATA     BIT       P4_5
       000000B0H.6 SFRSYM    DATA     BIT       P3_6
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 46
-
-
       000000A0H.7 SFRSYM    DATA     BIT       P2_7
       000000F8H   SFRSYM    DATA     BIT       PADC
       000000E8H.7 SFRSYM    DATA     BIT       ECCIP3
@@ -3108,6 +3127,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000CAH   SFRSYM    DATA     BYTE      ADC_RESRA0L
       0000009BH   SFRSYM    DATA     BYTE      CCU6_T12MSELH
       000000CCH   SFRSYM    DATA     BYTE      ADC_RESRA1L
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 47
+
+
       000000AAH   SFRSYM    DATA     BYTE      SSC_CONL_O
       000000AFH   SFRSYM    DATA     BYTE      SSC_BRH
       000000B6H   SFRSYM    DATA     BYTE      OSC_CON
@@ -3127,9 +3149,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000CFH   SFRSYM    DATA     BYTE      ADC_ETRCR
       000000CAH   SFRSYM    DATA     WORD      ADC_RESR0LH
       000000C8H   SFRSYM    DATA     BIT       RI_1
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 47
-
-
       000000C2H   SFRSYM    DATA     BYTE      T21_RC2L
       000000FBH   SFRSYM    DATA     BYTE      CCU6_TCTR2H
       000000CCH   SFRSYM    DATA     WORD      ADC_RESR1LH
@@ -3176,6 +3195,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000C5H   SFRSYM    DATA     BYTE      T2_T2H
       00000092H   SFRSYM    DATA     BYTE      P5_PUDSEL
       000000A6H   SFRSYM    DATA     BYTE      CCU6_PSLR
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 48
+
+
       000000B0H.2 SFRSYM    DATA     BIT       MDU_BSY
       0000009AH   SFRSYM    DATA     BYTE      CD_CORDXL
       0000009CH   SFRSYM    DATA     BYTE      CD_CORDYL
@@ -3195,9 +3217,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000FCH   SFRSYM    DATA     WORD      CCU6_T13LH
       00000086H   SFRSYM    DATA     BYTE      P0_DIR
       000000F2H   SFRSYM    DATA     BYTE      MMSR
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 48
-
-
       00000091H   SFRSYM    DATA     BYTE      P1_DIR
       000000F0H   SFRSYM    DATA     BYTE      B
       000000CAH   SFRSYM    DATA     BYTE      ADC_RCR0
@@ -3244,6 +3263,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       00000098H.3 SFRSYM    DATA     BIT       TB8
       000000A8H.2 SFRSYM    DATA     BIT       EX1
       000000C1H   SFRSYM    DATA     BYTE      T2_T2MOD
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 49
+
+
       000000C0H   SFRSYM    DATA     BYTE      T2_T2CON
       000000FBH   SFRSYM    DATA     BYTE      CCU6_CC60SRH
       000000D0H   SFRSYM    DATA     BIT       P
@@ -3263,9 +3285,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000CCH   SFRSYM    DATA     BYTE      ADC_CHCTR2
       00000098H.5 SFRSYM    DATA     BIT       SM2
       000000FAH   SFRSYM    DATA     BYTE      CCU6_CC60SRL
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 49
-
-
       000000CDH   SFRSYM    DATA     BYTE      ADC_CHCTR3
       000000A4H   SFRSYM    DATA     BYTE      CCU6_T12DTCL
       000000FCH   SFRSYM    DATA     BYTE      CCU6_CC61SRL
@@ -3312,6 +3331,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       00000086H   SFRSYM    DATA     BYTE      P0_PUDEN
       000000FEH   SFRSYM    DATA     BYTE      CCU6_CMPSTATL
       000000C8H.3 SFRSYM    DATA     BIT       TB8_1
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 50
+
+
       000000A0H.3 SFRSYM    DATA     BIT       INT_EN
       00000091H   SFRSYM    DATA     BYTE      P1_PUDEN
       000000CBH   SFRSYM    DATA     BYTE      ADC_RESR0H
@@ -3331,9 +3353,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000D3H   SFRSYM    DATA     BYTE      ADC_RESR3H
       000000CBH   SFRSYM    DATA     BYTE      ADC_CHINCR
       0000009EH   SFRSYM    DATA     WORD      CCU6_T13PRLH
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 50
-
-
       000000C8H.5 SFRSYM    DATA     BIT       SM2_1
       000000C0H.3 SFRSYM    DATA     BIT       EXEN2
       00000093H   SFRSYM    DATA     BYTE      P5_PUDEN
@@ -3380,6 +3399,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000C3H   SFRSYM    DATA     BYTE      T2_RC2H
       000000B0H   SFRSYM    DATA     BYTE      P3_OD
       000000ECH   SFRSYM    DATA     BYTE      MMWR2
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 51
+
+
       000000FAH   SFRSYM    DATA     BYTE      CCU6_T12L
       000000C8H   SFRSYM    DATA     BYTE      P4_OD
       000000FCH   SFRSYM    DATA     BYTE      CCU6_T13L
@@ -3397,25 +3419,22 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000A0H   SFRSYM    DATA     BYTE      P2_DATA
       0000009BH   SFRSYM    DATA     BYTE      CCU6_CC63RH
 
-      0100040CH   BLOCK     CODE     ---       LVL=0
-      0100040CH   LINE      ---      ---       #49
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 51
-
-
-      0100040CH   LINE      ---      ---       #50
-      0100040CH   LINE      ---      ---       #52
-      0100040FH   LINE      ---      ---       #53
-      01000412H   LINE      ---      ---       #54
-      01000415H   LINE      ---      ---       #55
-      01000417H   LINE      ---      ---       #163
+      01000437H   BLOCK     CODE     ---       LVL=0
+      01000437H   LINE      ---      ---       #49
+      01000437H   LINE      ---      ---       #50
+      01000437H   LINE      ---      ---       #52
+      0100043AH   LINE      ---      ---       #53
+      0100043DH   LINE      ---      ---       #54
+      01000440H   LINE      ---      ---       #55
+      01000442H   LINE      ---      ---       #163
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       FLASHUTILS
-      00000021H   PUBLIC    DATA     BYTE      ?_writeBufferToFlash?BYTE
-      010006D7H   PUBLIC    CODE     ---       _writeBufferToFlash
-      01000645H   PUBLIC    CODE     ---       _readFlashToBuffer
-      01000788H   PUBLIC    CODE     ---       _writeToFlashPage
-      010008DAH   PUBLIC    CODE     ---       getFlashDataEndAddress
+      0000005AH   PUBLIC    DATA     BYTE      ?_writeBufferToFlash?BYTE
+      010008BAH   PUBLIC    CODE     ---       _writeBufferToFlash
+      0100069DH   PUBLIC    CODE     ---       _readFlashToBuffer
+      0100078DH   PUBLIC    CODE     ---       _writeToFlashPage
+      010005C5H   PUBLIC    CODE     ---       getFlashDataEndAddress
       000000A0H.5 SFRSYM    DATA     BIT       KEEPX
       000000B0H   SFRSYM    DATA     BYTE      P3_DATA
       000000FAH   SFRSYM    DATA     BYTE      CCU6_CC60RL
@@ -3448,6 +3467,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000B3H   SFRSYM    DATA     BYTE      MDU_MD1
       000000BCH   SFRSYM    DATA     BYTE      NMISR
       000000B4H   SFRSYM    DATA     BYTE      MDU_MD2
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 52
+
+
       000000FCH   SFRSYM    DATA     BYTE      CCU6_MODCTRL
       000000A0H.1 SFRSYM    DATA     BIT       ERROR
       000000B5H   SFRSYM    DATA     BYTE      MDU_MD3
@@ -3467,9 +3489,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000A0H   SFRSYM    DATA     BIT       P2_0
       00000090H.1 SFRSYM    DATA     BIT       P1_1
       00000080H.2 SFRSYM    DATA     BIT       P0_2
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 52
-
-
       0000008FH   SFRSYM    DATA     BYTE      SYSCON0
       000000B7H   SFRSYM    DATA     BYTE      MODPISEL1
       000000A6H   SFRSYM    DATA     BYTE      CCU6_CMPMODIFL
@@ -3516,6 +3535,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000B0H.5 SFRSYM    DATA     BIT       P3_5
       000000A0H.6 SFRSYM    DATA     BIT       P2_6
       00000090H.7 SFRSYM    DATA     BIT       P1_7
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 53
+
+
       000000E8H.6 SFRSYM    DATA     BIT       ECCIP2
       000000A8H.4 SFRSYM    DATA     BIT       ES
       000000CDH   SFRSYM    DATA     BYTE      UART1_FDSTEP
@@ -3535,9 +3557,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       0000009CH   SFRSYM    DATA     BYTE      CCU6_T12PRL
       000000D8H   SFRSYM    DATA     BYTE      CAN_ADCON
       000000C8H.7 SFRSYM    DATA     BIT       P4_7
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 53
-
-
       000000FAH   SFRSYM    DATA     WORD      CCU6_CC60SRLH
       00000098H   SFRSYM    DATA     BIT       RI
       000000B6H   SFRSYM    DATA     BYTE      MDU_MR4
@@ -3584,6 +3603,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000B7H   SFRSYM    DATA     BYTE      PLL_CON
       000000A7H   SFRSYM    DATA     BYTE      CCU6_TCTR0H
       0000009AH   SFRSYM    DATA     BYTE      CCU6_T12MSELL
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 54
+
+
       000000A5H   SFRSYM    DATA     BYTE      CCU6_ISRH
       000000ADH   SFRSYM    DATA     BYTE      SSC_RBL
       000000AEH   SFRSYM    DATA     BYTE      SSC_BRL
@@ -3603,9 +3625,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000B5H   SFRSYM    DATA     BYTE      IRCON1
       0000009DH   SFRSYM    DATA     BYTE      CCU6_TCTR4H
       000000A6H   SFRSYM    DATA     BYTE      CCU6_TCTR0L
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 54
-
-
       000000A4H   SFRSYM    DATA     BYTE      CCU6_ISRL
       000000D2H   SFRSYM    DATA     WORD      ADC_RESR3LH
       000000E8H.1 SFRSYM    DATA     BIT       ESSC
@@ -3652,6 +3671,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000CCH   SFRSYM    DATA     BYTE      UART1_FDCON
       000000A7H   SFRSYM    DATA     BYTE      CCU6_MCMCTR
       000000BEH   SFRSYM    DATA     BYTE      WDTL
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 55
+
+
       000000B3H   SFRSYM    DATA     BYTE      XADDRH
       00000088H.1 SFRSYM    DATA     BIT       IE0
       000000FAH   SFRSYM    DATA     WORD      CCU6_T12LH
@@ -3671,9 +3693,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000C0H   SFRSYM    DATA     BIT       CP_RL2
       000000C9H   SFRSYM    DATA     BYTE      P4_DIR
       000000CDH   SFRSYM    DATA     BYTE      ADC_RCR3
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 55
-
-
       000000CEH   SFRSYM    DATA     BYTE      UART1_FDRES
       000000B2H   SFRSYM    DATA     BYTE      PORT_PAGE
       00000093H   SFRSYM    DATA     BYTE      P5_DIR
@@ -3720,6 +3739,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000FFH   SFRSYM    DATA     BYTE      CCU6_CC62SRH
       000000CEH   SFRSYM    DATA     BYTE      ADC_QSR0
       000000CBH   SFRSYM    DATA     BYTE      ADC_CHCTR1
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 56
+
+
       00000098H.6 SFRSYM    DATA     BIT       SM1
       000000BBH   SFRSYM    DATA     BYTE      WDTCON
       0000008BH   SFRSYM    DATA     BYTE      TL1
@@ -3739,9 +3761,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000D0H.3 SFRSYM    DATA     BIT       RS0
       000000B8H.3 SFRSYM    DATA     BIT       PT1
       0000009AH   SFRSYM    DATA     BYTE      CCU6_CC63SRL
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 56
-
-
       000000D2H   SFRSYM    DATA     BYTE      ADC_CHCTR6
       00000088H.4 SFRSYM    DATA     BIT       TR0
       000000D0H.4 SFRSYM    DATA     BIT       RS1
@@ -3788,6 +3807,9 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000B1H   SFRSYM    DATA     BYTE      P3_PUDEN
       000000B9H   SFRSYM    DATA     BYTE      IPH
       000000CFH   SFRSYM    DATA     BYTE      ADC_RESR2H
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 57
+
+
       0000009CH   SFRSYM    DATA     WORD      CCU6_T12PRLH
       000000C8H.6 SFRSYM    DATA     BIT       SM1_1
       000000C9H   SFRSYM    DATA     BYTE      P4_PUDEN
@@ -3807,9 +3829,6 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       0000009FH   SFRSYM    DATA     BYTE      CCU6_MCMOUTSH
       000000D2H   SFRSYM    DATA     BYTE      ADC_RESR3L
       000000A0H   SFRSYM    DATA     BYTE      CD_STATC
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 57
-
-
       000000E8H.3 SFRSYM    DATA     BIT       EXM
       000000C4H   SFRSYM    DATA     BYTE      T21_T2L
       000000BFH   SFRSYM    DATA     BYTE      SCU_PAGE
@@ -3856,154 +3875,154 @@ SYMBOL TABLE OF MODULE:  TestBoard (?C_STARTUP)
       000000FBH   SFRSYM    DATA     BYTE      CCU6_CC60RH
       00000080H   SFRSYM    DATA     BYTE      P0_DATA
       000000FDH   SFRSYM    DATA     BYTE      CCU6_CC61RH
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 58
+
+
       00000090H   SFRSYM    DATA     BYTE      P1_DATA
       000000FFH   SFRSYM    DATA     BYTE      CCU6_CC62RH
       000000A0H   SFRSYM    DATA     BYTE      P2_DATA
       0000009BH   SFRSYM    DATA     BYTE      CCU6_CC63RH
-      010003D3H   SYMBOL    CONST    ---       _?ix1000
+      010003FEH   SYMBOL    CONST    ---       _?ix1000
 
-      010008DAH   BLOCK     CODE     ---       LVL=0
-      010008DAH   LINE      ---      ---       #12
-      010008DAH   BLOCK     CODE     NEAR LAB  LVL=1
-      010008DAH   LINE      ---      ---       #14
-      010008DEH   LINE      ---      ---       #17
-      010008ECH   LINE      ---      ---       #18
-      010008ECH   LINE      ---      ---       #19
-      010008F0H   LINE      ---      ---       #20
-      010008F0H   LINE      ---      ---       #21
-      010008F4H   LINE      ---      ---       #22
-      010008F6H   LINE      ---      ---       #23
-      010008F6H   LINE      ---      ---       #24
-      01000903H   LINE      ---      ---       #25
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 58
-
-
-      01000903H   LINE      ---      ---       #26
+      010005C5H   BLOCK     CODE     ---       LVL=0
+      010005C5H   LINE      ---      ---       #12
+      010005C5H   BLOCK     CODE     NEAR LAB  LVL=1
+      010005C5H   LINE      ---      ---       #14
+      010005C9H   LINE      ---      ---       #17
+      010005D7H   LINE      ---      ---       #18
+      010005D7H   LINE      ---      ---       #19
+      010005DBH   LINE      ---      ---       #20
+      010005DBH   LINE      ---      ---       #21
+      010005DFH   LINE      ---      ---       #22
+      010005E1H   LINE      ---      ---       #23
+      010005E1H   LINE      ---      ---       #24
+      010005EEH   LINE      ---      ---       #25
+      010005EEH   LINE      ---      ---       #26
       00000006H   SYMBOL    DATA     ---       EECurrentAddr
       00000082H   SYMBOL    DATA     ---       EETempAddr
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
-      01000788H   BLOCK     CODE     ---       LVL=0
-      01000788H   LINE      ---      ---       #29
-      0000002CH   SYMBOL    DATA     ---       buffer
-      0000002EH   SYMBOL    DATA     ---       EECurrentAddr
-      01000792H   BLOCK     CODE     NEAR LAB  LVL=1
-      01000792H   LINE      ---      ---       #30
-      01000795H   LINE      ---      ---       #32
-      01000795H   LINE      ---      ---       #33
-      010007A3H   LINE      ---      ---       #34
-      010007ABH   LINE      ---      ---       #35
-      010007B6H   LINE      ---      ---       #38
-      010007C5H   LINE      ---      ---       #39
-      010007C5H   LINE      ---      ---       #40
-      010007D1H   LINE      ---      ---       #41
-      010007D1H   LINE      ---      ---       #43
+      0100078DH   BLOCK     CODE     ---       LVL=0
+      0100078DH   LINE      ---      ---       #29
+      00000065H   SYMBOL    DATA     ---       buffer
+      00000067H   SYMBOL    DATA     ---       EECurrentAddr
+      01000797H   BLOCK     CODE     NEAR LAB  LVL=1
+      01000797H   LINE      ---      ---       #30
+      0100079AH   LINE      ---      ---       #32
+      0100079AH   LINE      ---      ---       #33
+      010007A8H   LINE      ---      ---       #34
+      010007B0H   LINE      ---      ---       #35
+      010007BBH   LINE      ---      ---       #38
+      010007CAH   LINE      ---      ---       #39
+      010007CAH   LINE      ---      ---       #40
+      010007D6H   LINE      ---      ---       #41
+      010007D6H   LINE      ---      ---       #42
       00000006H   SYMBOL    DATA     INT       i
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
-      01000645H   BLOCK     CODE     ---       LVL=0
-      01000645H   LINE      ---      ---       #45
-      01000651H   LINE      ---      ---       #46
-      00000058H   SYMBOL    DATA     ---       buffer
-      0000005AH   SYMBOL    DATA     INT       n
-      0000005CH   SYMBOL    DATA     ---       EECurrentAddr
-      01000651H   BLOCK     CODE     NEAR LAB  LVL=1
-      01000651H   LINE      ---      ---       #47
-      01000657H   LINE      ---      ---       #48
-      0100065CH   LINE      ---      ---       #49
-      01000660H   LINE      ---      ---       #50
-      01000664H   LINE      ---      ---       #51
-      01000671H   LINE      ---      ---       #53
-      01000677H   LINE      ---      ---       #55
-      01000693H   LINE      ---      ---       #56
-      01000693H   LINE      ---      ---       #57
-      01000698H   LINE      ---      ---       #58
-      010006A9H   LINE      ---      ---       #59
-      010006B7H   LINE      ---      ---       #60
-      010006BFH   LINE      ---      ---       #61
-      010006C7H   LINE      ---      ---       #62
-      010006C9H   LINE      ---      ---       #63
-      010006D4H   LINE      ---      ---       #64
-      010006D6H   LINE      ---      ---       #65
-      0000005EH   SYMBOL    DATA     ---       EETempAddr
-      00000060H   SYMBOL    DATA     INT       i
-      00000062H   SYMBOL    DATA     INT       j
-      00000064H   SYMBOL    DATA     INT       k
+      0100069DH   BLOCK     CODE     ---       LVL=0
+      0100069DH   LINE      ---      ---       #46
+      010006A9H   LINE      ---      ---       #47
+      0000005AH   SYMBOL    DATA     ---       buffer
+      0000005CH   SYMBOL    DATA     INT       n
+      0000005EH   SYMBOL    DATA     ---       EECurrentAddr
+      010006A9H   BLOCK     CODE     NEAR LAB  LVL=1
+      010006A9H   LINE      ---      ---       #48
+      010006AFH   LINE      ---      ---       #49
+      010006B4H   LINE      ---      ---       #50
+      010006B8H   LINE      ---      ---       #51
+      010006BCH   LINE      ---      ---       #52
+      010006C9H   LINE      ---      ---       #54
+      010006CFH   LINE      ---      ---       #56
+      010006EBH   LINE      ---      ---       #57
+      010006EBH   LINE      ---      ---       #58
+      010006F0H   LINE      ---      ---       #59
+      01000701H   LINE      ---      ---       #60
+      0100070FH   LINE      ---      ---       #61
+      01000717H   LINE      ---      ---       #62
+      0100071FH   LINE      ---      ---       #63
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 59
+
+
+      01000721H   LINE      ---      ---       #64
+      0100072CH   LINE      ---      ---       #65
+      0100072EH   LINE      ---      ---       #66
+      00000060H   SYMBOL    DATA     ---       EETempAddr
+      00000062H   SYMBOL    DATA     INT       i
+      00000064H   SYMBOL    DATA     INT       j
+      00000066H   SYMBOL    DATA     INT       k
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
-      010006D7H   BLOCK     CODE     ---       LVL=0
-      010006D7H   LINE      ---      ---       #67
-      00000021H   SYMBOL    DATA     ---       buffer
-      00000024H   SYMBOL    DATA     ---       EECurrentAddr
-      010006DDH   BLOCK     CODE     NEAR LAB  LVL=1
-      010006DDH   LINE      ---      ---       #68
-      010006EFH   LINE      ---      ---       #69
-      010006F8H   LINE      ---      ---       #70
-      010006FDH   LINE      ---      ---       #72
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/17/2016  16:16:15  PAGE 59
-
-
-      01000706H   LINE      ---      ---       #73
-      01000713H   LINE      ---      ---       #74
-      01000719H   LINE      ---      ---       #76
-      01000727H   LINE      ---      ---       #77
-      01000732H   LINE      ---      ---       #79
-      01000740H   LINE      ---      ---       #80
-      01000748H   LINE      ---      ---       #81
-      01000754H   LINE      ---      ---       #82
-      01000762H   LINE      ---      ---       #83
-      01000767H   LINE      ---      ---       #84
-      01000769H   LINE      ---      ---       #85
-      01000771H   LINE      ---      ---       #86
-      01000771H   LINE      ---      ---       #87
-      0100077CH   LINE      ---      ---       #88
-      0100077EH   LINE      ---      ---       #89
-      0200F096H   SYMBOL    XDATA    ---       pageBuffer
-      00000027H   SYMBOL    DATA     ---       currentCharacter
-      0000002AH   SYMBOL    DATA     INT       i
+      010008BAH   BLOCK     CODE     ---       LVL=0
+      010008BAH   LINE      ---      ---       #68
+      0000005AH   SYMBOL    DATA     ---       buffer
+      0000005DH   SYMBOL    DATA     ---       EECurrentAddr
+      010008C0H   BLOCK     CODE     NEAR LAB  LVL=1
+      010008C0H   LINE      ---      ---       #69
+      010008D3H   LINE      ---      ---       #70
+      010008DCH   LINE      ---      ---       #71
+      010008E1H   LINE      ---      ---       #73
+      010008E9H   LINE      ---      ---       #74
+      010008F7H   LINE      ---      ---       #75
+      010008FEH   LINE      ---      ---       #77
+      0100090DH   LINE      ---      ---       #78
+      01000919H   LINE      ---      ---       #80
+      01000927H   LINE      ---      ---       #81
+      0100092FH   LINE      ---      ---       #82
+      0100093CH   LINE      ---      ---       #83
+      0100094BH   LINE      ---      ---       #84
+      01000950H   LINE      ---      ---       #85
+      01000952H   LINE      ---      ---       #86
+      0100095AH   LINE      ---      ---       #87
+      0100095AH   LINE      ---      ---       #88
+      01000965H   LINE      ---      ---       #89
+      01000967H   LINE      ---      ---       #90
+      0200F064H   SYMBOL    XDATA    ---       pageBuffer
+      00000060H   SYMBOL    DATA     ---       currentCharacter
+      00000063H   SYMBOL    DATA     INT       i
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
       ---         MODULE    ---      ---       ?C_INIT
-      0100034BH   PUBLIC    CODE     ---       ?C_START
+      0100034AH   PUBLIC    CODE     ---       ?C_START
 
       ---         MODULE    ---      ---       ?C?COPY
-      010000F6H   PUBLIC    CODE     ---       ?C?COPY
+      010000F5H   PUBLIC    CODE     ---       ?C?COPY
 
       ---         MODULE    ---      ---       ?C?CLDPTR
-      0100011CH   PUBLIC    CODE     ---       ?C?CLDPTR
+      0100011BH   PUBLIC    CODE     ---       ?C?CLDPTR
 
       ---         MODULE    ---      ---       ?C?CLDOPTR
-      01000135H   PUBLIC    CODE     ---       ?C?CLDOPTR
+      01000134H   PUBLIC    CODE     ---       ?C?CLDOPTR
 
       ---         MODULE    ---      ---       ?C?ILDPTR
-      01000162H   PUBLIC    CODE     ---       ?C?ILDPTR
+      01000161H   PUBLIC    CODE     ---       ?C?ILDPTR
 
       ---         MODULE    ---      ---       ?C?IILDPTR
-      0100018DH   PUBLIC    CODE     ---       ?C?IILDPTR
+      0100018CH   PUBLIC    CODE     ---       ?C?IILDPTR
 
       ---         MODULE    ---      ---       ?C?ISTPTR
-      010001C5H   PUBLIC    CODE     ---       ?C?ISTPTR
+      010001C4H   PUBLIC    CODE     ---       ?C?ISTPTR
 
       ---         MODULE    ---      ---       STRLEN
-      010003B6H   PUBLIC    CODE     ---       _STRLEN
+      010003E1H   PUBLIC    CODE     ---       _STRLEN
 
       ---         MODULE    ---      ---       ?C?MEMSET
-      010001E4H   PUBLIC    CODE     ---       ?C?MEMSET
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  10:39:27  PAGE 60
+
+
+      010001E3H   PUBLIC    CODE     ---       ?C?MEMSET
 
       ---         MODULE    ---      ---       ?C?IILDX
-      01000210H   PUBLIC    CODE     ---       ?C?IILDX
+      0100020FH   PUBLIC    CODE     ---       ?C?IILDX
 
 
 
 *** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
     NAME:    FLASH_ERASE_ABORT/FLASHHANDLER
 
-*** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
-    NAME:    _WRITEBUFFERTOFLASH/FLASHUTILS
-
-Program Size: data=131.3 xdata=182 const=32 code=2276
-LX51 RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)
+Program Size: data=115.2 xdata=150 const=32 code=2388
+LX51 RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

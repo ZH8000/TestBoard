@@ -38,7 +38,8 @@ void writeToFlashPage(char xdata * buffer, unsigned char code ** EECurrentAddr) 
 	if (FLASH_Prog(*EECurrentAddr)) 
 	{
 		*EECurrentAddr = *EECurrentAddr + BYTES_PER_WORDLINE;
-	} 
+	}
+	delay(2);
 	
 }
 

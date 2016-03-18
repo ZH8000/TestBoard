@@ -26,6 +26,7 @@
 #include "DeviceController.h"
 #include <string.h>
 #include <stdio.h>
+#include "FlashUtils.h"
 
 
 
@@ -138,8 +139,10 @@ void sendUART(char * message) {
 
 void processCommand(char * command) {
 	int commandSize = strlen(command);
+	unsigned char code * flashEndAddress = getFlashDataEndAddress();	
 	char respondMessage[20] = {0};
 	memset(respondMessage, 0, 20);
+
 	if (commandSize != 5 || command[0] != '$' || command[4] != '$') {
 		sendUART("Unknown Command\r\n");
 	} else {
@@ -161,6 +164,11 @@ void processCommand(char * command) {
 				break;
 			case 'f':
 				sendUUID();
+				break;
+			case 'g':
+				writeBufferToFlash("QQFe8400-e29b-41d4-a716-44665544ABCD", &flashEndAddress);
+				sendUART("DONE\r\n");
+				break;
 			default:
 				sendUART("Unknown Command\r\n");
 		}
