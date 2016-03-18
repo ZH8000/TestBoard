@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.41.0                                                          03/18/2016  11:02:42  PAGE 1
+LX51 LINKER/LOCATER V4.66.41.0                                                          03/18/2016  11:04:42  PAGE 1
 
 
 
@@ -67,7 +67,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
    58:   IP            =  0x00;         // load Interrupt Priority Register
 0005CD E4                CLR      A
 0005CE F5B8              MOV      IP,A
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 2
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 2
 
 
    59:   IPH           =  0x00;         // load Interrupt Priority High Register
@@ -135,7 +135,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
    85: 		///  - the pin status is low level
    86: 		///  - pull-up device is assigned
    87: 		///  P1.4:
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 3
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 3
 
 
    88: 		///  - is used as general purpose output
@@ -203,7 +203,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   150: 		///  - is used as general input
   151: 		///  - pull device is disabled (tristate) 
   152: 		///  P4.5:
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 4
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 4
 
 
   153: 		///  - is used as general input
@@ -271,7 +271,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000608 F599              MOV      SBUF,A
 00060A         ?C0004?UART:
   138: 		TI = 0;		
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 5
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 5
 
 
 00060A 3099FD            JNB      TI,?C0004?UART
@@ -339,7 +339,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   139: 	sendUART("Please wait...");
 00065E 7BFF              MOV      R3,#0FFH
 000660 7A03              MOV      R2,#HIGH 01000329H
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 6
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 6
 
 
 000662 7929              MOV      R1,#LOW 01000329H
@@ -356,7 +356,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000677 7B01              MOV      R3,#01H
 000679 7AF0              MOV      R2,#HIGH uuidString
 00067B 79C8              MOV      R1,#LOW uuidString
-00067D 120AC6            LCALL    _writeBufferToFlash
+00067D 120AC1            LCALL    _writeBufferToFlash
   141: }
 000680 7BFF              MOV      R3,#0FFH
 000682 7A03              MOV      R2,#HIGH 0100033FH
@@ -379,7 +379,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000690 7FC8              MOV      R7,#LOW uuidString
 000692 7D32              MOV      R5,#032H
 000694 7C00              MOV      R4,#00H
-000696 1209C9            LCALL    _readFlashToBuffer
+000696 1209C4            LCALL    _readFlashToBuffer
    12: 	sendUART(uuidString);
 000699 B1FE              ACALL    ?L?COM0001
    13: 	sendUART("\r\n");
@@ -407,7 +407,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 0006B3 7D01              MOV      R5,#01H
 0006B5 7BFF              MOV      R3,#0FFH
 0006B7 7A03              MOV      R2,#HIGH _?ix1000
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 7
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 7
 
 
 0006B9 797D              MOV      R1,#LOW _?ix1000
@@ -475,7 +475,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   151: 
   152: 	if (isNormalCommand) {
 00072A 300059            JNB      isNormalCommand,?C0011?UART
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 8
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 8
 
 
   153: 		switch(command[1]) {
@@ -543,7 +543,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000781 020997            LJMP     _setHVMonitorMode
   168: 				break;
   169: 			case 'f':
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 9
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 9
 
 
 000784         ?C0018?UART:
@@ -611,7 +611,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 ;---- Variable 'EETempAddr' assigned to Register 'DPTR' ----
 0007AF 90A000            MOV      DPTR,#0A000H
 0007B2         ?C0001?FLASHUTILS:
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 10
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 10
 
 
 0007B2 D3                SETB     C
@@ -679,7 +679,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
    80:   MODPISEL     |=  (ubyte)0x01;  // configure peripheral input select register
 0007E4 43B301            ORL      MODPISEL,#01H
    81:   BCON          =  0x00;         // reset baudrate timer/reload register
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 11
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 11
 
 
 0007E7 F5BD              MOV      BCON,A
@@ -747,7 +747,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000812 E582              MOV      A,DPL
 000814 B430FA            CJNE     A,#030H,?C0008?MAIN
 000817 E583              MOV      A,DPH
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 12
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 12
 
 
 000819 B475F5            CJNE     A,#075H,?C0008?MAIN
@@ -815,7 +815,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000862 640A              XRL      A,#0AH
 000864 600D              JZ       ?C0027?UART
 000866 C3                CLR      C
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 13
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 13
 
 
 000867 E509              MOV      A,bufferCount+01H
@@ -883,7 +883,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 0008C3 D083              POP      DPH
 0008C5 D0F0              POP      B
 0008C7 D0E0              POP      ACC
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 14
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 14
 
 
 0008C9 32                RETI     
@@ -951,7 +951,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 0008FD 7BFF              MOV      R3,#0FFH
 0008FF 7A02              MOV      R2,#HIGH 01000263H
 000901 7963              MOV      R1,#LOW 01000263H
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 15
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 15
 
 
 000903         
@@ -1019,7 +1019,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
    62: 			sendUART("#a#2#\r\n");		
 000937 7BFF              MOV      R3,#0FFH
 000939 7A02              MOV      R2,#HIGH 01000291H
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 16
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 16
 
 
 00093B 7991              MOV      R1,#LOW 01000291H
@@ -1087,7 +1087,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000977 79C8              MOV      R1,#LOW 010002C8H
 000979         
   109: 	} else if (modeCode == '0') {
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 17
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 17
 
 
 000979 8019              SJMP     ?C0043?DEVICECONTROLLER
@@ -1155,48 +1155,28 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 0009BD 020604            LJMP     _sendUART
   129: 	
 ----- FUNCTION _setHVMonitorMode (END) -------
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 18
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 18
 
 
-
-
------ FUNCTION FLASH_Erase_Abort (BEGIN) -----
- FILE: 'FlashHandler.c'
-   75: bit FLASH_Erase_Abort (void)
-   76: {
-   77: #ifdef __C51__		
-   78: 	((void (code *) (void)) FLASH_ERASE_ABORT) ();
-0009C0 12DFF3            LCALL    0DFF3H
-   79: #endif	// __C51__
-   80: #ifdef	SDCC
-   81: _asm
-   82: 	LCALL FLASH_ERASE_ABORT;
-   83: _endasm;
-   84: #endif	// SDCC
-   85: 	return (!CY);  
-0009C3 B3                CPL      C
-   86: }
-0009C4 22                RET      
------ FUNCTION FLASH_Erase_Abort (END) -------
 
 
 ----- FUNCTION _FLASH_Ready (BEGIN) -----
  FILE: 'FlashHandler.c'
-   90: bit FLASH_Ready						(unsigned char BankNum)
-   91: {
+   92: bit FLASH_Ready						(unsigned char BankNum)
+   93: {
 ;---- Variable 'BankNum' assigned to Register 'R7' ----
-   92:     ACC = BankNum;
-   93: #ifdef __C51__		
-0009C5 EF                MOV      A,R7
-   94: 	((void (code *) (void)) FLASH_READ_STATUS) ();
-0009C6 02DFF0            LJMP     0DFF0H
-   95: #endif	// __C51__
-   96: #ifdef	SDCC
-   97: _asm
-   98: 	LCALL FLASH_READ_STATUS;
-   99: _endasm;
-  100: #endif	// SDCC
-  101: 	return(CY);
+   94:     ACC = BankNum;
+   95: #ifdef __C51__		
+0009C0 EF                MOV      A,R7
+   96: 	((void (code *) (void)) FLASH_READ_STATUS) ();
+0009C1 02DFF0            LJMP     0DFF0H
+   97: #endif	// __C51__
+   98: #ifdef	SDCC
+   99: _asm
+  100: 	LCALL FLASH_READ_STATUS;
+  101: _endasm;
+  102: #endif	// SDCC
+  103: 	return(CY);
 ----- FUNCTION _FLASH_Ready (END) -------
 
 
@@ -1204,475 +1184,475 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
  FILE: 'FlashUtils.c'
    46: void readFlashToBuffer(char xdata * buffer, int n, unsigned char code * EECurrentAddr) 
    47: {
-0009C9 8E44              MOV      buffer,R6
-0009CB 8F45              MOV      buffer+01H,R7
-0009CD 8C46              MOV      n,R4
-0009CF 8D47              MOV      n+01H,R5
-0009D1 8A48              MOV      EECurrentAddr,R2
-0009D3 8B49              MOV      EECurrentAddr+01H,R3
+0009C4 8E44              MOV      buffer,R6
+0009C6 8F45              MOV      buffer+01H,R7
+0009C8 8C46              MOV      n,R4
+0009CA 8D47              MOV      n+01H,R5
+0009CC 8A48              MOV      EECurrentAddr,R2
+0009CE 8B49              MOV      EECurrentAddr+01H,R3
    48: 	unsigned char code * EETempAddr = (unsigned char code*)FLASH_FIRST_ADDR;
    49: 	int i = 0;
-0009D5 754AA0            MOV      EETempAddr,#0A0H
-0009D8 754B00            MOV      EETempAddr+01H,#00H
+0009D0 754AA0            MOV      EETempAddr,#0A0H
+0009D3 754B00            MOV      EETempAddr+01H,#00H
    50: 	int j = 0;
-0009DB E4                CLR      A
-0009DC F54C              MOV      i,A
-0009DE F54D              MOV      i+01H,A
+0009D6 E4                CLR      A
+0009D7 F54C              MOV      i,A
+0009D9 F54D              MOV      i+01H,A
    51: 	int k = 0;
-0009E0 F54E              MOV      j,A
-0009E2 F54F              MOV      j+01H,A
+0009DB F54E              MOV      j,A
+0009DD F54F              MOV      j+01H,A
    52: 	memset(buffer, 0, n);
-0009E4 F550              MOV      k,A
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 19
-
-
-0009E6 F551              MOV      k+01H,A
+0009DF F550              MOV      k,A
+0009E1 F551              MOV      k+01H,A
    53: 	
-0009E8 AE46              MOV      R6,n
-0009EA AF47              MOV      R7,n+01H
-0009EC FD                MOV      R5,A
-0009ED AA44              MOV      R2,buffer
-0009EF A945              MOV      R1,buffer+01H
-0009F1 7B01              MOV      R3,#01H
-0009F3 1201E4            LCALL    ?C?MEMSET
-0009F6         ?C0011?FLASHUTILS:
+0009E3 AE46              MOV      R6,n
+0009E5 AF47              MOV      R7,n+01H
+0009E7 FD                MOV      R5,A
+0009E8 AA44              MOV      R2,buffer
+0009EA A945              MOV      R1,buffer+01H
+0009EC 7B01              MOV      R3,#01H
+0009EE 1201E4            LCALL    ?C?MEMSET
+0009F1         ?C0011?FLASHUTILS:
    54: 	while (FLASH_Ready(FLASH_BANK_TO_CHECK) == 0) {;}
-0009F6 7F03              MOV      R7,#03H
-0009F8 31C5              ACALL    _FLASH_Ready
-0009FA 50FA              JNC      ?C0011?FLASHUTILS
-0009FC         ?C0012?FLASHUTILS:
-0009FC         ?C0013?FLASHUTILS:
+0009F1 7F03              MOV      R7,#03H
+0009F3 31C0              ACALL    _FLASH_Ready
+0009F5 50FA              JNC      ?C0011?FLASHUTILS
+0009F7         ?C0012?FLASHUTILS:
+0009F7         ?C0013?FLASHUTILS:
    55: 	
    56: 	while (EETempAddr < EECurrentAddr && j < n) 
-0009FC C3                CLR      C
-0009FD E54B              MOV      A,EETempAddr+01H
-0009FF 9549              SUBB     A,EECurrentAddr+01H
-000A01 E54A              MOV      A,EETempAddr
-000A03 9548              SUBB     A,EECurrentAddr
-000A05 5054              JNC      ?C0017?FLASHUTILS
-000A07 C3                CLR      C
-000A08 E54F              MOV      A,j+01H
-000A0A 9547              SUBB     A,n+01H
-000A0C E546              MOV      A,n
+0009F7 C3                CLR      C
+0009F8 E54B              MOV      A,EETempAddr+01H
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 19
+
+
+0009FA 9549              SUBB     A,EECurrentAddr+01H
+0009FC E54A              MOV      A,EETempAddr
+0009FE 9548              SUBB     A,EECurrentAddr
+000A00 5054              JNC      ?C0017?FLASHUTILS
+000A02 C3                CLR      C
+000A03 E54F              MOV      A,j+01H
+000A05 9547              SUBB     A,n+01H
+000A07 E546              MOV      A,n
+000A09 6480              XRL      A,#080H
+000A0B F8                MOV      R0,A
+000A0C E54E              MOV      A,j
 000A0E 6480              XRL      A,#080H
-000A10 F8                MOV      R0,A
-000A11 E54E              MOV      A,j
-000A13 6480              XRL      A,#080H
-000A15 98                SUBB     A,R0
-000A16 5043              JNC      ?C0017?FLASHUTILS
+000A10 98                SUBB     A,R0
+000A11 5043              JNC      ?C0017?FLASHUTILS
    57: 	{	
    58: 		i = 0;
-000A18 E4                CLR      A
-000A19 F54C              MOV      i,A
-000A1B F54D              MOV      i+01H,A
-000A1D         ?C0015?FLASHUTILS:
+000A13 E4                CLR      A
+000A14 F54C              MOV      i,A
+000A16 F54D              MOV      i+01H,A
+000A18         ?C0015?FLASHUTILS:
    59: 		while (*(EETempAddr+i) != 0) {
-000A1D E54B              MOV      A,EETempAddr+01H
-000A1F 254D              ADD      A,i+01H
-000A21 F582              MOV      DPL,A
-000A23 E54A              MOV      A,EETempAddr
-000A25 354C              ADDC     A,i
-000A27 F583              MOV      DPH,A
-000A29 E4                CLR      A
-000A2A 93                MOVC     A,@A+DPTR
-000A2B FF                MOV      R7,A
-000A2C 6020              JZ       ?C0016?FLASHUTILS
+000A18 E54B              MOV      A,EETempAddr+01H
+000A1A 254D              ADD      A,i+01H
+000A1C F582              MOV      DPL,A
+000A1E E54A              MOV      A,EETempAddr
+000A20 354C              ADDC     A,i
+000A22 F583              MOV      DPH,A
+000A24 E4                CLR      A
+000A25 93                MOVC     A,@A+DPTR
+000A26 FF                MOV      R7,A
+000A27 6020              JZ       ?C0016?FLASHUTILS
    60: 			buffer[j] = *(EETempAddr+i);
-000A2E E545              MOV      A,buffer+01H
-000A30 254F              ADD      A,j+01H
-000A32 F582              MOV      DPL,A
-000A34 E544              MOV      A,buffer
-000A36 354E              ADDC     A,j
-000A38 F583              MOV      DPH,A
-000A3A EF                MOV      A,R7
-000A3B F0                MOVX     @DPTR,A
+000A29 E545              MOV      A,buffer+01H
+000A2B 254F              ADD      A,j+01H
+000A2D F582              MOV      DPL,A
+000A2F E544              MOV      A,buffer
+000A31 354E              ADDC     A,j
+000A33 F583              MOV      DPH,A
+000A35 EF                MOV      A,R7
+000A36 F0                MOVX     @DPTR,A
    61: 			i++;
-000A3C 054D              INC      i+01H
-000A3E E54D              MOV      A,i+01H
-000A40 7002              JNZ      ?C0025?FLASHUTILS
-000A42 054C              INC      i
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 20
-
-
-000A44         ?C0025?FLASHUTILS:
+000A37 054D              INC      i+01H
+000A39 E54D              MOV      A,i+01H
+000A3B 7002              JNZ      ?C0025?FLASHUTILS
+000A3D 054C              INC      i
+000A3F         ?C0025?FLASHUTILS:
    62: 			j++;
-000A44 054F              INC      j+01H
-000A46 E54F              MOV      A,j+01H
-000A48 7002              JNZ      ?C0026?FLASHUTILS
-000A4A 054E              INC      j
-000A4C         ?C0026?FLASHUTILS:
+000A3F 054F              INC      j+01H
+000A41 E54F              MOV      A,j+01H
+000A43 7002              JNZ      ?C0026?FLASHUTILS
+000A45 054E              INC      j
+000A47         ?C0026?FLASHUTILS:
    63: 		}
-000A4C 80CF              SJMP     ?C0015?FLASHUTILS
-000A4E         ?C0016?FLASHUTILS:
+000A47 80CF              SJMP     ?C0015?FLASHUTILS
+000A49         ?C0016?FLASHUTILS:
    64: 		EETempAddr = EETempAddr + BYTES_PER_WORDLINE;		
-000A4E 7420              MOV      A,#020H
-000A50 254B              ADD      A,EETempAddr+01H
-000A52 F54B              MOV      EETempAddr+01H,A
-000A54 E4                CLR      A
-000A55 354A              ADDC     A,EETempAddr
-000A57 F54A              MOV      EETempAddr,A
+000A49 7420              MOV      A,#020H
+000A4B 254B              ADD      A,EETempAddr+01H
+000A4D F54B              MOV      EETempAddr+01H,A
+000A4F E4                CLR      A
+000A50 354A              ADDC     A,EETempAddr
+000A52 F54A              MOV      EETempAddr,A
    65: 	}	
-000A59 80A1              SJMP     ?C0013?FLASHUTILS
+000A54 80A1              SJMP     ?C0013?FLASHUTILS
    66: }
-000A5B         ?C0017?FLASHUTILS:
-000A5B 22                RET      
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 20
+
+
+000A56         ?C0017?FLASHUTILS:
+000A56 22                RET      
 ----- FUNCTION _readFlashToBuffer (END) -------
 
 
 ----- FUNCTION _FLASH_Prog (BEGIN) -----
  FILE: 'FlashHandler.c'
-  113: bit FLASH_Prog					(unsigned char code* WLAddress) 
-  114: {
+  115: bit FLASH_Prog					(unsigned char code* WLAddress) 
+  116: {
 ;---- Variable 'WLAddress' assigned to Register 'R6/R7' ----
-  115: #ifdef	XC88x
-  116: 	volatile bit success;		    // needed for CY flag saving of the BROM routine's result
-  117: #endif	// XC88x
-  118: #ifdef	XC866
-  119: #define USE_BANK  3					// fix the used registerbank to 3 for XC866 devices
-  120: #endif	// XC866
-  121: 									// For SDCC parameter is now already in DPTR
-  122: #ifdef SDCC
-  123: 	*WLAddress;						// avoid warning of 'unreferenced function argument
-  124: #endif	// SDCC
-  125: #ifdef __C51__
-  126:    DPTR = (unsigned int)WLAddress;
-000A5C 8E83              MOV      DPH,R6
-000A5E 8F82              MOV      DPL,R7
-  127: #endif	// __C51__
-  128: 
-  129:    REG[(0+(USE_BANK*8))] = WORDLINE_BUFFER_ADDRESS;
-000A60 7818              MOV      R0,#018H
-000A62 76E0              MOV      @R0,#0E0H
-  130: #ifdef	XC88x
-  131: 	PUSH(PSW);
-000A64 C0D0              PUSH     PSW
-  132: 	PSW = ((USE_BANK)<<3);
-000A66 75D018            MOV      PSW,#018H
-  133: #endif	// XC88x
-  134: 
-  135: #ifdef	__C51__		
-  136: 	((void (code *) (void)) FLASH_PROG) ();
-000A69 12DFF6            LCALL    0DFF6H
-  137: #endif	// __C51__
-  138: #ifdef	SDCC
-  139: _asm
-  140: 	LCALL FLASH_PROG;
-  141: _endasm;
-  142: #endif	// SDCC
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 21
-
-
-  143: 
-  144: #ifdef	XC88x
-  145: 	success = CY;
-000A6C 9202              MOV      success,C
-  146: 	POP(PSW);
-000A6E D0D0              POP      PSW
-  147: 	return(!success);			  
-000A70 A202              MOV      C,success
-000A72 B3                CPL      C
-  148: #endif	// XC88x
-  149: #ifdef	XC866
-  150: 	return (!CY);
-  151: #endif	// XC866
-  152: }
-000A73 22                RET      
+  117: #ifdef	XC88x
+  118: 	volatile bit success;		    // needed for CY flag saving of the BROM routine's result
+  119: #endif	// XC88x
+  120: #ifdef	XC866
+  121: #define USE_BANK  3					// fix the used registerbank to 3 for XC866 devices
+  122: #endif	// XC866
+  123: 									// For SDCC parameter is now already in DPTR
+  124: #ifdef SDCC
+  125: 	*WLAddress;						// avoid warning of 'unreferenced function argument
+  126: #endif	// SDCC
+  127: #ifdef __C51__
+  128:    DPTR = (unsigned int)WLAddress;
+000A57 8E83              MOV      DPH,R6
+000A59 8F82              MOV      DPL,R7
+  129: #endif	// __C51__
+  130: 
+  131:    REG[(0+(USE_BANK*8))] = WORDLINE_BUFFER_ADDRESS;
+000A5B 7818              MOV      R0,#018H
+000A5D 76E0              MOV      @R0,#0E0H
+  132: #ifdef	XC88x
+  133: 	PUSH(PSW);
+000A5F C0D0              PUSH     PSW
+  134: 	PSW = ((USE_BANK)<<3);
+000A61 75D018            MOV      PSW,#018H
+  135: #endif	// XC88x
+  136: 
+  137: #ifdef	__C51__		
+  138: 	((void (code *) (void)) FLASH_PROG) ();
+000A64 12DFF6            LCALL    0DFF6H
+  139: #endif	// __C51__
+  140: #ifdef	SDCC
+  141: _asm
+  142: 	LCALL FLASH_PROG;
+  143: _endasm;
+  144: #endif	// SDCC
+  145: 
+  146: #ifdef	XC88x
+  147: 	success = CY;
+000A67 9202              MOV      success,C
+  148: 	POP(PSW);
+000A69 D0D0              POP      PSW
+  149: 	return(!success);			  
+000A6B A202              MOV      C,success
+000A6D B3                CPL      C
+  150: #endif	// XC88x
+  151: #ifdef	XC866
+  152: 	return (!CY);
+  153: #endif	// XC866
+  154: }
+000A6E 22                RET      
 ----- FUNCTION _FLASH_Prog (END) -------
 
 
 ----- FUNCTION _writeToFlashPage (BEGIN) -----
  FILE: 'FlashUtils.c'
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 21
+
+
    29: void writeToFlashPage(char xdata * buffer, unsigned char code ** EECurrentAddr) {
    30: 	int i = 0;
-000A74 8E54              MOV      buffer,R6
-000A76 8F55              MOV      buffer+01H,R7
-000A78 8B56              MOV      EECurrentAddr,R3
-000A7A 8A57              MOV      EECurrentAddr+01H,R2
-000A7C 8958              MOV      EECurrentAddr+02H,R1
+000A6F 8E54              MOV      buffer,R6
+000A71 8F55              MOV      buffer+01H,R7
+000A73 8B56              MOV      EECurrentAddr,R3
+000A75 8A57              MOV      EECurrentAddr+01H,R2
+000A77 8958              MOV      EECurrentAddr+02H,R1
    31: 
 ;---- Variable 'i' assigned to Register 'R6/R7' ----
-000A7E E4                CLR      A
-000A7F FF                MOV      R7,A
-000A80 FE                MOV      R6,A
+000A79 E4                CLR      A
+000A7A FF                MOV      R7,A
+000A7B FE                MOV      R6,A
    32: 	for (i=0; i < BYTES_PER_WORDLINE; i++) {
-000A81         ?C0006?FLASHUTILS:
+000A7C         ?C0006?FLASHUTILS:
    33: 		WLBuf[i] = *buffer;
-000A81 855582            MOV      DPL,buffer+01H
-000A84 855483            MOV      DPH,buffer
-000A87 E0                MOVX     A,@DPTR
-000A88 FD                MOV      R5,A
-000A89 74E0              MOV      A,#LOW WLBuf
-000A8B 2F                ADD      A,R7
-000A8C F8                MOV      R0,A
-000A8D A605              MOV      @R0,AR5
+000A7C 855582            MOV      DPL,buffer+01H
+000A7F 855483            MOV      DPH,buffer
+000A82 E0                MOVX     A,@DPTR
+000A83 FD                MOV      R5,A
+000A84 74E0              MOV      A,#LOW WLBuf
+000A86 2F                ADD      A,R7
+000A87 F8                MOV      R0,A
+000A88 A605              MOV      @R0,AR5
    34: 		buffer++;
-000A8F 0555              INC      buffer+01H
-000A91 E555              MOV      A,buffer+01H
-000A93 7002              JNZ      ?C0023?FLASHUTILS
-000A95 0554              INC      buffer
-000A97         ?C0023?FLASHUTILS:
+000A8A 0555              INC      buffer+01H
+000A8C E555              MOV      A,buffer+01H
+000A8E 7002              JNZ      ?C0023?FLASHUTILS
+000A90 0554              INC      buffer
+000A92         ?C0023?FLASHUTILS:
    35: 	}
-000A97 0F                INC      R7
-000A98 BF0001            CJNE     R7,#00H,?C0024?FLASHUTILS
-000A9B 0E                INC      R6
-000A9C         ?C0024?FLASHUTILS:
-000A9C EF                MOV      A,R7
-000A9D 6420              XRL      A,#020H
-000A9F 4E                ORL      A,R6
-000AA0 70DF              JNZ      ?C0006?FLASHUTILS
-000AA2         ?C0007?FLASHUTILS:
+000A92 0F                INC      R7
+000A93 BF0001            CJNE     R7,#00H,?C0024?FLASHUTILS
+000A96 0E                INC      R6
+000A97         ?C0024?FLASHUTILS:
+000A97 EF                MOV      A,R7
+000A98 6420              XRL      A,#020H
+000A9A 4E                ORL      A,R6
+000A9B 70DF              JNZ      ?C0006?FLASHUTILS
+000A9D         ?C0007?FLASHUTILS:
    36: 
    37: 	// Start the Flash Programming
    38: 	if (FLASH_Prog(*EECurrentAddr)) 
-000AA2 AB56              MOV      R3,EECurrentAddr
-000AA4 AA57              MOV      R2,EECurrentAddr+01H
-000AA6 A958              MOV      R1,EECurrentAddr+02H
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 22
-
-
-000AA8 120162            LCALL    ?C?ILDPTR
-000AAB FF                MOV      R7,A
-000AAC AEF0              MOV      R6,B
-000AAE 515C              ACALL    _FLASH_Prog
-000AB0 500D              JNC      ?C0009?FLASHUTILS
+000A9D AB56              MOV      R3,EECurrentAddr
+000A9F AA57              MOV      R2,EECurrentAddr+01H
+000AA1 A958              MOV      R1,EECurrentAddr+02H
+000AA3 120162            LCALL    ?C?ILDPTR
+000AA6 FF                MOV      R7,A
+000AA7 AEF0              MOV      R6,B
+000AA9 5157              ACALL    _FLASH_Prog
+000AAB 500D              JNC      ?C0009?FLASHUTILS
    39: 	{
    40: 		*EECurrentAddr = *EECurrentAddr + BYTES_PER_WORDLINE;
-000AB2 AB56              MOV      R3,EECurrentAddr
-000AB4 AA57              MOV      R2,EECurrentAddr+01H
-000AB6 A958              MOV      R1,EECurrentAddr+02H
-000AB8 E4                CLR      A
-000AB9 75F020            MOV      B,#020H
-000ABC 12018D            LCALL    ?C?IILDPTR
+000AAD AB56              MOV      R3,EECurrentAddr
+000AAF AA57              MOV      R2,EECurrentAddr+01H
+000AB1 A958              MOV      R1,EECurrentAddr+02H
+000AB3 E4                CLR      A
+000AB4 75F020            MOV      B,#020H
+000AB7 12018D            LCALL    ?C?IILDPTR
    41: 	}
-000ABF         ?C0009?FLASHUTILS:
+000ABA         ?C0009?FLASHUTILS:
    42: 	delay(2);
-000ABF 7F02              MOV      R7,#02H
-000AC1 7E00              MOV      R6,#00H
-000AC3 0207FB            LJMP     _delay
+000ABA 7F02              MOV      R7,#02H
+000ABC 7E00              MOV      R6,#00H
+000ABE 0207FB            LJMP     _delay
 ----- FUNCTION _writeToFlashPage (END) -------
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 22
+
+
 
 
 ----- FUNCTION _writeBufferToFlash (BEGIN) -----
  FILE: 'FlashUtils.c'
    68: void writeBufferToFlash(char * buffer, unsigned char code ** EECurrentAddr) {
    69: 	char xdata pageBuffer[BYTES_PER_WORDLINE] = {0};
-000AC6 8B49              MOV      buffer,R3
-000AC8 8A4A              MOV      buffer+01H,R2
-000ACA 894B              MOV      buffer+02H,R1
+000AC1 8B49              MOV      buffer,R3
+000AC3 8A4A              MOV      buffer+01H,R2
+000AC5 894B              MOV      buffer+02H,R1
    70: 	char * currentCharacter = buffer;
-000ACC 78ED              MOV      R0,#LOW pageBuffer
-000ACE 7CF0              MOV      R4,#HIGH pageBuffer
-000AD0 7D01              MOV      R5,#01H
-000AD2 7BFF              MOV      R3,#0FFH
-000AD4 7A05              MOV      R2,#HIGH _?ix1000
-000AD6 79A0              MOV      R1,#LOW _?ix1000
-000AD8 7E00              MOV      R6,#00H
-000ADA 7F20              MOV      R7,#020H
-000ADC 1200F6            LCALL    ?C?COPY
+000AC7 78ED              MOV      R0,#LOW pageBuffer
+000AC9 7CF0              MOV      R4,#HIGH pageBuffer
+000ACB 7D01              MOV      R5,#01H
+000ACD 7BFF              MOV      R3,#0FFH
+000ACF 7A05              MOV      R2,#HIGH _?ix1000
+000AD1 79A0              MOV      R1,#LOW _?ix1000
+000AD3 7E00              MOV      R6,#00H
+000AD5 7F20              MOV      R7,#020H
+000AD7 1200F6            LCALL    ?C?COPY
    71: 	int i = 0;
-000ADF 85494F            MOV      currentCharacter,buffer
-000AE2 854A50            MOV      currentCharacter+01H,buffer+01H
-000AE5 854B51            MOV      currentCharacter+02H,buffer+02H
+000ADA 85494F            MOV      currentCharacter,buffer
+000ADD 854A50            MOV      currentCharacter+01H,buffer+01H
+000AE0 854B51            MOV      currentCharacter+02H,buffer+02H
    72: 	
-000AE8 E4                CLR      A
-000AE9 F552              MOV      i,A
-000AEB F553              MOV      i+01H,A
+000AE3 E4                CLR      A
+000AE4 F552              MOV      i,A
+000AE6 F553              MOV      i+01H,A
    73: 	FLASH_Erase(SECALL,0);
-000AED FD                MOV      R5,A
-000AEE FC                MOV      R4,A
-000AEF 7FFF              MOV      R7,#0FFH
-000AF1 7E03              MOV      R6,#03H
-000AF3 717E              ACALL    _FLASH_Erase
+000AE8 FD                MOV      R5,A
+000AE9 FC                MOV      R4,A
+000AEA 7FFF              MOV      R7,#0FFH
+000AEC 7E03              MOV      R6,#03H
+000AEE 7179              ACALL    _FLASH_Erase
    74: 	*EECurrentAddr = (unsigned char code*)FLASH_FIRST_ADDR;			// if erase than 1. WL is current
-000AF5 AB4C              MOV      R3,EECurrentAddr
-000AF7 AA4D              MOV      R2,EECurrentAddr+01H
-000AF9 A94E              MOV      R1,EECurrentAddr+02H
-000AFB 74A0              MOV      A,#0A0H
-000AFD 75F000            MOV      B,#00H
-000B00 1201C5            LCALL    ?C?ISTPTR
+000AF0 AB4C              MOV      R3,EECurrentAddr
+000AF2 AA4D              MOV      R2,EECurrentAddr+01H
+000AF4 A94E              MOV      R1,EECurrentAddr+02H
+000AF6 74A0              MOV      A,#0A0H
+000AF8 75F000            MOV      B,#00H
+000AFB 1201C5            LCALL    ?C?ISTPTR
    75:   delay(2);
-000B03 7F02              MOV      R7,#02H
-000B05 7E00              MOV      R6,#00H
-000B07 1207FB            LCALL    _delay
+000AFE 7F02              MOV      R7,#02H
+000B00 7E00              MOV      R6,#00H
+000B02 1207FB            LCALL    _delay
    76: 	
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 23
-
-
    77: 	memset(pageBuffer, 0, BYTES_PER_WORDLINE);
-000B0A 7E00              MOV      R6,#00H
-000B0C 7F20              MOV      R7,#020H
-000B0E 7D00              MOV      R5,#00H
-000B10 7B01              MOV      R3,#01H
-000B12 7AF0              MOV      R2,#HIGH pageBuffer
-000B14 79ED              MOV      R1,#LOW pageBuffer
-000B16 1201E4            LCALL    ?C?MEMSET
-000B19         ?C0018?FLASHUTILS:
+000B05 7E00              MOV      R6,#00H
+000B07 7F20              MOV      R7,#020H
+000B09 7D00              MOV      R5,#00H
+000B0B 7B01              MOV      R3,#01H
+000B0D 7AF0              MOV      R2,#HIGH pageBuffer
+000B0F 79ED              MOV      R1,#LOW pageBuffer
+000B11 1201E4            LCALL    ?C?MEMSET
+000B14         ?C0018?FLASHUTILS:
    78: 	while (*currentCharacter != 0) {
-000B19 AB4F              MOV      R3,currentCharacter
-000B1B AA50              MOV      R2,currentCharacter+01H
-000B1D A951              MOV      R1,currentCharacter+02H
-000B1F 12011C            LCALL    ?C?CLDPTR
-000B22 FF                MOV      R7,A
-000B23 604D              JZ       ?C0019?FLASHUTILS
+000B14 AB4F              MOV      R3,currentCharacter
+000B16 AA50              MOV      R2,currentCharacter+01H
+000B18 A951              MOV      R1,currentCharacter+02H
+000B1A 12011C            LCALL    ?C?CLDPTR
+000B1D FF                MOV      R7,A
+000B1E 604D              JZ       ?C0019?FLASHUTILS
    79: 		
    80: 		pageBuffer[i] = *currentCharacter;
-000B25 74ED              MOV      A,#LOW pageBuffer
-000B27 2553              ADD      A,i+01H
-000B29 F582              MOV      DPL,A
-000B2B 74F0              MOV      A,#HIGH pageBuffer
-000B2D 3552              ADDC     A,i
-000B2F F583              MOV      DPH,A
-000B31 EF                MOV      A,R7
-000B32 F0                MOVX     @DPTR,A
+000B20 74ED              MOV      A,#LOW pageBuffer
+000B22 2553              ADD      A,i+01H
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 23
+
+
+000B24 F582              MOV      DPL,A
+000B26 74F0              MOV      A,#HIGH pageBuffer
+000B28 3552              ADDC     A,i
+000B2A F583              MOV      DPH,A
+000B2C EF                MOV      A,R7
+000B2D F0                MOVX     @DPTR,A
    81: 		if (i == 25) {
-000B33 E553              MOV      A,i+01H
-000B35 6419              XRL      A,#019H
-000B37 4552              ORL      A,i
-000B39 7022              JNZ      ?C0020?FLASHUTILS
+000B2E E553              MOV      A,i+01H
+000B30 6419              XRL      A,#019H
+000B32 4552              ORL      A,i
+000B34 7022              JNZ      ?C0020?FLASHUTILS
    82: 			writeToFlashPage(pageBuffer, EECurrentAddr);
-000B3B 7EF0              MOV      R6,#HIGH pageBuffer
-000B3D 7FED              MOV      R7,#LOW pageBuffer
-000B3F AB4C              MOV      R3,EECurrentAddr
-000B41 AA4D              MOV      R2,EECurrentAddr+01H
-000B43 A94E              MOV      R1,EECurrentAddr+02H
-000B45 5174              ACALL    _writeToFlashPage
+000B36 7EF0              MOV      R6,#HIGH pageBuffer
+000B38 7FED              MOV      R7,#LOW pageBuffer
+000B3A AB4C              MOV      R3,EECurrentAddr
+000B3C AA4D              MOV      R2,EECurrentAddr+01H
+000B3E A94E              MOV      R1,EECurrentAddr+02H
+000B40 516F              ACALL    _writeToFlashPage
    83: 			memset(pageBuffer, 0, BYTES_PER_WORDLINE);
-000B47 7E00              MOV      R6,#00H
-000B49 7F20              MOV      R7,#020H
-000B4B 7D00              MOV      R5,#00H
-000B4D 7B01              MOV      R3,#01H
-000B4F 7AF0              MOV      R2,#HIGH pageBuffer
-000B51 79ED              MOV      R1,#LOW pageBuffer
-000B53 1201E4            LCALL    ?C?MEMSET
+000B42 7E00              MOV      R6,#00H
+000B44 7F20              MOV      R7,#020H
+000B46 7D00              MOV      R5,#00H
+000B48 7B01              MOV      R3,#01H
+000B4A 7AF0              MOV      R2,#HIGH pageBuffer
+000B4C 79ED              MOV      R1,#LOW pageBuffer
+000B4E 1201E4            LCALL    ?C?MEMSET
    84: 			i = 0;
-000B56 E4                CLR      A
-000B57 F552              MOV      i,A
-000B59 F553              MOV      i+01H,A
+000B51 E4                CLR      A
+000B52 F552              MOV      i,A
+000B54 F553              MOV      i+01H,A
    85: 		} else {
-000B5B 8008              SJMP     ?C0021?FLASHUTILS
-000B5D         ?C0020?FLASHUTILS:
+000B56 8008              SJMP     ?C0021?FLASHUTILS
+000B58         ?C0020?FLASHUTILS:
    86: 			i++;
-000B5D 0553              INC      i+01H
-000B5F E553              MOV      A,i+01H
-000B61 7002              JNZ      ?C0027?FLASHUTILS
-000B63 0552              INC      i
-000B65         ?C0027?FLASHUTILS:
+000B58 0553              INC      i+01H
+000B5A E553              MOV      A,i+01H
+000B5C 7002              JNZ      ?C0027?FLASHUTILS
+000B5E 0552              INC      i
+000B60         ?C0027?FLASHUTILS:
    87: 		}
-000B65         ?C0021?FLASHUTILS:
+000B60         ?C0021?FLASHUTILS:
    88: 		currentCharacter++;
-000B65 7401              MOV      A,#01H
-000B67 2551              ADD      A,currentCharacter+02H
-000B69 F551              MOV      currentCharacter+02H,A
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 24
-
-
-000B6B E4                CLR      A
-000B6C 3550              ADDC     A,currentCharacter+01H
-000B6E F550              MOV      currentCharacter+01H,A
+000B60 7401              MOV      A,#01H
+000B62 2551              ADD      A,currentCharacter+02H
+000B64 F551              MOV      currentCharacter+02H,A
+000B66 E4                CLR      A
+000B67 3550              ADDC     A,currentCharacter+01H
+000B69 F550              MOV      currentCharacter+01H,A
    89: 	}
-000B70 80A7              SJMP     ?C0018?FLASHUTILS
-000B72         ?C0019?FLASHUTILS:
+000B6B 80A7              SJMP     ?C0018?FLASHUTILS
+000B6D         ?C0019?FLASHUTILS:
    90: 	writeToFlashPage(pageBuffer, EECurrentAddr);	
-000B72 7EF0              MOV      R6,#HIGH pageBuffer
-000B74 7FED              MOV      R7,#LOW pageBuffer
-000B76 AB4C              MOV      R3,EECurrentAddr
-000B78 AA4D              MOV      R2,EECurrentAddr+01H
-000B7A A94E              MOV      R1,EECurrentAddr+02H
-000B7C 4174              AJMP     _writeToFlashPage
+000B6D 7EF0              MOV      R6,#HIGH pageBuffer
+000B6F 7FED              MOV      R7,#LOW pageBuffer
+000B71 AB4C              MOV      R3,EECurrentAddr
+000B73 AA4D              MOV      R2,EECurrentAddr+01H
+000B75 A94E              MOV      R1,EECurrentAddr+02H
+000B77 416F              AJMP     _writeToFlashPage
 ----- FUNCTION _writeBufferToFlash (END) -------
 
 
 ----- FUNCTION _FLASH_Erase (BEGIN) -----
  FILE: 'FlashHandler.c'
-  161: bit FLASH_Erase			(unsigned int DFlash0Sector,unsigned int DFlash1Sector)
-  162: #endif	// XC88x
+  163: bit FLASH_Erase			(unsigned int DFlash0Sector,unsigned int DFlash1Sector)
+  164: #endif	// XC88x
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 24
+
+
 ;---- Variable 'DFlash1Sector' assigned to Register 'R4/R5' ----
 ;---- Variable 'DFlash0Sector' assigned to Register 'R6/R7' ----
-  163: {
-  164: #ifdef	XC88x
-  165:     volatile bit success; 
-  166: #endif	// XC88x
-  167: 	t_unFLPARAM P1;
-  168: #ifdef	XC88x
-  169: 	t_unFLPARAM P2;
-  170: #endif	// XC88x
-  171: 
-  172: #ifdef	XC866
-  173: #define USE_BANK  3								// fix the used registerbank to 3 for XC866 devices
-  174: #endif	// XC866
-  175: 
-  176: 	P1.UINT_Param = DFlash0Sector;
-000B7E 8E54              MOV      P1,R6
-000B80 8F55              MOV      P1+01H,R7
-  177: #ifdef	XC88x
-  178: 	P2.UINT_Param = DFlash1Sector;
-000B82 8C56              MOV      P2,R4
-000B84 8D57              MOV      P2+01H,R5
-  179: #endif	// XC88x
-  180: 	
-  181: #ifdef	XC866
-  182: 	REG[(4+(USE_BANK*8))] = P1.UBYTE_Param[0];	// DFLASH0 Sector - BANK3 - High Adr Byte
-  183: 	REG[(3+(USE_BANK*8))] = P1.UBYTE_Param[1];	// DFLASH0 Sector - BANK3 - Low  Adr Byte
-  184: #endif	// XC866
-  185: #ifdef	XC88x
-  186: 	REG[(1+(USE_BANK*8))] = P1.UBYTE_Param[0];	// DFLASH0 Sector -         High Adr Byte
-000B86 7819              MOV      R0,#019H
-000B88 A654              MOV      @R0,P1
-  187: 	REG[(0+(USE_BANK*8))] = P1.UBYTE_Param[1];	// DFLASH0 Sector -         Low  Adr Byte
-000B8A 18                DEC      R0
-000B8B A655              MOV      @R0,P1+01H
-  188: 	REG[(4+(USE_BANK*8))] = P2.UBYTE_Param[0];	// DFLASH1 Sector  
-000B8D 781C              MOV      R0,#01CH
-000B8F A656              MOV      @R0,P2
-  189: 	REG[(3+(USE_BANK*8))] = P2.UBYTE_Param[1];	// DFLASH1 Sector  
-000B91 18                DEC      R0
-000B92 A657              MOV      @R0,P2+01H
-  190: #endif	// XC88x
-  191: 	REG[(5+(USE_BANK*8))] = 0;					// PFLASH  
-000B94 781D              MOV      R0,#01DH
-000B96 E4                CLR      A
-LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:02:42  PAGE 25
+  165: {
+  166: #ifdef	XC88x
+  167:     volatile bit success; 
+  168: #endif	// XC88x
+  169: 	t_unFLPARAM P1;
+  170: #ifdef	XC88x
+  171: 	t_unFLPARAM P2;
+  172: #endif	// XC88x
+  173: 
+  174: #ifdef	XC866
+  175: #define USE_BANK  3								// fix the used registerbank to 3 for XC866 devices
+  176: #endif	// XC866
+  177: 
+  178: 	P1.UINT_Param = DFlash0Sector;
+000B79 8E54              MOV      P1,R6
+000B7B 8F55              MOV      P1+01H,R7
+  179: #ifdef	XC88x
+  180: 	P2.UINT_Param = DFlash1Sector;
+000B7D 8C56              MOV      P2,R4
+000B7F 8D57              MOV      P2+01H,R5
+  181: #endif	// XC88x
+  182: 	
+  183: #ifdef	XC866
+  184: 	REG[(4+(USE_BANK*8))] = P1.UBYTE_Param[0];	// DFLASH0 Sector - BANK3 - High Adr Byte
+  185: 	REG[(3+(USE_BANK*8))] = P1.UBYTE_Param[1];	// DFLASH0 Sector - BANK3 - Low  Adr Byte
+  186: #endif	// XC866
+  187: #ifdef	XC88x
+  188: 	REG[(1+(USE_BANK*8))] = P1.UBYTE_Param[0];	// DFLASH0 Sector -         High Adr Byte
+000B81 7819              MOV      R0,#019H
+000B83 A654              MOV      @R0,P1
+  189: 	REG[(0+(USE_BANK*8))] = P1.UBYTE_Param[1];	// DFLASH0 Sector -         Low  Adr Byte
+000B85 18                DEC      R0
+000B86 A655              MOV      @R0,P1+01H
+  190: 	REG[(4+(USE_BANK*8))] = P2.UBYTE_Param[0];	// DFLASH1 Sector  
+000B88 781C              MOV      R0,#01CH
+000B8A A656              MOV      @R0,P2
+  191: 	REG[(3+(USE_BANK*8))] = P2.UBYTE_Param[1];	// DFLASH1 Sector  
+000B8C 18                DEC      R0
+000B8D A657              MOV      @R0,P2+01H
+  192: #endif	// XC88x
+  193: 	REG[(5+(USE_BANK*8))] = 0;					// PFLASH  
+000B8F 781D              MOV      R0,#01DH
+000B91 E4                CLR      A
+000B92 F6                MOV      @R0,A
+  194: 	REG[(6+(USE_BANK*8))] = 0;					// PFLASH  
+000B93 08                INC      R0
+000B94 F6                MOV      @R0,A
+  195: 	REG[(7+(USE_BANK*8))] = 0;					// PFLASH  
+000B95 08                INC      R0
+000B96 F6                MOV      @R0,A
+  196: 
+  197: #ifdef XC88x
+  198: 	PUSH(PSW);
+000B97 C0D0              PUSH     PSW
+  199: 	PSW = ((USE_BANK)<<3);
+000B99 75D018            MOV      PSW,#018H
+  200: #endif	// XC88x
+  201: 
+  202: #ifdef	__C51__
+  203: 	((void (code *) (void)) FLASH_ERASE) ();
+000B9C 12DFF9            LCALL    0DFF9H
+  204: #endif	// __C51__
+  205: #ifdef	SDCC
+LX51 LINKER/LOCATER V4.66.41.0                                                        03/18/2016  11:04:42  PAGE 25
 
 
-000B97 F6                MOV      @R0,A
-  192: 	REG[(6+(USE_BANK*8))] = 0;					// PFLASH  
-000B98 08                INC      R0
-000B99 F6                MOV      @R0,A
-  193: 	REG[(7+(USE_BANK*8))] = 0;					// PFLASH  
-000B9A 08                INC      R0
-000B9B F6                MOV      @R0,A
-  194: 
-  195: #ifdef XC88x
-  196: 	PUSH(PSW);
-000B9C C0D0              PUSH     PSW
-  197: 	PSW = ((USE_BANK)<<3);
-000B9E 75D018            MOV      PSW,#018H
-  198: #endif	// XC88x
-  199: 
-  200: #ifdef	__C51__
-  201: 	((void (code *) (void)) FLASH_ERASE) ();
-000BA1 12DFF9            LCALL    0DFF9H
-  202: #endif	// __C51__
-  203: #ifdef	SDCC
-  204: _asm
-  205: 	LCALL FLASH_ERASE;
-  206: _endasm;
-  207: #endif	// SDCC
-  208: 
-  209: #ifdef	XC866
-  210: 	return(!CY);
-  211: #endif	// XC866
-  212: #ifdef	XC88x
-  213: 	success = CY;
-000BA4 9202              MOV      success,C
-  214: 	POP(PSW);
-000BA6 D0D0              POP      PSW
-  215: 	return (!success);
-000BA8 A202              MOV      C,success
-000BAA B3                CPL      C
-  216: #endif	// XC88x
-  217: }
-000BAB 22                RET      
+  206: _asm
+  207: 	LCALL FLASH_ERASE;
+  208: _endasm;
+  209: #endif	// SDCC
+  210: 
+  211: #ifdef	XC866
+  212: 	return(!CY);
+  213: #endif	// XC866
+  214: #ifdef	XC88x
+  215: 	success = CY;
+000B9F 9202              MOV      success,C
+  216: 	POP(PSW);
+000BA1 D0D0              POP      PSW
+  217: 	return (!success);
+000BA3 A202              MOV      C,success
+000BA5 B3                CPL      C
+  218: #endif	// XC88x
+  219: }
+000BA6 22                RET      
 ----- FUNCTION _FLASH_Erase (END) -------
 
 

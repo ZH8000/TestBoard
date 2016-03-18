@@ -72,6 +72,7 @@ unsigned char data			MagicMemory[RESERVED_BYTES] _at_ MAGIC_MEMORY;
 //     FLASH ERASE ABORT		 XC866 / XC88x
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #ifndef	XC878
+/*
 bit FLASH_Erase_Abort (void)
 {
 #ifdef __C51__		
@@ -84,6 +85,7 @@ _endasm;
 #endif	// SDCC
 	return (!CY);  
 }
+*/
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //     FLASH Ready               XC866 / XC88x
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
