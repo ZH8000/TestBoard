@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   FLASHUTILS                                                            04/14/2016 08:49:06 PAGE 1   
+C51 COMPILER V9.54   FLASHUTILS                                                            04/14/2016 09:59:47 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE FLASHUTILS
@@ -62,7 +62,7 @@ line level    source
   51   1        int k = 0;
   52   1        memset(buffer, 0, n);
   53   1        
-C51 COMPILER V9.54   FLASHUTILS                                                            04/14/2016 08:49:06 PAGE 2   
+C51 COMPILER V9.54   FLASHUTILS                                                            04/14/2016 09:59:47 PAGE 2   
 
   54   1        while (FLASH_Ready(FLASH_BANK_TO_CHECK) == 0) {;}
   55   1        

@@ -147,7 +147,7 @@ void processCommand(char * command) {
 	bool isNormalCommand = commandSize == 5 && command[0] == '$' && command[2] == '$' && command[4] == '$';
 	bool isSetUUIDCommand = commandSize == 40 && command[0] == '$' && command[1] == 'f' && command[2] == '$' && command[39] == '$';
 	
-	memset(respondMessage, 0, MAX_RESPONSE_LENGTH);	
+	memset(respondMessage, 0, MAX_RESPONSE_LENGTH);
 
 	if (isNormalCommand) {
 		switch(command[1]) {
@@ -170,12 +170,13 @@ void processCommand(char * command) {
 				sendUUID();
 				break;
 			default:
-				sendUART("Unknown Command\r\n");
+				sendUART("Unknown Command1\r\n");
+				sendUART(command);
 		}		
 	} else if (isSetUUIDCommand) {
 		setUUID(command);
 	} else {
-		sendUART("Unknown Command\r\n");
+		sendUART("Incorrect Command Format\r\n");		
 	}
 }
 
