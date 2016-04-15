@@ -25,11 +25,11 @@
 		#define DISCHARGE_CHANNEL					P1_2
 	#else
 		#define LCR_CHANNEL_1							P1_0
-		#define LCR_CHANNEL_2							P1_2
+		#define LCR_CHANNEL_2							P1_3
 		#define LCR_CHANNEL_3							P1_4
 
 		#define LC_CHANNEL_1							P1_1
-		#define LC_CHANNEL_2							P1_3
+		#define LC_CHANNEL_2							P1_2
 		#define LC_CHANNEL_3							P1_5
 
 		#define HV_READY_1								P4_0

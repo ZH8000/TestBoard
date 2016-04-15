@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.41.0                                                          04/14/2016  10:04:31  PAGE 1
+LX51 LINKER/LOCATER V4.66.41.0                                                          04/15/2016  15:00:01  PAGE 1
 
 
 
@@ -67,7 +67,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 
 
 ----- FUNCTION IO_vInit (BEGIN) -----
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 2
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 2
 
 
  FILE: 'IO.C'
@@ -135,7 +135,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   109: 		///  -----------------------------------------------------------------------
   110: 		///  P3.4:
   111: 		///  - is used as general purpose output
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 3
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 3
 
 
   112: 		///  - push/pull output is selected
@@ -203,7 +203,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
    82: 	
 0006BC D19B              ACALL    MAIN_vInit
 0006BE         ?C0012?MAIN:
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 4
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 4
 
 
    83:   while(1) {
@@ -271,7 +271,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 ----- FUNCTION sendHVRelayStatus (BEGIN) -----
  FILE: 'DeviceController.c'
    95: void sendHVRelayStatus() {
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 5
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 5
 
 
    96: 	if (IO_ubReadPin(HV_READY_1)) {
@@ -339,7 +339,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000733 7926              MOV      R1,#LOW 01000326H
 000735         
 000735 D1DE              ACALL    _sendUART
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 6
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 6
 
 
   118: 	}
@@ -407,7 +407,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 00076D 8A45              MOV      command+01H,R2
 00076F 8946              MOV      command+02H,R1
   183: 	char xdata uuidString[37] = {0};
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 7
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 7
 
 
 000771 120D16            LCALL    getFlashDataEndAddress
@@ -475,7 +475,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
     9: 	char xdata uuidString[50];
    10: 	unsigned char code * currentFlashDataEndAddress = getFlashDataEndAddress();
 0007D9 120D16            LCALL    getFlashDataEndAddress
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 8
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 8
 
 
 ;---- Variable 'currentFlashDataEndAddress' assigned to Register 'R2/R3' ----
@@ -543,7 +543,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000814 FC                MOV      R4,A
 000815         ?C0002?MAIN:
 000815 C3                CLR      C
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 9
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 9
 
 
 000816 ED                MOV      A,R5
@@ -611,7 +611,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
    32: 	for (i=0; i < BYTES_PER_WORDLINE; i++) {
 000853         ?C0006?FLASHUTILS:
    33: 		WLBuf[i] = *buffer;
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 10
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 10
 
 
 000853 855582            MOV      DPL,buffer+01H
@@ -679,7 +679,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 0008A1 7D01              MOV      R5,#01H
 0008A3 7BFF              MOV      R3,#0FFH
 0008A5 7A06              MOV      R2,#HIGH _?ix1000
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 11
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 11
 
 
 0008A7 797B              MOV      R1,#LOW _?ix1000
@@ -747,7 +747,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 00090B 7EF0              MOV      R6,#HIGH pageBuffer
 00090D 7FED              MOV      R7,#LOW pageBuffer
 00090F AB4C              MOV      R3,EECurrentAddr
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 12
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 12
 
 
 000911 AA4D              MOV      R2,EECurrentAddr+01H
@@ -815,7 +815,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   128:    DPTR = (unsigned int)WLAddress;
 00094E 8E83              MOV      DPH,R6
 000950 8F82              MOV      DPL,R7
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 13
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 13
 
 
   129: #endif	// __C51__
@@ -883,7 +883,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   180: 	P2.UINT_Param = DFlash1Sector;
 00096A 8C56              MOV      P2,R4
 00096C 8D57              MOV      P2+01H,R5
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 14
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 14
 
 
   181: #endif	// XC88x
@@ -951,7 +951,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 ----- FUNCTION _FLASH_Erase (END) -------
 
 
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 15
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 15
 
 
 ----- FUNCTION UART_vInit (BEGIN) -----
@@ -1019,7 +1019,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   143: void processCommand(char * command) {
   144: 	
 0009BA 8B3F              MOV      command,R3
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 16
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 16
 
 
 0009BC 8A40              MOV      command+01H,R2
@@ -1087,7 +1087,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000A39 C3                CLR      C
 000A3A         ?C0010?UART:
 000A3A 9201              MOV      isSetUUIDCommand,C
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 17
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 17
 
 
   149: 	
@@ -1155,7 +1155,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   164: 				sendHVRelayStatus();
 000A95 0206F3            LJMP     sendHVRelayStatus
   165: 				break;
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 18
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 18
 
 
   166: 			case 'e':
@@ -1223,7 +1223,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000ADD 79B0              MOV      R1,#LOW 010003B0H
   173: 		shouldMonitorHVStatus = 0;
 000ADF 8015              SJMP     ?C0068?DEVICECONTROLLER
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 19
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 19
 
 
 000AE1         ?C0042?DEVICECONTROLLER:
@@ -1257,13 +1257,13 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
    19: 	IO_vResetPin(LCR_CHANNEL_1);
 000AF9 C290              CLR      P1_0
    20: 	IO_vResetPin(LCR_CHANNEL_2);
-000AFB C292              CLR      P1_2
+000AFB C293              CLR      P1_3
    21: 	IO_vResetPin(LCR_CHANNEL_3);	
 000AFD C294              CLR      P1_4
    22: 	IO_vResetPin(LC_CHANNEL_1);
 000AFF C291              CLR      P1_1
    23: 	IO_vResetPin(LC_CHANNEL_2);
-000B01 C293              CLR      P1_3
+000B01 C292              CLR      P1_2
    24: 	IO_vResetPin(LC_CHANNEL_3);
 000B03 C295              CLR      P1_5
    25: 	
@@ -1291,7 +1291,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
    32: 			IO_vSetPin(LC_CHANNEL_1);
 000B1C D291              SETB     P1_1
    33: 			sendUART("#b#1#\n");
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 20
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 20
 
 
 000B1E 7BFF              MOV      R3,#0FFH
@@ -1303,7 +1303,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
    35: 		case '2':
 000B26         ?C0005?DEVICECONTROLLER:
    36: 			IO_vSetPin(LC_CHANNEL_2);
-000B26 D293              SETB     P1_3
+000B26 D292              SETB     P1_2
    37: 			sendUART("#b#2#\n");		
 000B28 7BFF              MOV      R3,#0FFH
 000B2A 7A02              MOV      R2,#HIGH 0100025DH
@@ -1343,13 +1343,13 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
    51: 	IO_vResetPin(LCR_CHANNEL_1);
 000B43 C290              CLR      P1_0
    52: 	IO_vResetPin(LCR_CHANNEL_2);
-000B45 C292              CLR      P1_2
+000B45 C293              CLR      P1_3
    53: 	IO_vResetPin(LCR_CHANNEL_3);
 000B47 C294              CLR      P1_4
    54: 	IO_vResetPin(LC_CHANNEL_1);
 000B49 C291              CLR      P1_1
    55: 	IO_vResetPin(LC_CHANNEL_2);
-000B4B C293              CLR      P1_3
+000B4B C292              CLR      P1_2
    56: 	IO_vResetPin(LC_CHANNEL_3);
 000B4D C295              CLR      P1_5
    57: 	
@@ -1359,7 +1359,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000B50 24CF              ADD      A,#0CFH
 000B52 6012              JZ       ?C0011?DEVICECONTROLLER
 000B54 14                DEC      A
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 21
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 21
 
 
 000B55 6019              JZ       ?C0012?DEVICECONTROLLER
@@ -1389,7 +1389,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
    67: 		case '2':
 000B70         ?C0012?DEVICECONTROLLER:
    68: 			IO_vSetPin(LCR_CHANNEL_2);
-000B70 D292              SETB     P1_2
+000B70 D293              SETB     P1_3
    69: 			sendUART("#a#2#\n");		
 000B72 7BFF              MOV      R3,#0FFH
 000B74 7A02              MOV      R2,#HIGH 01000290H
@@ -1427,7 +1427,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   141: 	if (modeCode == '0') {
 000B8D 8F44              MOV      modeCode,R7
   142: 		IO_vResetPin(HV_CHANNEL);		
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 22
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 22
 
 
 000B8F E544              MOV      A,modeCode
@@ -1495,7 +1495,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   163: 	} else {
 000BDA 8006              SJMP     ?C0066?DEVICECONTROLLER
 000BDC         ?C0040?DEVICECONTROLLER:
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 23
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 23
 
 
   164: 		sendUART("#Unknown Charge Mode#\n");		
@@ -1563,7 +1563,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000C2F 31BA              ACALL    _processCommand
   196: 			memset(receiveBuffer, 0, MAX_COMMAND_LENGTH);			
 000C31 7E00              MOV      R6,#00H
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 24
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 24
 
 
 000C33 7F64              MOV      R7,#064H
@@ -1631,7 +1631,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000C7F EF                MOV      A,R7
    96: 	((void (code *) (void)) FLASH_READ_STATUS) ();
 000C80 02DFF0            LJMP     0DFF0H
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 25
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 25
 
 
    97: #endif	// __C51__
@@ -1699,7 +1699,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 000CCA F8                MOV      R0,A
 000CCB E54E              MOV      A,j
 000CCD 6480              XRL      A,#080H
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 26
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 26
 
 
 000CCF 98                SUBB     A,R0
@@ -1767,7 +1767,7 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
    14:   unsigned char code * EECurrentAddr = (unsigned char code*)FLASH_LAST_ADDR;
 ;---- Variable 'EECurrentAddr' assigned to Register 'R6/R7' ----
 000D16 7F00              MOV      R7,#00H
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/14/2016  10:04:31  PAGE 27
+LX51 LINKER/LOCATER V4.66.41.0                                                        04/15/2016  15:00:01  PAGE 27
 
 
 000D18 7EAC              MOV      R6,#0ACH

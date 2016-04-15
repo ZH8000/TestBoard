@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   FLASHHANDLER                                                          04/14/2016 09:59:47 PAGE 1   
+C51 COMPILER V9.54   FLASHHANDLER                                                          04/15/2016 15:00:01 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE FLASHHANDLER
@@ -62,7 +62,7 @@ line level    source
   50          unsigned char idata     WLBuf[BYTES_PER_WORDLINE]   _at_ WORDLINE_BUFFER_ADDRESS;
   51          unsigned char data      MagicMemory[RESERVED_BYTES] _at_ MAGIC_MEMORY;
   52          #endif  // __C51__ 
-C51 COMPILER V9.54   FLASHHANDLER                                                          04/14/2016 09:59:47 PAGE 2   
+C51 COMPILER V9.54   FLASHHANDLER                                                          04/15/2016 15:00:01 PAGE 2   
 
   53          #endif  // ifndef XC878
   54          
@@ -126,7 +126,7 @@ line level    source
  112          
  113          
  114          // FLAH_Prog ((unsigned char code*)WORDLINEADDR(117));      // How to call it ...
-C51 COMPILER V9.54   FLASHHANDLER                                                          04/14/2016 09:59:47 PAGE 3   
+C51 COMPILER V9.54   FLASHHANDLER                                                          04/15/2016 15:00:01 PAGE 3   
 
  115          bit FLASH_Prog          (unsigned char code* WLAddress) 
  116          {
@@ -190,7 +190,7 @@ line level    source
  174   1      #ifdef  XC866
               #define USE_BANK  3               // fix the used registerbank to 3 for XC866 devices
               #endif  // XC866
-C51 COMPILER V9.54   FLASHHANDLER                                                          04/14/2016 09:59:47 PAGE 4   
+C51 COMPILER V9.54   FLASHHANDLER                                                          04/15/2016 15:00:01 PAGE 4   
 
  177   1      
  178   1        P1.UINT_Param = DFlash0Sector;
@@ -254,7 +254,7 @@ line level    source
               #ifdef  K52               
                     MEX1 = 0x00;                  // NextBank 0 / Current Bank 0  
                   MEX2 = 0x00;                  // Ensure that all MOVC command are using Bank 0 
-C51 COMPILER V9.54   FLASHHANDLER                                                          04/14/2016 09:59:47 PAGE 5   
+C51 COMPILER V9.54   FLASHHANDLER                                                          04/15/2016 15:00:01 PAGE 5   
 
                   MEX3 = 0x00;                  // Ensure all MOVX access XRAM Bank 0   
                                           // MEX1 seems to be overwritten, if debugger is active ( KEIL V8.12c ) 
@@ -318,7 +318,7 @@ line level    source
                 DPTR = (unsigned int)DestWordLine;
               
               #ifdef  __C51__ 
-C51 COMPILER V9.54   FLASHHANDLER                                                          04/14/2016 09:59:47 PAGE 6   
+C51 COMPILER V9.54   FLASHHANDLER                                                          04/15/2016 15:00:01 PAGE 6   
 
                 ((void (code *) (void)) FLASH_PROG) ();       // BROM call KEIL
               #endif  // __C51__
