@@ -1,4 +1,4 @@
-AX51 MACRO ASSEMBLER  START_XC                                                              04/15/16 15:00:01 PAGE     1
+AX51 MACRO ASSEMBLER  START_XC                                                              04/20/16 16:48:13 PAGE     1
 
 
 MACRO ASSEMBLER AX51 V3.13.0.0
@@ -65,7 +65,7 @@ LOC    OBJ             LINE     SOURCE
                          55     
                          56     ;---------------------------------------------------------------------
                          57     ;<e> Device = " XC88x "
-AX51 MACRO ASSEMBLER  START_XC                                                              04/15/16 15:00:01 PAGE     2
+AX51 MACRO ASSEMBLER  START_XC                                                              04/20/16 16:48:13 PAGE     2
 
  0001                    58     XC88x_CHIP    EQU   1
                          59     ;
@@ -133,7 +133,7 @@ LOC    OBJ             LINE     SOURCE
                         121     ; <i> set top of stack to highest location+1 
  0100                   122     IBPSTACKTOP     EQU     0xFF +1     ; default 0FFH+1  
                         123     ; </e>
-AX51 MACRO ASSEMBLER  START_XC                                                              04/15/16 15:00:01 PAGE     3
+AX51 MACRO ASSEMBLER  START_XC                                                              04/20/16 16:48:13 PAGE     3
 
                         124     ;
                         125     ;  Stack Space for reentrant functions in the LARGE model.      
@@ -201,7 +201,7 @@ LOC    OBJ             LINE     SOURCE
                         187     
                         188                     NAME    ?C_STARTUP
                         189     
-AX51 MACRO ASSEMBLER  START_XC                                                              04/15/16 15:00:01 PAGE     4
+AX51 MACRO ASSEMBLER  START_XC                                                              04/20/16 16:48:13 PAGE     4
 
                         190     
 ------                  191     ?C_C51STARTUP   SEGMENT   CODE
@@ -269,7 +269,7 @@ LOC    OBJ             LINE     SOURCE
 000006 90F000           251                     MOV     DPTR,#XDATASTART
 000009 7F00             252                     MOV     R7,#LOW (XDATALEN)
                         253       IF (LOW (XDATALEN)) <> 0
-AX51 MACRO ASSEMBLER  START_XC                                                              04/15/16 15:00:01 PAGE     5
+AX51 MACRO ASSEMBLER  START_XC                                                              04/20/16 16:48:13 PAGE     5
 
                                                 MOV     R6,#(HIGH (XDATALEN)) +1
                                   ELSE
@@ -325,7 +325,7 @@ LOC    OBJ             LINE     SOURCE
                         305     
                         306      END
                         307     
-AX51 MACRO ASSEMBLER  START_XC                                                              04/15/16 15:00:01 PAGE     6
+AX51 MACRO ASSEMBLER  START_XC                                                              04/20/16 16:48:13 PAGE     6
 
 SYMBOL TABLE LISTING
 ------ ----- -------

@@ -42,7 +42,7 @@
 
 		#define	HV_CHANNEL								P3_7
 		#define CHARGE_CHANNEL						P3_4
-		#define DISCHARGE_CHANNEL					P4_6
+		#define DISCHARGE_CHANNEL					P3_6
 	#endif
 
 #define SET_LCR_CHANNEL_1  				LCR_CHANNEL_1 = 1

@@ -130,6 +130,7 @@ void IO_vInit(void)
 
 
 		P3_DIR        =  0xF0;         // load direction register
+		P3_DATA				=  0x50;
 
 		///  -----------------------------------------------------------------------
 		///  Configuration of Port P4:

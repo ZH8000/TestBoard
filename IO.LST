@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   IO                                                                    04/15/2016 15:00:01 PAGE 1   
+C51 COMPILER V9.54   IO                                                                    04/20/2016 16:48:14 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE IO
@@ -62,7 +62,7 @@ line level    source
                   P1_DIR            = 0x04; 
                   P1_DATA           = 0x00;
                   P3_DIR            = 0xFF;
-C51 COMPILER V9.54   IO                                                                    04/15/2016 15:00:01 PAGE 2   
+C51 COMPILER V9.54   IO                                                                    04/20/2016 16:48:14 PAGE 2   
 
                   P3_DATA           = 0x00;
                 #else
@@ -126,7 +126,7 @@ line level    source
  114   1          ///  - pull device is disabled (tristate) 
  115   1          ///  P3.5:
  116   1          ///  - is used as general purpose output
-C51 COMPILER V9.54   IO                                                                    04/15/2016 15:00:01 PAGE 3   
+C51 COMPILER V9.54   IO                                                                    04/20/2016 16:48:14 PAGE 3   
 
  117   1          ///  - push/pull output is selected
  118   1          ///  - the pin status is low level
@@ -144,41 +144,42 @@ line level    source
  130   1      
  131   1      
  132   1          P3_DIR        =  0xF0;         // load direction register
- 133   1      
- 134   1          ///  -----------------------------------------------------------------------
- 135   1          ///  Configuration of Port P4:
- 136   1          ///  -----------------------------------------------------------------------
- 137   1          ///  P4.0:
- 138   1          ///  - is used as general input
- 139   1          ///  - pull device is disabled (tristate) 
- 140   1          ///  P4.1:
- 141   1          ///  - is used as general input
- 142   1          ///  - pull device is disabled (tristate) 
- 143   1          ///  P4.2:
- 144   1          ///  - is used as general input
- 145   1          ///  - pull-up device is assigned
- 146   1          ///  P4.3:
- 147   1          ///  - is used as general input
- 148   1          ///  - pull device is disabled (tristate) 
- 149   1          ///  P4.4:
- 150   1          ///  - is used as general input
- 151   1          ///  - pull device is disabled (tristate) 
- 152   1          ///  P4.5:
- 153   1          ///  - is used as general input
- 154   1          ///  - pull device is disabled (tristate) 
- 155   1      
+ 133   1          P3_DATA       =  0x50;
+ 134   1      
+ 135   1          ///  -----------------------------------------------------------------------
+ 136   1          ///  Configuration of Port P4:
+ 137   1          ///  -----------------------------------------------------------------------
+ 138   1          ///  P4.0:
+ 139   1          ///  - is used as general input
+ 140   1          ///  - pull device is disabled (tristate) 
+ 141   1          ///  P4.1:
+ 142   1          ///  - is used as general input
+ 143   1          ///  - pull device is disabled (tristate) 
+ 144   1          ///  P4.2:
+ 145   1          ///  - is used as general input
+ 146   1          ///  - pull-up device is assigned
+ 147   1          ///  P4.3:
+ 148   1          ///  - is used as general input
+ 149   1          ///  - pull device is disabled (tristate) 
+ 150   1          ///  P4.4:
+ 151   1          ///  - is used as general input
+ 152   1          ///  - pull device is disabled (tristate) 
+ 153   1          ///  P4.5:
+ 154   1          ///  - is used as general input
+ 155   1          ///  - pull device is disabled (tristate) 
  156   1      
- 157   1          ///  -----------------------------------------------------------------------
- 158   1          ///  Configuration of Port P5:
- 159   1          ///  -----------------------------------------------------------------------
- 160   1          ///  - no pin of port P5 is used
- 161   1        #endif
- 162   1      
- 163   1      } //  End of function IO_vInit
+ 157   1      
+ 158   1          ///  -----------------------------------------------------------------------
+ 159   1          ///  Configuration of Port P5:
+ 160   1          ///  -----------------------------------------------------------------------
+ 161   1          ///  - no pin of port P5 is used
+ 162   1        #endif
+ 163   1      
+ 164   1      } //  End of function IO_vInit
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =      7    ----
+   CODE SIZE        =     10    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
@@ -189,9 +190,9 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
    FAR CONST SIZE   =   ----    ----
-END OF MODULE INFORMATION.
+C51 COMPILER V9.54   IO                                                                    04/20/2016 16:48:14 PAGE 4   
 
-C51 COMPILER V9.54   IO                                                                    04/15/2016 15:00:01 PAGE 4   
+END OF MODULE INFORMATION.
 
 
 C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
