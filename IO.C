@@ -48,117 +48,117 @@
 
 void IO_vInit(void)
 {
-	#ifdef STARTER_KIT_EMU
-		P1_DIR        		= 0x04; 
-		P1_DATA       		= 0x00;
-		P3_DIR			  		= 0xFF;
-		P3_DATA						= 0x00;
-	#else
+#ifdef STARTER_KIT_EMU
+    P1_DIR                  = 0x04; 
+    P1_DATA                 = 0x00;
+    P3_DIR                                  = 0xFF;
+    P3_DATA                                         = 0x00;
+#else
 
-		///  -----------------------------------------------------------------------
-		///  Configuration of Port P0:
-		///  -----------------------------------------------------------------------
-		///  - no pin of port P0 is used
-
-
-		///  -----------------------------------------------------------------------
-		///  Configuration of Port P1:
-		///  -----------------------------------------------------------------------
-		///  P1.0:
-		///  - is used as general purpose output
-		///  - push/pull output is selected
-		///  - the pin status is low level
-		///  - pull-up device is assigned
-		///  P1.1:
-		///  - is used as general purpose output
-		///  - push/pull output is selected
-		///  - the pin status is low level
-		///  - pull-up device is assigned
-		///  P1.2:
-		///  - is used as general purpose output
-		///  - push/pull output is selected
-		///  - the pin status is low level
-		///  - pull-up device is assigned
-		///  P1.3:
-		///  - is used as general purpose output
-		///  - push/pull output is selected
-		///  - the pin status is low level
-		///  - pull-up device is assigned
-		///  P1.4:
-		///  - is used as general purpose output
-		///  - push/pull output is selected
-		///  - the pin status is low level
-		///  - pull-up device is assigned
-		///  P1.5:
-		///  - is used as general purpose output
-		///  - push/pull output is selected
-		///  - the pin status is low level
-		///  - pull-up device is assigned
+    ///  -----------------------------------------------------------------------
+    ///  Configuration of Port P0:
+    ///  -----------------------------------------------------------------------
+    ///  - no pin of port P0 is used
 
 
-		P1_DIR        =  0x3F;         // load direction register
-
-		///  -----------------------------------------------------------------------
-		///  Configuration of Port P2:
-		///  -----------------------------------------------------------------------
-		///  - no pin of port P2 is used
-
-
-		///  -----------------------------------------------------------------------
-		///  Configuration of Port P3:
-		///  -----------------------------------------------------------------------
-		///  P3.4:
-		///  - is used as general purpose output
-		///  - push/pull output is selected
-		///  - the pin status is low level
-		///  - pull device is disabled (tristate) 
-		///  P3.5:
-		///  - is used as general purpose output
-		///  - push/pull output is selected
-		///  - the pin status is low level
-		///  - pull device is disabled (tristate) 
-		///  P3.6:
-		///  - is used as general purpose output
-		///  - push/pull output is selected
-		///  - the pin status is low level
-		///  - pull device is disabled (tristate) 
-		///  P3.7:
-		///  - is used as general purpose output
-		///  - push/pull output is selected
-		///  - the pin status is low level
-		///  - pull device is disabled (tristate) 
-
-
-		P3_DIR        =  0xF0;         // load direction register
-		P3_DATA				=  0x50;
-
-		///  -----------------------------------------------------------------------
-		///  Configuration of Port P4:
-		///  -----------------------------------------------------------------------
-		///  P4.0:
-		///  - is used as general input
-		///  - pull device is disabled (tristate) 
-		///  P4.1:
-		///  - is used as general input
-		///  - pull device is disabled (tristate) 
-		///  P4.2:
-		///  - is used as general input
-		///  - pull-up device is assigned
-		///  P4.3:
-		///  - is used as general input
-		///  - pull device is disabled (tristate) 
-		///  P4.4:
-		///  - is used as general input
-		///  - pull device is disabled (tristate) 
-		///  P4.5:
-		///  - is used as general input
-		///  - pull device is disabled (tristate) 
+    ///  -----------------------------------------------------------------------
+    ///  Configuration of Port P1:
+    ///  -----------------------------------------------------------------------
+    ///  P1.0:
+    ///  - is used as general purpose output
+    ///  - push/pull output is selected
+    ///  - the pin status is low level
+    ///  - pull-up device is assigned
+    ///  P1.1:
+    ///  - is used as general purpose output
+    ///  - push/pull output is selected
+    ///  - the pin status is low level
+    ///  - pull-up device is assigned
+    ///  P1.2:
+    ///  - is used as general purpose output
+    ///  - push/pull output is selected
+    ///  - the pin status is low level
+    ///  - pull-up device is assigned
+    ///  P1.3:
+    ///  - is used as general purpose output
+    ///  - push/pull output is selected
+    ///  - the pin status is low level
+    ///  - pull-up device is assigned
+    ///  P1.4:
+    ///  - is used as general purpose output
+    ///  - push/pull output is selected
+    ///  - the pin status is low level
+    ///  - pull-up device is assigned
+    ///  P1.5:
+    ///  - is used as general purpose output
+    ///  - push/pull output is selected
+    ///  - the pin status is low level
+    ///  - pull-up device is assigned
 
 
-		///  -----------------------------------------------------------------------
-		///  Configuration of Port P5:
-		///  -----------------------------------------------------------------------
-		///  - no pin of port P5 is used
-	#endif
+    P1_DIR        =  0x3F;         // load direction register
+
+    ///  -----------------------------------------------------------------------
+    ///  Configuration of Port P2:
+    ///  -----------------------------------------------------------------------
+    ///  - no pin of port P2 is used
+
+
+    ///  -----------------------------------------------------------------------
+    ///  Configuration of Port P3:
+    ///  -----------------------------------------------------------------------
+    ///  P3.4:
+    ///  - is used as general purpose output
+    ///  - push/pull output is selected
+    ///  - the pin status is low level
+    ///  - pull device is disabled (tristate) 
+    ///  P3.5:
+    ///  - is used as general purpose output
+    ///  - push/pull output is selected
+    ///  - the pin status is low level
+    ///  - pull device is disabled (tristate) 
+    ///  P3.6:
+    ///  - is used as general purpose output
+    ///  - push/pull output is selected
+    ///  - the pin status is low level
+    ///  - pull device is disabled (tristate) 
+    ///  P3.7:
+    ///  - is used as general purpose output
+    ///  - push/pull output is selected
+    ///  - the pin status is low level
+    ///  - pull device is disabled (tristate) 
+
+
+    P3_DIR        =  0xF0;         // load direction register
+    P3_DATA                         =  0x50;
+
+    ///  -----------------------------------------------------------------------
+    ///  Configuration of Port P4:
+    ///  -----------------------------------------------------------------------
+    ///  P4.0:
+    ///  - is used as general input
+    ///  - pull device is disabled (tristate) 
+    ///  P4.1:
+    ///  - is used as general input
+    ///  - pull device is disabled (tristate) 
+    ///  P4.2:
+    ///  - is used as general input
+    ///  - pull-up device is assigned
+    ///  P4.3:
+    ///  - is used as general input
+    ///  - pull device is disabled (tristate) 
+    ///  P4.4:
+    ///  - is used as general input
+    ///  - pull device is disabled (tristate) 
+    ///  P4.5:
+    ///  - is used as general input
+    ///  - pull device is disabled (tristate) 
+
+
+    ///  -----------------------------------------------------------------------
+    ///  Configuration of Port P5:
+    ///  -----------------------------------------------------------------------
+    ///  - no pin of port P5 is used
+#endif
 
 } //  End of function IO_vInit
