@@ -4,13 +4,16 @@
 #include "FlashUtils.h"
 #include <string.h>
 
+#define PREDEFINED_UUID		"bfcf9428-eef6-4261-ae2e-e9d66c7e3d31"
 extern bool shouldMonitorHVStatus;
+
+
 void sendUUID() {
-    char xdata uuidString[50];
-    unsigned char code * currentFlashDataEndAddress = getFlashDataEndAddress();
-    readFlashToBuffer(uuidString, 50, currentFlashDataEndAddress);
+    //char xdata uuidString[50];
+    //unsigned char code * currentFlashDataEndAddress = getFlashDataEndAddress();
+    //readFlashToBuffer(uuidString, 50, currentFlashDataEndAddress);
     sendUART("#f#");
-    sendUART(uuidString);
+    sendUART(PREDEFINED_UUID);
     sendUART("#\n");
 }
 

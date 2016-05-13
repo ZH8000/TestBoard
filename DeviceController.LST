@@ -1,7 +1,7 @@
-C51 COMPILER V9.54   DEVICECONTROLLER                                                      04/20/2016 16:48:13 PAGE 1   
+C51 COMPILER V9.55   DEVICECONTROLLER                                                      05/13/2016 13:32:28 PAGE 1   
 
 
-C51 COMPILER V9.54, COMPILATION OF MODULE DEVICECONTROLLER
+C51 COMPILER V9.55, COMPILATION OF MODULE DEVICECONTROLLER
 OBJECT MODULE PLACED IN DeviceController.OBJ
 COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE DeviceController.c OBJECTADVANCED OPTIMIZE(8,SPEED) BROWSE NOINTPROMOTE 
                     -DEFINE(STARTERKIT) DEBUG TABS(2)
@@ -14,203 +14,206 @@ line level    source
    4          #include "FlashUtils.h"
    5          #include <string.h>
    6          
-   7          extern bool shouldMonitorHVStatus;
-   8          void sendUUID() {
-   9   1        char xdata uuidString[50];
-  10   1        unsigned char code * currentFlashDataEndAddress = getFlashDataEndAddress();
-  11   1        readFlashToBuffer(uuidString, 50, currentFlashDataEndAddress);
-  12   1        sendUART("#f#");
-  13   1        sendUART(uuidString);
-  14   1        sendUART("#\n");
-  15   1      }
-  16          
-  17          void enableLCChannel(char channelCode) {
-  18   1        // Switch off all LC / LCR channel first.
-  19   1        IO_vResetPin(LCR_CHANNEL_1);
-  20   1        IO_vResetPin(LCR_CHANNEL_2);
-  21   1        IO_vResetPin(LCR_CHANNEL_3);  
-  22   1        IO_vResetPin(LC_CHANNEL_1);
-  23   1        IO_vResetPin(LC_CHANNEL_2);
-  24   1        IO_vResetPin(LC_CHANNEL_3);
-  25   1        
-  26   1        // Enable coressponding LCR channel GPIO
-  27   1        switch(channelCode) {
-  28   2          case '0':
-  29   2            sendUART("#b#0#\n");
-  30   2            break;
-  31   2          case '1':
-  32   2            IO_vSetPin(LC_CHANNEL_1);
-  33   2            sendUART("#b#1#\n");
-  34   2            break;
-  35   2          case '2':
-  36   2            IO_vSetPin(LC_CHANNEL_2);
-  37   2            sendUART("#b#2#\n");    
-  38   2            break;
-  39   2          case '3':
-  40   2            IO_vSetPin(LC_CHANNEL_3);
-  41   2            sendUART("#b#3#\n");
-  42   2            break;
-  43   2          default:
-  44   2            sendUART("#Unknown LC Channel.#\n");      
-  45   2            break;
-  46   2        }
-  47   1      }
-  48          
-  49          void enableLCRChannel(char channelCode) {
-  50   1        // Switch off all LC / LCR channel first.
-  51   1        IO_vResetPin(LCR_CHANNEL_1);
-  52   1        IO_vResetPin(LCR_CHANNEL_2);
-  53   1        IO_vResetPin(LCR_CHANNEL_3);
-  54   1        IO_vResetPin(LC_CHANNEL_1);
-C51 COMPILER V9.54   DEVICECONTROLLER                                                      04/20/2016 16:48:13 PAGE 2   
+   7          #define PREDEFINED_UUID   "bfcf9428-eef6-4261-ae2e-e9d66c7e3d31"
+   8          extern bool shouldMonitorHVStatus;
+   9          
+  10          
+  11          void sendUUID() {
+  12   1          //char xdata uuidString[50];
+  13   1          //unsigned char code * currentFlashDataEndAddress = getFlashDataEndAddress();
+  14   1          //readFlashToBuffer(uuidString, 50, currentFlashDataEndAddress);
+  15   1          sendUART("#f#");
+  16   1          sendUART(PREDEFINED_UUID);
+  17   1          sendUART("#\n");
+  18   1      }
+  19          
+  20          void enableLCChannel(char channelCode) {
+  21   1          // Switch off all LC / LCR channel first.
+  22   1          IO_vResetPin(LCR_CHANNEL_1);
+  23   1          IO_vResetPin(LCR_CHANNEL_2);
+  24   1          IO_vResetPin(LCR_CHANNEL_3);    
+  25   1          IO_vResetPin(LC_CHANNEL_1);
+  26   1          IO_vResetPin(LC_CHANNEL_2);
+  27   1          IO_vResetPin(LC_CHANNEL_3);
+  28   1      
+  29   1          // Enable coressponding LCR channel GPIO
+  30   1          switch(channelCode) {
+  31   2              case '0':
+  32   2                  sendUART("#b#0#\n");
+  33   2                  break;
+  34   2              case '1':
+  35   2                  IO_vSetPin(LC_CHANNEL_1);
+  36   2                  sendUART("#b#1#\n");
+  37   2                  break;
+  38   2              case '2':
+  39   2                  IO_vSetPin(LC_CHANNEL_2);
+  40   2                  sendUART("#b#2#\n");            
+  41   2                  break;
+  42   2              case '3':
+  43   2                  IO_vSetPin(LC_CHANNEL_3);
+  44   2                  sendUART("#b#3#\n");
+  45   2                  break;
+  46   2              default:
+  47   2                  sendUART("#Unknown LC Channel.#\n");                    
+  48   2                  break;
+  49   2          }
+  50   1      }
+  51          
+  52          void enableLCRChannel(char channelCode) {
+  53   1          // Switch off all LC / LCR channel first.
+  54   1          IO_vResetPin(LCR_CHANNEL_1);
+C51 COMPILER V9.55   DEVICECONTROLLER                                                      05/13/2016 13:32:28 PAGE 2   
 
-  55   1        IO_vResetPin(LC_CHANNEL_2);
-  56   1        IO_vResetPin(LC_CHANNEL_3);
-  57   1        
-  58   1        // Enable coressponding LCR channel GPIO
-  59   1        switch(channelCode) {
-  60   2          case '0':
-  61   2            sendUART("#a#0#\n");
-  62   2            break;
-  63   2          case '1':
-  64   2            IO_vSetPin(LCR_CHANNEL_1);
-  65   2            sendUART("#a#1#\n");
-  66   2            break;
-  67   2          case '2':
-  68   2            IO_vSetPin(LCR_CHANNEL_2);
-  69   2            sendUART("#a#2#\n");    
-  70   2            break;
-  71   2          case '3':
-  72   2            IO_vSetPin(LCR_CHANNEL_3);
-  73   2            sendUART("#a#3#\n");
-  74   2            break;
-  75   2          default:
-  76   2            sendUART("#Unknown LCR Channel.#\n");     
-  77   2            break;
-  78   2        }
-  79   1      }
-  80          
-  81          bool isAllHVRelayOK() {
-  82   1        #ifdef STARTER_KIT_EMU
+  55   1          IO_vResetPin(LCR_CHANNEL_2);
+  56   1          IO_vResetPin(LCR_CHANNEL_3);
+  57   1          IO_vResetPin(LC_CHANNEL_1);
+  58   1          IO_vResetPin(LC_CHANNEL_2);
+  59   1          IO_vResetPin(LC_CHANNEL_3);
+  60   1      
+  61   1          // Enable coressponding LCR channel GPIO
+  62   1          switch(channelCode) {
+  63   2              case '0':
+  64   2                  sendUART("#a#0#\n");
+  65   2                  break;
+  66   2              case '1':
+  67   2                  IO_vSetPin(LCR_CHANNEL_1);
+  68   2                  sendUART("#a#1#\n");
+  69   2                  break;
+  70   2              case '2':
+  71   2                  IO_vSetPin(LCR_CHANNEL_2);
+  72   2                  sendUART("#a#2#\n");            
+  73   2                  break;
+  74   2              case '3':
+  75   2                  IO_vSetPin(LCR_CHANNEL_3);
+  76   2                  sendUART("#a#3#\n");
+  77   2                  break;
+  78   2              default:
+  79   2                  sendUART("#Unknown LCR Channel.#\n");                   
+  80   2                  break;
+  81   2          }
+  82   1      }
+  83          
+  84          bool isAllHVRelayOK() {
+  85   1      #ifdef STARTER_KIT_EMU
                   return IO_ubReadPin(HV_READY_1);
-                #else
-  85   1          return 
-  86   1            IO_ubReadPin(HV_READY_1) &&
-  87   1            IO_ubReadPin(HV_READY_2) &&
-  88   1            IO_ubReadPin(HV_READY_3) &&
-  89   1            IO_ubReadPin(HV_FAULT_1) &&
-  90   1            IO_ubReadPin(HV_FAULT_2) &&
-  91   1            IO_ubReadPin(HV_FAULT_3);
-  92   1        #endif
-  93   1      }
-  94          
-  95          void sendHVRelayStatus() {
-  96   1        if (IO_ubReadPin(HV_READY_1)) {
-  97   2          sendUART("HV_READY_1: OK\n");
-  98   2        } else {
-  99   2          sendUART("HV_READY_1: NG\n");
- 100   2        }
- 101   1        
- 102   1        if (IO_ubReadPin(HV_READY_2)) {
- 103   2          sendUART("HV_READY_2: OK\n");
- 104   2        } else {
- 105   2          sendUART("HV_READY_2: NG\n");
- 106   2        }
- 107   1      
- 108   1        if (IO_ubReadPin(HV_READY_3)) {
- 109   2          sendUART("HV_READY_3: OK\n");
- 110   2        } else {
- 111   2          sendUART("HV_READY_3: NG\n");
- 112   2        }
- 113   1        
- 114   1        if (IO_ubReadPin(HV_FAULT_1)) {
- 115   2          sendUART("HV_FAULT_1: OK\n");
- 116   2        } else {
-C51 COMPILER V9.54   DEVICECONTROLLER                                                      04/20/2016 16:48:13 PAGE 3   
+              #else
+  88   1          return 
+  89   1              IO_ubReadPin(HV_READY_1) &&
+  90   1              IO_ubReadPin(HV_READY_2) &&
+  91   1              IO_ubReadPin(HV_READY_3) &&
+  92   1              IO_ubReadPin(HV_FAULT_1) &&
+  93   1              IO_ubReadPin(HV_FAULT_2) &&
+  94   1              IO_ubReadPin(HV_FAULT_3);
+  95   1      #endif
+  96   1      }
+  97          
+  98          void sendHVRelayStatus() {
+  99   1          if (IO_ubReadPin(HV_READY_1)) {
+ 100   2              sendUART("HV_READY_1: OK\n");
+ 101   2          } else {
+ 102   2              sendUART("HV_READY_1: NG\n");
+ 103   2          }
+ 104   1      
+ 105   1          if (IO_ubReadPin(HV_READY_2)) {
+ 106   2              sendUART("HV_READY_2: OK\n");
+ 107   2          } else {
+ 108   2              sendUART("HV_READY_2: NG\n");
+ 109   2          }
+ 110   1      
+ 111   1          if (IO_ubReadPin(HV_READY_3)) {
+ 112   2              sendUART("HV_READY_3: OK\n");
+ 113   2          } else {
+ 114   2              sendUART("HV_READY_3: NG\n");
+ 115   2          }
+ 116   1      
+C51 COMPILER V9.55   DEVICECONTROLLER                                                      05/13/2016 13:32:28 PAGE 3   
 
- 117   2          sendUART("HV_FAULT_1: NG\n");
- 118   2        }
- 119   1      
- 120   1        if (IO_ubReadPin(HV_FAULT_2)) {
- 121   2          sendUART("HV_FAULT_2: OK\n");
- 122   2        } else {
- 123   2          sendUART("HV_FAULT_2: NG\n");
- 124   2        }
- 125   1        
- 126   1        if (IO_ubReadPin(HV_FAULT_3)) {
- 127   2          sendUART("HV_FAULT_3: OK\n");
- 128   2        } else {
- 129   2          sendUART("HV_FAULT_3: NG\n");
- 130   2        }
- 131   1        
- 132   1        
- 133   1        if (isAllHVRelayOK()) {
- 134   2          sendUART("#d#1#\n");
- 135   2        } else {
- 136   2          sendUART("#d#0#\n");    
- 137   2        }
- 138   1      }
- 139          
- 140          void setChargeMode(char modeCode) {
- 141   1        if (modeCode == '0') {
- 142   2          IO_vResetPin(HV_CHANNEL);   
- 143   2          IO_vSetPin(DISCHARGE_CHANNEL);
- 144   2          IO_vSetPin(CHARGE_CHANNEL);
- 145   2          sendUART("#c#0#\n");    
- 146   2        } else if (modeCode == '1') {
- 147   2          if (!isAllHVRelayOK()) {
- 148   3            IO_vResetPin(HV_CHANNEL);     
- 149   3            IO_vSetPin(CHARGE_CHANNEL);
- 150   3            IO_vSetPin(DISCHARGE_CHANNEL);
- 151   3            sendUART("#d#0#\n");
- 152   3            return;
- 153   3          }
- 154   2          IO_vSetPin(DISCHARGE_CHANNEL);
- 155   2          IO_vSetPin(HV_CHANNEL);
- 156   2          IO_vResetPin(CHARGE_CHANNEL);
- 157   2          sendUART("#c#1#\n");
- 158   2        } else if (modeCode == '2') {
- 159   2          IO_vSetPin(CHARGE_CHANNEL);
- 160   2          IO_vResetPin(HV_CHANNEL);
- 161   2          IO_vResetPin(DISCHARGE_CHANNEL);
- 162   2          sendUART("#c#2#\n");
- 163   2        } else {
- 164   2          sendUART("#Unknown Charge Mode#\n");    
- 165   2        }
- 166   1      }
- 167          
- 168          void setHVMonitorMode(char modeCode) {
- 169   1        if (modeCode == '1') {
- 170   2          shouldMonitorHVStatus = 1;
- 171   2          sendUART("#e#1#\n");
- 172   2        } else if (modeCode == '0') {
- 173   2          shouldMonitorHVStatus = 0;
- 174   2          sendUART("#e#0#\n");
- 175   2        } else {
- 176   2          sendUART("#Unknown HV Monitor Code#\n");
- 177   2        }
- 178   1        
-C51 COMPILER V9.54   DEVICECONTROLLER                                                      04/20/2016 16:48:13 PAGE 4   
+ 117   1          if (IO_ubReadPin(HV_FAULT_1)) {
+ 118   2              sendUART("HV_FAULT_1: OK\n");
+ 119   2          } else {
+ 120   2              sendUART("HV_FAULT_1: NG\n");
+ 121   2          }
+ 122   1      
+ 123   1          if (IO_ubReadPin(HV_FAULT_2)) {
+ 124   2              sendUART("HV_FAULT_2: OK\n");
+ 125   2          } else {
+ 126   2              sendUART("HV_FAULT_2: NG\n");
+ 127   2          }
+ 128   1      
+ 129   1          if (IO_ubReadPin(HV_FAULT_3)) {
+ 130   2              sendUART("HV_FAULT_3: OK\n");
+ 131   2          } else {
+ 132   2              sendUART("HV_FAULT_3: NG\n");
+ 133   2          }
+ 134   1      
+ 135   1      
+ 136   1          if (isAllHVRelayOK()) {
+ 137   2              sendUART("#d#1#\n");
+ 138   2          } else {
+ 139   2              sendUART("#d#0#\n");            
+ 140   2          }
+ 141   1      }
+ 142          
+ 143          void setChargeMode(char modeCode) {
+ 144   1          if (modeCode == '0') {
+ 145   2              IO_vResetPin(HV_CHANNEL);               
+ 146   2              IO_vSetPin(DISCHARGE_CHANNEL);
+ 147   2              IO_vSetPin(CHARGE_CHANNEL);
+ 148   2              sendUART("#c#0#\n");            
+ 149   2          } else if (modeCode == '1') {
+ 150   2              if (!isAllHVRelayOK()) {
+ 151   3                  IO_vResetPin(HV_CHANNEL);                       
+ 152   3                  IO_vSetPin(CHARGE_CHANNEL);
+ 153   3                  IO_vSetPin(DISCHARGE_CHANNEL);
+ 154   3                  sendUART("#d#0#\n");
+ 155   3                  return;
+ 156   3              }
+ 157   2              IO_vSetPin(DISCHARGE_CHANNEL);
+ 158   2              IO_vSetPin(HV_CHANNEL);
+ 159   2              IO_vResetPin(CHARGE_CHANNEL);
+ 160   2              sendUART("#c#1#\n");
+ 161   2          } else if (modeCode == '2') {
+ 162   2              IO_vSetPin(CHARGE_CHANNEL);
+ 163   2              IO_vResetPin(HV_CHANNEL);
+ 164   2              IO_vResetPin(DISCHARGE_CHANNEL);
+ 165   2              sendUART("#c#2#\n");
+ 166   2          } else {
+ 167   2              sendUART("#Unknown Charge Mode#\n");            
+ 168   2          }
+ 169   1      }
+ 170          
+ 171          void setHVMonitorMode(char modeCode) {
+ 172   1          if (modeCode == '1') {
+ 173   2              shouldMonitorHVStatus = 1;
+ 174   2              sendUART("#e#1#\n");
+ 175   2          } else if (modeCode == '0') {
+ 176   2              shouldMonitorHVStatus = 0;
+ 177   2              sendUART("#e#0#\n");
+ 178   2          } else {
+C51 COMPILER V9.55   DEVICECONTROLLER                                                      05/13/2016 13:32:28 PAGE 4   
 
- 179   1      }
- 180          
- 181          void setUUID(char * command) {
- 182   1        unsigned char code * flashEndAddress = getFlashDataEndAddress();  
- 183   1        char xdata uuidString[37] = {0};
- 184   1        strncpy(uuidString, command+3, 36);
- 185   1        sendUART("Setting UUID to ");
- 186   1        sendUART(uuidString);
- 187   1        sendUART("....\n");
- 188   1        sendUART("Please wait...");
- 189   1        writeBufferToFlash(uuidString, &flashEndAddress);
- 190   1        sendUART("DONE\n");
- 191   1      }
+ 179   2              sendUART("#Unknown HV Monitor Code#\n");
+ 180   2          }
+ 181   1      
+ 182   1      }
+ 183          
+ 184          void setUUID(char * command) {
+ 185   1          unsigned char code * flashEndAddress = getFlashDataEndAddress();        
+ 186   1          char xdata uuidString[37] = {0};
+ 187   1          strncpy(uuidString, command+3, 36);
+ 188   1          sendUART("Setting UUID to ");
+ 189   1          sendUART(uuidString);
+ 190   1          sendUART("....\n");
+ 191   1          sendUART("Please wait...");
+ 192   1          writeBufferToFlash(uuidString, &flashEndAddress);
+ 193   1          sendUART("DONE\n");
+ 194   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    714    ----
-   CONSTANT SIZE    =    482    ----
-   XDATA SIZE       =   ----      87
+   CODE SIZE        =    696    ----
+   CONSTANT SIZE    =    519    ----
+   XDATA SIZE       =   ----      37
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----       7
    IDATA SIZE       =   ----    ----

@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.41.0                                                          04/20/2016  16:48:14  PAGE 1
+LX51 LINKER/LOCATER V4.66.62.0                                                          05/13/2016  13:32:29  PAGE 1
 
 
 
@@ -7,193 +7,193 @@ LX51 LINKER/LOCATER V4.66.41.0                                                  
 ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
 
 
-000023 020B59            LJMP     0B59H
+000023 020C2F            LJMP     0C2FH
 ----- FUNCTION MAIN_vInit (BEGIN) -----
  FILE: 'MAIN.C'
    30: void MAIN_vInit(void)
    31: {
-   32:   ///  -----------------------------------------------------------------------
-   33:   ///  Configuration of the System Clock:
-   34:   ///  -----------------------------------------------------------------------
-   35:   ///  - On Chip Osc is Selected
-   36:   ///  - PLL Mode, NDIV =  20
-   37:   ///  - input frequency is 9.6 MHz
+   32:     ///  -----------------------------------------------------------------------
+   33:     ///  Configuration of the System Clock:
+   34:     ///  -----------------------------------------------------------------------
+   35:     ///  - On Chip Osc is Selected
+   36:     ///  - PLL Mode, NDIV =  20
+   37:     ///  - input frequency is 9.6 MHz
    38: 
-   39:   //   FCLK runs at 2 times the frequency of PCLK.
-   40:   SFR_PAGE(_su1, noSST);         // switch to page1
-00069B 75BF01            MOV      SCU_PAGE,#01H
-   41:   CMCON         =  0x10;         // load Clock Control Register
-00069E 75BA10            MOV      CMCON,#010H
-   42:   SFR_PAGE(_su0, noSST);         // switch to page0
-0006A1 E4                CLR      A
-0006A2 F5BF              MOV      SCU_PAGE,A
+   39:     //   FCLK runs at 2 times the frequency of PCLK.
+   40:     SFR_PAGE(_su1, noSST);         // switch to page1
+0006C0 75BF01            MOV      SCU_PAGE,#01H
+   41:     CMCON         =  0x10;         // load Clock Control Register
+0006C3 75BA10            MOV      CMCON,#010H
+   42:     SFR_PAGE(_su0, noSST);         // switch to page0
+0006C6 E4                CLR      A
+0006C7 F5BF              MOV      SCU_PAGE,A
    43: 
    44: 
-   45:   ///  *********************************************************************************
-   46:   ///  Note : All peripheral related IO configurations are done in the 
-   47:   ///  respective peripheral modules (alternate functions selection)
-   48:   ///  *********************************************************************************
+   45:     ///  *********************************************************************************
+   46:     ///  Note : All peripheral related IO configurations are done in the 
+   47:     ///  respective peripheral modules (alternate functions selection)
+   48:     ///  *********************************************************************************
    49: 
-   50:   ///  Initialization of module 'GPIO'
-   51:   IO_vInit();
-0006A4 D1B5              ACALL    IO_vInit
+   50:     ///  Initialization of module 'GPIO'
+   51:     IO_vInit();
+0006C9 D1D9              ACALL    IO_vInit
    52: 
-   53:   ///  Initialization of module 'UART (Serial Interface)'
-   54:   UART_vInit();
-0006A6 120826            LCALL    UART_vInit
+   53:     ///  Initialization of module 'UART (Serial Interface)'
+   54:     UART_vInit();
+0006CB F1B8              ACALL    UART_vInit
    55: 
-   56:   //   Interrupt Priority
+   56:     //   Interrupt Priority
    57: 
-   58:   IP            =  0x00;         // load Interrupt Priority Register
-0006A9 E4                CLR      A
-0006AA F5B8              MOV      IP,A
-   59:   IPH           =  0x00;         // load Interrupt Priority High Register
-0006AC F5B9              MOV      IPH,A
-   60:   IP1           =  0x00;         // load Interrupt Priority 1 Register
-0006AE F5F8              MOV      IP1,A
-   61:   IPH1          =  0x00;         // load Interrupt Priority 1 High Register
-0006B0 F5F9              MOV      IPH1,A
+   58:     IP            =  0x00;         // load Interrupt Priority Register
+0006CD E4                CLR      A
+0006CE F5B8              MOV      IP,A
+   59:     IPH           =  0x00;         // load Interrupt Priority High Register
+0006D0 F5B9              MOV      IPH,A
+   60:     IP1           =  0x00;         // load Interrupt Priority 1 Register
+0006D2 F5F8              MOV      IP1,A
+   61:     IPH1          =  0x00;         // load Interrupt Priority 1 High Register
+0006D4 F5F9              MOV      IPH1,A
    62: 
    63: 
-   64:   //// Interrupt structure 2 mode 0 is selected.
-   65:   //// Interrupt service routine choice 2 is selected.
-   66:   //   globally enable interrupts
-   67:   EA            =  1;           
-0006B2 D2AF              SETB     EA
+   64:     //// Interrupt structure 2 mode 0 is selected.
+   65:     //// Interrupt service routine choice 2 is selected.
+   66:     //   globally enable interrupts
+   67:     EA            =  1;           
+0006D6 D2AF              SETB     EA
    68: 
    69: } 
-0006B4 22                RET      
+0006D8 22                RET      
 ----- FUNCTION MAIN_vInit (END) -------
 
 
 ----- FUNCTION IO_vInit (BEGIN) -----
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 2
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 2
 
 
  FILE: 'IO.C'
    49: void IO_vInit(void)
    50: {
-   51: 	#ifdef STARTER_KIT_EMU
-   52: 		P1_DIR        		= 0x04; 
-   53: 		P1_DATA       		= 0x00;
-   54: 		P3_DIR			  		= 0xFF;
-   55: 		P3_DATA						= 0x00;
-   56: 	#else
+   51: #ifdef STARTER_KIT_EMU
+   52:     P1_DIR                  = 0x04; 
+   53:     P1_DATA                 = 0x00;
+   54:     P3_DIR                                  = 0xFF;
+   55:     P3_DATA                                         = 0x00;
+   56: #else
    57: 
-   58: 		///  -----------------------------------------------------------------------
-   59: 		///  Configuration of Port P0:
-   60: 		///  -----------------------------------------------------------------------
-   61: 		///  - no pin of port P0 is used
+   58:     ///  -----------------------------------------------------------------------
+   59:     ///  Configuration of Port P0:
+   60:     ///  -----------------------------------------------------------------------
+   61:     ///  - no pin of port P0 is used
    62: 
    63: 
-   64: 		///  -----------------------------------------------------------------------
-   65: 		///  Configuration of Port P1:
-   66: 		///  -----------------------------------------------------------------------
-   67: 		///  P1.0:
-   68: 		///  - is used as general purpose output
-   69: 		///  - push/pull output is selected
-   70: 		///  - the pin status is low level
-   71: 		///  - pull-up device is assigned
-   72: 		///  P1.1:
-   73: 		///  - is used as general purpose output
-   74: 		///  - push/pull output is selected
-   75: 		///  - the pin status is low level
-   76: 		///  - pull-up device is assigned
-   77: 		///  P1.2:
-   78: 		///  - is used as general purpose output
-   79: 		///  - push/pull output is selected
-   80: 		///  - the pin status is low level
-   81: 		///  - pull-up device is assigned
-   82: 		///  P1.3:
-   83: 		///  - is used as general purpose output
-   84: 		///  - push/pull output is selected
-   85: 		///  - the pin status is low level
-   86: 		///  - pull-up device is assigned
-   87: 		///  P1.4:
-   88: 		///  - is used as general purpose output
-   89: 		///  - push/pull output is selected
-   90: 		///  - the pin status is low level
-   91: 		///  - pull-up device is assigned
-   92: 		///  P1.5:
-   93: 		///  - is used as general purpose output
-   94: 		///  - push/pull output is selected
-   95: 		///  - the pin status is low level
-   96: 		///  - pull-up device is assigned
+   64:     ///  -----------------------------------------------------------------------
+   65:     ///  Configuration of Port P1:
+   66:     ///  -----------------------------------------------------------------------
+   67:     ///  P1.0:
+   68:     ///  - is used as general purpose output
+   69:     ///  - push/pull output is selected
+   70:     ///  - the pin status is low level
+   71:     ///  - pull-up device is assigned
+   72:     ///  P1.1:
+   73:     ///  - is used as general purpose output
+   74:     ///  - push/pull output is selected
+   75:     ///  - the pin status is low level
+   76:     ///  - pull-up device is assigned
+   77:     ///  P1.2:
+   78:     ///  - is used as general purpose output
+   79:     ///  - push/pull output is selected
+   80:     ///  - the pin status is low level
+   81:     ///  - pull-up device is assigned
+   82:     ///  P1.3:
+   83:     ///  - is used as general purpose output
+   84:     ///  - push/pull output is selected
+   85:     ///  - the pin status is low level
+   86:     ///  - pull-up device is assigned
+   87:     ///  P1.4:
+   88:     ///  - is used as general purpose output
+   89:     ///  - push/pull output is selected
+   90:     ///  - the pin status is low level
+   91:     ///  - pull-up device is assigned
+   92:     ///  P1.5:
+   93:     ///  - is used as general purpose output
+   94:     ///  - push/pull output is selected
+   95:     ///  - the pin status is low level
+   96:     ///  - pull-up device is assigned
    97: 
    98: 
-   99: 		P1_DIR        =  0x3F;         // load direction register
-0006B5 75913F            MOV      P1_DIR,#03FH
+   99:     P1_DIR        =  0x3F;         // load direction register
+0006D9 75913F            MOV      P1_DIR,#03FH
   100: 
-  101: 		///  -----------------------------------------------------------------------
-  102: 		///  Configuration of Port P2:
-  103: 		///  -----------------------------------------------------------------------
-  104: 		///  - no pin of port P2 is used
+  101:     ///  -----------------------------------------------------------------------
+  102:     ///  Configuration of Port P2:
+  103:     ///  -----------------------------------------------------------------------
+  104:     ///  - no pin of port P2 is used
   105: 
   106: 
-  107: 		///  -----------------------------------------------------------------------
-  108: 		///  Configuration of Port P3:
-  109: 		///  -----------------------------------------------------------------------
-  110: 		///  P3.4:
-  111: 		///  - is used as general purpose output
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 3
+  107:     ///  -----------------------------------------------------------------------
+  108:     ///  Configuration of Port P3:
+  109:     ///  -----------------------------------------------------------------------
+  110:     ///  P3.4:
+  111:     ///  - is used as general purpose output
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 3
 
 
-  112: 		///  - push/pull output is selected
-  113: 		///  - the pin status is low level
-  114: 		///  - pull device is disabled (tristate) 
-  115: 		///  P3.5:
-  116: 		///  - is used as general purpose output
-  117: 		///  - push/pull output is selected
-  118: 		///  - the pin status is low level
-  119: 		///  - pull device is disabled (tristate) 
-  120: 		///  P3.6:
-  121: 		///  - is used as general purpose output
-  122: 		///  - push/pull output is selected
-  123: 		///  - the pin status is low level
-  124: 		///  - pull device is disabled (tristate) 
-  125: 		///  P3.7:
-  126: 		///  - is used as general purpose output
-  127: 		///  - push/pull output is selected
-  128: 		///  - the pin status is low level
-  129: 		///  - pull device is disabled (tristate) 
+  112:     ///  - push/pull output is selected
+  113:     ///  - the pin status is low level
+  114:     ///  - pull device is disabled (tristate) 
+  115:     ///  P3.5:
+  116:     ///  - is used as general purpose output
+  117:     ///  - push/pull output is selected
+  118:     ///  - the pin status is low level
+  119:     ///  - pull device is disabled (tristate) 
+  120:     ///  P3.6:
+  121:     ///  - is used as general purpose output
+  122:     ///  - push/pull output is selected
+  123:     ///  - the pin status is low level
+  124:     ///  - pull device is disabled (tristate) 
+  125:     ///  P3.7:
+  126:     ///  - is used as general purpose output
+  127:     ///  - push/pull output is selected
+  128:     ///  - the pin status is low level
+  129:     ///  - pull device is disabled (tristate) 
   130: 
   131: 
-  132: 		P3_DIR        =  0xF0;         // load direction register
-0006B8 75B1F0            MOV      P3_DIR,#0F0H
-  133: 		P3_DATA				=  0x50;
-0006BB 75B050            MOV      P3_DATA,#050H
+  132:     P3_DIR        =  0xF0;         // load direction register
+0006DC 75B1F0            MOV      P3_DIR,#0F0H
+  133:     P3_DATA                         =  0x50;
+0006DF 75B050            MOV      P3_DATA,#050H
   134: 
-  135: 		///  -----------------------------------------------------------------------
-  136: 		///  Configuration of Port P4:
-  137: 		///  -----------------------------------------------------------------------
-  138: 		///  P4.0:
-  139: 		///  - is used as general input
-  140: 		///  - pull device is disabled (tristate) 
-  141: 		///  P4.1:
-  142: 		///  - is used as general input
-  143: 		///  - pull device is disabled (tristate) 
-  144: 		///  P4.2:
-  145: 		///  - is used as general input
-  146: 		///  - pull-up device is assigned
-  147: 		///  P4.3:
-  148: 		///  - is used as general input
-  149: 		///  - pull device is disabled (tristate) 
-  150: 		///  P4.4:
-  151: 		///  - is used as general input
-  152: 		///  - pull device is disabled (tristate) 
-  153: 		///  P4.5:
-  154: 		///  - is used as general input
-  155: 		///  - pull device is disabled (tristate) 
+  135:     ///  -----------------------------------------------------------------------
+  136:     ///  Configuration of Port P4:
+  137:     ///  -----------------------------------------------------------------------
+  138:     ///  P4.0:
+  139:     ///  - is used as general input
+  140:     ///  - pull device is disabled (tristate) 
+  141:     ///  P4.1:
+  142:     ///  - is used as general input
+  143:     ///  - pull device is disabled (tristate) 
+  144:     ///  P4.2:
+  145:     ///  - is used as general input
+  146:     ///  - pull-up device is assigned
+  147:     ///  P4.3:
+  148:     ///  - is used as general input
+  149:     ///  - pull device is disabled (tristate) 
+  150:     ///  P4.4:
+  151:     ///  - is used as general input
+  152:     ///  - pull device is disabled (tristate) 
+  153:     ///  P4.5:
+  154:     ///  - is used as general input
+  155:     ///  - pull device is disabled (tristate) 
   156: 
   157: 
-  158: 		///  -----------------------------------------------------------------------
-  159: 		///  Configuration of Port P5:
-  160: 		///  -----------------------------------------------------------------------
-  161: 		///  - no pin of port P5 is used
-  162: 	#endif
+  158:     ///  -----------------------------------------------------------------------
+  159:     ///  Configuration of Port P5:
+  160:     ///  -----------------------------------------------------------------------
+  161:     ///  - no pin of port P5 is used
+  162: #endif
   163: 
   164: } //  End of function IO_vInit
-0006BE 22                RET      
+0006E2 22                RET      
 ----- FUNCTION IO_vInit (END) -------
 
 
@@ -201,1260 +201,852 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
  FILE: 'MAIN.C'
    79: void main(void)
    80: {
-   81:   MAIN_vInit();
-   82: 	
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 4
+   81:     MAIN_vInit();
+   82: 
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 4
 
 
-0006BF D19B              ACALL    MAIN_vInit
-0006C1         ?C0012?MAIN:
-   83:   while(1) {
-   84: 		
-   85: 		if (shouldMonitorHVStatus && !isAllHVRelayOK()) {
-0006C1 30030C            JNB      shouldMonitorHVStatus,?C0014?MAIN
-0006C4 F1DB              ACALL    isAllHVRelayOK
-0006C6 4008              JC       ?C0014?MAIN
-   86: 			sendUART("HV_NG\r\n");
-0006C8 7BFF              MOV      R3,#0FFH
-0006CA 7A00              MOV      R2,#HIGH 01000018H
-0006CC 7918              MOV      R1,#LOW 01000018H
-0006CE D1E0              ACALL    _sendUART
-   87: 		}
-0006D0         ?C0014?MAIN:
-   88: 			
-   89: 		delay(1);
-0006D0 7F01              MOV      R7,#01H
-0006D2 7E00              MOV      R6,#00H
-0006D4 F1F2              ACALL    _delay
-   90: 	}
-0006D6 80E9              SJMP     ?C0012?MAIN
+0006E3 D1C0              ACALL    MAIN_vInit
+0006E5         ?C0012?MAIN:
+   83:     while(1) {
+   84: 
+   85:         if (shouldMonitorHVStatus && !isAllHVRelayOK()) {
+0006E5 30030C            JNB      shouldMonitorHVStatus,?C0014?MAIN
+0006E8 F1A1              ACALL    isAllHVRelayOK
+0006EA 4008              JC       ?C0014?MAIN
+   86:             sendUART("HV_NG\r\n");
+0006EC 7BFF              MOV      R3,#0FFH
+0006EE 7A00              MOV      R2,#HIGH 01000018H
+0006F0 7918              MOV      R1,#LOW 01000018H
+0006F2 D1FC              ACALL    _sendUART
+   87:         }
+0006F4         ?C0014?MAIN:
+   88: 
+   89:         delay(1);
+0006F4 7F01              MOV      R7,#01H
+0006F6 7E00              MOV      R6,#00H
+0006F8 F1DE              ACALL    _delay
+   90:     }
+0006FA 80E9              SJMP     ?C0012?MAIN
 ----- FUNCTION main (END) -------
 
 
------ FUNCTION ?L?COM0001 (BEGIN) -----
-0006D8 D1E0              ACALL    _sendUART
-0006DA 7B01              MOV      R3,#01H
-0006DC 7AF0              MOV      R2,#HIGH uuidString
-0006DE 79C8              MOV      R1,#LOW uuidString
 ----- FUNCTION _sendUART (BEGIN) -----
  FILE: 'UART.C'
   133: void sendUART(char * message) {
-  134: 	char * current = message;
+  134:     char * current = message;
 ;---- Variable 'message' assigned to Register 'R1/R2/R3' ----
-  135: 	while (*current != '\0') {
+  135:     while (*current != '\0') {
 ;---- Variable 'current' assigned to Register 'R1/R2/R3' ----
-0006E0         ?C0002?UART:
-  136: 		SBUF = *current;
-0006E0 311C              ACALL    ?C?CLDPTR
-0006E2 6010              JZ       ?C0006?UART
-  137: 		while (TI == 0);
-0006E4 F599              MOV      SBUF,A
-0006E6         ?C0004?UART:
-  138: 		TI = 0;		
-0006E6 3099FD            JNB      TI,?C0004?UART
-0006E9         ?C0005?UART:
-  139: 		current++;
-0006E9 C299              CLR      TI
-  140: 	}
-0006EB 7401              MOV      A,#01H
-0006ED 29                ADD      A,R1
-0006EE F9                MOV      R1,A
-0006EF E4                CLR      A
-0006F0 3A                ADDC     A,R2
-0006F1 FA                MOV      R2,A
+0006FC         ?C0002?UART:
+  136:         SBUF = *current;
+0006FC 311C              ACALL    ?C?CLDPTR
+0006FE 6010              JZ       ?C0006?UART
+  137:         while (TI == 0);
+000700 F599              MOV      SBUF,A
+000702         ?C0004?UART:
+  138:         TI = 0;         
+000702 3099FD            JNB      TI,?C0004?UART
+000705         ?C0005?UART:
+  139:         current++;
+000705 C299              CLR      TI
+  140:     }
+000707 7401              MOV      A,#01H
+000709 29                ADD      A,R1
+00070A F9                MOV      R1,A
+00070B E4                CLR      A
+00070C 3A                ADDC     A,R2
+00070D FA                MOV      R2,A
   141: }
-0006F2 80EC              SJMP     ?C0002?UART
+00070E 80EC              SJMP     ?C0002?UART
   142: 
-0006F4         ?C0006?UART:
-0006F4 22                RET      
+000710         ?C0006?UART:
+000710 22                RET      
 ----- FUNCTION _sendUART (END) -------
 
 
 ----- FUNCTION sendHVRelayStatus (BEGIN) -----
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 5
-
-
  FILE: 'DeviceController.c'
-   95: void sendHVRelayStatus() {
-   96: 	if (IO_ubReadPin(HV_READY_1)) {
-   97: 		sendUART("HV_READY_1: OK\n");
-0006F5 7BFF              MOV      R3,#0FFH
-0006F7 30C806            JNB      P4_0,?C0019?DEVICECONTROLLER
-   98: 	} else {
-0006FA 7A02              MOV      R2,#HIGH 010002B6H
-0006FC 79B6              MOV      R1,#LOW 010002B6H
-   99: 		sendUART("HV_READY_1: NG\n");
-0006FE 8004              SJMP     ?C0056?DEVICECONTROLLER
-000700         ?C0019?DEVICECONTROLLER:
-  100: 	}
-000700 7A02              MOV      R2,#HIGH 010002C6H
-000702 79C6              MOV      R1,#LOW 010002C6H
-000704         
-000704 D1E0              ACALL    _sendUART
-  101: 	
-000706         ?C0020?DEVICECONTROLLER:
-  102: 	if (IO_ubReadPin(HV_READY_2)) {
-000706 7BFF              MOV      R3,#0FFH
-000708 30CA06            JNB      P4_2,?C0021?DEVICECONTROLLER
-  103: 		sendUART("HV_READY_2: OK\n");
-00070B 7A02              MOV      R2,#HIGH 010002D6H
-00070D 79D6              MOV      R1,#LOW 010002D6H
-  104: 	} else {
-00070F 8004              SJMP     ?C0057?DEVICECONTROLLER
-000711         ?C0021?DEVICECONTROLLER:
-  105: 		sendUART("HV_READY_2: NG\n");
-000711 7A02              MOV      R2,#HIGH 010002E6H
-000713 79E6              MOV      R1,#LOW 010002E6H
-000715         
-000715 D1E0              ACALL    _sendUART
-  106: 	}
-000717         ?C0022?DEVICECONTROLLER:
-  107: 
-  108: 	if (IO_ubReadPin(HV_READY_3)) {
-000717 7BFF              MOV      R3,#0FFH
-000719 30CC06            JNB      P4_4,?C0023?DEVICECONTROLLER
-  109: 		sendUART("HV_READY_3: OK\n");
-00071C 7A02              MOV      R2,#HIGH 010002F6H
-00071E 79F6              MOV      R1,#LOW 010002F6H
-  110: 	} else {
-000720 8004              SJMP     ?C0058?DEVICECONTROLLER
-000722         ?C0023?DEVICECONTROLLER:
-  111: 		sendUART("HV_READY_3: NG\n");
-000722 7A03              MOV      R2,#HIGH 01000306H
-000724 7906              MOV      R1,#LOW 01000306H
-000726         
-000726 D1E0              ACALL    _sendUART
-  112: 	}
-000728         ?C0024?DEVICECONTROLLER:
-  113: 	
-  114: 	if (IO_ubReadPin(HV_FAULT_1)) {
-000728 7BFF              MOV      R3,#0FFH
-00072A 30C906            JNB      P4_1,?C0025?DEVICECONTROLLER
-  115: 		sendUART("HV_FAULT_1: OK\n");
-00072D 7A03              MOV      R2,#HIGH 01000316H
-00072F 7916              MOV      R1,#LOW 01000316H
-  116: 	} else {
-000731 8004              SJMP     ?C0059?DEVICECONTROLLER
-000733         ?C0025?DEVICECONTROLLER:
-  117: 		sendUART("HV_FAULT_1: NG\n");
-000733 7A03              MOV      R2,#HIGH 01000326H
-000735 7926              MOV      R1,#LOW 01000326H
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 6
+   98: void sendHVRelayStatus() {
+   99:     if (IO_ubReadPin(HV_READY_1)) {
+  100:         sendUART("HV_READY_1: OK\n");
+000711 7BFF              MOV      R3,#0FFH
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 5
 
 
-000737         
-000737 D1E0              ACALL    _sendUART
-  118: 	}
-000739         ?C0026?DEVICECONTROLLER:
-  119: 
-  120: 	if (IO_ubReadPin(HV_FAULT_2)) {
-000739 7BFF              MOV      R3,#0FFH
-00073B 30CB06            JNB      P4_3,?C0027?DEVICECONTROLLER
-  121: 		sendUART("HV_FAULT_2: OK\n");
-00073E 7A03              MOV      R2,#HIGH 01000336H
-000740 7936              MOV      R1,#LOW 01000336H
-  122: 	} else {
-000742 8004              SJMP     ?C0060?DEVICECONTROLLER
-000744         ?C0027?DEVICECONTROLLER:
-  123: 		sendUART("HV_FAULT_2: NG\n");
-000744 7A03              MOV      R2,#HIGH 01000346H
-000746 7946              MOV      R1,#LOW 01000346H
-000748         
-000748 D1E0              ACALL    _sendUART
-  124: 	}
-00074A         ?C0028?DEVICECONTROLLER:
-  125: 	
-  126: 	if (IO_ubReadPin(HV_FAULT_3)) {
-00074A 7BFF              MOV      R3,#0FFH
-00074C 30CD06            JNB      P4_5,?C0029?DEVICECONTROLLER
-  127: 		sendUART("HV_FAULT_3: OK\n");
-00074F 7A03              MOV      R2,#HIGH 01000356H
-000751 7956              MOV      R1,#LOW 01000356H
-  128: 	} else {
-000753 8004              SJMP     ?C0061?DEVICECONTROLLER
-000755         ?C0029?DEVICECONTROLLER:
-  129: 		sendUART("HV_FAULT_3: NG\n");
-000755 7A03              MOV      R2,#HIGH 01000366H
-000757 7966              MOV      R1,#LOW 01000366H
-000759         
-000759 D1E0              ACALL    _sendUART
-  130: 	}
-00075B         ?C0030?DEVICECONTROLLER:
-  131: 	
-  132: 	
-  133: 	if (isAllHVRelayOK()) {
-00075B F1DB              ACALL    isAllHVRelayOK
-00075D 7BFF              MOV      R3,#0FFH
-00075F 5006              JNC      ?C0031?DEVICECONTROLLER
-  134: 		sendUART("#d#1#\n");
-000761 7A03              MOV      R2,#HIGH 01000376H
-000763 7976              MOV      R1,#LOW 01000376H
-  135: 	} else {
-000765 8004              SJMP     ?C0062?DEVICECONTROLLER
-000767         ?C0031?DEVICECONTROLLER:
-  136: 		sendUART("#d#0#\n");		
-000767 7A03              MOV      R2,#HIGH 0100037DH
-000769 797D              MOV      R1,#LOW 0100037DH
-00076B         
-00076B C1E0              AJMP     _sendUART
-  137: 	}
+000713 30C806            JNB      P4_0,?C0019?DEVICECONTROLLER
+  101:     } else {
+000716 7A04              MOV      R2,#HIGH 01000436H
+000718 7936              MOV      R1,#LOW 01000436H
+  102:         sendUART("HV_READY_1: NG\n");
+00071A 8004              SJMP     ?C0056?DEVICECONTROLLER
+00071C         ?C0019?DEVICECONTROLLER:
+  103:     }
+00071C 7A04              MOV      R2,#HIGH 01000446H
+00071E 7946              MOV      R1,#LOW 01000446H
+000720         
+000720 D1FC              ACALL    _sendUART
+  104: 
+000722         ?C0020?DEVICECONTROLLER:
+  105:     if (IO_ubReadPin(HV_READY_2)) {
+000722 7BFF              MOV      R3,#0FFH
+000724 30CA06            JNB      P4_2,?C0021?DEVICECONTROLLER
+  106:         sendUART("HV_READY_2: OK\n");
+000727 7A04              MOV      R2,#HIGH 01000456H
+000729 7956              MOV      R1,#LOW 01000456H
+  107:     } else {
+00072B 8004              SJMP     ?C0057?DEVICECONTROLLER
+00072D         ?C0021?DEVICECONTROLLER:
+  108:         sendUART("HV_READY_2: NG\n");
+00072D 7A04              MOV      R2,#HIGH 01000466H
+00072F 7966              MOV      R1,#LOW 01000466H
+000731         
+000731 D1FC              ACALL    _sendUART
+  109:     }
+000733         ?C0022?DEVICECONTROLLER:
+  110: 
+  111:     if (IO_ubReadPin(HV_READY_3)) {
+000733 7BFF              MOV      R3,#0FFH
+000735 30CC06            JNB      P4_4,?C0023?DEVICECONTROLLER
+  112:         sendUART("HV_READY_3: OK\n");
+000738 7A04              MOV      R2,#HIGH 01000476H
+00073A 7976              MOV      R1,#LOW 01000476H
+  113:     } else {
+00073C 8004              SJMP     ?C0058?DEVICECONTROLLER
+00073E         ?C0023?DEVICECONTROLLER:
+  114:         sendUART("HV_READY_3: NG\n");
+00073E 7A04              MOV      R2,#HIGH 01000486H
+000740 7986              MOV      R1,#LOW 01000486H
+000742         
+000742 D1FC              ACALL    _sendUART
+  115:     }
+000744         ?C0024?DEVICECONTROLLER:
+  116: 
+  117:     if (IO_ubReadPin(HV_FAULT_1)) {
+000744 7BFF              MOV      R3,#0FFH
+000746 30C906            JNB      P4_1,?C0025?DEVICECONTROLLER
+  118:         sendUART("HV_FAULT_1: OK\n");
+000749 7A04              MOV      R2,#HIGH 01000496H
+00074B 7996              MOV      R1,#LOW 01000496H
+  119:     } else {
+00074D 8004              SJMP     ?C0059?DEVICECONTROLLER
+00074F         ?C0025?DEVICECONTROLLER:
+  120:         sendUART("HV_FAULT_1: NG\n");
+00074F 7A04              MOV      R2,#HIGH 010004A6H
+000751 79A6              MOV      R1,#LOW 010004A6H
+000753         
+000753 D1FC              ACALL    _sendUART
+  121:     }
+000755         ?C0026?DEVICECONTROLLER:
+  122: 
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 6
+
+
+  123:     if (IO_ubReadPin(HV_FAULT_2)) {
+000755 7BFF              MOV      R3,#0FFH
+000757 30CB06            JNB      P4_3,?C0027?DEVICECONTROLLER
+  124:         sendUART("HV_FAULT_2: OK\n");
+00075A 7A04              MOV      R2,#HIGH 010004B6H
+00075C 79B6              MOV      R1,#LOW 010004B6H
+  125:     } else {
+00075E 8004              SJMP     ?C0060?DEVICECONTROLLER
+000760         ?C0027?DEVICECONTROLLER:
+  126:         sendUART("HV_FAULT_2: NG\n");
+000760 7A04              MOV      R2,#HIGH 010004C6H
+000762 79C6              MOV      R1,#LOW 010004C6H
+000764         
+000764 D1FC              ACALL    _sendUART
+  127:     }
+000766         ?C0028?DEVICECONTROLLER:
+  128: 
+  129:     if (IO_ubReadPin(HV_FAULT_3)) {
+000766 7BFF              MOV      R3,#0FFH
+000768 30CD06            JNB      P4_5,?C0029?DEVICECONTROLLER
+  130:         sendUART("HV_FAULT_3: OK\n");
+00076B 7A04              MOV      R2,#HIGH 010004D6H
+00076D 79D6              MOV      R1,#LOW 010004D6H
+  131:     } else {
+00076F 8004              SJMP     ?C0061?DEVICECONTROLLER
+000771         ?C0029?DEVICECONTROLLER:
+  132:         sendUART("HV_FAULT_3: NG\n");
+000771 7A04              MOV      R2,#HIGH 010004E6H
+000773 79E6              MOV      R1,#LOW 010004E6H
+000775         
+000775 D1FC              ACALL    _sendUART
+  133:     }
+000777         ?C0030?DEVICECONTROLLER:
+  134: 
+  135: 
+  136:     if (isAllHVRelayOK()) {
+000777 F1A1              ACALL    isAllHVRelayOK
+000779 7BFF              MOV      R3,#0FFH
+00077B 5006              JNC      ?C0031?DEVICECONTROLLER
+  137:         sendUART("#d#1#\n");
+00077D 7A04              MOV      R2,#HIGH 010004F6H
+00077F 79F6              MOV      R1,#LOW 010004F6H
+  138:     } else {
+000781 8004              SJMP     ?C0062?DEVICECONTROLLER
+000783         ?C0031?DEVICECONTROLLER:
+  139:         sendUART("#d#0#\n");            
+000783 7A04              MOV      R2,#HIGH 010004FDH
+000785 79FD              MOV      R1,#LOW 010004FDH
+000787         
+000787 C1FC              AJMP     _sendUART
+  140:     }
 ----- FUNCTION sendHVRelayStatus (END) -------
 
 
------ FUNCTION _setUUID (BEGIN) -----
+----- FUNCTION sendUUID (BEGIN) -----
  FILE: 'DeviceController.c'
-  181: void setUUID(char * command) {
-  182: 	unsigned char code * flashEndAddress = getFlashDataEndAddress();	
-00076D 8B44              MOV      command,R3
-00076F 8A45              MOV      command+01H,R2
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 7
+   11: void sendUUID() {
+   12:     //char xdata uuidString[50];
+   13:     //unsigned char code * currentFlashDataEndAddress = getFlashDataEndAddress();
+   14:     //readFlashToBuffer(uuidString, 50, currentFlashDataEndAddress);
+   15:     sendUART("#f#");
+000789 7BFF              MOV      R3,#0FFH
+00078B 7A03              MOV      R2,#HIGH 010003A3H
+00078D 79A3              MOV      R1,#LOW 010003A3H
+00078F D1FC              ACALL    _sendUART
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 7
 
 
-000771 8946              MOV      command+02H,R1
-  183: 	char xdata uuidString[37] = {0};
-000773 120A43            LCALL    getFlashDataEndAddress
-000776 8E47              MOV      flashEndAddress,R6
-000778 8F48              MOV      flashEndAddress+01H,R7
-  184: 	strncpy(uuidString, command+3, 36);
-00077A 78C8              MOV      R0,#LOW uuidString
-00077C 7CF0              MOV      R4,#HIGH uuidString
-00077E 7D01              MOV      R5,#01H
-000780 7BFF              MOV      R3,#0FFH
-000782 7A04              MOV      R2,#HIGH _?ix1000
-000784 7905              MOV      R1,#LOW _?ix1000
-000786 7E00              MOV      R6,#00H
-000788 7F25              MOV      R7,#025H
-00078A 11F6              ACALL    ?C?COPY
-  185: 	sendUART("Setting UUID to ");
-00078C E546              MOV      A,command+02H
-00078E 2403              ADD      A,#03H
-000790 F9                MOV      R1,A
-000791 E4                CLR      A
-000792 3545              ADDC     A,command+01H
-000794 85444C            MOV      ?_strncpy?BYTE+03H,command
-000797 F54D              MOV      ?_strncpy?BYTE+04H,A
-000799 894E              MOV      ?_strncpy?BYTE+05H,R1
-00079B 754F00            MOV      ?_strncpy?BYTE+06H,#00H
-00079E 755024            MOV      ?_strncpy?BYTE+07H,#024H
-0007A1 7B01              MOV      R3,#01H
-0007A3 7AF0              MOV      R2,#HIGH uuidString
-0007A5 79C8              MOV      R1,#LOW uuidString
-0007A7 D129              ACALL    _strncpy
-  186: 	sendUART(uuidString);
-0007A9 7BFF              MOV      R3,#0FFH
-0007AB 7A03              MOV      R2,#HIGH 010003D9H
-0007AD 79D9              MOV      R1,#LOW 010003D9H
-0007AF D1D8              ACALL    ?L?COM0001
-  187: 	sendUART("....\n");
-0007B1 7BFF              MOV      R3,#0FFH
-0007B3 7A03              MOV      R2,#HIGH 010003EAH
-0007B5 79EA              MOV      R1,#LOW 010003EAH
-0007B7 D1E0              ACALL    _sendUART
-  188: 	sendUART("Please wait...");
-0007B9 7BFF              MOV      R3,#0FFH
-0007BB 7A03              MOV      R2,#HIGH 010003F0H
-0007BD 79F0              MOV      R1,#LOW 010003F0H
-0007BF D1E0              ACALL    _sendUART
-  189: 	writeBufferToFlash(uuidString, &flashEndAddress);
-0007C1 754C00            MOV      ?_writeBufferToFlash?BYTE+03H,#00H
-0007C4 754D00            MOV      ?_writeBufferToFlash?BYTE+04H,#HIGH flashEndAddress
-0007C7 754E47            MOV      ?_writeBufferToFlash?BYTE+05H,#LOW flashEndAddress
-0007CA 7B01              MOV      R3,#01H
-0007CC 7AF0              MOV      R2,#HIGH uuidString
-0007CE 79C8              MOV      R1,#LOW uuidString
-0007D0 120C5D            LCALL    _writeBufferToFlash
-  190: 	sendUART("DONE\n");
-0007D3 7BFF              MOV      R3,#0FFH
-0007D5 7A03              MOV      R2,#HIGH 010003FFH
-0007D7 79FF              MOV      R1,#LOW 010003FFH
-0007D9 C1E0              AJMP     _sendUART
------ FUNCTION _setUUID (END) -------
+   16:     sendUART(PREDEFINED_UUID);
+000791 7BFF              MOV      R3,#0FFH
+000793 7A03              MOV      R2,#HIGH 010003A7H
+000795 79A7              MOV      R1,#LOW 010003A7H
+000797 D1FC              ACALL    _sendUART
+   17:     sendUART("#\n");
+000799 7BFF              MOV      R3,#0FFH
+00079B 7A03              MOV      R2,#HIGH 010003CCH
+00079D 79CC              MOV      R1,#LOW 010003CCH
+00079F C1FC              AJMP     _sendUART
+----- FUNCTION sendUUID (END) -------
 
 
 ----- FUNCTION isAllHVRelayOK (BEGIN) -----
  FILE: 'DeviceController.c'
-   81: bool isAllHVRelayOK() {
-   82: 	#ifdef STARTER_KIT_EMU
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 8
-
-
-   83: 		return IO_ubReadPin(HV_READY_1);
-   84: 	#else
-   85: 		return 
-0007DB 30C812            JNB      P4_0,?C0016?DEVICECONTROLLER
-0007DE 30CA0F            JNB      P4_2,?C0016?DEVICECONTROLLER
-0007E1 30CC0C            JNB      P4_4,?C0016?DEVICECONTROLLER
-0007E4 30C909            JNB      P4_1,?C0016?DEVICECONTROLLER
-0007E7 30CB06            JNB      P4_3,?C0016?DEVICECONTROLLER
-0007EA 30CD03            JNB      P4_5,?C0016?DEVICECONTROLLER
-0007ED D3                SETB     C
-0007EE 8001              SJMP     ?C0017?DEVICECONTROLLER
-0007F0         ?C0016?DEVICECONTROLLER:
-0007F0 C3                CLR      C
-0007F1         ?C0017?DEVICECONTROLLER:
-   86: 			IO_ubReadPin(HV_READY_1) &&
-   87: 			IO_ubReadPin(HV_READY_2) &&
-   88: 			IO_ubReadPin(HV_READY_3) &&
-   89: 			IO_ubReadPin(HV_FAULT_1) &&
-   90: 			IO_ubReadPin(HV_FAULT_2) &&
-   91: 			IO_ubReadPin(HV_FAULT_3);
-   92: 	#endif
-   93: }
-0007F1 22                RET      
+   84: bool isAllHVRelayOK() {
+   85: #ifdef STARTER_KIT_EMU
+   86:     return IO_ubReadPin(HV_READY_1);
+   87: #else
+   88:     return 
+0007A1 30C812            JNB      P4_0,?C0016?DEVICECONTROLLER
+0007A4 30CA0F            JNB      P4_2,?C0016?DEVICECONTROLLER
+0007A7 30CC0C            JNB      P4_4,?C0016?DEVICECONTROLLER
+0007AA 30C909            JNB      P4_1,?C0016?DEVICECONTROLLER
+0007AD 30CB06            JNB      P4_3,?C0016?DEVICECONTROLLER
+0007B0 30CD03            JNB      P4_5,?C0016?DEVICECONTROLLER
+0007B3 D3                SETB     C
+0007B4 8001              SJMP     ?C0017?DEVICECONTROLLER
+0007B6         ?C0016?DEVICECONTROLLER:
+0007B6 C3                CLR      C
+0007B7         ?C0017?DEVICECONTROLLER:
+   89:         IO_ubReadPin(HV_READY_1) &&
+   90:         IO_ubReadPin(HV_READY_2) &&
+   91:         IO_ubReadPin(HV_READY_3) &&
+   92:         IO_ubReadPin(HV_FAULT_1) &&
+   93:         IO_ubReadPin(HV_FAULT_2) &&
+   94:         IO_ubReadPin(HV_FAULT_3);
+   95: #endif
+   96: }
+0007B7 22                RET      
 ----- FUNCTION isAllHVRelayOK (END) -------
-
-
------ FUNCTION _delay (BEGIN) -----
- FILE: 'MAIN.C'
-   70: void delay(int second) {
-   71:   int i, j, k;
-;---- Variable 'second' assigned to Register 'R6/R7' ----
-   72:   for (i = 0; i < second; i++) {
-;---- Variable 'i' assigned to Register 'R4/R5' ----
-0007F2 E4                CLR      A
-0007F3 FD                MOV      R5,A
-0007F4 FC                MOV      R4,A
-0007F5         ?C0002?MAIN:
-0007F5 C3                CLR      C
-0007F6 ED                MOV      A,R5
-0007F7 9F                SUBB     A,R7
-0007F8 EE                MOV      A,R6
-0007F9 6480              XRL      A,#080H
-0007FB F8                MOV      R0,A
-0007FC EC                MOV      A,R4
-0007FD 6480              XRL      A,#080H
-0007FF 98                SUBB     A,R0
-000800 5023              JNC      ?C0011?MAIN
-   73:     for (j = 0; j < 25; j++) {
-;---- Variable 'j' assigned to Register 'R2/R3' ----
-000802 E4                CLR      A
-000803 FB                MOV      R3,A
-000804 FA                MOV      R2,A
-000805         ?C0005?MAIN:
-   74:       for (k = 0; k < 30000; k++) {
-;---- Variable 'k' assigned to Register 'DPTR' ----
-000805 900000            MOV      DPTR,#00H
-000808         ?C0008?MAIN:
-   75:       }
-000808 A3                INC      DPTR
-000809 E582              MOV      A,DPL
-00080B B430FA            CJNE     A,#030H,?C0008?MAIN
-00080E E583              MOV      A,DPH
-000810 B475F5            CJNE     A,#075H,?C0008?MAIN
-   76:     }
-000813         ?C0007?MAIN:
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 9
-
-
-000813 0B                INC      R3
-000814 BB0001            CJNE     R3,#00H,?C0017?MAIN
-000817 0A                INC      R2
-000818         ?C0017?MAIN:
-000818 EB                MOV      A,R3
-000819 6419              XRL      A,#019H
-00081B 4A                ORL      A,R2
-00081C 70E7              JNZ      ?C0005?MAIN
-   77:   }
-00081E         ?C0004?MAIN:
-00081E 0D                INC      R5
-00081F BD0001            CJNE     R5,#00H,?C0018?MAIN
-000822 0C                INC      R4
-000823         ?C0018?MAIN:
-000823 80D0              SJMP     ?C0002?MAIN
-   78: }
-000825         ?C0011?MAIN:
-000825 22                RET      
------ FUNCTION _delay (END) -------
 
 
 ----- FUNCTION UART_vInit (BEGIN) -----
  FILE: 'UART.C'
    60: void UART_vInit(void)
    61: {
-   62:   ///  -----------------------------------------------------------------------
-   63:   ///  UART settings
-   64:   ///  -----------------------------------------------------------------------
-   65:   ///  Pin TXD_1 (P0.2) is selected for transmission
-   66:   ///  Pin RXD_1 (P0.1) is selected for reception
-   67:   ///  Receiver enabled
-   68:   ///  Mode 1: 8-bit data, 1 start bit, 1 stop bit, variable baud rate
-   69:   ///  Receiver interrupt flag RI will only be activated if a valid stop bit 
-   70:   ///  was received
-   71:   ///  BRG is selected for baudrate generation
+   62:     ///  -----------------------------------------------------------------------
+   63:     ///  UART settings
+   64:     ///  -----------------------------------------------------------------------
+   65:     ///  Pin TXD_1 (P0.2) is selected for transmission
+   66:     ///  Pin RXD_1 (P0.1) is selected for reception
+   67:     ///  Receiver enabled
+   68:     ///  Mode 1: 8-bit data, 1 start bit, 1 stop bit, variable baud rate
+   69:     ///  Receiver interrupt flag RI will only be activated if a valid stop bit 
+   70:     ///  was received
+   71:     ///  BRG is selected for baudrate generation
    72: 
-   73:   SFR_PAGE(_pp2, noSST);         // switch to page 2 without saving
-000826 75B202            MOV      PORT_PAGE,#02H
-   74:   P0_ALTSEL0   &= ~(ubyte)0x04;  // configure alternate function register 0
-000829 5380FB            ANL      P0_ALTSEL0,#0FBH
-   75:   P0_ALTSEL1   |=  (ubyte)0x04;  // configure alternate function register 1
-00082C 438604            ORL      P0_ALTSEL1,#04H
-   76:   SFR_PAGE(_pp0, noSST);         // switch to page 0 without saving
-00082F E4                CLR      A
-000830 F5B2              MOV      PORT_PAGE,A
-   77:   P0_DIR       |=  (ubyte)0x04;  // set output direction
-000832 438604            ORL      P0_DIR,#04H
+   73:     SFR_PAGE(_pp2, noSST);         // switch to page 2 without saving
+0007B8 75B202            MOV      PORT_PAGE,#02H
+   74:     P0_ALTSEL0   &= ~(ubyte)0x04;  // configure alternate function register 0
+0007BB 5380FB            ANL      P0_ALTSEL0,#0FBH
+   75:     P0_ALTSEL1   |=  (ubyte)0x04;  // configure alternate function register 1
+0007BE 438604            ORL      P0_ALTSEL1,#04H
+   76:     SFR_PAGE(_pp0, noSST);         // switch to page 0 without saving
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 8
+
+
+0007C1 E4                CLR      A
+0007C2 F5B2              MOV      PORT_PAGE,A
+   77:     P0_DIR       |=  (ubyte)0x04;  // set output direction
+0007C4 438604            ORL      P0_DIR,#04H
    78: 
    79: 
-   80:   MODPISEL     |=  (ubyte)0x01;  // configure peripheral input select register
-000835 43B301            ORL      MODPISEL,#01H
-   81:   BCON          =  0x00;         // reset baudrate timer/reload register
-000838 F5BD              MOV      BCON,A
-   82:   SCON          =  0x70;         // load serial channel control register
-00083A 759870            MOV      SCON,#070H
+   80:     MODPISEL     |=  (ubyte)0x01;  // configure peripheral input select register
+0007C7 43B301            ORL      MODPISEL,#01H
+   81:     BCON          =  0x00;         // reset baudrate timer/reload register
+0007CA F5BD              MOV      BCON,A
+   82:     SCON          =  0x70;         // load serial channel control register
+0007CC 759870            MOV      SCON,#070H
    83: 
-   84:   ///  -----------------------------------------------------------------------
-   85:   ///  Baudrate generator settings
-   86:   ///  -----------------------------------------------------------------------
-   87:   ///  input clock = fPCLK
-   88:   ///  Fractional divider is enabled
-   89:   ///  baudrate = 9.6004 kbaud
+   84:     ///  -----------------------------------------------------------------------
+   85:     ///  Baudrate generator settings
+   86:     ///  -----------------------------------------------------------------------
+   87:     ///  input clock = fPCLK
+   88:     ///  Fractional divider is enabled
+   89:     ///  baudrate = 9.6004 kbaud
    90: 
-   91:   FDSTEP        =  0xD5;         // load fractional divider reload register
-00083D 75EAD5            MOV      FDSTEP,#0D5H
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 10
-
-
-   92:   BG            =  0x81;         // load baudrate timer/reload register
-000840 75BE81            MOV      BG,#081H
-   93:   FDCON        |=  0x01;         // load Fractional Divider control register
-000843 43E901            ORL      FDCON,#01H
-   94:   BCON         |=  0x01;         // load baud rate control register
-000846 43BD01            ORL      BCON,#01H
+   91:     FDSTEP        =  0xD5;         // load fractional divider reload register
+0007CF 75EAD5            MOV      FDSTEP,#0D5H
+   92:     BG            =  0x81;         // load baudrate timer/reload register
+0007D2 75BE81            MOV      BG,#081H
+   93:     FDCON        |=  0x01;         // load Fractional Divider control register
+0007D5 43E901            ORL      FDCON,#01H
+   94:     BCON         |=  0x01;         // load baud rate control register
+0007D8 43BD01            ORL      BCON,#01H
    95: 
-   96:   ///  UART interrupt enabled
-   97:   ES = 1;
-000849 D2AC              SETB     ES
+   96:     ///  UART interrupt enabled
+   97:     ES = 1;
+0007DB D2AC              SETB     ES
    98: 
    99: } //  End of function UART_vInit
-00084B 22                RET      
+0007DD 22                RET      
 ----- FUNCTION UART_vInit (END) -------
+
+
+----- FUNCTION _delay (BEGIN) -----
+ FILE: 'MAIN.C'
+   70: void delay(int second) {
+   71:     int i, j, k;
+;---- Variable 'second' assigned to Register 'R6/R7' ----
+   72:     for (i = 0; i < second; i++) {
+;---- Variable 'i' assigned to Register 'R4/R5' ----
+0007DE E4                CLR      A
+0007DF FD                MOV      R5,A
+0007E0 FC                MOV      R4,A
+0007E1         ?C0002?MAIN:
+0007E1 C3                CLR      C
+0007E2 ED                MOV      A,R5
+0007E3 9F                SUBB     A,R7
+0007E4 EE                MOV      A,R6
+0007E5 6480              XRL      A,#080H
+0007E7 F8                MOV      R0,A
+0007E8 EC                MOV      A,R4
+0007E9 6480              XRL      A,#080H
+0007EB 98                SUBB     A,R0
+0007EC 5023              JNC      ?C0011?MAIN
+   73:         for (j = 0; j < 25; j++) {
+;---- Variable 'j' assigned to Register 'R2/R3' ----
+0007EE E4                CLR      A
+0007EF FB                MOV      R3,A
+0007F0 FA                MOV      R2,A
+0007F1         ?C0005?MAIN:
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 9
+
+
+   74:             for (k = 0; k < 30000; k++) {
+;---- Variable 'k' assigned to Register 'DPTR' ----
+0007F1 900000            MOV      DPTR,#00H
+0007F4         ?C0008?MAIN:
+   75:             }
+0007F4 A3                INC      DPTR
+0007F5 E582              MOV      A,DPL
+0007F7 B430FA            CJNE     A,#030H,?C0008?MAIN
+0007FA E583              MOV      A,DPH
+0007FC B475F5            CJNE     A,#075H,?C0008?MAIN
+   76:         }
+0007FF         ?C0007?MAIN:
+0007FF 0B                INC      R3
+000800 BB0001            CJNE     R3,#00H,?C0017?MAIN
+000803 0A                INC      R2
+000804         ?C0017?MAIN:
+000804 EB                MOV      A,R3
+000805 6419              XRL      A,#019H
+000807 4A                ORL      A,R2
+000808 70E7              JNZ      ?C0005?MAIN
+   77:     }
+00080A         ?C0004?MAIN:
+00080A 0D                INC      R5
+00080B BD0001            CJNE     R5,#00H,?C0018?MAIN
+00080E 0C                INC      R4
+00080F         ?C0018?MAIN:
+00080F 80D0              SJMP     ?C0002?MAIN
+   78: }
+000811         ?C0011?MAIN:
+000811 22                RET      
+----- FUNCTION _delay (END) -------
 
 
 ----- FUNCTION _processCommand (BEGIN) -----
  FILE: 'UART.C'
   143: void processCommand(char * command) {
-  144: 	
-00084C 8B3F              MOV      command,R3
-00084E 8A40              MOV      command+01H,R2
-000850 8941              MOV      command+02H,R1
-  145: 	int commandSize = strlen(command);
-000852 120003            LCALL    _strlen
-000855 8E42              MOV      commandSize,R6
-000857 8F43              MOV      commandSize+01H,R7
-  146: 	char xdata respondMessage[MAX_RESPONSE_LENGTH] = {0};
-000859 7800              MOV      R0,#LOW respondMessage
-00085B 7CF0              MOV      R4,#HIGH respondMessage
-00085D 7D01              MOV      R5,#01H
-00085F 7BFF              MOV      R3,#0FFH
-000861 7A04              MOV      R2,#HIGH _?ix1000
-000863 7958              MOV      R1,#LOW _?ix1000
-000865 7E00              MOV      R6,#00H
-000867 7FC8              MOV      R7,#0C8H
-000869 1200F6            LCALL    ?C?COPY
-  147: 	bool isNormalCommand = commandSize == 5 && command[0] == '$' && command[2] == '$' && command[4] == '$';
-00086C E543              MOV      A,commandSize+01H
-00086E 6405              XRL      A,#05H
-000870 4542              ORL      A,commandSize
-000872 7021              JNZ      ?C0007?UART
-000874 AB3F              MOV      R3,command
-000876 AA40              MOV      R2,command+01H
-000878 A941              MOV      R1,command+02H
-00087A 12011C            LCALL    ?C?CLDPTR
-00087D B42415            CJNE     A,#024H,?C0007?UART
-000880 900002            MOV      DPTR,#02H
-000883 120135            LCALL    ?C?CLDOPTR
-000886 B4240C            CJNE     A,#024H,?C0007?UART
-000889 900004            MOV      DPTR,#04H
-00088C 120135            LCALL    ?C?CLDOPTR
-00088F B42403            CJNE     A,#024H,?C0007?UART
-000892 D3                SETB     C
-000893 8001              SJMP     ?C0008?UART
-000895         ?C0007?UART:
-000895 C3                CLR      C
-000896         ?C0008?UART:
-000896 9200              MOV      isNormalCommand,C
-  148: 	bool isSetUUIDCommand = commandSize == 40 && command[0] == '$' && command[1] == 'f' && command[2] == '$' && comm
->> and[39] == '$';
-000898 E543              MOV      A,commandSize+01H
-00089A 6428              XRL      A,#028H
-00089C 4542              ORL      A,commandSize
-00089E 702B              JNZ      ?C0009?UART
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 11
+  144: 
+000812 8B3F              MOV      command,R3
+000814 8A40              MOV      command+01H,R2
+000816 8941              MOV      command+02H,R1
+  145:     int commandSize = strlen(command);
+000818 120003            LCALL    _strlen
+00081B 8E42              MOV      commandSize,R6
+00081D 8F43              MOV      commandSize+01H,R7
+  146:     char xdata respondMessage[MAX_RESPONSE_LENGTH] = {0};
+00081F 7800              MOV      R0,#LOW respondMessage
+000821 7CF0              MOV      R4,#HIGH respondMessage
+000823 7D01              MOV      R5,#01H
+000825 7BFF              MOV      R3,#0FFH
+000827 7A05              MOV      R2,#HIGH _?ix1000
+000829 79D8              MOV      R1,#LOW _?ix1000
+00082B 7E00              MOV      R6,#00H
+00082D 7FC8              MOV      R7,#0C8H
+00082F 1200F6            LCALL    ?C?COPY
+  147:     bool isNormalCommand = commandSize == 5 && command[0] == '$' && command[2] == '$' && command[4] == '$';
+000832 E543              MOV      A,commandSize+01H
+000834 6405              XRL      A,#05H
+000836 4542              ORL      A,commandSize
+000838 7021              JNZ      ?C0007?UART
+00083A AB3F              MOV      R3,command
+00083C AA40              MOV      R2,command+01H
+00083E A941              MOV      R1,command+02H
+000840 12011C            LCALL    ?C?CLDPTR
+000843 B42415            CJNE     A,#024H,?C0007?UART
+000846 900002            MOV      DPTR,#02H
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 10
 
 
-0008A0 AB3F              MOV      R3,command
-0008A2 AA40              MOV      R2,command+01H
-0008A4 A941              MOV      R1,command+02H
-0008A6 12011C            LCALL    ?C?CLDPTR
-0008A9 6424              XRL      A,#024H
-0008AB 701E              JNZ      ?C0009?UART
-0008AD 900001            MOV      DPTR,#01H
-0008B0 120135            LCALL    ?C?CLDOPTR
-0008B3 B46615            CJNE     A,#066H,?C0009?UART
-0008B6 900002            MOV      DPTR,#02H
-0008B9 120135            LCALL    ?C?CLDOPTR
-0008BC B4240C            CJNE     A,#024H,?C0009?UART
-0008BF 900027            MOV      DPTR,#027H
-0008C2 120135            LCALL    ?C?CLDOPTR
-0008C5 B42403            CJNE     A,#024H,?C0009?UART
-0008C8 D3                SETB     C
-0008C9 8001              SJMP     ?C0010?UART
-0008CB         ?C0009?UART:
-0008CB C3                CLR      C
-0008CC         ?C0010?UART:
-0008CC 9201              MOV      isSetUUIDCommand,C
-  149: 	
-  150: 	memset(respondMessage, 0, MAX_RESPONSE_LENGTH);
-0008CE 7E00              MOV      R6,#00H
-0008D0 7FC8              MOV      R7,#0C8H
-0008D2 7D00              MOV      R5,#00H
-0008D4 7B01              MOV      R3,#01H
-0008D6 7AF0              MOV      R2,#HIGH respondMessage
-0008D8 7900              MOV      R1,#LOW respondMessage
-0008DA 1201E4            LCALL    ?C?MEMSET
+000849 120135            LCALL    ?C?CLDOPTR
+00084C B4240C            CJNE     A,#024H,?C0007?UART
+00084F 900004            MOV      DPTR,#04H
+000852 120135            LCALL    ?C?CLDOPTR
+000855 B42403            CJNE     A,#024H,?C0007?UART
+000858 D3                SETB     C
+000859 8001              SJMP     ?C0008?UART
+00085B         ?C0007?UART:
+00085B C3                CLR      C
+00085C         ?C0008?UART:
+00085C 9200              MOV      isNormalCommand,C
+  148:     bool isSetUUIDCommand = commandSize == 40 && command[0] == '$' && command[1] == 'f' && command[2] == '$' && c
+>> ommand[39] == '$';
+00085E E543              MOV      A,commandSize+01H
+000860 6428              XRL      A,#028H
+000862 4542              ORL      A,commandSize
+000864 702B              JNZ      ?C0009?UART
+000866 AB3F              MOV      R3,command
+000868 AA40              MOV      R2,command+01H
+00086A A941              MOV      R1,command+02H
+00086C 12011C            LCALL    ?C?CLDPTR
+00086F 6424              XRL      A,#024H
+000871 701E              JNZ      ?C0009?UART
+000873 900001            MOV      DPTR,#01H
+000876 120135            LCALL    ?C?CLDOPTR
+000879 B46615            CJNE     A,#066H,?C0009?UART
+00087C 900002            MOV      DPTR,#02H
+00087F 120135            LCALL    ?C?CLDOPTR
+000882 B4240C            CJNE     A,#024H,?C0009?UART
+000885 900027            MOV      DPTR,#027H
+000888 120135            LCALL    ?C?CLDOPTR
+00088B B42403            CJNE     A,#024H,?C0009?UART
+00088E D3                SETB     C
+00088F 8001              SJMP     ?C0010?UART
+000891         ?C0009?UART:
+000891 C3                CLR      C
+000892         ?C0010?UART:
+000892 9201              MOV      isSetUUIDCommand,C
+  149: 
+  150:     memset(respondMessage, 0, MAX_RESPONSE_LENGTH);
+000894 7E00              MOV      R6,#00H
+000896 7FC8              MOV      R7,#0C8H
+000898 7D00              MOV      R5,#00H
+00089A 7B01              MOV      R3,#01H
+00089C 7AF0              MOV      R2,#HIGH respondMessage
+00089E 7900              MOV      R1,#LOW respondMessage
+0008A0 1201E4            LCALL    ?C?MEMSET
   151: 
-  152: 	if (isNormalCommand) {
-0008DD 30006C            JNB      isNormalCommand,?C0011?UART
-  153: 		switch(command[1]) {
-0008E0 AB3F              MOV      R3,command
-0008E2 AA40              MOV      R2,command+01H
-0008E4 A941              MOV      R1,command+02H
-0008E6 900001            MOV      DPTR,#01H
-0008E9 120135            LCALL    ?C?CLDOPTR
-0008EC 249E              ADD      A,#09EH
-0008EE 6019              JZ       ?C0014?UART
-0008F0 14                DEC      A
-0008F1 6025              JZ       ?C0015?UART
-0008F3 14                DEC      A
-0008F4 6031              JZ       ?C0016?UART
-0008F6 14                DEC      A
-0008F7 6031              JZ       ?C0017?UART
-0008F9 14                DEC      A
-0008FA 603D              JZ       ?C0018?UART
-0008FC 2405              ADD      A,#05H
-0008FE 703B              JNZ      ?C0019?UART
-  154: 			case 'a':
-000900         ?C0013?UART:
-  155: 				enableLCRChannel(command[3]);
-000900 900003            MOV      DPTR,#03H
-000903 120135            LCALL    ?C?CLDOPTR
-000906 FF                MOV      R7,A
-000907 41B7              AJMP     _enableLCRChannel
-  156: 				break;
-  157: 			case 'b':
-000909         ?C0014?UART:
-  158: 				enableLCChannel(command[3]);
-000909 AB3F              MOV      R3,command
-00090B AA40              MOV      R2,command+01H
-00090D A941              MOV      R1,command+02H
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 12
+  152:     if (isNormalCommand) {
+0008A3 30006D            JNB      isNormalCommand,?C0011?UART
+  153:         switch(command[1]) {
+0008A6 AB3F              MOV      R3,command
+0008A8 AA40              MOV      R2,command+01H
+0008AA A941              MOV      R1,command+02H
+0008AC 900001            MOV      DPTR,#01H
+0008AF 120135            LCALL    ?C?CLDOPTR
+0008B2 249E              ADD      A,#09EH
+0008B4 6019              JZ       ?C0014?UART
+0008B6 14                DEC      A
+0008B7 6025              JZ       ?C0015?UART
+0008B9 14                DEC      A
+0008BA 6031              JZ       ?C0016?UART
+0008BC 14                DEC      A
+0008BD 6031              JZ       ?C0017?UART
+0008BF 14                DEC      A
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 11
 
 
-00090F 900003            MOV      DPTR,#03H
-000912 120135            LCALL    ?C?CLDOPTR
-000915 FF                MOV      R7,A
-000916 416D              AJMP     _enableLCChannel
-  159: 				break;
-  160: 			case 'c':
-000918         ?C0015?UART:
-  161: 				setChargeMode(command[3]);
-000918 AB3F              MOV      R3,command
-00091A AA40              MOV      R2,command+01H
-00091C A941              MOV      R1,command+02H
-00091E 900003            MOV      DPTR,#03H
-000921 120135            LCALL    ?C?CLDOPTR
-000924 FF                MOV      R7,A
-000925 6101              AJMP     _setChargeMode
-  162: 				break;
-  163: 			case 'd':
-000927         ?C0016?UART:
-  164: 				sendHVRelayStatus();
-000927 0206F5            LJMP     sendHVRelayStatus
-  165: 				break;
-  166: 			case 'e':
-00092A         ?C0017?UART:
-  167: 				setHVMonitorMode(command[3]);
-00092A AB3F              MOV      R3,command
-00092C AA40              MOV      R2,command+01H
-00092E A941              MOV      R1,command+02H
-000930 900003            MOV      DPTR,#03H
-000933 120135            LCALL    ?C?CLDOPTR
-000936 FF                MOV      R7,A
-000937 411A              AJMP     _setHVMonitorMode
-  168: 				break;
-  169: 			case 'f':
-000939         ?C0018?UART:
-  170: 				sendUUID();
-000939 8026              SJMP     sendUUID
-  171: 				break;
-  172: 			default:
-00093B         ?C0019?UART:
-  173: 				sendUART("Unknown Command1\r\n");
-00093B 7BFF              MOV      R3,#0FFH
-00093D 7A04              MOV      R2,#HIGH 0100042AH
-00093F 792A              MOV      R1,#LOW 0100042AH
-000941 1206E0            LCALL    _sendUART
-  174: 				sendUART(command);
-000944 AB3F              MOV      R3,command
-000946 AA40              MOV      R2,command+01H
-000948 A941              MOV      R1,command+02H
-  175: 		}		
-  176: 	} else if (isSetUUIDCommand) {
-00094A 8012              SJMP     ?C0031?UART
-00094C         ?C0011?UART:
-00094C 300109            JNB      isSetUUIDCommand,?C0021?UART
-  177: 		setUUID(command);
-00094F AB3F              MOV      R3,command
-000951 AA40              MOV      R2,command+01H
-000953 A941              MOV      R1,command+02H
-000955 02076D            LJMP     _setUUID
-  178: 	} else {
-000958         ?C0021?UART:
-  179: 		sendUART("Incorrect Command Format\r\n");		
-000958 7BFF              MOV      R3,#0FFH
-00095A 7A04              MOV      R2,#HIGH 0100043DH
-00095C 793D              MOV      R1,#LOW 0100043DH
-00095E         
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 13
+0008C0 603D              JZ       ?C0018?UART
+0008C2 2405              ADD      A,#05H
+0008C4 703C              JNZ      ?C0019?UART
+  154:             case 'a':
+0008C6         ?C0013?UART:
+  155:                 enableLCRChannel(command[3]);
+0008C6 900003            MOV      DPTR,#03H
+0008C9 120135            LCALL    ?C?CLDOPTR
+0008CC FF                MOV      R7,A
+0008CD 618D              AJMP     _enableLCRChannel
+  156:                 break;
+  157:             case 'b':
+0008CF         ?C0014?UART:
+  158:                 enableLCChannel(command[3]);
+0008CF AB3F              MOV      R3,command
+0008D1 AA40              MOV      R2,command+01H
+0008D3 A941              MOV      R1,command+02H
+0008D5 900003            MOV      DPTR,#03H
+0008D8 120135            LCALL    ?C?CLDOPTR
+0008DB FF                MOV      R7,A
+0008DC 6143              AJMP     _enableLCChannel
+  159:                 break;
+  160:             case 'c':
+0008DE         ?C0015?UART:
+  161:                 setChargeMode(command[3]);
+0008DE AB3F              MOV      R3,command
+0008E0 AA40              MOV      R2,command+01H
+0008E2 A941              MOV      R1,command+02H
+0008E4 900003            MOV      DPTR,#03H
+0008E7 120135            LCALL    ?C?CLDOPTR
+0008EA FF                MOV      R7,A
+0008EB 61D7              AJMP     _setChargeMode
+  162:                 break;
+  163:             case 'd':
+0008ED         ?C0016?UART:
+  164:                 sendHVRelayStatus();
+0008ED 020711            LJMP     sendHVRelayStatus
+  165:                 break;
+  166:             case 'e':
+0008F0         ?C0017?UART:
+  167:                 setHVMonitorMode(command[3]);
+0008F0 AB3F              MOV      R3,command
+0008F2 AA40              MOV      R2,command+01H
+0008F4 A941              MOV      R1,command+02H
+0008F6 900003            MOV      DPTR,#03H
+0008F9 120135            LCALL    ?C?CLDOPTR
+0008FC FF                MOV      R7,A
+0008FD 41C2              AJMP     _setHVMonitorMode
+  168:                 break;
+  169:             case 'f':
+0008FF         ?C0018?UART:
+  170:                 sendUUID();
+0008FF 020789            LJMP     sendUUID
+  171:                 break;
+  172:             default:
+000902         ?C0019?UART:
+  173:                 sendUART("Unknown Command1\r\n");
+000902 7BFF              MOV      R3,#0FFH
+000904 7A05              MOV      R2,#HIGH 010005AAH
+000906 79AA              MOV      R1,#LOW 010005AAH
+000908 1206FC            LCALL    _sendUART
+  174:                 sendUART(command);
+00090B AB3F              MOV      R3,command
+00090D AA40              MOV      R2,command+01H
+00090F A941              MOV      R1,command+02H
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 12
 
 
-00095E 0206E0            LJMP     _sendUART
-  180: 	}
+  175:         }               
+  176:     } else if (isSetUUIDCommand) {
+000911 8011              SJMP     ?C0031?UART
+000913         ?C0011?UART:
+000913 300108            JNB      isSetUUIDCommand,?C0021?UART
+  177:         setUUID(command);
+000916 AB3F              MOV      R3,command
+000918 AA40              MOV      R2,command+01H
+00091A A941              MOV      R1,command+02H
+00091C 8009              SJMP     _setUUID
+  178:     } else {
+00091E         ?C0021?UART:
+  179:         sendUART("Incorrect Command Format\r\n");               
+00091E 7BFF              MOV      R3,#0FFH
+000920 7A05              MOV      R2,#HIGH 010005BDH
+000922 79BD              MOV      R1,#LOW 010005BDH
+000924         
+000924 0206FC            LJMP     _sendUART
+  180:     }
 ----- FUNCTION _processCommand (END) -------
 
 
------ FUNCTION sendUUID (BEGIN) -----
+----- FUNCTION _setUUID (BEGIN) -----
  FILE: 'DeviceController.c'
-    8: void sendUUID() {
-    9: 	char xdata uuidString[50];
-   10: 	unsigned char code * currentFlashDataEndAddress = getFlashDataEndAddress();
-000961 5143              ACALL    getFlashDataEndAddress
-;---- Variable 'currentFlashDataEndAddress' assigned to Register 'R2/R3' ----
-000963 AB07              MOV      R3,AR7
-000965 AA06              MOV      R2,AR6
-   11: 	readFlashToBuffer(uuidString, 50, currentFlashDataEndAddress);
-000967 7EF0              MOV      R6,#HIGH uuidString
-000969 7FC8              MOV      R7,#LOW uuidString
-00096B 7D32              MOV      R5,#032H
-00096D 7C00              MOV      R4,#00H
-00096F 3183              ACALL    _readFlashToBuffer
-   12: 	sendUART("#f#");
-000971 7BFF              MOV      R3,#0FFH
-000973 7A02              MOV      R2,#HIGH 01000248H
-000975 7948              MOV      R1,#LOW 01000248H
-000977 1206D8            LCALL    ?L?COM0001
-   13: 	sendUART(uuidString);
-   14: 	sendUART("#\n");
-00097A 7BFF              MOV      R3,#0FFH
-00097C 7A02              MOV      R2,#HIGH 0100024CH
-00097E 794C              MOV      R1,#LOW 0100024CH
-000980 0206E0            LJMP     _sendUART
------ FUNCTION sendUUID (END) -------
+  184: void setUUID(char * command) {
+  185:     unsigned char code * flashEndAddress = getFlashDataEndAddress();        
+000927 8B44              MOV      command,R3
+000929 8A45              MOV      command+01H,R2
+00092B 8946              MOV      command+02H,R1
+  186:     char xdata uuidString[37] = {0};
+00092D 51EB              ACALL    getFlashDataEndAddress
+00092F 8E47              MOV      flashEndAddress,R6
+000931 8F48              MOV      flashEndAddress+01H,R7
+  187:     strncpy(uuidString, command+3, 36);
+000933 78C8              MOV      R0,#LOW uuidString
+000935 7CF0              MOV      R4,#HIGH uuidString
+000937 7D01              MOV      R5,#01H
+000939 7BFF              MOV      R3,#0FFH
+00093B 7A05              MOV      R2,#HIGH _?ix1000
+00093D 7985              MOV      R1,#LOW _?ix1000
+00093F 7E00              MOV      R6,#00H
+000941 7F25              MOV      R7,#025H
+000943 1200F6            LCALL    ?C?COPY
+  188:     sendUART("Setting UUID to ");
+000946 E546              MOV      A,command+02H
+000948 2403              ADD      A,#03H
+00094A F9                MOV      R1,A
+00094B E4                CLR      A
+00094C 3545              ADDC     A,command+01H
+00094E 85444C            MOV      ?_strncpy?BYTE+03H,command
+000951 F54D              MOV      ?_strncpy?BYTE+04H,A
+000953 894E              MOV      ?_strncpy?BYTE+05H,R1
+000955 754F00            MOV      ?_strncpy?BYTE+06H,#00H
+000958 755024            MOV      ?_strncpy?BYTE+07H,#024H
+00095B 7B01              MOV      R3,#01H
+00095D 7AF0              MOV      R2,#HIGH uuidString
+00095F 79C8              MOV      R1,#LOW uuidString
+000961 120351            LCALL    _strncpy
+  189:     sendUART(uuidString);
+000964 7BFF              MOV      R3,#0FFH
+000966 7A05              MOV      R2,#HIGH 01000559H
+000968 7959              MOV      R1,#LOW 01000559H
+00096A 1206FC            LCALL    _sendUART
+  190:     sendUART("....\n");
+00096D 7B01              MOV      R3,#01H
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 13
 
 
------ FUNCTION _readFlashToBuffer (BEGIN) -----
+00096F 7AF0              MOV      R2,#HIGH uuidString
+000971 79C8              MOV      R1,#LOW uuidString
+000973 1206FC            LCALL    _sendUART
+  191:     sendUART("Please wait...");
+000976 7BFF              MOV      R3,#0FFH
+000978 7A05              MOV      R2,#HIGH 0100056AH
+00097A 796A              MOV      R1,#LOW 0100056AH
+00097C 1206FC            LCALL    _sendUART
+  192:     writeBufferToFlash(uuidString, &flashEndAddress);
+00097F 7BFF              MOV      R3,#0FFH
+000981 7A05              MOV      R2,#HIGH 01000570H
+000983 7970              MOV      R1,#LOW 01000570H
+000985 1206FC            LCALL    _sendUART
+  193:     sendUART("DONE\n");
+000988 754C00            MOV      ?_writeBufferToFlash?BYTE+03H,#00H
+00098B 754D00            MOV      ?_writeBufferToFlash?BYTE+04H,#HIGH flashEndAddress
+00098E 754E47            MOV      ?_writeBufferToFlash?BYTE+05H,#LOW flashEndAddress
+000991 7B01              MOV      R3,#01H
+000993 7AF0              MOV      R2,#HIGH uuidString
+000995 79C8              MOV      R1,#LOW uuidString
+000997 31A2              ACALL    _writeBufferToFlash
+  194: }
+000999 7BFF              MOV      R3,#0FFH
+00099B 7A05              MOV      R2,#HIGH 0100057FH
+00099D 797F              MOV      R1,#LOW 0100057FH
+00099F 0206FC            LJMP     _sendUART
+----- FUNCTION _setUUID (END) -------
+
+
+----- FUNCTION _writeBufferToFlash (BEGIN) -----
  FILE: 'FlashUtils.c'
-   46: void readFlashToBuffer(char xdata * buffer, int n, unsigned char code * EECurrentAddr) 
-   47: {
-000983 8E44              MOV      buffer,R6
-000985 8F45              MOV      buffer+01H,R7
-000987 8C46              MOV      n,R4
-000989 8D47              MOV      n+01H,R5
-00098B 8A48              MOV      EECurrentAddr,R2
-00098D 8B49              MOV      EECurrentAddr+01H,R3
-   48: 	unsigned char code * EETempAddr = (unsigned char code*)FLASH_FIRST_ADDR;
-   49: 	int i = 0;
-00098F 754AA0            MOV      EETempAddr,#0A0H
-000992 754B00            MOV      EETempAddr+01H,#00H
-   50: 	int j = 0;
-000995 E4                CLR      A
-000996 F54C              MOV      i,A
-000998 F54D              MOV      i+01H,A
-   51: 	int k = 0;
-00099A F54E              MOV      j,A
-00099C F54F              MOV      j+01H,A
-   52: 	memset(buffer, 0, n);
-00099E F550              MOV      k,A
-0009A0 F551              MOV      k+01H,A
-   53: 	
-0009A2 AE46              MOV      R6,n
-0009A4 AF47              MOV      R7,n+01H
-0009A6 FD                MOV      R5,A
-0009A7 AA44              MOV      R2,buffer
-0009A9 A945              MOV      R1,buffer+01H
-0009AB 7B01              MOV      R3,#01H
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 14
+   68: void writeBufferToFlash(char * buffer, unsigned char code ** EECurrentAddr) {
+   69: 	char xdata pageBuffer[BYTES_PER_WORDLINE] = {0};
+0009A2 8B49              MOV      buffer,R3
+0009A4 8A4A              MOV      buffer+01H,R2
+0009A6 894B              MOV      buffer+02H,R1
+   70: 	char * currentCharacter = buffer;
+0009A8 78ED              MOV      R0,#LOW pageBuffer
+0009AA 7CF0              MOV      R4,#HIGH pageBuffer
+0009AC 7D01              MOV      R5,#01H
+0009AE 7BFF              MOV      R3,#0FFH
+0009B0 7A06              MOV      R2,#HIGH _?ix1000
+0009B2 79A0              MOV      R1,#LOW _?ix1000
+0009B4 7E00              MOV      R6,#00H
+0009B6 7F20              MOV      R7,#020H
+0009B8 1200F6            LCALL    ?C?COPY
+   71: 	int i = 0;
+0009BB 85494F            MOV      currentCharacter,buffer
+0009BE 854A50            MOV      currentCharacter+01H,buffer+01H
+0009C1 854B51            MOV      currentCharacter+02H,buffer+02H
+   72: 	
+0009C4 E4                CLR      A
+0009C5 F552              MOV      i,A
+0009C7 F553              MOV      i+01H,A
+   73: 	FLASH_Erase(SECALL,0);
+0009C9 FD                MOV      R5,A
+0009CA FC                MOV      R4,A
+0009CB 7FFF              MOV      R7,#0FFH
+0009CD 7E03              MOV      R6,#03H
+0009CF 7115              ACALL    _FLASH_Erase
+   74: 	*EECurrentAddr = (unsigned char code*)FLASH_FIRST_ADDR;			// if erase than 1. WL is current
+0009D1 AB4C              MOV      R3,EECurrentAddr
+0009D3 AA4D              MOV      R2,EECurrentAddr+01H
+0009D5 A94E              MOV      R1,EECurrentAddr+02H
+0009D7 74A0              MOV      A,#0A0H
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 14
 
 
-0009AD 1201E4            LCALL    ?C?MEMSET
-0009B0         ?C0011?FLASHUTILS:
-   54: 	while (FLASH_Ready(FLASH_BANK_TO_CHECK) == 0) {;}
-0009B0 7F03              MOV      R7,#03H
-0009B2 5116              ACALL    _FLASH_Ready
-0009B4 50FA              JNC      ?C0011?FLASHUTILS
-0009B6         ?C0012?FLASHUTILS:
-0009B6         ?C0013?FLASHUTILS:
-   55: 	
-   56: 	while (EETempAddr < EECurrentAddr && j < n) 
-0009B6 C3                CLR      C
-0009B7 E54B              MOV      A,EETempAddr+01H
-0009B9 9549              SUBB     A,EECurrentAddr+01H
-0009BB E54A              MOV      A,EETempAddr
-0009BD 9548              SUBB     A,EECurrentAddr
-0009BF 5054              JNC      ?C0017?FLASHUTILS
-0009C1 C3                CLR      C
-0009C2 E54F              MOV      A,j+01H
-0009C4 9547              SUBB     A,n+01H
-0009C6 E546              MOV      A,n
-0009C8 6480              XRL      A,#080H
-0009CA F8                MOV      R0,A
-0009CB E54E              MOV      A,j
-0009CD 6480              XRL      A,#080H
-0009CF 98                SUBB     A,R0
-0009D0 5043              JNC      ?C0017?FLASHUTILS
-   57: 	{	
-   58: 		i = 0;
-0009D2 E4                CLR      A
-0009D3 F54C              MOV      i,A
-0009D5 F54D              MOV      i+01H,A
-0009D7         ?C0015?FLASHUTILS:
-   59: 		while (*(EETempAddr+i) != 0) {
-0009D7 E54B              MOV      A,EETempAddr+01H
-0009D9 254D              ADD      A,i+01H
-0009DB F582              MOV      DPL,A
-0009DD E54A              MOV      A,EETempAddr
-0009DF 354C              ADDC     A,i
-0009E1 F583              MOV      DPH,A
-0009E3 E4                CLR      A
-0009E4 93                MOVC     A,@A+DPTR
-0009E5 FF                MOV      R7,A
-0009E6 6020              JZ       ?C0016?FLASHUTILS
-   60: 			buffer[j] = *(EETempAddr+i);
-0009E8 E545              MOV      A,buffer+01H
-0009EA 254F              ADD      A,j+01H
-0009EC F582              MOV      DPL,A
-0009EE E544              MOV      A,buffer
-0009F0 354E              ADDC     A,j
-0009F2 F583              MOV      DPH,A
-0009F4 EF                MOV      A,R7
-0009F5 F0                MOVX     @DPTR,A
-   61: 			i++;
-0009F6 054D              INC      i+01H
-0009F8 E54D              MOV      A,i+01H
-0009FA 7002              JNZ      ?C0025?FLASHUTILS
-0009FC 054C              INC      i
-0009FE         ?C0025?FLASHUTILS:
-   62: 			j++;
-0009FE 054F              INC      j+01H
-000A00 E54F              MOV      A,j+01H
-000A02 7002              JNZ      ?C0026?FLASHUTILS
-000A04 054E              INC      j
-000A06         ?C0026?FLASHUTILS:
-   63: 		}
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 15
+0009D9 75F000            MOV      B,#00H
+0009DC 1201C5            LCALL    ?C?ISTPTR
+   75:   delay(2);
+0009DF 7F02              MOV      R7,#02H
+0009E1 7E00              MOV      R6,#00H
+0009E3 1207DE            LCALL    _delay
+   76: 	
+   77: 	memset(pageBuffer, 0, BYTES_PER_WORDLINE);
+0009E6 7E00              MOV      R6,#00H
+0009E8 7F20              MOV      R7,#020H
+0009EA 7D00              MOV      R5,#00H
+0009EC 7B01              MOV      R3,#01H
+0009EE 7AF0              MOV      R2,#HIGH pageBuffer
+0009F0 79ED              MOV      R1,#LOW pageBuffer
+0009F2 1201E4            LCALL    ?C?MEMSET
+0009F5         ?C0018?FLASHUTILS:
+   78: 	while (*currentCharacter != 0) {
+0009F5 AB4F              MOV      R3,currentCharacter
+0009F7 AA50              MOV      R2,currentCharacter+01H
+0009F9 A951              MOV      R1,currentCharacter+02H
+0009FB 12011C            LCALL    ?C?CLDPTR
+0009FE FF                MOV      R7,A
+0009FF 604D              JZ       ?C0019?FLASHUTILS
+   79: 		
+   80: 		pageBuffer[i] = *currentCharacter;
+000A01 74ED              MOV      A,#LOW pageBuffer
+000A03 2553              ADD      A,i+01H
+000A05 F582              MOV      DPL,A
+000A07 74F0              MOV      A,#HIGH pageBuffer
+000A09 3552              ADDC     A,i
+000A0B F583              MOV      DPH,A
+000A0D EF                MOV      A,R7
+000A0E F0                MOVX     @DPTR,A
+   81: 		if (i == 25) {
+000A0F E553              MOV      A,i+01H
+000A11 6419              XRL      A,#019H
+000A13 4552              ORL      A,i
+000A15 7022              JNZ      ?C0020?FLASHUTILS
+   82: 			writeToFlashPage(pageBuffer, EECurrentAddr);
+000A17 7EF0              MOV      R6,#HIGH pageBuffer
+000A19 7FED              MOV      R7,#LOW pageBuffer
+000A1B AB4C              MOV      R3,EECurrentAddr
+000A1D AA4D              MOV      R2,EECurrentAddr+01H
+000A1F A94E              MOV      R1,EECurrentAddr+02H
+000A21 5158              ACALL    _writeToFlashPage
+   83: 			memset(pageBuffer, 0, BYTES_PER_WORDLINE);
+000A23 7E00              MOV      R6,#00H
+000A25 7F20              MOV      R7,#020H
+000A27 7D00              MOV      R5,#00H
+000A29 7B01              MOV      R3,#01H
+000A2B 7AF0              MOV      R2,#HIGH pageBuffer
+000A2D 79ED              MOV      R1,#LOW pageBuffer
+000A2F 1201E4            LCALL    ?C?MEMSET
+   84: 			i = 0;
+000A32 E4                CLR      A
+000A33 F552              MOV      i,A
+000A35 F553              MOV      i+01H,A
+   85: 		} else {
+000A37 8008              SJMP     ?C0021?FLASHUTILS
+000A39         ?C0020?FLASHUTILS:
+   86: 			i++;
+000A39 0553              INC      i+01H
+000A3B E553              MOV      A,i+01H
+000A3D 7002              JNZ      ?C0027?FLASHUTILS
+000A3F 0552              INC      i
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 15
 
 
-000A06 80CF              SJMP     ?C0015?FLASHUTILS
-000A08         ?C0016?FLASHUTILS:
-   64: 		EETempAddr = EETempAddr + BYTES_PER_WORDLINE;		
-000A08 7420              MOV      A,#020H
-000A0A 254B              ADD      A,EETempAddr+01H
-000A0C F54B              MOV      EETempAddr+01H,A
-000A0E E4                CLR      A
-000A0F 354A              ADDC     A,EETempAddr
-000A11 F54A              MOV      EETempAddr,A
-   65: 	}	
-000A13 80A1              SJMP     ?C0013?FLASHUTILS
-   66: }
-000A15         ?C0017?FLASHUTILS:
-000A15 22                RET      
------ FUNCTION _readFlashToBuffer (END) -------
+000A41         ?C0027?FLASHUTILS:
+   87: 		}
+000A41         ?C0021?FLASHUTILS:
+   88: 		currentCharacter++;
+000A41 7401              MOV      A,#01H
+000A43 2551              ADD      A,currentCharacter+02H
+000A45 F551              MOV      currentCharacter+02H,A
+000A47 E4                CLR      A
+000A48 3550              ADDC     A,currentCharacter+01H
+000A4A F550              MOV      currentCharacter+01H,A
+   89: 	}
+000A4C 80A7              SJMP     ?C0018?FLASHUTILS
+000A4E         ?C0019?FLASHUTILS:
+   90: 	writeToFlashPage(pageBuffer, EECurrentAddr);	
+000A4E 7EF0              MOV      R6,#HIGH pageBuffer
+000A50 7FED              MOV      R7,#LOW pageBuffer
+000A52 AB4C              MOV      R3,EECurrentAddr
+000A54 AA4D              MOV      R2,EECurrentAddr+01H
+000A56 A94E              MOV      R1,EECurrentAddr+02H
+;----                  JMP      _writeToFlashPage
+----- FUNCTION _writeBufferToFlash (END) -------
 
 
------ FUNCTION _FLASH_Ready (BEGIN) -----
- FILE: 'FlashHandler.c'
-   92: bit FLASH_Ready						(unsigned char BankNum)
-   93: {
-;---- Variable 'BankNum' assigned to Register 'R7' ----
-   94:     ACC = BankNum;
-   95: #ifdef __C51__		
-000A16 EF                MOV      A,R7
-   96: 	((void (code *) (void)) FLASH_READ_STATUS) ();
-000A17 02DFF0            LJMP     0DFF0H
-   97: #endif	// __C51__
-   98: #ifdef	SDCC
-   99: _asm
-  100: 	LCALL FLASH_READ_STATUS;
-  101: _endasm;
-  102: #endif	// SDCC
-  103: 	return(CY);
------ FUNCTION _FLASH_Ready (END) -------
-
-
------ FUNCTION _setHVMonitorMode (BEGIN) -----
- FILE: 'DeviceController.c'
-  168: void setHVMonitorMode(char modeCode) {
-  169: 	if (modeCode == '1') {
-000A1A 8F44              MOV      modeCode,R7
-  170: 		shouldMonitorHVStatus = 1;
-000A1C E544              MOV      A,modeCode
-000A1E B4310A            CJNE     A,#031H,?C0042?DEVICECONTROLLER
-  171: 		sendUART("#e#1#\n");
-000A21 D203              SETB     shouldMonitorHVStatus
-  172: 	} else if (modeCode == '0') {
-000A23 7BFF              MOV      R3,#0FFH
-000A25 7A03              MOV      R2,#HIGH 010003B0H
-000A27 79B0              MOV      R1,#LOW 010003B0H
-  173: 		shouldMonitorHVStatus = 0;
-000A29 8015              SJMP     ?C0068?DEVICECONTROLLER
-000A2B         ?C0042?DEVICECONTROLLER:
-000A2B E544              MOV      A,modeCode
-000A2D B4300A            CJNE     A,#030H,?C0044?DEVICECONTROLLER
-  174: 		sendUART("#e#0#\n");
-000A30 C203              CLR      shouldMonitorHVStatus
-  175: 	} else {
-000A32 7BFF              MOV      R3,#0FFH
-000A34 7A03              MOV      R2,#HIGH 010003B7H
-000A36 79B7              MOV      R1,#LOW 010003B7H
-000A38         
-  176: 		sendUART("#Unknown HV Monitor Code#\n");
-000A38 8006              SJMP     ?C0068?DEVICECONTROLLER
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 16
-
-
-000A3A         ?C0044?DEVICECONTROLLER:
-  177: 	}
-000A3A 7BFF              MOV      R3,#0FFH
-000A3C 7A03              MOV      R2,#HIGH 010003BEH
-000A3E 79BE              MOV      R1,#LOW 010003BEH
-000A40         
-000A40 0206E0            LJMP     _sendUART
-  178: 	
------ FUNCTION _setHVMonitorMode (END) -------
-
-
------ FUNCTION getFlashDataEndAddress (BEGIN) -----
+----- FUNCTION _writeToFlashPage (BEGIN) -----
  FILE: 'FlashUtils.c'
-   12: unsigned char code * getFlashDataEndAddress() {
-   13:   // Initialize the pointer to the FLASH (Checking if there is a valid data)
-   14:   unsigned char code * EECurrentAddr = (unsigned char code*)FLASH_LAST_ADDR;
-;---- Variable 'EECurrentAddr' assigned to Register 'R6/R7' ----
-000A43 7F00              MOV      R7,#00H
-000A45 7EAC              MOV      R6,#0ACH
-   15:   unsigned char code * EETempAddr;
-   16:           
-   17:   for (EETempAddr = (unsigned char code*)FLASH_FIRST_ADDR; EETempAddr <= (unsigned char code*)FLASH_LAST_ADDR; EE
->> TempAddr += BYTES_PER_WORDLINE)
-;---- Variable 'EETempAddr' assigned to Register 'DPTR' ----
-000A47 90A000            MOV      DPTR,#0A000H
-000A4A         ?C0001?FLASHUTILS:
-000A4A D3                SETB     C
-000A4B E582              MOV      A,DPL
-000A4D 9400              SUBB     A,#00H
-000A4F E583              MOV      A,DPH
-000A51 94AC              SUBB     A,#0ACH
-000A53 5017              JNC      ?C0002?FLASHUTILS
-   18: 	{
-   19: 		if (*EETempAddr == 0)
-000A55 E4                CLR      A
-000A56 93                MOVC     A,@A+DPTR
-000A57 7006              JNZ      ?C0003?FLASHUTILS
-   20: 		{
-   21: 			EECurrentAddr = EETempAddr;
-000A59 AE83              MOV      R6,DPH
-000A5B AF82              MOV      R7,DPL
-   22: 			break;
-000A5D 800D              SJMP     ?C0002?FLASHUTILS
-   23: 		}
-   24: 	}
-000A5F         ?C0003?FLASHUTILS:
-000A5F 7420              MOV      A,#020H
-000A61 2582              ADD      A,DPL
-000A63 F582              MOV      DPL,A
-000A65 E4                CLR      A
-000A66 3583              ADDC     A,DPH
-000A68 F583              MOV      DPH,A
-000A6A 80DE              SJMP     ?C0001?FLASHUTILS
-000A6C         ?C0002?FLASHUTILS:
-   25: 	return EECurrentAddr;
-   26: }
-000A6C 22                RET      
------ FUNCTION getFlashDataEndAddress (END) -------
+   29: void writeToFlashPage(char xdata * buffer, unsigned char code ** EECurrentAddr) {
+   30: 	int i = 0;
+000A58 8E54              MOV      buffer,R6
+000A5A 8F55              MOV      buffer+01H,R7
+000A5C 8B56              MOV      EECurrentAddr,R3
+000A5E 8A57              MOV      EECurrentAddr+01H,R2
+000A60 8958              MOV      EECurrentAddr+02H,R1
+   31: 
+;---- Variable 'i' assigned to Register 'R6/R7' ----
+000A62 E4                CLR      A
+000A63 FF                MOV      R7,A
+000A64 FE                MOV      R6,A
+   32: 	for (i=0; i < BYTES_PER_WORDLINE; i++) {
+000A65         ?C0006?FLASHUTILS:
+   33: 		WLBuf[i] = *buffer;
+000A65 855582            MOV      DPL,buffer+01H
+000A68 855483            MOV      DPH,buffer
+000A6B E0                MOVX     A,@DPTR
+000A6C FD                MOV      R5,A
+000A6D 74E0              MOV      A,#LOW WLBuf
+000A6F 2F                ADD      A,R7
+000A70 F8                MOV      R0,A
+000A71 A605              MOV      @R0,AR5
+   34: 		buffer++;
+000A73 0555              INC      buffer+01H
+000A75 E555              MOV      A,buffer+01H
+000A77 7002              JNZ      ?C0023?FLASHUTILS
+000A79 0554              INC      buffer
+000A7B         ?C0023?FLASHUTILS:
+   35: 	}
+000A7B 0F                INC      R7
+000A7C BF0001            CJNE     R7,#00H,?C0024?FLASHUTILS
+000A7F 0E                INC      R6
+000A80         ?C0024?FLASHUTILS:
+000A80 EF                MOV      A,R7
+000A81 6420              XRL      A,#020H
+000A83 4E                ORL      A,R6
+000A84 70DF              JNZ      ?C0006?FLASHUTILS
+000A86         ?C0007?FLASHUTILS:
+   36: 
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 16
 
 
------ FUNCTION _enableLCChannel (BEGIN) -----
- FILE: 'DeviceController.c'
-   17: void enableLCChannel(char channelCode) {
-   18: 	// Switch off all LC / LCR channel first.
-;---- Variable 'channelCode' assigned to Register 'R7' ----
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 17
-
-
-   19: 	IO_vResetPin(LCR_CHANNEL_1);
-000A6D C290              CLR      P1_0
-   20: 	IO_vResetPin(LCR_CHANNEL_2);
-000A6F C293              CLR      P1_3
-   21: 	IO_vResetPin(LCR_CHANNEL_3);	
-000A71 C294              CLR      P1_4
-   22: 	IO_vResetPin(LC_CHANNEL_1);
-000A73 C291              CLR      P1_1
-   23: 	IO_vResetPin(LC_CHANNEL_2);
-000A75 C292              CLR      P1_2
-   24: 	IO_vResetPin(LC_CHANNEL_3);
-000A77 C295              CLR      P1_5
-   25: 	
-   26: 	// Enable coressponding LCR channel GPIO
-   27: 	switch(channelCode) {
-000A79 EF                MOV      A,R7
-000A7A 24CF              ADD      A,#0CFH
-000A7C 6012              JZ       ?C0004?DEVICECONTROLLER
-000A7E 14                DEC      A
-000A7F 6019              JZ       ?C0005?DEVICECONTROLLER
-000A81 14                DEC      A
-000A82 6020              JZ       ?C0006?DEVICECONTROLLER
-000A84 2403              ADD      A,#03H
-000A86 7026              JNZ      ?C0007?DEVICECONTROLLER
-   28: 		case '0':
-000A88         ?C0003?DEVICECONTROLLER:
-   29: 			sendUART("#b#0#\n");
-000A88 7BFF              MOV      R3,#0FFH
-000A8A 7A02              MOV      R2,#HIGH 0100024FH
-000A8C 794F              MOV      R1,#LOW 0100024FH
-   30: 			break;
-000A8E 8024              SJMP     ?C0051?DEVICECONTROLLER
-   31: 		case '1':
-000A90         ?C0004?DEVICECONTROLLER:
-   32: 			IO_vSetPin(LC_CHANNEL_1);
-000A90 D291              SETB     P1_1
-   33: 			sendUART("#b#1#\n");
-000A92 7BFF              MOV      R3,#0FFH
-000A94 7A02              MOV      R2,#HIGH 01000256H
-000A96 7956              MOV      R1,#LOW 01000256H
-000A98         
-   34: 			break;
-000A98 801A              SJMP     ?C0051?DEVICECONTROLLER
-   35: 		case '2':
-000A9A         ?C0005?DEVICECONTROLLER:
-   36: 			IO_vSetPin(LC_CHANNEL_2);
-000A9A D292              SETB     P1_2
-   37: 			sendUART("#b#2#\n");		
-000A9C 7BFF              MOV      R3,#0FFH
-000A9E 7A02              MOV      R2,#HIGH 0100025DH
-000AA0 795D              MOV      R1,#LOW 0100025DH
-000AA2         
-   38: 			break;
-000AA2 8010              SJMP     ?C0051?DEVICECONTROLLER
-   39: 		case '3':
-000AA4         ?C0006?DEVICECONTROLLER:
-   40: 			IO_vSetPin(LC_CHANNEL_3);
-000AA4 D295              SETB     P1_5
-   41: 			sendUART("#b#3#\n");
-000AA6 7BFF              MOV      R3,#0FFH
-000AA8 7A02              MOV      R2,#HIGH 01000264H
-000AAA 7964              MOV      R1,#LOW 01000264H
-000AAC         
-   42: 			break;
-000AAC 8006              SJMP     ?C0051?DEVICECONTROLLER
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 18
-
-
-   43: 		default:
-000AAE         ?C0007?DEVICECONTROLLER:
-   44: 			sendUART("#Unknown LC Channel.#\n");			
-000AAE 7BFF              MOV      R3,#0FFH
-000AB0 7A02              MOV      R2,#HIGH 0100026BH
-000AB2 796B              MOV      R1,#LOW 0100026BH
-000AB4         
-000AB4 0206E0            LJMP     _sendUART
-   45: 			break;
-   46: 	}
------ FUNCTION _enableLCChannel (END) -------
-
-
------ FUNCTION _enableLCRChannel (BEGIN) -----
- FILE: 'DeviceController.c'
-   49: void enableLCRChannel(char channelCode) {
-   50: 	// Switch off all LC / LCR channel first.
-;---- Variable 'channelCode' assigned to Register 'R7' ----
-   51: 	IO_vResetPin(LCR_CHANNEL_1);
-000AB7 C290              CLR      P1_0
-   52: 	IO_vResetPin(LCR_CHANNEL_2);
-000AB9 C293              CLR      P1_3
-   53: 	IO_vResetPin(LCR_CHANNEL_3);
-000ABB C294              CLR      P1_4
-   54: 	IO_vResetPin(LC_CHANNEL_1);
-000ABD C291              CLR      P1_1
-   55: 	IO_vResetPin(LC_CHANNEL_2);
-000ABF C292              CLR      P1_2
-   56: 	IO_vResetPin(LC_CHANNEL_3);
-000AC1 C295              CLR      P1_5
-   57: 	
-   58: 	// Enable coressponding LCR channel GPIO
-   59: 	switch(channelCode) {
-000AC3 EF                MOV      A,R7
-000AC4 24CF              ADD      A,#0CFH
-000AC6 6012              JZ       ?C0011?DEVICECONTROLLER
-000AC8 14                DEC      A
-000AC9 6019              JZ       ?C0012?DEVICECONTROLLER
-000ACB 14                DEC      A
-000ACC 6020              JZ       ?C0013?DEVICECONTROLLER
-000ACE 2403              ADD      A,#03H
-000AD0 7026              JNZ      ?C0014?DEVICECONTROLLER
-   60: 		case '0':
-000AD2         ?C0010?DEVICECONTROLLER:
-   61: 			sendUART("#a#0#\n");
-000AD2 7BFF              MOV      R3,#0FFH
-000AD4 7A02              MOV      R2,#HIGH 01000282H
-000AD6 7982              MOV      R1,#LOW 01000282H
-   62: 			break;
-000AD8 8024              SJMP     ?C0055?DEVICECONTROLLER
-   63: 		case '1':
-000ADA         ?C0011?DEVICECONTROLLER:
-   64: 			IO_vSetPin(LCR_CHANNEL_1);
-000ADA D290              SETB     P1_0
-   65: 			sendUART("#a#1#\n");
-000ADC 7BFF              MOV      R3,#0FFH
-000ADE 7A02              MOV      R2,#HIGH 01000289H
-000AE0 7989              MOV      R1,#LOW 01000289H
-000AE2         
-   66: 			break;
-000AE2 801A              SJMP     ?C0055?DEVICECONTROLLER
-   67: 		case '2':
-000AE4         ?C0012?DEVICECONTROLLER:
-   68: 			IO_vSetPin(LCR_CHANNEL_2);
-000AE4 D293              SETB     P1_3
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 19
-
-
-   69: 			sendUART("#a#2#\n");		
-000AE6 7BFF              MOV      R3,#0FFH
-000AE8 7A02              MOV      R2,#HIGH 01000290H
-000AEA 7990              MOV      R1,#LOW 01000290H
-000AEC         
-   70: 			break;
-000AEC 8010              SJMP     ?C0055?DEVICECONTROLLER
-   71: 		case '3':
-000AEE         ?C0013?DEVICECONTROLLER:
-   72: 			IO_vSetPin(LCR_CHANNEL_3);
-000AEE D294              SETB     P1_4
-   73: 			sendUART("#a#3#\n");
-000AF0 7BFF              MOV      R3,#0FFH
-000AF2 7A02              MOV      R2,#HIGH 01000297H
-000AF4 7997              MOV      R1,#LOW 01000297H
-000AF6         
-   74: 			break;
-000AF6 8006              SJMP     ?C0055?DEVICECONTROLLER
-   75: 		default:
-000AF8         ?C0014?DEVICECONTROLLER:
-   76: 			sendUART("#Unknown LCR Channel.#\n");			
-000AF8 7BFF              MOV      R3,#0FFH
-000AFA 7A02              MOV      R2,#HIGH 0100029EH
-000AFC 799E              MOV      R1,#LOW 0100029EH
-000AFE         
-000AFE 0206E0            LJMP     _sendUART
-   77: 			break;
-   78: 	}
------ FUNCTION _enableLCRChannel (END) -------
-
-
------ FUNCTION _setChargeMode (BEGIN) -----
- FILE: 'DeviceController.c'
-  140: void setChargeMode(char modeCode) {
-  141: 	if (modeCode == '0') {
-000B01 8F44              MOV      modeCode,R7
-  142: 		IO_vResetPin(HV_CHANNEL);		
-000B03 E544              MOV      A,modeCode
-000B05 B4300E            CJNE     A,#030H,?C0034?DEVICECONTROLLER
-  143: 		IO_vSetPin(DISCHARGE_CHANNEL);
-000B08 C2B7              CLR      P3_7
-  144: 		IO_vSetPin(CHARGE_CHANNEL);
-000B0A D2B6              SETB     P3_6
-  145: 		sendUART("#c#0#\n");		
-000B0C D2B4              SETB     P3_4
-  146: 	} else if (modeCode == '1') {
-000B0E 7BFF              MOV      R3,#0FFH
-000B10 7A03              MOV      R2,#HIGH 01000384H
-000B12 7984              MOV      R1,#LOW 01000384H
-  147: 		if (!isAllHVRelayOK()) {
-000B14 8040              SJMP     ?C0066?DEVICECONTROLLER
-000B16         ?C0034?DEVICECONTROLLER:
-000B16 E544              MOV      A,modeCode
-000B18 6431              XRL      A,#031H
-000B1A 7021              JNZ      ?C0036?DEVICECONTROLLER
-  148: 			IO_vResetPin(HV_CHANNEL);			
-000B1C 1207DB            LCALL    isAllHVRelayOK
-000B1F 400E              JC       ?C0037?DEVICECONTROLLER
-  149: 			IO_vSetPin(CHARGE_CHANNEL);
-000B21 C2B7              CLR      P3_7
-  150: 			IO_vSetPin(DISCHARGE_CHANNEL);
-000B23 D2B4              SETB     P3_4
-  151: 			sendUART("#d#0#\n");
-000B25 D2B6              SETB     P3_6
-  152: 			return;
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 20
-
-
-000B27 7BFF              MOV      R3,#0FFH
-000B29 7A03              MOV      R2,#HIGH 0100037DH
-000B2B 797D              MOV      R1,#LOW 0100037DH
-000B2D         
-000B2D 8027              SJMP     ?C0066?DEVICECONTROLLER
-  153: 		}
-000B2F         ?C0037?DEVICECONTROLLER:
-  154: 		IO_vSetPin(DISCHARGE_CHANNEL);
-000B2F D2B6              SETB     P3_6
-  155: 		IO_vSetPin(HV_CHANNEL);
-000B31 D2B7              SETB     P3_7
-  156: 		IO_vResetPin(CHARGE_CHANNEL);
-000B33 C2B4              CLR      P3_4
-  157: 		sendUART("#c#1#\n");
-000B35 7BFF              MOV      R3,#0FFH
-000B37 7A03              MOV      R2,#HIGH 0100038BH
-000B39 798B              MOV      R1,#LOW 0100038BH
-000B3B         
-  158: 	} else if (modeCode == '2') {
-000B3B 8019              SJMP     ?C0066?DEVICECONTROLLER
-000B3D         ?C0036?DEVICECONTROLLER:
-000B3D E544              MOV      A,modeCode
-000B3F B4320E            CJNE     A,#032H,?C0040?DEVICECONTROLLER
-  159: 		IO_vSetPin(CHARGE_CHANNEL);
-000B42 D2B4              SETB     P3_4
-  160: 		IO_vResetPin(HV_CHANNEL);
-000B44 C2B7              CLR      P3_7
-  161: 		IO_vResetPin(DISCHARGE_CHANNEL);
-000B46 C2B6              CLR      P3_6
-  162: 		sendUART("#c#2#\n");
-000B48 7BFF              MOV      R3,#0FFH
-000B4A 7A03              MOV      R2,#HIGH 01000392H
-000B4C 7992              MOV      R1,#LOW 01000392H
-000B4E         
-  163: 	} else {
-000B4E 8006              SJMP     ?C0066?DEVICECONTROLLER
-000B50         ?C0040?DEVICECONTROLLER:
-  164: 		sendUART("#Unknown Charge Mode#\n");		
-000B50 7BFF              MOV      R3,#0FFH
-000B52 7A03              MOV      R2,#HIGH 01000399H
-000B54 7999              MOV      R1,#LOW 01000399H
-000B56         
-000B56 0206E0            LJMP     _sendUART
-  165: 	}
------ FUNCTION _setChargeMode (END) -------
-
-
------ FUNCTION UART_viIsr (BEGIN) -----
- FILE: 'UART.C'
-  183: void UART_viIsr(void) interrupt UARTINT
-000B59 C0E0              PUSH     ACC
-000B5B C0F0              PUSH     B
-000B5D C083              PUSH     DPH
-000B5F C082              PUSH     DPL
-000B61 C0D0              PUSH     PSW
-000B63 75D000            MOV      PSW,#00H
-000B66 C000              PUSH     AR0
-000B68 C001              PUSH     AR1
-000B6A C002              PUSH     AR2
-000B6C C003              PUSH     AR3
-000B6E C004              PUSH     AR4
-000B70 C005              PUSH     AR5
-000B72 C006              PUSH     AR6
-000B74 C007              PUSH     AR7
-  184: {
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 21
-
-
-  185: 	// switch to page 0
-  186:   SFR_PAGE(_su0, SST0);
-000B76 75BF80            MOV      SCU_PAGE,#080H
-  187:   if (TI)
-000B79 309902            JNB      TI,?C0024?UART
-  188:   {
-  189: 		TI = 0;
-000B7C C299              CLR      TI
-  190:   }
-000B7E         ?C0024?UART:
-  191:   if (RI)
-000B7E 309854            JNB      RI,?C0025?UART
-  192:   {
-  193: 		char receiveByte = SBUF;
-000B81 85993E            MOV      receiveByte,SBUF
-  194: 		if (receiveByte == '\r' || receiveByte == '\n' || bufferCount >= MAX_COMMAND_LENGTH-1) {
-000B84 E53E              MOV      A,receiveByte
-000B86 640D              XRL      A,#0DH
-000B88 6013              JZ       ?C0027?UART
-000B8A E53E              MOV      A,receiveByte
-000B8C 640A              XRL      A,#0AH
-000B8E 600D              JZ       ?C0027?UART
-000B90 C3                CLR      C
-000B91 E509              MOV      A,bufferCount+01H
-000B93 9463              SUBB     A,#063H
-000B95 E508              MOV      A,bufferCount
-000B97 6480              XRL      A,#080H
-000B99 9480              SUBB     A,#080H
-000B9B 401F              JC       ?C0026?UART
-000B9D         ?C0027?UART:
-  195: 			processCommand(receiveBuffer);
-000B9D 7B01              MOV      R3,#01H
-000B9F 7AF1              MOV      R2,#HIGH receiveBuffer
-000BA1 7971              MOV      R1,#LOW receiveBuffer
-000BA3 114C              ACALL    _processCommand
-  196: 			memset(receiveBuffer, 0, MAX_COMMAND_LENGTH);			
-000BA5 7E00              MOV      R6,#00H
-000BA7 7F64              MOV      R7,#064H
-000BA9 7D00              MOV      R5,#00H
-000BAB 7B01              MOV      R3,#01H
-000BAD 7AF1              MOV      R2,#HIGH receiveBuffer
-000BAF 7971              MOV      R1,#LOW receiveBuffer
-000BB1 1201E4            LCALL    ?C?MEMSET
-  197: 			bufferCount = 0;
-000BB4 750800            MOV      bufferCount,#00H
-000BB7 750900            MOV      bufferCount+01H,#00H
-  198: 		} else {
-000BBA 8017              SJMP     ?C0028?UART
-000BBC         ?C0026?UART:
-  199: 			receiveBuffer[bufferCount] = receiveByte;
-000BBC 7471              MOV      A,#LOW receiveBuffer
-000BBE 2509              ADD      A,bufferCount+01H
-000BC0 F582              MOV      DPL,A
-000BC2 74F1              MOV      A,#HIGH receiveBuffer
-000BC4 3508              ADDC     A,bufferCount
-000BC6 F583              MOV      DPH,A
-000BC8 E53E              MOV      A,receiveByte
-000BCA F0                MOVX     @DPTR,A
-  200: 			bufferCount++;
-000BCB 0509              INC      bufferCount+01H
-000BCD E509              MOV      A,bufferCount+01H
-000BCF 7002              JNZ      ?C0030?UART
-000BD1 0508              INC      bufferCount
-000BD3         ?C0030?UART:
-  201: 		}
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 22
-
-
-000BD3         ?C0028?UART:
-  202:     RI = 0;
-000BD3 C298              CLR      RI
-  203:   }
-000BD5         ?C0025?UART:
-  204: 
-  205: 	// restore the old page
-  206:   SFR_PAGE(_su0, RST0);
-000BD5 75BFC0            MOV      SCU_PAGE,#0C0H
-  207: }
-000BD8 D007              POP      AR7
-000BDA D006              POP      AR6
-000BDC D005              POP      AR5
-000BDE D004              POP      AR4
-000BE0 D003              POP      AR3
-000BE2 D002              POP      AR2
-000BE4 D001              POP      AR1
-000BE6 D000              POP      AR0
-000BE8 D0D0              POP      PSW
-000BEA D082              POP      DPL
-000BEC D083              POP      DPH
-000BEE D0F0              POP      B
-000BF0 D0E0              POP      ACC
-000BF2 32                RETI     
------ FUNCTION UART_viIsr (END) -------
+   37: 	// Start the Flash Programming
+   38: 	if (FLASH_Prog(*EECurrentAddr)) 
+000A86 AB56              MOV      R3,EECurrentAddr
+000A88 AA57              MOV      R2,EECurrentAddr+01H
+000A8A A958              MOV      R1,EECurrentAddr+02H
+000A8C 120162            LCALL    ?C?ILDPTR
+000A8F FF                MOV      R7,A
+000A90 AEF0              MOV      R6,B
+000A92 51AA              ACALL    _FLASH_Prog
+000A94 500D              JNC      ?C0009?FLASHUTILS
+   39: 	{
+   40: 		*EECurrentAddr = *EECurrentAddr + BYTES_PER_WORDLINE;
+000A96 AB56              MOV      R3,EECurrentAddr
+000A98 AA57              MOV      R2,EECurrentAddr+01H
+000A9A A958              MOV      R1,EECurrentAddr+02H
+000A9C E4                CLR      A
+000A9D 75F020            MOV      B,#020H
+000AA0 12018D            LCALL    ?C?IILDPTR
+   41: 	}
+000AA3         ?C0009?FLASHUTILS:
+   42: 	delay(2);
+000AA3 7F02              MOV      R7,#02H
+000AA5 7E00              MOV      R6,#00H
+000AA7 0207DE            LJMP     _delay
+----- FUNCTION _writeToFlashPage (END) -------
 
 
 ----- FUNCTION _FLASH_Prog (BEGIN) -----
@@ -1474,28 +1066,28 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   126: #endif	// SDCC
   127: #ifdef __C51__
   128:    DPTR = (unsigned int)WLAddress;
-000BF3 8E83              MOV      DPH,R6
-000BF5 8F82              MOV      DPL,R7
+000AAA 8E83              MOV      DPH,R6
+000AAC 8F82              MOV      DPL,R7
   129: #endif	// __C51__
   130: 
   131:    REG[(0+(USE_BANK*8))] = WORDLINE_BUFFER_ADDRESS;
-000BF7 7818              MOV      R0,#018H
-000BF9 76E0              MOV      @R0,#0E0H
+000AAE 7818              MOV      R0,#018H
+000AB0 76E0              MOV      @R0,#0E0H
   132: #ifdef	XC88x
   133: 	PUSH(PSW);
-000BFB C0D0              PUSH     PSW
+000AB2 C0D0              PUSH     PSW
   134: 	PSW = ((USE_BANK)<<3);
-000BFD 75D018            MOV      PSW,#018H
+000AB4 75D018            MOV      PSW,#018H
   135: #endif	// XC88x
   136: 
   137: #ifdef	__C51__		
   138: 	((void (code *) (void)) FLASH_PROG) ();
-000C00 12DFF6            LCALL    0DFF6H
+000AB7 12DFF6            LCALL    0DFF6H
   139: #endif	// __C51__
   140: #ifdef	SDCC
   141: _asm
   142: 	LCALL FLASH_PROG;
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 23
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 17
 
 
   143: _endasm;
@@ -1503,221 +1095,110 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   145: 
   146: #ifdef	XC88x
   147: 	success = CY;
-000C03 9202              MOV      success,C
+000ABA 9202              MOV      success,C
   148: 	POP(PSW);
-000C05 D0D0              POP      PSW
+000ABC D0D0              POP      PSW
   149: 	return(!success);			  
-000C07 A202              MOV      C,success
-000C09 B3                CPL      C
+000ABE A202              MOV      C,success
+000AC0 B3                CPL      C
   150: #endif	// XC88x
   151: #ifdef	XC866
   152: 	return (!CY);
   153: #endif	// XC866
   154: }
-000C0A 22                RET      
+000AC1 22                RET      
 ----- FUNCTION _FLASH_Prog (END) -------
 
 
------ FUNCTION _writeToFlashPage (BEGIN) -----
+----- FUNCTION _setHVMonitorMode (BEGIN) -----
+ FILE: 'DeviceController.c'
+  171: void setHVMonitorMode(char modeCode) {
+  172:     if (modeCode == '1') {
+000AC2 8F44              MOV      modeCode,R7
+  173:         shouldMonitorHVStatus = 1;
+000AC4 E544              MOV      A,modeCode
+000AC6 B4310A            CJNE     A,#031H,?C0042?DEVICECONTROLLER
+  174:         sendUART("#e#1#\n");
+000AC9 D203              SETB     shouldMonitorHVStatus
+  175:     } else if (modeCode == '0') {
+000ACB 7BFF              MOV      R3,#0FFH
+000ACD 7A05              MOV      R2,#HIGH 01000530H
+000ACF 7930              MOV      R1,#LOW 01000530H
+  176:         shouldMonitorHVStatus = 0;
+000AD1 8015              SJMP     ?C0068?DEVICECONTROLLER
+000AD3         ?C0042?DEVICECONTROLLER:
+000AD3 E544              MOV      A,modeCode
+000AD5 B4300A            CJNE     A,#030H,?C0044?DEVICECONTROLLER
+  177:         sendUART("#e#0#\n");
+000AD8 C203              CLR      shouldMonitorHVStatus
+  178:     } else {
+000ADA 7BFF              MOV      R3,#0FFH
+000ADC 7A05              MOV      R2,#HIGH 01000537H
+000ADE 7937              MOV      R1,#LOW 01000537H
+000AE0         
+  179:         sendUART("#Unknown HV Monitor Code#\n");
+000AE0 8006              SJMP     ?C0068?DEVICECONTROLLER
+000AE2         ?C0044?DEVICECONTROLLER:
+  180:     }
+000AE2 7BFF              MOV      R3,#0FFH
+000AE4 7A05              MOV      R2,#HIGH 0100053EH
+000AE6 793E              MOV      R1,#LOW 0100053EH
+000AE8         
+000AE8 0206FC            LJMP     _sendUART
+  181: 
+----- FUNCTION _setHVMonitorMode (END) -------
+
+
+----- FUNCTION getFlashDataEndAddress (BEGIN) -----
  FILE: 'FlashUtils.c'
-   29: void writeToFlashPage(char xdata * buffer, unsigned char code ** EECurrentAddr) {
-   30: 	int i = 0;
-000C0B 8E54              MOV      buffer,R6
-000C0D 8F55              MOV      buffer+01H,R7
-000C0F 8B56              MOV      EECurrentAddr,R3
-000C11 8A57              MOV      EECurrentAddr+01H,R2
-000C13 8958              MOV      EECurrentAddr+02H,R1
-   31: 
-;---- Variable 'i' assigned to Register 'R6/R7' ----
-000C15 E4                CLR      A
-000C16 FF                MOV      R7,A
-000C17 FE                MOV      R6,A
-   32: 	for (i=0; i < BYTES_PER_WORDLINE; i++) {
-000C18         ?C0006?FLASHUTILS:
-   33: 		WLBuf[i] = *buffer;
-000C18 855582            MOV      DPL,buffer+01H
-000C1B 855483            MOV      DPH,buffer
-000C1E E0                MOVX     A,@DPTR
-000C1F FD                MOV      R5,A
-000C20 74E0              MOV      A,#LOW WLBuf
-000C22 2F                ADD      A,R7
-000C23 F8                MOV      R0,A
-000C24 A605              MOV      @R0,AR5
-   34: 		buffer++;
-000C26 0555              INC      buffer+01H
-000C28 E555              MOV      A,buffer+01H
-000C2A 7002              JNZ      ?C0023?FLASHUTILS
-000C2C 0554              INC      buffer
-000C2E         ?C0023?FLASHUTILS:
-   35: 	}
-000C2E 0F                INC      R7
-000C2F BF0001            CJNE     R7,#00H,?C0024?FLASHUTILS
-000C32 0E                INC      R6
-000C33         ?C0024?FLASHUTILS:
-000C33 EF                MOV      A,R7
-000C34 6420              XRL      A,#020H
-000C36 4E                ORL      A,R6
-000C37 70DF              JNZ      ?C0006?FLASHUTILS
-000C39         ?C0007?FLASHUTILS:
-   36: 
-   37: 	// Start the Flash Programming
-   38: 	if (FLASH_Prog(*EECurrentAddr)) 
-000C39 AB56              MOV      R3,EECurrentAddr
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 24
+   12: unsigned char code * getFlashDataEndAddress() {
+   13:   // Initialize the pointer to the FLASH (Checking if there is a valid data)
+   14:   unsigned char code * EECurrentAddr = (unsigned char code*)FLASH_LAST_ADDR;
+;---- Variable 'EECurrentAddr' assigned to Register 'R6/R7' ----
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 18
 
 
-000C3B AA57              MOV      R2,EECurrentAddr+01H
-000C3D A958              MOV      R1,EECurrentAddr+02H
-000C3F 120162            LCALL    ?C?ILDPTR
-000C42 FF                MOV      R7,A
-000C43 AEF0              MOV      R6,B
-000C45 71F3              ACALL    _FLASH_Prog
-000C47 500D              JNC      ?C0009?FLASHUTILS
-   39: 	{
-   40: 		*EECurrentAddr = *EECurrentAddr + BYTES_PER_WORDLINE;
-000C49 AB56              MOV      R3,EECurrentAddr
-000C4B AA57              MOV      R2,EECurrentAddr+01H
-000C4D A958              MOV      R1,EECurrentAddr+02H
-000C4F E4                CLR      A
-000C50 75F020            MOV      B,#020H
-000C53 12018D            LCALL    ?C?IILDPTR
-   41: 	}
-000C56         ?C0009?FLASHUTILS:
-   42: 	delay(2);
-000C56 7F02              MOV      R7,#02H
-000C58 7E00              MOV      R6,#00H
-000C5A 0207F2            LJMP     _delay
------ FUNCTION _writeToFlashPage (END) -------
-
-
------ FUNCTION _writeBufferToFlash (BEGIN) -----
- FILE: 'FlashUtils.c'
-   68: void writeBufferToFlash(char * buffer, unsigned char code ** EECurrentAddr) {
-   69: 	char xdata pageBuffer[BYTES_PER_WORDLINE] = {0};
-000C5D 8B49              MOV      buffer,R3
-000C5F 8A4A              MOV      buffer+01H,R2
-000C61 894B              MOV      buffer+02H,R1
-   70: 	char * currentCharacter = buffer;
-000C63 78ED              MOV      R0,#LOW pageBuffer
-000C65 7CF0              MOV      R4,#HIGH pageBuffer
-000C67 7D01              MOV      R5,#01H
-000C69 7BFF              MOV      R3,#0FFH
-000C6B 7A06              MOV      R2,#HIGH _?ix1000
-000C6D 797B              MOV      R1,#LOW _?ix1000
-000C6F 7E00              MOV      R6,#00H
-000C71 7F20              MOV      R7,#020H
-000C73 1200F6            LCALL    ?C?COPY
-   71: 	int i = 0;
-000C76 85494F            MOV      currentCharacter,buffer
-000C79 854A50            MOV      currentCharacter+01H,buffer+01H
-000C7C 854B51            MOV      currentCharacter+02H,buffer+02H
-   72: 	
-000C7F E4                CLR      A
-000C80 F552              MOV      i,A
-000C82 F553              MOV      i+01H,A
-   73: 	FLASH_Erase(SECALL,0);
-000C84 FD                MOV      R5,A
-000C85 FC                MOV      R4,A
-000C86 7FFF              MOV      R7,#0FFH
-000C88 7E03              MOV      R6,#03H
-000C8A B115              ACALL    _FLASH_Erase
-   74: 	*EECurrentAddr = (unsigned char code*)FLASH_FIRST_ADDR;			// if erase than 1. WL is current
-000C8C AB4C              MOV      R3,EECurrentAddr
-000C8E AA4D              MOV      R2,EECurrentAddr+01H
-000C90 A94E              MOV      R1,EECurrentAddr+02H
-000C92 74A0              MOV      A,#0A0H
-000C94 75F000            MOV      B,#00H
-000C97 1201C5            LCALL    ?C?ISTPTR
-   75:   delay(2);
-000C9A 7F02              MOV      R7,#02H
-000C9C 7E00              MOV      R6,#00H
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 25
-
-
-000C9E 1207F2            LCALL    _delay
-   76: 	
-   77: 	memset(pageBuffer, 0, BYTES_PER_WORDLINE);
-000CA1 7E00              MOV      R6,#00H
-000CA3 7F20              MOV      R7,#020H
-000CA5 7D00              MOV      R5,#00H
-000CA7 7B01              MOV      R3,#01H
-000CA9 7AF0              MOV      R2,#HIGH pageBuffer
-000CAB 79ED              MOV      R1,#LOW pageBuffer
-000CAD 1201E4            LCALL    ?C?MEMSET
-000CB0         ?C0018?FLASHUTILS:
-   78: 	while (*currentCharacter != 0) {
-000CB0 AB4F              MOV      R3,currentCharacter
-000CB2 AA50              MOV      R2,currentCharacter+01H
-000CB4 A951              MOV      R1,currentCharacter+02H
-000CB6 12011C            LCALL    ?C?CLDPTR
-000CB9 FF                MOV      R7,A
-000CBA 604D              JZ       ?C0019?FLASHUTILS
-   79: 		
-   80: 		pageBuffer[i] = *currentCharacter;
-000CBC 74ED              MOV      A,#LOW pageBuffer
-000CBE 2553              ADD      A,i+01H
-000CC0 F582              MOV      DPL,A
-000CC2 74F0              MOV      A,#HIGH pageBuffer
-000CC4 3552              ADDC     A,i
-000CC6 F583              MOV      DPH,A
-000CC8 EF                MOV      A,R7
-000CC9 F0                MOVX     @DPTR,A
-   81: 		if (i == 25) {
-000CCA E553              MOV      A,i+01H
-000CCC 6419              XRL      A,#019H
-000CCE 4552              ORL      A,i
-000CD0 7022              JNZ      ?C0020?FLASHUTILS
-   82: 			writeToFlashPage(pageBuffer, EECurrentAddr);
-000CD2 7EF0              MOV      R6,#HIGH pageBuffer
-000CD4 7FED              MOV      R7,#LOW pageBuffer
-000CD6 AB4C              MOV      R3,EECurrentAddr
-000CD8 AA4D              MOV      R2,EECurrentAddr+01H
-000CDA A94E              MOV      R1,EECurrentAddr+02H
-000CDC 910B              ACALL    _writeToFlashPage
-   83: 			memset(pageBuffer, 0, BYTES_PER_WORDLINE);
-000CDE 7E00              MOV      R6,#00H
-000CE0 7F20              MOV      R7,#020H
-000CE2 7D00              MOV      R5,#00H
-000CE4 7B01              MOV      R3,#01H
-000CE6 7AF0              MOV      R2,#HIGH pageBuffer
-000CE8 79ED              MOV      R1,#LOW pageBuffer
-000CEA 1201E4            LCALL    ?C?MEMSET
-   84: 			i = 0;
-000CED E4                CLR      A
-000CEE F552              MOV      i,A
-000CF0 F553              MOV      i+01H,A
-   85: 		} else {
-000CF2 8008              SJMP     ?C0021?FLASHUTILS
-000CF4         ?C0020?FLASHUTILS:
-   86: 			i++;
-000CF4 0553              INC      i+01H
-000CF6 E553              MOV      A,i+01H
-000CF8 7002              JNZ      ?C0027?FLASHUTILS
-000CFA 0552              INC      i
-000CFC         ?C0027?FLASHUTILS:
-   87: 		}
-000CFC         ?C0021?FLASHUTILS:
-   88: 		currentCharacter++;
-000CFC 7401              MOV      A,#01H
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 26
-
-
-000CFE 2551              ADD      A,currentCharacter+02H
-000D00 F551              MOV      currentCharacter+02H,A
-000D02 E4                CLR      A
-000D03 3550              ADDC     A,currentCharacter+01H
-000D05 F550              MOV      currentCharacter+01H,A
-   89: 	}
-000D07 80A7              SJMP     ?C0018?FLASHUTILS
-000D09         ?C0019?FLASHUTILS:
-   90: 	writeToFlashPage(pageBuffer, EECurrentAddr);	
-000D09 7EF0              MOV      R6,#HIGH pageBuffer
-000D0B 7FED              MOV      R7,#LOW pageBuffer
-000D0D AB4C              MOV      R3,EECurrentAddr
-000D0F AA4D              MOV      R2,EECurrentAddr+01H
-000D11 A94E              MOV      R1,EECurrentAddr+02H
-000D13 810B              AJMP     _writeToFlashPage
------ FUNCTION _writeBufferToFlash (END) -------
+000AEB 7F00              MOV      R7,#00H
+000AED 7EAC              MOV      R6,#0ACH
+   15:   unsigned char code * EETempAddr;
+   16:           
+   17:   for (EETempAddr = (unsigned char code*)FLASH_FIRST_ADDR; EETempAddr <= (unsigned char code*)FLASH_LAST_ADDR; EE
+>> TempAddr += BYTES_PER_WORDLINE)
+;---- Variable 'EETempAddr' assigned to Register 'DPTR' ----
+000AEF 90A000            MOV      DPTR,#0A000H
+000AF2         ?C0001?FLASHUTILS:
+000AF2 D3                SETB     C
+000AF3 E582              MOV      A,DPL
+000AF5 9400              SUBB     A,#00H
+000AF7 E583              MOV      A,DPH
+000AF9 94AC              SUBB     A,#0ACH
+000AFB 5017              JNC      ?C0002?FLASHUTILS
+   18: 	{
+   19: 		if (*EETempAddr == 0)
+000AFD E4                CLR      A
+000AFE 93                MOVC     A,@A+DPTR
+000AFF 7006              JNZ      ?C0003?FLASHUTILS
+   20: 		{
+   21: 			EECurrentAddr = EETempAddr;
+000B01 AE83              MOV      R6,DPH
+000B03 AF82              MOV      R7,DPL
+   22: 			break;
+000B05 800D              SJMP     ?C0002?FLASHUTILS
+   23: 		}
+   24: 	}
+000B07         ?C0003?FLASHUTILS:
+000B07 7420              MOV      A,#020H
+000B09 2582              ADD      A,DPL
+000B0B F582              MOV      DPL,A
+000B0D E4                CLR      A
+000B0E 3583              ADDC     A,DPH
+000B10 F583              MOV      DPH,A
+000B12 80DE              SJMP     ?C0001?FLASHUTILS
+000B14         ?C0002?FLASHUTILS:
+   25: 	return EECurrentAddr;
+   26: }
+000B14 22                RET      
+----- FUNCTION getFlashDataEndAddress (END) -------
 
 
 ----- FUNCTION _FLASH_Erase (BEGIN) -----
@@ -1740,12 +1221,15 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   176: #endif	// XC866
   177: 
   178: 	P1.UINT_Param = DFlash0Sector;
-000D15 8E54              MOV      P1,R6
-000D17 8F55              MOV      P1+01H,R7
+000B15 8E54              MOV      P1,R6
+000B17 8F55              MOV      P1+01H,R7
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 19
+
+
   179: #ifdef	XC88x
   180: 	P2.UINT_Param = DFlash1Sector;
-000D19 8C56              MOV      P2,R4
-000D1B 8D57              MOV      P2+01H,R5
+000B19 8C56              MOV      P2,R4
+000B1B 8D57              MOV      P2+01H,R5
   181: #endif	// XC88x
   182: 	
   183: #ifdef	XC866
@@ -1754,42 +1238,39 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   186: #endif	// XC866
   187: #ifdef	XC88x
   188: 	REG[(1+(USE_BANK*8))] = P1.UBYTE_Param[0];	// DFLASH0 Sector -         High Adr Byte
-000D1D 7819              MOV      R0,#019H
-000D1F A654              MOV      @R0,P1
+000B1D 7819              MOV      R0,#019H
+000B1F A654              MOV      @R0,P1
   189: 	REG[(0+(USE_BANK*8))] = P1.UBYTE_Param[1];	// DFLASH0 Sector -         Low  Adr Byte
-000D21 18                DEC      R0
-000D22 A655              MOV      @R0,P1+01H
+000B21 18                DEC      R0
+000B22 A655              MOV      @R0,P1+01H
   190: 	REG[(4+(USE_BANK*8))] = P2.UBYTE_Param[0];	// DFLASH1 Sector  
-000D24 781C              MOV      R0,#01CH
-000D26 A656              MOV      @R0,P2
+000B24 781C              MOV      R0,#01CH
+000B26 A656              MOV      @R0,P2
   191: 	REG[(3+(USE_BANK*8))] = P2.UBYTE_Param[1];	// DFLASH1 Sector  
-000D28 18                DEC      R0
-000D29 A657              MOV      @R0,P2+01H
+000B28 18                DEC      R0
+000B29 A657              MOV      @R0,P2+01H
   192: #endif	// XC88x
   193: 	REG[(5+(USE_BANK*8))] = 0;					// PFLASH  
-LX51 LINKER/LOCATER V4.66.41.0                                                        04/20/2016  16:48:14  PAGE 27
-
-
-000D2B 781D              MOV      R0,#01DH
-000D2D E4                CLR      A
-000D2E F6                MOV      @R0,A
+000B2B 781D              MOV      R0,#01DH
+000B2D E4                CLR      A
+000B2E F6                MOV      @R0,A
   194: 	REG[(6+(USE_BANK*8))] = 0;					// PFLASH  
-000D2F 08                INC      R0
-000D30 F6                MOV      @R0,A
+000B2F 08                INC      R0
+000B30 F6                MOV      @R0,A
   195: 	REG[(7+(USE_BANK*8))] = 0;					// PFLASH  
-000D31 08                INC      R0
-000D32 F6                MOV      @R0,A
+000B31 08                INC      R0
+000B32 F6                MOV      @R0,A
   196: 
   197: #ifdef XC88x
   198: 	PUSH(PSW);
-000D33 C0D0              PUSH     PSW
+000B33 C0D0              PUSH     PSW
   199: 	PSW = ((USE_BANK)<<3);
-000D35 75D018            MOV      PSW,#018H
+000B35 75D018            MOV      PSW,#018H
   200: #endif	// XC88x
   201: 
   202: #ifdef	__C51__
   203: 	((void (code *) (void)) FLASH_ERASE) ();
-000D38 12DFF9            LCALL    0DFF9H
+000B38 12DFF9            LCALL    0DFF9H
   204: #endif	// __C51__
   205: #ifdef	SDCC
   206: _asm
@@ -1802,15 +1283,529 @@ ASSEMBLER CODE PACKING OF MODULE:  TestBoard (?C_STARTUP)
   213: #endif	// XC866
   214: #ifdef	XC88x
   215: 	success = CY;
-000D3B 9202              MOV      success,C
+000B3B 9202              MOV      success,C
   216: 	POP(PSW);
-000D3D D0D0              POP      PSW
+000B3D D0D0              POP      PSW
   217: 	return (!success);
-000D3F A202              MOV      C,success
-000D41 B3                CPL      C
+000B3F A202              MOV      C,success
+000B41 B3                CPL      C
   218: #endif	// XC88x
   219: }
-000D42 22                RET      
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 20
+
+
+000B42 22                RET      
 ----- FUNCTION _FLASH_Erase (END) -------
+
+
+----- FUNCTION _enableLCChannel (BEGIN) -----
+ FILE: 'DeviceController.c'
+   20: void enableLCChannel(char channelCode) {
+   21:     // Switch off all LC / LCR channel first.
+;---- Variable 'channelCode' assigned to Register 'R7' ----
+   22:     IO_vResetPin(LCR_CHANNEL_1);
+000B43 C290              CLR      P1_0
+   23:     IO_vResetPin(LCR_CHANNEL_2);
+000B45 C293              CLR      P1_3
+   24:     IO_vResetPin(LCR_CHANNEL_3);    
+000B47 C294              CLR      P1_4
+   25:     IO_vResetPin(LC_CHANNEL_1);
+000B49 C291              CLR      P1_1
+   26:     IO_vResetPin(LC_CHANNEL_2);
+000B4B C292              CLR      P1_2
+   27:     IO_vResetPin(LC_CHANNEL_3);
+000B4D C295              CLR      P1_5
+   28: 
+   29:     // Enable coressponding LCR channel GPIO
+   30:     switch(channelCode) {
+000B4F EF                MOV      A,R7
+000B50 24CF              ADD      A,#0CFH
+000B52 6012              JZ       ?C0004?DEVICECONTROLLER
+000B54 14                DEC      A
+000B55 6019              JZ       ?C0005?DEVICECONTROLLER
+000B57 14                DEC      A
+000B58 6020              JZ       ?C0006?DEVICECONTROLLER
+000B5A 2403              ADD      A,#03H
+000B5C 7026              JNZ      ?C0007?DEVICECONTROLLER
+   31:         case '0':
+000B5E         ?C0003?DEVICECONTROLLER:
+   32:             sendUART("#b#0#\n");
+000B5E 7BFF              MOV      R3,#0FFH
+000B60 7A03              MOV      R2,#HIGH 010003CFH
+000B62 79CF              MOV      R1,#LOW 010003CFH
+   33:             break;
+000B64 8024              SJMP     ?C0051?DEVICECONTROLLER
+   34:         case '1':
+000B66         ?C0004?DEVICECONTROLLER:
+   35:             IO_vSetPin(LC_CHANNEL_1);
+000B66 D291              SETB     P1_1
+   36:             sendUART("#b#1#\n");
+000B68 7BFF              MOV      R3,#0FFH
+000B6A 7A03              MOV      R2,#HIGH 010003D6H
+000B6C 79D6              MOV      R1,#LOW 010003D6H
+000B6E         
+   37:             break;
+000B6E 801A              SJMP     ?C0051?DEVICECONTROLLER
+   38:         case '2':
+000B70         ?C0005?DEVICECONTROLLER:
+   39:             IO_vSetPin(LC_CHANNEL_2);
+000B70 D292              SETB     P1_2
+   40:             sendUART("#b#2#\n");            
+000B72 7BFF              MOV      R3,#0FFH
+000B74 7A03              MOV      R2,#HIGH 010003DDH
+000B76 79DD              MOV      R1,#LOW 010003DDH
+000B78         
+   41:             break;
+000B78 8010              SJMP     ?C0051?DEVICECONTROLLER
+   42:         case '3':
+000B7A         ?C0006?DEVICECONTROLLER:
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 21
+
+
+   43:             IO_vSetPin(LC_CHANNEL_3);
+000B7A D295              SETB     P1_5
+   44:             sendUART("#b#3#\n");
+000B7C 7BFF              MOV      R3,#0FFH
+000B7E 7A03              MOV      R2,#HIGH 010003E4H
+000B80 79E4              MOV      R1,#LOW 010003E4H
+000B82         
+   45:             break;
+000B82 8006              SJMP     ?C0051?DEVICECONTROLLER
+   46:         default:
+000B84         ?C0007?DEVICECONTROLLER:
+   47:             sendUART("#Unknown LC Channel.#\n");                    
+000B84 7BFF              MOV      R3,#0FFH
+000B86 7A03              MOV      R2,#HIGH 010003EBH
+000B88 79EB              MOV      R1,#LOW 010003EBH
+000B8A         
+000B8A 0206FC            LJMP     _sendUART
+   48:             break;
+   49:     }
+----- FUNCTION _enableLCChannel (END) -------
+
+
+----- FUNCTION _enableLCRChannel (BEGIN) -----
+ FILE: 'DeviceController.c'
+   52: void enableLCRChannel(char channelCode) {
+   53:     // Switch off all LC / LCR channel first.
+;---- Variable 'channelCode' assigned to Register 'R7' ----
+   54:     IO_vResetPin(LCR_CHANNEL_1);
+000B8D C290              CLR      P1_0
+   55:     IO_vResetPin(LCR_CHANNEL_2);
+000B8F C293              CLR      P1_3
+   56:     IO_vResetPin(LCR_CHANNEL_3);
+000B91 C294              CLR      P1_4
+   57:     IO_vResetPin(LC_CHANNEL_1);
+000B93 C291              CLR      P1_1
+   58:     IO_vResetPin(LC_CHANNEL_2);
+000B95 C292              CLR      P1_2
+   59:     IO_vResetPin(LC_CHANNEL_3);
+000B97 C295              CLR      P1_5
+   60: 
+   61:     // Enable coressponding LCR channel GPIO
+   62:     switch(channelCode) {
+000B99 EF                MOV      A,R7
+000B9A 24CF              ADD      A,#0CFH
+000B9C 6012              JZ       ?C0011?DEVICECONTROLLER
+000B9E 14                DEC      A
+000B9F 6019              JZ       ?C0012?DEVICECONTROLLER
+000BA1 14                DEC      A
+000BA2 6020              JZ       ?C0013?DEVICECONTROLLER
+000BA4 2403              ADD      A,#03H
+000BA6 7026              JNZ      ?C0014?DEVICECONTROLLER
+   63:         case '0':
+000BA8         ?C0010?DEVICECONTROLLER:
+   64:             sendUART("#a#0#\n");
+000BA8 7BFF              MOV      R3,#0FFH
+000BAA 7A04              MOV      R2,#HIGH 01000402H
+000BAC 7902              MOV      R1,#LOW 01000402H
+   65:             break;
+000BAE 8024              SJMP     ?C0055?DEVICECONTROLLER
+   66:         case '1':
+000BB0         ?C0011?DEVICECONTROLLER:
+   67:             IO_vSetPin(LCR_CHANNEL_1);
+000BB0 D290              SETB     P1_0
+   68:             sendUART("#a#1#\n");
+000BB2 7BFF              MOV      R3,#0FFH
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 22
+
+
+000BB4 7A04              MOV      R2,#HIGH 01000409H
+000BB6 7909              MOV      R1,#LOW 01000409H
+000BB8         
+   69:             break;
+000BB8 801A              SJMP     ?C0055?DEVICECONTROLLER
+   70:         case '2':
+000BBA         ?C0012?DEVICECONTROLLER:
+   71:             IO_vSetPin(LCR_CHANNEL_2);
+000BBA D293              SETB     P1_3
+   72:             sendUART("#a#2#\n");            
+000BBC 7BFF              MOV      R3,#0FFH
+000BBE 7A04              MOV      R2,#HIGH 01000410H
+000BC0 7910              MOV      R1,#LOW 01000410H
+000BC2         
+   73:             break;
+000BC2 8010              SJMP     ?C0055?DEVICECONTROLLER
+   74:         case '3':
+000BC4         ?C0013?DEVICECONTROLLER:
+   75:             IO_vSetPin(LCR_CHANNEL_3);
+000BC4 D294              SETB     P1_4
+   76:             sendUART("#a#3#\n");
+000BC6 7BFF              MOV      R3,#0FFH
+000BC8 7A04              MOV      R2,#HIGH 01000417H
+000BCA 7917              MOV      R1,#LOW 01000417H
+000BCC         
+   77:             break;
+000BCC 8006              SJMP     ?C0055?DEVICECONTROLLER
+   78:         default:
+000BCE         ?C0014?DEVICECONTROLLER:
+   79:             sendUART("#Unknown LCR Channel.#\n");                   
+000BCE 7BFF              MOV      R3,#0FFH
+000BD0 7A04              MOV      R2,#HIGH 0100041EH
+000BD2 791E              MOV      R1,#LOW 0100041EH
+000BD4         
+000BD4 0206FC            LJMP     _sendUART
+   80:             break;
+   81:     }
+----- FUNCTION _enableLCRChannel (END) -------
+
+
+----- FUNCTION _setChargeMode (BEGIN) -----
+ FILE: 'DeviceController.c'
+  143: void setChargeMode(char modeCode) {
+  144:     if (modeCode == '0') {
+000BD7 8F44              MOV      modeCode,R7
+  145:         IO_vResetPin(HV_CHANNEL);               
+000BD9 E544              MOV      A,modeCode
+000BDB B4300E            CJNE     A,#030H,?C0034?DEVICECONTROLLER
+  146:         IO_vSetPin(DISCHARGE_CHANNEL);
+000BDE C2B7              CLR      P3_7
+  147:         IO_vSetPin(CHARGE_CHANNEL);
+000BE0 D2B6              SETB     P3_6
+  148:         sendUART("#c#0#\n");            
+000BE2 D2B4              SETB     P3_4
+  149:     } else if (modeCode == '1') {
+000BE4 7BFF              MOV      R3,#0FFH
+000BE6 7A05              MOV      R2,#HIGH 01000504H
+000BE8 7904              MOV      R1,#LOW 01000504H
+  150:         if (!isAllHVRelayOK()) {
+000BEA 8040              SJMP     ?C0066?DEVICECONTROLLER
+000BEC         ?C0034?DEVICECONTROLLER:
+000BEC E544              MOV      A,modeCode
+000BEE 6431              XRL      A,#031H
+000BF0 7021              JNZ      ?C0036?DEVICECONTROLLER
+  151:             IO_vResetPin(HV_CHANNEL);                       
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 23
+
+
+000BF2 1207A1            LCALL    isAllHVRelayOK
+000BF5 400E              JC       ?C0037?DEVICECONTROLLER
+  152:             IO_vSetPin(CHARGE_CHANNEL);
+000BF7 C2B7              CLR      P3_7
+  153:             IO_vSetPin(DISCHARGE_CHANNEL);
+000BF9 D2B4              SETB     P3_4
+  154:             sendUART("#d#0#\n");
+000BFB D2B6              SETB     P3_6
+  155:             return;
+000BFD 7BFF              MOV      R3,#0FFH
+000BFF 7A04              MOV      R2,#HIGH 010004FDH
+000C01 79FD              MOV      R1,#LOW 010004FDH
+000C03         
+000C03 8027              SJMP     ?C0066?DEVICECONTROLLER
+  156:         }
+000C05         ?C0037?DEVICECONTROLLER:
+  157:         IO_vSetPin(DISCHARGE_CHANNEL);
+000C05 D2B6              SETB     P3_6
+  158:         IO_vSetPin(HV_CHANNEL);
+000C07 D2B7              SETB     P3_7
+  159:         IO_vResetPin(CHARGE_CHANNEL);
+000C09 C2B4              CLR      P3_4
+  160:         sendUART("#c#1#\n");
+000C0B 7BFF              MOV      R3,#0FFH
+000C0D 7A05              MOV      R2,#HIGH 0100050BH
+000C0F 790B              MOV      R1,#LOW 0100050BH
+000C11         
+  161:     } else if (modeCode == '2') {
+000C11 8019              SJMP     ?C0066?DEVICECONTROLLER
+000C13         ?C0036?DEVICECONTROLLER:
+000C13 E544              MOV      A,modeCode
+000C15 B4320E            CJNE     A,#032H,?C0040?DEVICECONTROLLER
+  162:         IO_vSetPin(CHARGE_CHANNEL);
+000C18 D2B4              SETB     P3_4
+  163:         IO_vResetPin(HV_CHANNEL);
+000C1A C2B7              CLR      P3_7
+  164:         IO_vResetPin(DISCHARGE_CHANNEL);
+000C1C C2B6              CLR      P3_6
+  165:         sendUART("#c#2#\n");
+000C1E 7BFF              MOV      R3,#0FFH
+000C20 7A05              MOV      R2,#HIGH 01000512H
+000C22 7912              MOV      R1,#LOW 01000512H
+000C24         
+  166:     } else {
+000C24 8006              SJMP     ?C0066?DEVICECONTROLLER
+000C26         ?C0040?DEVICECONTROLLER:
+  167:         sendUART("#Unknown Charge Mode#\n");            
+000C26 7BFF              MOV      R3,#0FFH
+000C28 7A05              MOV      R2,#HIGH 01000519H
+000C2A 7919              MOV      R1,#LOW 01000519H
+000C2C         
+000C2C 0206FC            LJMP     _sendUART
+  168:     }
+----- FUNCTION _setChargeMode (END) -------
+
+
+----- FUNCTION UART_viIsr (BEGIN) -----
+ FILE: 'UART.C'
+  183: void UART_viIsr(void) interrupt UARTINT
+000C2F C0E0              PUSH     ACC
+000C31 C0F0              PUSH     B
+000C33 C083              PUSH     DPH
+000C35 C082              PUSH     DPL
+000C37 C0D0              PUSH     PSW
+000C39 75D000            MOV      PSW,#00H
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 24
+
+
+000C3C C000              PUSH     AR0
+000C3E C001              PUSH     AR1
+000C40 C002              PUSH     AR2
+000C42 C003              PUSH     AR3
+000C44 C004              PUSH     AR4
+000C46 C005              PUSH     AR5
+000C48 C006              PUSH     AR6
+000C4A C007              PUSH     AR7
+  184: {
+  185:     // switch to page 0
+  186:     SFR_PAGE(_su0, SST0);
+000C4C 75BF80            MOV      SCU_PAGE,#080H
+  187:     if (TI)
+000C4F 309902            JNB      TI,?C0024?UART
+  188:     {
+  189:         TI = 0;
+000C52 C299              CLR      TI
+  190:     }
+000C54         ?C0024?UART:
+  191:     if (RI)
+000C54 309854            JNB      RI,?C0025?UART
+  192:     {
+  193:         char receiveByte = SBUF;
+000C57 85993E            MOV      receiveByte,SBUF
+  194:         if (receiveByte == '\r' || receiveByte == '\n' || bufferCount >= MAX_COMMAND_LENGTH-1) {
+000C5A E53E              MOV      A,receiveByte
+000C5C 640D              XRL      A,#0DH
+000C5E 6013              JZ       ?C0027?UART
+000C60 E53E              MOV      A,receiveByte
+000C62 640A              XRL      A,#0AH
+000C64 600D              JZ       ?C0027?UART
+000C66 C3                CLR      C
+000C67 E517              MOV      A,bufferCount+01H
+000C69 9463              SUBB     A,#063H
+000C6B E516              MOV      A,bufferCount
+000C6D 6480              XRL      A,#080H
+000C6F 9480              SUBB     A,#080H
+000C71 401F              JC       ?C0026?UART
+000C73         ?C0027?UART:
+  195:             processCommand(receiveBuffer);
+000C73 7B01              MOV      R3,#01H
+000C75 7AF1              MOV      R2,#HIGH receiveBuffer
+000C77 7971              MOV      R1,#LOW receiveBuffer
+000C79 1112              ACALL    _processCommand
+  196:             memset(receiveBuffer, 0, MAX_COMMAND_LENGTH);                   
+000C7B 7E00              MOV      R6,#00H
+000C7D 7F64              MOV      R7,#064H
+000C7F 7D00              MOV      R5,#00H
+000C81 7B01              MOV      R3,#01H
+000C83 7AF1              MOV      R2,#HIGH receiveBuffer
+000C85 7971              MOV      R1,#LOW receiveBuffer
+000C87 1201E4            LCALL    ?C?MEMSET
+  197:             bufferCount = 0;
+000C8A 751600            MOV      bufferCount,#00H
+000C8D 751700            MOV      bufferCount+01H,#00H
+  198:         } else {
+000C90 8017              SJMP     ?C0028?UART
+000C92         ?C0026?UART:
+  199:             receiveBuffer[bufferCount] = receiveByte;
+000C92 7471              MOV      A,#LOW receiveBuffer
+000C94 2517              ADD      A,bufferCount+01H
+000C96 F582              MOV      DPL,A
+000C98 74F1              MOV      A,#HIGH receiveBuffer
+000C9A 3516              ADDC     A,bufferCount
+000C9C F583              MOV      DPH,A
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 25
+
+
+000C9E E53E              MOV      A,receiveByte
+000CA0 F0                MOVX     @DPTR,A
+  200:             bufferCount++;
+000CA1 0517              INC      bufferCount+01H
+000CA3 E517              MOV      A,bufferCount+01H
+000CA5 7002              JNZ      ?C0030?UART
+000CA7 0516              INC      bufferCount
+000CA9         ?C0030?UART:
+  201:         }
+000CA9         ?C0028?UART:
+  202:         RI = 0;
+000CA9 C298              CLR      RI
+  203:     }
+000CAB         ?C0025?UART:
+  204: 
+  205:     // restore the old page
+  206:     SFR_PAGE(_su0, RST0);
+000CAB 75BFC0            MOV      SCU_PAGE,#0C0H
+  207: }
+000CAE D007              POP      AR7
+000CB0 D006              POP      AR6
+000CB2 D005              POP      AR5
+000CB4 D004              POP      AR4
+000CB6 D003              POP      AR3
+000CB8 D002              POP      AR2
+000CBA D001              POP      AR1
+000CBC D000              POP      AR0
+000CBE D0D0              POP      PSW
+000CC0 D082              POP      DPL
+000CC2 D083              POP      DPH
+000CC4 D0F0              POP      B
+000CC6 D0E0              POP      ACC
+000CC8 32                RETI     
+----- FUNCTION UART_viIsr (END) -------
+
+
+----- FUNCTION _FLASH_Ready (BEGIN) -----
+ FILE: 'FlashHandler.c'
+   92: bit FLASH_Ready						(unsigned char BankNum)
+   93: {
+;---- Variable 'BankNum' assigned to Register 'R7' ----
+   94:     ACC = BankNum;
+   95: #ifdef __C51__		
+000CC9 EF                MOV      A,R7
+   96: 	((void (code *) (void)) FLASH_READ_STATUS) ();
+000CCA 02DFF0            LJMP     0DFF0H
+   97: #endif	// __C51__
+   98: #ifdef	SDCC
+   99: _asm
+  100: 	LCALL FLASH_READ_STATUS;
+  101: _endasm;
+  102: #endif	// SDCC
+  103: 	return(CY);
+----- FUNCTION _FLASH_Ready (END) -------
+
+
+----- FUNCTION _readFlashToBuffer (BEGIN) -----
+ FILE: 'FlashUtils.c'
+   46: void readFlashToBuffer(char xdata * buffer, int n, unsigned char code * EECurrentAddr) 
+   47: {
+000CCD 8E08              MOV      buffer,R6
+000CCF 8F09              MOV      buffer+01H,R7
+000CD1 8C0A              MOV      n,R4
+000CD3 8D0B              MOV      n+01H,R5
+000CD5 8A0C              MOV      EECurrentAddr,R2
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 26
+
+
+000CD7 8B0D              MOV      EECurrentAddr+01H,R3
+   48: 	unsigned char code * EETempAddr = (unsigned char code*)FLASH_FIRST_ADDR;
+   49: 	int i = 0;
+000CD9 750EA0            MOV      EETempAddr,#0A0H
+000CDC 750F00            MOV      EETempAddr+01H,#00H
+   50: 	int j = 0;
+000CDF E4                CLR      A
+000CE0 F510              MOV      i,A
+000CE2 F511              MOV      i+01H,A
+   51: 	int k = 0;
+000CE4 F512              MOV      j,A
+000CE6 F513              MOV      j+01H,A
+   52: 	memset(buffer, 0, n);
+000CE8 F514              MOV      k,A
+000CEA F515              MOV      k+01H,A
+   53: 	
+000CEC AE0A              MOV      R6,n
+000CEE AF0B              MOV      R7,n+01H
+000CF0 FD                MOV      R5,A
+000CF1 AA08              MOV      R2,buffer
+000CF3 A909              MOV      R1,buffer+01H
+000CF5 7B01              MOV      R3,#01H
+000CF7 1201E4            LCALL    ?C?MEMSET
+000CFA         ?C0011?FLASHUTILS:
+   54: 	while (FLASH_Ready(FLASH_BANK_TO_CHECK) == 0) {;}
+000CFA 7F03              MOV      R7,#03H
+000CFC 91C9              ACALL    _FLASH_Ready
+000CFE 50FA              JNC      ?C0011?FLASHUTILS
+000D00         ?C0012?FLASHUTILS:
+000D00         ?C0013?FLASHUTILS:
+   55: 	
+   56: 	while (EETempAddr < EECurrentAddr && j < n) 
+000D00 C3                CLR      C
+000D01 E50F              MOV      A,EETempAddr+01H
+000D03 950D              SUBB     A,EECurrentAddr+01H
+000D05 E50E              MOV      A,EETempAddr
+000D07 950C              SUBB     A,EECurrentAddr
+000D09 5054              JNC      ?C0017?FLASHUTILS
+000D0B C3                CLR      C
+000D0C E513              MOV      A,j+01H
+000D0E 950B              SUBB     A,n+01H
+000D10 E50A              MOV      A,n
+000D12 6480              XRL      A,#080H
+000D14 F8                MOV      R0,A
+000D15 E512              MOV      A,j
+000D17 6480              XRL      A,#080H
+000D19 98                SUBB     A,R0
+000D1A 5043              JNC      ?C0017?FLASHUTILS
+   57: 	{	
+   58: 		i = 0;
+000D1C E4                CLR      A
+000D1D F510              MOV      i,A
+000D1F F511              MOV      i+01H,A
+000D21         ?C0015?FLASHUTILS:
+   59: 		while (*(EETempAddr+i) != 0) {
+000D21 E50F              MOV      A,EETempAddr+01H
+000D23 2511              ADD      A,i+01H
+000D25 F582              MOV      DPL,A
+000D27 E50E              MOV      A,EETempAddr
+000D29 3510              ADDC     A,i
+000D2B F583              MOV      DPH,A
+000D2D E4                CLR      A
+000D2E 93                MOVC     A,@A+DPTR
+000D2F FF                MOV      R7,A
+000D30 6020              JZ       ?C0016?FLASHUTILS
+LX51 LINKER/LOCATER V4.66.62.0                                                        05/13/2016  13:32:29  PAGE 27
+
+
+   60: 			buffer[j] = *(EETempAddr+i);
+000D32 E509              MOV      A,buffer+01H
+000D34 2513              ADD      A,j+01H
+000D36 F582              MOV      DPL,A
+000D38 E508              MOV      A,buffer
+000D3A 3512              ADDC     A,j
+000D3C F583              MOV      DPH,A
+000D3E EF                MOV      A,R7
+000D3F F0                MOVX     @DPTR,A
+   61: 			i++;
+000D40 0511              INC      i+01H
+000D42 E511              MOV      A,i+01H
+000D44 7002              JNZ      ?C0025?FLASHUTILS
+000D46 0510              INC      i
+000D48         ?C0025?FLASHUTILS:
+   62: 			j++;
+000D48 0513              INC      j+01H
+000D4A E513              MOV      A,j+01H
+000D4C 7002              JNZ      ?C0026?FLASHUTILS
+000D4E 0512              INC      j
+000D50         ?C0026?FLASHUTILS:
+   63: 		}
+000D50 80CF              SJMP     ?C0015?FLASHUTILS
+000D52         ?C0016?FLASHUTILS:
+   64: 		EETempAddr = EETempAddr + BYTES_PER_WORDLINE;		
+000D52 7420              MOV      A,#020H
+000D54 250F              ADD      A,EETempAddr+01H
+000D56 F50F              MOV      EETempAddr+01H,A
+000D58 E4                CLR      A
+000D59 350E              ADDC     A,EETempAddr
+000D5B F50E              MOV      EETempAddr,A
+   65: 	}	
+000D5D 80A1              SJMP     ?C0013?FLASHUTILS
+   66: }
+000D5F         ?C0017?FLASHUTILS:
+000D5F 22                RET      
+----- FUNCTION _readFlashToBuffer (END) -------
 
 

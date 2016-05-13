@@ -1,7 +1,7 @@
-C51 COMPILER V9.54   UART                                                                  04/20/2016 16:48:13 PAGE 1   
+C51 COMPILER V9.55   UART                                                                  05/13/2016 13:32:28 PAGE 1   
 
 
-C51 COMPILER V9.54, COMPILATION OF MODULE UART
+C51 COMPILER V9.55, COMPILATION OF MODULE UART
 OBJECT MODULE PLACED IN UART.OBJ
 COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE UART.C OBJECTADVANCED OPTIMIZE(8,SPEED) BROWSE NOINTPROMOTE DEFINE(START
                     -ERKIT) DEBUG TABS(2)
@@ -38,8 +38,8 @@ line level    source
   28          #include <stdio.h>
   29          #include "FlashUtils.h"
   30          
-  31          #define MAX_COMMAND_LENGTH    100
-  32          #define MAX_RESPONSE_LENGTH   200
+  31          #define MAX_COMMAND_LENGTH              100
+  32          #define MAX_RESPONSE_LENGTH             200
   33          
   34          
   35          
@@ -62,7 +62,7 @@ line level    source
   52          // @Parameters    None
   53          //
   54          //----------------------------------------------------------------------------
-C51 COMPILER V9.54   UART                                                                  04/20/2016 16:48:13 PAGE 2   
+C51 COMPILER V9.55   UART                                                                  05/13/2016 13:32:28 PAGE 2   
 
   55          // @Date          2016/3/15
   56          //
@@ -71,42 +71,42 @@ line level    source
   59          
   60          void UART_vInit(void)
   61          {
-  62   1        ///  -----------------------------------------------------------------------
-  63   1        ///  UART settings
-  64   1        ///  -----------------------------------------------------------------------
-  65   1        ///  Pin TXD_1 (P0.2) is selected for transmission
-  66   1        ///  Pin RXD_1 (P0.1) is selected for reception
-  67   1        ///  Receiver enabled
-  68   1        ///  Mode 1: 8-bit data, 1 start bit, 1 stop bit, variable baud rate
-  69   1        ///  Receiver interrupt flag RI will only be activated if a valid stop bit 
-  70   1        ///  was received
-  71   1        ///  BRG is selected for baudrate generation
+  62   1          ///  -----------------------------------------------------------------------
+  63   1          ///  UART settings
+  64   1          ///  -----------------------------------------------------------------------
+  65   1          ///  Pin TXD_1 (P0.2) is selected for transmission
+  66   1          ///  Pin RXD_1 (P0.1) is selected for reception
+  67   1          ///  Receiver enabled
+  68   1          ///  Mode 1: 8-bit data, 1 start bit, 1 stop bit, variable baud rate
+  69   1          ///  Receiver interrupt flag RI will only be activated if a valid stop bit 
+  70   1          ///  was received
+  71   1          ///  BRG is selected for baudrate generation
   72   1      
-  73   1        SFR_PAGE(_pp2, noSST);         // switch to page 2 without saving
-  74   1        P0_ALTSEL0   &= ~(ubyte)0x04;  // configure alternate function register 0
-  75   1        P0_ALTSEL1   |=  (ubyte)0x04;  // configure alternate function register 1
-  76   1        SFR_PAGE(_pp0, noSST);         // switch to page 0 without saving
-  77   1        P0_DIR       |=  (ubyte)0x04;  // set output direction
+  73   1          SFR_PAGE(_pp2, noSST);         // switch to page 2 without saving
+  74   1          P0_ALTSEL0   &= ~(ubyte)0x04;  // configure alternate function register 0
+  75   1          P0_ALTSEL1   |=  (ubyte)0x04;  // configure alternate function register 1
+  76   1          SFR_PAGE(_pp0, noSST);         // switch to page 0 without saving
+  77   1          P0_DIR       |=  (ubyte)0x04;  // set output direction
   78   1      
   79   1      
-  80   1        MODPISEL     |=  (ubyte)0x01;  // configure peripheral input select register
-  81   1        BCON          =  0x00;         // reset baudrate timer/reload register
-  82   1        SCON          =  0x70;         // load serial channel control register
+  80   1          MODPISEL     |=  (ubyte)0x01;  // configure peripheral input select register
+  81   1          BCON          =  0x00;         // reset baudrate timer/reload register
+  82   1          SCON          =  0x70;         // load serial channel control register
   83   1      
-  84   1        ///  -----------------------------------------------------------------------
-  85   1        ///  Baudrate generator settings
-  86   1        ///  -----------------------------------------------------------------------
-  87   1        ///  input clock = fPCLK
-  88   1        ///  Fractional divider is enabled
-  89   1        ///  baudrate = 9.6004 kbaud
+  84   1          ///  -----------------------------------------------------------------------
+  85   1          ///  Baudrate generator settings
+  86   1          ///  -----------------------------------------------------------------------
+  87   1          ///  input clock = fPCLK
+  88   1          ///  Fractional divider is enabled
+  89   1          ///  baudrate = 9.6004 kbaud
   90   1      
-  91   1        FDSTEP        =  0xD5;         // load fractional divider reload register
-  92   1        BG            =  0x81;         // load baudrate timer/reload register
-  93   1        FDCON        |=  0x01;         // load Fractional Divider control register
-  94   1        BCON         |=  0x01;         // load baud rate control register
+  91   1          FDSTEP        =  0xD5;         // load fractional divider reload register
+  92   1          BG            =  0x81;         // load baudrate timer/reload register
+  93   1          FDCON        |=  0x01;         // load Fractional Divider control register
+  94   1          BCON         |=  0x01;         // load baud rate control register
   95   1      
-  96   1        ///  UART interrupt enabled
-  97   1        ES = 1;
+  96   1          ///  UART interrupt enabled
+  97   1          ES = 1;
   98   1      
   99   1      } //  End of function UART_vInit
  100          
@@ -126,7 +126,7 @@ line level    source
  114          //
  115          //----------------------------------------------------------------------------
  116          // @Parameters    None
-C51 COMPILER V9.54   UART                                                                  04/20/2016 16:48:13 PAGE 3   
+C51 COMPILER V9.55   UART                                                                  05/13/2016 13:32:28 PAGE 3   
 
  117          //
  118          //----------------------------------------------------------------------------
@@ -145,82 +145,83 @@ line level    source
  131          static int bufferCount = 0;
  132          
  133          void sendUART(char * message) {
- 134   1        char * current = message;
- 135   1        while (*current != '\0') {
- 136   2          SBUF = *current;
- 137   2          while (TI == 0);
- 138   2          TI = 0;   
- 139   2          current++;
- 140   2        }
+ 134   1          char * current = message;
+ 135   1          while (*current != '\0') {
+ 136   2              SBUF = *current;
+ 137   2              while (TI == 0);
+ 138   2              TI = 0;         
+ 139   2              current++;
+ 140   2          }
  141   1      }
  142          
  143          void processCommand(char * command) {
- 144   1        
- 145   1        int commandSize = strlen(command);
- 146   1        char xdata respondMessage[MAX_RESPONSE_LENGTH] = {0};
- 147   1        bool isNormalCommand = commandSize == 5 && command[0] == '$' && command[2] == '$' && command[4] == '$';
- 148   1        bool isSetUUIDCommand = commandSize == 40 && command[0] == '$' && command[1] == 'f' && command[2] == '$' 
-             -&& command[39] == '$';
- 149   1        
- 150   1        memset(respondMessage, 0, MAX_RESPONSE_LENGTH);
+ 144   1      
+ 145   1          int commandSize = strlen(command);
+ 146   1          char xdata respondMessage[MAX_RESPONSE_LENGTH] = {0};
+ 147   1          bool isNormalCommand = commandSize == 5 && command[0] == '$' && command[2] == '$' && command[4] == '$'
+             -;
+ 148   1          bool isSetUUIDCommand = commandSize == 40 && command[0] == '$' && command[1] == 'f' && command[2] == '
+             -$' && command[39] == '$';
+ 149   1      
+ 150   1          memset(respondMessage, 0, MAX_RESPONSE_LENGTH);
  151   1      
- 152   1        if (isNormalCommand) {
- 153   2          switch(command[1]) {
- 154   3            case 'a':
- 155   3              enableLCRChannel(command[3]);
- 156   3              break;
- 157   3            case 'b':
- 158   3              enableLCChannel(command[3]);
- 159   3              break;
- 160   3            case 'c':
- 161   3              setChargeMode(command[3]);
- 162   3              break;
- 163   3            case 'd':
- 164   3              sendHVRelayStatus();
- 165   3              break;
- 166   3            case 'e':
- 167   3              setHVMonitorMode(command[3]);
- 168   3              break;
- 169   3            case 'f':
- 170   3              sendUUID();
- 171   3              break;
- 172   3            default:
- 173   3              sendUART("Unknown Command1\r\n");
- 174   3              sendUART(command);
- 175   3          }   
- 176   2        } else if (isSetUUIDCommand) {
- 177   2          setUUID(command);
-C51 COMPILER V9.54   UART                                                                  04/20/2016 16:48:13 PAGE 4   
+ 152   1          if (isNormalCommand) {
+ 153   2              switch(command[1]) {
+ 154   3                  case 'a':
+ 155   3                      enableLCRChannel(command[3]);
+ 156   3                      break;
+ 157   3                  case 'b':
+ 158   3                      enableLCChannel(command[3]);
+ 159   3                      break;
+ 160   3                  case 'c':
+ 161   3                      setChargeMode(command[3]);
+ 162   3                      break;
+ 163   3                  case 'd':
+ 164   3                      sendHVRelayStatus();
+ 165   3                      break;
+ 166   3                  case 'e':
+ 167   3                      setHVMonitorMode(command[3]);
+ 168   3                      break;
+ 169   3                  case 'f':
+ 170   3                      sendUUID();
+ 171   3                      break;
+ 172   3                  default:
+ 173   3                      sendUART("Unknown Command1\r\n");
+ 174   3                      sendUART(command);
+ 175   3              }               
+ 176   2          } else if (isSetUUIDCommand) {
+C51 COMPILER V9.55   UART                                                                  05/13/2016 13:32:28 PAGE 4   
 
- 178   2        } else {
- 179   2          sendUART("Incorrect Command Format\r\n");   
- 180   2        }
+ 177   2              setUUID(command);
+ 178   2          } else {
+ 179   2              sendUART("Incorrect Command Format\r\n");               
+ 180   2          }
  181   1      }
  182          
  183          void UART_viIsr(void) interrupt UARTINT
  184          {
- 185   1        // switch to page 0
- 186   1        SFR_PAGE(_su0, SST0);
- 187   1        if (TI)
- 188   1        {
- 189   2          TI = 0;
- 190   2        }
- 191   1        if (RI)
- 192   1        {
- 193   2          char receiveByte = SBUF;
- 194   2          if (receiveByte == '\r' || receiveByte == '\n' || bufferCount >= MAX_COMMAND_LENGTH-1) {
- 195   3            processCommand(receiveBuffer);
- 196   3            memset(receiveBuffer, 0, MAX_COMMAND_LENGTH);     
- 197   3            bufferCount = 0;
- 198   3          } else {
- 199   3            receiveBuffer[bufferCount] = receiveByte;
- 200   3            bufferCount++;
- 201   3          }
- 202   2          RI = 0;
- 203   2        }
+ 185   1          // switch to page 0
+ 186   1          SFR_PAGE(_su0, SST0);
+ 187   1          if (TI)
+ 188   1          {
+ 189   2              TI = 0;
+ 190   2          }
+ 191   1          if (RI)
+ 192   1          {
+ 193   2              char receiveByte = SBUF;
+ 194   2              if (receiveByte == '\r' || receiveByte == '\n' || bufferCount >= MAX_COMMAND_LENGTH-1) {
+ 195   3                  processCommand(receiveBuffer);
+ 196   3                  memset(receiveBuffer, 0, MAX_COMMAND_LENGTH);                   
+ 197   3                  bufferCount = 0;
+ 198   3              } else {
+ 199   3                  receiveBuffer[bufferCount] = receiveByte;
+ 200   3                  bufferCount++;
+ 201   3              }
+ 202   2              RI = 0;
+ 203   2          }
  204   1      
- 205   1        // restore the old page
- 206   1        SFR_PAGE(_su0, RST0);
+ 205   1          // restore the old page
+ 206   1          SFR_PAGE(_su0, RST0);
  207   1      }
 
 
